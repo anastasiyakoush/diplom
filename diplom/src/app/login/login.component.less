@@ -1,0 +1,119 @@
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.wrapped-div {
+  border-radius: 10px 10px 10px 10px;
+  background: #2e3137;
+  padding: 30px;
+  width: 90%;
+  max-width: 410px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.row img {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 5%;
+  padding-top: 3%;
+}
+
+.tab-header {
+  text-align: center;
+}
+
+.tab-header h2.active {
+  color: #fff;
+  border-bottom: 4px solid #fff;
+}
+
+.tab-header h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+  padding: 30px 40px 10px 40px;
+  cursor: pointer;
+  color: #d9dde2;
+  border-bottom: 2px solid #545d6a;
+  margin-bottom: 2%;
+}
+
+.tab-header h2:focus {
+  outline: none;
+}
+
+input.form-control,
+input.form-control:focus {
+  background-color: #636b7b;
+  color: #fff;
+  border: 1px solid #636b7b;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding-left: 4%;
+  margin-bottom: 4%;
+  margin-left: 6%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+button {
+  outline: none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius: 40px;
+  background: transparent;
+  border: 2px solid #17a2b8;
+  color:  #17a2b8;;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+button:hover {
+  color:  #17a2b8;;
+  background: #fff;
+}
+
+button:active {
+  letter-spacing: 2px;
+}
+
+div.form-group label:not(.text-danger) {
+  color: #dee4ec;
+  font-weight: 700;
+}
+
+div.form-group.required > label:first-child:after {
+  content: "*";
+  color: #fff;
+  padding-left: 5px;
+}
+
+div.form-group input.invalid {
+  border: 1px solid #dc3545;
+}
+
+div.form-group label:first-child {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+form {
+  margin: 0px 16px;
+}
