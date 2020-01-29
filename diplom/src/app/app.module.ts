@@ -20,6 +20,7 @@ import { UpdateCurriculumComponent } from './scientific-and-methodological-suppo
 import { DetailedCurriculumComponent } from './scientific-and-methodological-support/curriculum/detailed-curriculum/detailed-curriculum.component';
 import { UpdateSyllabusComponent } from './scientific-and-methodological-support/syllabus/update-syllabus/update-syllabus.component';
 import { DetailedSyllabusComponent } from './scientific-and-methodological-support/syllabus/detailed-syllabus/detailed-syllabus.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DetailedSyllabusComponent } from './scientific-and-methodological-suppo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
