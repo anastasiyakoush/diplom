@@ -21,6 +21,8 @@ import { DetailedCurriculumComponent } from './scientific-and-methodological-sup
 import { UpdateSyllabusComponent } from './scientific-and-methodological-support/syllabus/update-syllabus/update-syllabus.component';
 import { DetailedSyllabusComponent } from './scientific-and-methodological-support/syllabus/detailed-syllabus/detailed-syllabus.component';
 import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
