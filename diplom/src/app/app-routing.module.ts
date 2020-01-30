@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeachersComponent } from './teachers/teachers.component';
 import { OpenClassesComponent } from './open-classes/open-classes.component';
-import { ScientificAndMethodologicalSupportComponent } from './scientific-and-methodological-support/scientific-and-methodological-support.component';
+
 import { LoginComponent } from './login/login.component';
+import { SyllabusComponent } from './scientific-and-methodological-support/syllabus/syllabus.component';
+import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
 
 
 const routes: Routes = [
@@ -17,8 +19,12 @@ const routes: Routes = [
     component: OpenClassesComponent
   },
   {
-    path: 'support',
-    component: ScientificAndMethodologicalSupportComponent
+    path: 'support/program',
+    component: SyllabusComponent
+  },
+  {
+    path: 'support/plan',
+    component: CurriculumComponent
   },
 ];
 
