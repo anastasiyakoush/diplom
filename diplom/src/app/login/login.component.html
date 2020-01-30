@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="wrapped-div">
+    <div class="tab-header">
+      <h2 routerLink="/authorization/login">
+        Вход
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <img src="/assets/single_user.png" class="mx-auto d-block row" />
+        <form #form="ngForm" class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+          <div class="form-group">
+            <label>Логин</label>
+            <input class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" require />
+          </div>
+          <div class="form-group required">
+            <label>Пароль</label>
+            <input type="password" class="form-control" #Password="ngModel" name="Password"
+              [(ngModel)]="formModel.Password" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8 offset-md-4 ">
+              <button id="button" class=" row">Войти</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
