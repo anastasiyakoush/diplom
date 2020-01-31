@@ -1,47 +1,44 @@
 <header>
   <nav>
-  <a href="/teachers" class="menu">Преподователи</a>
+  <a href="/teachers" class="menu">Преподаватели</a>
   <div class="btn-group" dropdown [autoClose]="false" container="body">
-    <button id="button-nested" dropdownToggle type="button" class="btn"
-            aria-controls="dropdown-nested">
-      Научно-методическое обеспечение <span class="caret"></span>
-    </button>
-    <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-nested">
-      <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
+    <button id="button-nested" dropdownToggle type="button" class="btn" aria-controls="dropdown-nested"> Научно-методическое обеспечение</button>
+    <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu">
+      
+      <li dropdown triggers="mouseover" placement="right" container="body">
         <a dropdownToggle class="dropdown-item dropdown-toggle"
-           (click)="false">учебный план <span class="caret"></span></a>
-        <ul *dropdownMenu class="dropdown-menu" role="menu">
+           (click)="false">учебный план</a>
+        <ul *dropdownMenu class="dropdown-menu">
           <li role="menuitem"><a class="dropdown-item" href="/support/plan">№ группы</a></li>
           <li role="menuitem"><a class="dropdown-item" href="/support/plan">№ группы</a></li>
         </ul>
       </li>
 
-      <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
-        <a dropdownToggle class="dropdown-item dropdown-toggle"
-           (click)="false">учебная программа<span class="caret"></span></a>
-        <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item dropdown-toggle"
-            (click)="false">общеобразовательный компонент<span class="caret"></span></a>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="/support/program">№ группы</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="/support/program">№ группы</a></li>
+      <li dropdown triggers="mouseover" placement="right" container="body">
+        <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">учебная программа</a>
+        <ul *dropdownMenu class="dropdown-menu">
+
+          <li dropdown triggers="mouseover" placement="right" container="body">
+            <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">общеобразовательный компонент</a>
+            <ul *dropdownMenu class="dropdown-menu">
+              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
+              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
             </ul>
           </li>
-          <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item dropdown-toggle"
-            (click)="false">Профессиональный компонент<span class="caret"></span></a>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="/support/program">№ группы</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="/support/program">№ группы</a></li>
+
+          <li dropdown triggers="mouseover" placement="right" container="body">
+            <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">Профессиональный компонент</a>
+            <ul *dropdownMenu class="dropdown-menu">
+              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
+              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
             </ul>
           </li>
+          
         </ul>
       </li>
     </ul>
   </div>
-  <a href="/openClasses" class="menu">открытые занятия</a>
-  <a href="/authorization/login" class="menu menu-right">вход</a>
+  <a href="/openClasses" class="menu"> Открытые занятия</a>
+  <a href="/authorization/login" class="menu menu-right">Вход</a>
 </nav>
 </header>
