@@ -18,35 +18,17 @@
       <th class="my-auto" scope="col ">ID</th>
       <th scope="col">ФИО</th>
       <th scope="col">Категория</th>
-      <th scope="col">Научно-методическое обеспечение</th>
       <th scope="col">Цикловая комиссия</th>
       <th scope="col">Статус</th>
     </tr>
   </thead>
-  <tbody id="TeachersTable">
+  <tbody id="TeachersTable" *ngFor="let teacher of teachers">
     <tr>
-      <th scope="row">1</th>
-      <td>Лазицкас Е.А.</td>
-      <td>Высшая</td>
-      <td>ссылка</td>
-      <td>ПОИТ</td>
-      <td>Работает</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Науменко Жанна Николаевна</td>
-      <td>Первая</td>
-      <td>ссылка</td>
-      <td>Общетехнические дисциплины</td>
-      <td>Работает</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Тарасова Татьяна Михайловна</td>
-      <td>Первая</td>
-      <td>ссылка</td>
-      <td>ПОИТ</td>
-      <td>Работает</td>
+      <th scope="row">{{teacher.id}}</th>
+      <td>{{teacher.name}}</td>
+      <td>{{teacher.category}}</td>
+      <td>{{teacher.commision}}</td>
+      <td>{{teacher.status}}</td>
     </tr>
   </tbody>
-</table>
+  </table>

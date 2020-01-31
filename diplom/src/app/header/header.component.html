@@ -4,14 +4,10 @@
   <div class="btn-group" dropdown [autoClose]="false" container="body">
     <button id="button-nested" dropdownToggle type="button" class="btn"> Научно-методическое обеспечение</button>
     <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu">
-      
+
       <li dropdown triggers="mouseover" placement="right" container="body">
-        <a dropdownToggle class="dropdown-item dropdown-toggle"
-           (click)="false">учебный план</a>
-        <ul *dropdownMenu class="dropdown-menu">
-          <li role="menuitem"><a class="dropdown-item" href="/support/plan">№ группы</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="/support/plan">№ группы</a></li>
-        </ul>
+        <a dropdownToggle class="dropdown-item"
+        href="support/plan">учебный план</a>
       </li>
 
       <li dropdown triggers="mouseover" placement="right" container="body">
@@ -19,21 +15,13 @@
         <ul *dropdownMenu class="dropdown-menu">
 
           <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">общеобразовательный компонент</a>
-            <ul *dropdownMenu class="dropdown-menu">
-              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
-              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
-            </ul>
+            <a dropdownToggle class="dropdown-item" href="support/program">общеобразовательный компонент</a>
           </li>
 
           <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">Профессиональный компонент</a>
-            <ul *dropdownMenu class="dropdown-menu">
-              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
-              <li><a class="dropdown-item" href="/support/program">№ группы</a></li>
-            </ul>
+            <a dropdownToggle class="dropdown-item" href="support/program">Профессиональный компонент</a>
           </li>
-          
+
         </ul>
       </li>
     </ul>
