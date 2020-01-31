@@ -23,30 +23,14 @@
       <th scope="col">Дата проведения</th>
     </tr>
   </thead>
-  <tbody id="LessonsTable">
+  <tbody *ngFor="let lesson of lessons">
     <tr>
-      <th scope="row">1</th>
-      <td>CSS</td>
-      <td>62491</td>
-      <td>Терешко</td>
-      <td>ссылка</td>
-      <td>26/11/2019</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Методологии проектирования</td>
-      <td>62493</td>
-      <td>Тарасова</td>
-      <td>ссылка</td>
-      <td>15/09/2019</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Структуры данных</td>
-      <td>7к4911</td>
-      <td>Апанасевич</td>
-      <td>ссылка</td>
-      <td>03/10/2019</td>
+      <th scope="row">{{lesson.id}}</th>
+      <td>{{lesson.topic}}</td>
+      <td>{{lesson.group}}</td>
+      <td>{{lesson.teacher}}</td>
+      <td>{{lesson.plan}}</td>
+      <td>{{lesson.date}}</td>
     </tr>
   </tbody>
 </table>
