@@ -1,35 +1,86 @@
 <div class="row">
   <div class="col-sm-8 main">
-<div class="caption">Преподаватели</div>
-<form class="form-inline controls d-flex flex-row-reverse">
-  <button type="submit" class="btn btn-info">Добавить</button>
-  <div class="input-group search">
-    <input type="text" id="Input" class="form-control" placeholder="Search">
-     <div class="input-group-append">
-       <button class="btn btn-info" type="submit">Поиск</button>
-     </div>
-   </div>
-</form>
+    <div class="caption">Преподаватели</div>
+    <form class="form-inline controls d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-info">Добавить</button>
+      <div class="input-group search">
+        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Поиск</button>
+        </div>
+      </div>
+    </form>
 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th class="my-auto" scope="col ">ID</th>
-      <th scope="col">ФИО</th>
-      <th scope="col">Категория</th>
-      <th scope="col">Цикловая комиссия</th>
-      <th scope="col">Статус</th>
-    </tr>
-  </thead>
-  <tbody id="TeachersTable" *ngFor="let teacher of teachers">
-    <tr>
-      <th scope="row">{{teacher.id}}</th>
-      <td>{{teacher.name}}</td>
-      <td>{{teacher.category}}</td>
-      <td>{{teacher.commision}}</td>
-      <td>{{teacher.status}}</td>
-    </tr>
-  </tbody>
-  </table>
-</div>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th class="my-auto" scope="col ">ID</th>
+          <th scope="col">ФИО</th>
+          <th scope="col">Категория</th>
+          <th scope="col">Цикловая комиссия</th>
+          <th scope="col">Статус</th>
+        </tr>
+      </thead>
+      <tbody id="TeachersTable" *ngFor="let teacher of teachers">
+        <tr>
+          <th scope="row">{{teacher.id}}</th>
+          <td>{{teacher.name}}</td>
+          <td>{{teacher.category}}</td>
+          <td>{{teacher.commision}}</td>
+          <td>{{teacher.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <div class="shadow-lg p-3 mb-5 card">
+      <div class="card-header">
+        Фильтрация
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="kategoria">Категория</label>
+            <select class="form-control" id="kategoria">
+              <option>Высшая</option>
+              <option>Первая</option>
+              <option>Вторая</option>
+            </select>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="tsk">Цикловая комиссия</label>
+            <select class="form-control" id="tsk">
+              <option>ПОИТ</option>
+              <option>ПиПРэС</option>
+              <option>ЭВС</option>
+              <option>Микро- и наноэлектроника</option>
+              <option>ТЭРэС</option>
+              <option>ПМС</option>
+              <option>Общетехнические дисциплины</option>
+              <option>Математические и естесвенно научные дисцциплины</option>
+              <option>Социально-гуманитарные дисциплины</option>
+              <option>Физическое воспитание</option>
+            </select>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <label for="status">Статус</label>
+          <select class="form-control" id="status">
+            <option>Работает</option>
+            <option>Уволен</option>
+            <option>Декретный отпуск</option>
+            <option>Армия</option>
+          </select>
+        </li>
+        <li class="list-group-item">
+          <a href="#" class="btn mr-3 btn-info">Отфильтровать</a>
+          <a href="#" class="btn btn-outline-danger">Сбросить</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </div>
