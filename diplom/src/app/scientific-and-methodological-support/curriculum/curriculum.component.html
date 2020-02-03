@@ -1,49 +1,38 @@
 <div class="row">
   <div class="col-sm-8 main">
-<div class="caption">Учебный план</div>
-<form class="form-inline controls d-flex flex-row-reverse">
-  <button type="submit" class="btn btn-info">Добавить</button>
-  <div class="input-group search">
-    <input type="text" id="Input" class="form-control" placeholder="Search">
-     <div class="input-group-append">
-       <button class="btn btn-info" type="submit">Поиск</button>
-     </div>
-   </div>
-</form>
+    <div class="caption">Учебный план</div>
+    <form class="form-inline controls d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-info" (click)="addPlan(template)">Добавить</button>
+      <div class="input-group search">
+        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Поиск</button>
+        </div>
+      </div>
+    </form>
 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-      <tr>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
           <th class="my-auto" scope="col ">ID</th>
           <th scope="col">Регистрационный номер</th>
           <th scope="col">Типовой план</th>
           <th scope="col">Дата разрабоки</th>
           <th scope="col">Разработчик</th>
-      </tr>
-  </thead>
-  <tbody id="UchPlan">
-      <tr>
-          <th scope="row">1</th>
-          <td>131</td>
-          <td>Типовой план 1</td>
-          <td>26/11/2019</td>
-          <td>Фамилия</td>
-      </tr>
-      <tr>
-          <th scope="row">2</th>
-          <td>115</td>
-          <td>Типовой план 2</td>
-          <td>15/09/2019</td>
-          <td>Фамилия</td>
-      </tr>
-      <tr>
-          <th scope="row">3</th>
-          <td>110</td>
-          <td>Типовой план 3</td>
-          <td>03/10/2019</td>
-          <td>Фамилия</td>
-      </tr>
-  </tbody>
-</table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plan of plans">
+          <th scope="row">{{plan.id}}</th>
+          <td>{{plan.nomer}}</td>
+          <td>{{plan.typePlan}}</td>
+          <td>{{plan.date}}</td>
+          <td>{{plan.developer}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+<ng-template #template>
+  <app-update-curriculum (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+</ng-template>

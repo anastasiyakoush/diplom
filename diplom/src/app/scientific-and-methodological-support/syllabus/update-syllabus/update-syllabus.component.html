@@ -1,1 +1,46 @@
-<p>update-syllabus works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Добавить учебную программу</h4>
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group">
+      <label for="num">Регистрационный номер программы</label>
+      <input type="text" class="form-control" id="num" placeholder="№ учебной программы">
+  </div>
+  <div class="form-group">
+      <label for="name">Название программы</label>
+      <input type="text" class="form-control" id="name" placeholder="Название программы">
+  </div>
+  <div class="form-group">
+      <label for="file1">Учебная программа</label>
+      <input type="file" class="form-control-file border" name="file1">
+  </div>
+  <div class="form-group">
+      <label for="date">Дата создания</label>
+      <input type="text" class="form-control" id="date" placeholder="Дата создания">
+  </div>
+  <div class="form-group">
+      <label>Разработчик</label>
+      <div class="row">
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Имя">
+          </div>
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Фамилия">
+          </div>
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Отчество">
+          </div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="hours">Количество часов</label>
+      <input type="text" class="form-control" id="hours" placeholder="Количество часов">
+  </div>
+</div>
+
+<div class="modal-footer">
+  <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
+  <input type="submit" class="btn btn-info" data-dismiss="modal" value="Добавить" (click)="save()">
+</div>

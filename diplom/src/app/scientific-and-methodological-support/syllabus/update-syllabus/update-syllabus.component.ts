@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-update-syllabus',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-syllabus.component.less']
 })
 export class UpdateSyllabusComponent implements OnInit {
+  @Output() cancelClick = new EventEmitter<any>();
+  @Output() saveClick = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {}
+  ngOnInit() {}
 
-  ngOnInit() {
+  cancel() {
+    this.cancelClick.emit()
   }
 
+  save() {
+    this.saveClick.emit()
+  }
 }

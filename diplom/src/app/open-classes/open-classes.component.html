@@ -2,7 +2,7 @@
   <div class="col-sm-8 main">
 <div class="caption">Открытые занятия</div>
 <form class="form-inline controls d-flex flex-row-reverse">
-  <button type="submit" class="btn btn-info">Добавить</button>
+  <button type="submit" class="btn btn-info" (click)="addLesson(template)">Добавить</button>
   <div class="input-group search">
     <input type="text" id="Input" class="form-control" placeholder="Search">
      <div class="input-group-append">
@@ -23,7 +23,7 @@
     </tr>
   </thead>
   <tbody *ngFor="let lesson of lessons">
-    <tr>
+    <tr (click)="onClick(lesson.id)">
       <th scope="row">{{lesson.id}}</th>
       <td>{{lesson.topic}}</td>
       <td>{{lesson.group}}</td>
@@ -35,4 +35,8 @@
 </table>
 </div>
 </div>
+<ng-template #template>
+  <app-update-classes (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
+</ng-template>
+
 

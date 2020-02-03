@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-update-classes',
-  templateUrl: './update-classes.component.html',
-  styleUrls: ['./update-classes.component.less']
+  selector: "app-update-classes",
+  templateUrl: "./update-classes.component.html",
+  styleUrls: ["./update-classes.component.less"]
 })
 export class UpdateClassesComponent implements OnInit {
+  constructor() {}
+  @Output() cancelClick = new EventEmitter<any>();
+  @Output() saveClick = new EventEmitter<any>();
+  ngOnInit() {}
 
-  constructor() { }
-
-  ngOnInit() {
+  cancel() {
+    this.cancelClick.emit()
   }
 
+  save() {
+    this.saveClick.emit()
+  }
 }

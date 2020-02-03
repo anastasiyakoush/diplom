@@ -1,1 +1,48 @@
-<p>update-classes works!</p>
+
+  <div class="modal-header">
+    <h4 class="modal-title">Добавить открытое занятие</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<div class="modal-body">
+    <div class="form-group">
+        <label for="tema">Тема</label>
+        <input type="text" class="form-control" id="tema" placeholder="Тема открытого занятия">
+    </div>
+    <div class="form-group">
+        <label for="group">Группа</label>
+        <input type="text" class="form-control" id="group" placeholder="Номер группы">
+    </div>
+    <div class="form-group">
+        <label>Преподаватель</label>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Имя">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Фамилия">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Отчество">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="file1">План занятия</label>
+        <input type="file" class="form-control-file border" name="file1">
+    </div>
+    <div class="form-group">
+        <label for="date">Дата проведения</label>
+        <input type="text" class="form-control" id="date" placeholder="Дата проведения">
+    </div>
+    <div class="form-group">
+        <label for="file2">Методическая разработка</label>
+        <input type="file" class="form-control-file border" name="file2">
+    </div>
+</div>
+
+<div class="modal-footer">
+    <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
+    <input type="submit" class="btn btn-info" data-dismiss="modal" value="Добавить" (click)="save()">
+</div>
+
