@@ -1,13 +1,13 @@
 <header>
   <nav>
-  <a href="/teachers" class="menu">Преподаватели</a>
+  <a routerLink="/teachers" class="menu">Преподаватели</a>
   <div class="btn-group" dropdown [autoClose]="false" container="body">
     <button id="button-nested" dropdownToggle type="button" class="btn"> Научно-методическое обеспечение</button>
     <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu">
 
       <li dropdown triggers="mouseover" placement="right" container="body">
         <a dropdownToggle class="dropdown-item"
-        href="support/plan">учебный план</a>
+        routerLink="support/plan">учебный план</a>
       </li>
 
       <li dropdown triggers="mouseover" placement="right" container="body">
@@ -15,18 +15,18 @@
         <ul *dropdownMenu class="dropdown-menu">
 
           <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" href="support/program">общеобразовательный компонент</a>
+            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'general'}">общеобразовательный компонент</a>
           </li>
 
           <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" href="support/program">Профессиональный компонент</a>
+            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'professional'}">Профессиональный компонент</a>
           </li>
 
         </ul>
       </li>
     </ul>
   </div>
-  <a href="/openClasses" class="menu"> Открытые занятия</a>
-  <a href="/authorization/login" class="menu menu-right">Вход</a>
+  <a routerLink="/openClasses" class="menu"> Открытые занятия</a>
+  <a routerLink="/authorization/login" class="menu menu-right">Вход</a>
 </nav>
 </header>

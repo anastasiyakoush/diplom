@@ -1,45 +1,36 @@
 <div class="row">
   <div class="col-sm-8 main">
-<div class="caption">Учебная программа</div>
-<form class="form-inline controls d-flex flex-row-reverse">
-  <button type="submit" class="btn btn-info">Добавить</button>
-  <div class="input-group search">
-    <input type="text" id="Input" class="form-control" placeholder="Search">
-     <div class="input-group-append">
-       <button class="btn btn-info" type="submit">Поиск</button>
-     </div>
-   </div>
-</form>
+    <div class="caption">Учебная программа</div>
+    <form class="form-inline controls d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-info" (click)="addProgram(template)">Добавить</button>
+      <div class="input-group search">
+        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Поиск</button>
+        </div>
+      </div>
+    </form>
 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-      <tr>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
           <th class="my-auto" scope="col ">ID</th>
           <th scope="col">Регистрационный номер</th>
           <th scope="col">Дата создания</th>
           <th scope="col">Количество часов</th>
-      </tr>
-  </thead>
-  <tbody id="UchPrograma">
-      <tr>
-          <th scope="row">1</th>
-          <td>201</td>
-          <td>26/11/2019</td>
-          <td>170/12/23</td>
-      </tr>
-      <tr>
-          <th scope="row">2</th>
-          <td>15</td>
-          <td>15/09/2019</td>
-          <td>280/23/12</td>
-      </tr>
-      <tr>
-          <th scope="row">3</th>
-          <td>85</td>
-          <td>03/10/2019</td>
-          <td>500/23/4</td>
-      </tr>
-  </tbody>
-</table>
+        </tr>
+      </thead>
+      <tbody id="UchPrograma">
+        <tr *ngFor="let program of programs">
+          <th scope="row">{{program.id}}</th>
+          <td>{{program.nomer}}</td>
+          <td>{{program.date}}</td>
+          <td>{{program.hours}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+<ng-template #template>
+  <app-update-syllabus (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
+</ng-template>

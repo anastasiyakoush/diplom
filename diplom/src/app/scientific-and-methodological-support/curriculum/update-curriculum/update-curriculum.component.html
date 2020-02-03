@@ -1,1 +1,46 @@
-<p>update-curriculum works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Добавить учебный план</h4>
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group">
+      <label for="num">Регистрационный номер плана</label>
+      <input type="text" class="form-control" id="num" placeholder="№ учебного плана">
+  </div>
+  <div class="form-group">
+      <label for="name">Название плана</label>
+      <input type="text" class="form-control" id="name" placeholder="Название плана">
+  </div>
+  <div class="form-group">
+      <label for="file1">Учебный план</label>
+      <input type="file" class="form-control-file border" name="file1">
+  </div>
+  <div class="form-group">
+      <label for="file2">Типовой план</label>
+      <input type="file" class="form-control-file border" name="file2">
+  </div>
+  <div class="form-group">
+      <label for="date">Дата создания</label>
+      <input type="text" class="form-control" id="date" placeholder="Дата создания">
+  </div>
+  <div class="form-group">
+      <label>Разработчик</label>
+      <div class="row">
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Имя">
+          </div>
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Фамилия">
+          </div>
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Отчество">
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
+  <input type="submit" class="btn btn-info" data-dismiss="modal" value="Добавить" (click)="save()">
+</div>

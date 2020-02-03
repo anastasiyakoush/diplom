@@ -1,1 +1,61 @@
-<p>update-teachers works!</p>
+
+                <div class="modal-header">
+                  <h4 class="modal-title">Добавить преподавателя</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label for="familia">Фамилия</label>
+                      <input type="text" class="form-control" id="familia" placeholder="Фамилия">
+                  </div>
+                  <div class="form-group">
+                      <label for="imya">Имя</label>
+                      <input type="text" class="form-control" id="imya" placeholder="Имя">
+                  </div>
+                  <div class="form-group">
+                      <label for="otchestvo">Отчество</label>
+                      <input type="text" class="form-control" id="otchestvo" placeholder="Отчество">
+                  </div>
+                  <div class="form-group">
+                      <label for="kategoria">Категория</label>
+                      <select class="form-control" id="kategoria">
+                          <option>Высшая</option>
+                          <option>Первая</option>
+                          <option>Вторая</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="file">Научно-методическое обеспечение</label>
+                      <input type="file" class="form-control-file border" name="file">
+                  </div>
+                  <div class="form-group">
+                      <label for="tsk">Цикловая комиссия</label>
+                      <select class="form-control" id="tsk">
+                          <option>ПОИТ</option>
+                          <option>ПиПРэС</option>
+                          <option>ЭВС</option>
+                          <option>Микро- и наноэлектроника</option>
+                          <option>ТЭРэС</option>
+                          <option>ПМС</option>
+                          <option>Общетехнические дисциплины</option>
+                          <option>Математические и естесвенно научные дисцциплины</option>
+                          <option>Социально-гуманитарные дисциплины</option>
+                          <option>Физическое воспитание</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="status">Статус</label>
+                      <select class="form-control" id="status">
+                          <option>Работает</option>
+                          <option>Уволен</option>
+                          <option>Декретный отпуск</option>
+                          <option>Армия</option>
+                      </select>
+                  </div>
+              </div>
+
+              <div class="modal-footer">
+                  <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
+                  <input type="submit" class="btn btn-info" data-dismiss="modal" value="Добавить" (click)="save()">
+              </div>
