@@ -1,139 +1,140 @@
 <div class="container">
-    <div class="row flex-lg-nowrap">   
-      <div class="col">
-        <div class="row">
-          <div class="col mb-3">
-            <div class="card">
-              <div class="card-body">
-                <div class="e-profile">
-                  <div class="row">
-                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                      <div class="text-center text-sm-left mb-2 mb-sm-0">
-                        <h2 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{teacher.name}}</h2>
-                      </div>
-                      <div class="text-center text-sm-right">
-                        <span class="badge badge-secondary">Преподаватель</span>
-                      </div>
+  <div class="row flex-lg-nowrap">
+    <div class="col">
+      <div class="row">
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="e-profile">
+                <div class="row">
+                  <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                      <h2 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                        Лазицкас Екатерина Александровна
+                      </h2>
                     </div>
-                  </div>
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item"><a href="" class="active nav-link">Информация</a></li>
-                  </ul>
-                  <div class="tab-content pt-3">
-                    <div class="tab-pane active">
-                      <form class="form">
-                        <div class="row">
-                          <div class="col">
-                            <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-                                  <label>Полное имя</label>
-                                  <input class="form-control" [(ngModel)]="teacher.name" placeholder="name">
-                                </div>
-                              </div>
-                              <div class="col">
-                                <div class="form-group">
-                                  <label>Категория</label>
-                                  <div>{{teacher.category}}</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                  <div class="form-group">
-                                    <label>Цикловая комиссия</label>
-                                    <div>{{teacher.comision}}</div>
-                                  </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                      <label>Статус</label>
-                                      <div>{{teacher.status}}</div>
-                                    </div>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-flex justify-content-start my-2">
-                                <button class="btn btn-outline-info" type="submit">Открытые занятия</button>
-                                <button class="btn btn-outline-info ml-2" type="submit">Научно-методическое обеспечение</button>
-                              </div>                            
-                        </div>
-                        <div class="row">
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Тема</th>
-                                    <th scope="col">Группа</th>
-                                    <th scope="col">Преподаватель</th>
-                                    <th scope="col">План занятия</th>
-                                    <th scope="col">Дата проведения</th>
-                                  </tr>
-                                </thead>
-                                <tbody *ngFor="let lesson of lessons">
-                                  <tr (click)="onClick(lesson.id)">
-                                    <th scope="row">{{lesson.id}}</th>
-                                    <td>{{lesson.topic}}</td>
-                                    <td>{{lesson.group}}</td>
-                                    <td>{{lesson.teacher}}</td>
-                                    <td>{{lesson.plan}}</td>
-                                    <td>{{lesson.date}}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                        <div class="row">
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th class="my-auto" scope="col ">ID</th>
-                                    <th scope="col">Регистрационный номер</th>
-                                    <th scope="col">Дата создания</th>
-                                    <th scope="col">Количество часов</th>
-                                  </tr>
-                                </thead>
-                                <tbody id="UchPrograma">
-                                  <tr *ngFor="let program of programs">
-                                    <th scope="row">{{program.id}}</th>
-                                    <td>{{program.nomer}}</td>
-                                    <td>{{program.date}}</td>
-                                    <td>{{program.hours}}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                        <div class="row">
-                          <div class="col d-flex justify-content-end">
-                            <button class="btn btn-info" type="submit">Сохранить изменения</button>
-                          </div>
-                        </div>
-                      </form>
-    
+                    <div class="text-center text-sm-right">
+                      <span class="badge badge-secondary">Преподаватель</span>
                     </div>
                   </div>
                 </div>
+                <form class="form">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label class="mr-2">Категория:</label>
+                            <label>Высшая</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label class="mr-2">Цикловая комиссия:</label>
+                            <label>ПОИТ</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label class="mr-2">Статус:</label>
+                            <label>Работает</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col d-flex justify-content-start my-2">
+                      <button
+                        class="btn btn-outline-info"
+                        type="submit"
+                        (click)="change(1)"
+                      >
+                        Открытые занятия
+                      </button>
+                      <button
+                        class="btn btn-outline-info ml-2"
+                        type="submit"
+                        (click)="change(2)"
+                      >
+                        Научно-методическое обеспечение
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <table
+                      class="table table-bordered table-hover"
+                      *ngIf="actlesson"
+                    >
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Тема</th>
+                          <th scope="col">Группа</th>
+                          <th scope="col">Преподаватель</th>
+                          <th scope="col">План занятия</th>
+                          <th scope="col">Дата проведения</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let lesson of lessons">
+                        <tr (click)="onClick(lesson.id)">
+                          <th scope="row">{{ lesson.id }}</th>
+                          <td>{{ lesson.topic }}</td>
+                          <td>{{ lesson.group }}</td>
+                          <td>{{ lesson.teacher }}</td>
+                          <td>{{ lesson.plan }}</td>
+                          <td>{{ lesson.date }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row">
+                    <table
+                      class="table table-bordered table-hover"
+                      *ngIf="actsupport"
+                    >
+                      <thead class="thead-dark">
+                        <tr>
+                          <th class="my-auto" scope="col ">ID</th>
+                          <th scope="col">Регистрационный номер</th>
+                          <th scope="col">Дата создания</th>
+                          <th scope="col">Количество часов</th>
+                        </tr>
+                      </thead>
+                      <tbody id="UchPrograma">
+                        <tr *ngFor="let program of programs">
+                          <th scope="row">{{ program.id }}</th>
+                          <td>{{ program.nomer }}</td>
+                          <td>{{ program.date }}</td>
+                          <td>{{ program.hours }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-3 mb-3">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="px-xl-3">
-                  <button class="btn btn-block btn-info">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Редактировать</span>
-                  </button>
-                  <button class="btn btn-block btn-info">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Изменить статус</span>
-                  </button>
-                </div>
+        </div>
+        <div class="col-12 col-md-3 mb-3">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="px-xl-3">
+                <button class="btn btn-block btn-info">
+                  <i class="fa fa-sign-out"></i>
+                  <span>Редактировать</span>
+                </button>
+                <button class="btn btn-block btn-info">
+                  <i class="fa fa-sign-out"></i>
+                  <span>Изменить статус</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+</div>

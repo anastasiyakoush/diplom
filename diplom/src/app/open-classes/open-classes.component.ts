@@ -16,7 +16,7 @@ export class OpenClassesComponent implements OnInit {
       group: '62491',
       teacher: 'Терешко',
       plan: 'ссылка',
-      date: '26/11/2019/'
+      date: '26/11/2019'
     },
     {
       id: 1,
@@ -32,7 +32,7 @@ export class OpenClassesComponent implements OnInit {
       group: '7к4911',
       teacher: 'Апанасевич',
       plan: 'ссылка',
-      date: '26/11/2019/'
+      date: '26/11/2019'
     }
   ];
   modalRef: BsModalRef;
