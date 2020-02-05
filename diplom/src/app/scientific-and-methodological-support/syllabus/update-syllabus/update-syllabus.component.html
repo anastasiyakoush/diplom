@@ -1,1 +1,44 @@
-<p>update-syllabus works!</p>
+<div class="col">
+    <div class="shadow-lg p-3 mb-5 card">
+      <div class="card-header">
+        Фильтрация
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="num">Регистрационный номер программы</label>
+            <input type="text" class="form-control" id="num" placeholder="№ учебной программы">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="name">Название программы</label>
+            <input type="text" class="form-control" id="name" placeholder="Название программы">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="date">Дата создания</label>
+            <div class="form-group">
+                <div class="col-xs-12 col-12 col-md-4 form-group">
+                    <input type="text"
+                           placeholder="Daterangepicker"
+                           class="form-control"
+                           bsDaterangepicker>
+                  </div>
+              </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="hours">Количество часов</label>
+            <input type="text" class="form-control" id="hours" placeholder="Количество часов">
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a href="#" class="btn btn-info">Отфильтровать</a>
+          <a href="#" class="btn btn-outline-danger">Сбросить</a>
+        </li>
+      </ul>
+    </div>
+  </div>
