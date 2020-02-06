@@ -12,7 +12,7 @@ export class TeachersComponent implements OnInit {
   teachers: Teacher[] = [
     {
       id: 1,
-      name: 'Лазицкас Е.А.',
+      name: 'Лазицкас Екатерина Александровна',
       category: 'Высшая',
       commision: 'ПОИТ',
       status: 'Работает'

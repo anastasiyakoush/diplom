@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProgramType } from './ProgramType.model';
+import { ProgramType } from './programType.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Program } from './Program.model';
+import { Program } from './program.model';
 
 @Component({
   selector: 'app-syllabus',
