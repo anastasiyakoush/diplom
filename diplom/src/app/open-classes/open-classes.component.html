@@ -1,8 +1,9 @@
-<div class="row">
-  <div class="col-sm-8 main">
+<div class="d-flex h-100 justify-content-between">
+  <div class="col-sm-8 main align-self-start">
     <div class="caption">Открытые занятия</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info">Добавить</button>
+      <button type="submit" class="btn btn-info">Запланировать занятие</button>
+      <button type="submit" class="btn add_btn btn-info">Добавить</button>
       <div class="input-group search">
         <input
           type="text"
@@ -29,14 +30,15 @@
       </thead>
       <tbody *ngFor="let lesson of lessons">
         <tr>
-          <th scope="row">{{ lesson.id }}</th>
-          <td>{{ lesson.topic }}</td>
-          <td>{{ lesson.group }}</td>
-          <td>{{ lesson.teacher }}</td>
-          <td>{{ lesson.plan }}</td>
-          <td>{{ lesson.date }}</td>
+          <th scope="row">{{lesson.id }}</th>
+          <td>{{lesson.topic}}</td>
+          <td>{{lesson.group}}</td>
+          <td>{{lesson.teacher}}</td>
+          <td>{{lesson.plan}}</td>
+          <td>{{lesson.date}}</td>
         </tr>
       </tbody>
     </table>
   </div>
+<app-classes-filter></app-classes-filter>
 </div>

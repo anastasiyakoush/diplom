@@ -14,10 +14,10 @@ export class OpenClassesComponent implements OnInit {
       group: '62491',
       teacher: 'Терешко',
       plan: 'ссылка',
-      date: '26/11/2019/'
+      date: '26/11/2019'
     },
     {
-      id: 1,
+      id: 2,
       topic: 'Методологии проектирования',
       group: '62493',
       teacher: 'Тарасова',
@@ -25,12 +25,12 @@ export class OpenClassesComponent implements OnInit {
       date: '	15/09/2019'
     },
     {
-      id: 1,
+      id: 3,
       topic: 'Структуры данных',
       group: '7к4911',
       teacher: 'Апанасевич',
       plan: 'ссылка',
-      date: '26/11/2019/'
+      date: '26/11/2019'
     }
   ];
 
