@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-sm-8 main">
+<div class="d-flex h-100 justify-content-between">
+  <div class="col-sm-8 main align-self-start">
     <div class="caption">Учебная программа</div>
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info" (click)="addProgram(template)">Добавить</button>
@@ -30,7 +30,9 @@
       </tbody>
     </table>
   </div>
+  <app-syllabus-filters></app-syllabus-filters>
 </div>
 <ng-template #template>
   <app-update-syllabus (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
 </ng-template>
+

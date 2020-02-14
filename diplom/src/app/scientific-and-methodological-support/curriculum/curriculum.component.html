@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-sm-8 main">
+<div class="d-flex h-100 justify-content-between">
+  <div class="col-sm-8 main align-self-start">
     <div class="caption">Учебный план</div>
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info" (click)="addPlan(template)">Добавить</button>
@@ -32,6 +32,7 @@
       </tbody>
     </table>
   </div>
+  <app-curriculum-filters></app-curriculum-filters>
 </div>
 <ng-template #template>
   <app-update-curriculum (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
