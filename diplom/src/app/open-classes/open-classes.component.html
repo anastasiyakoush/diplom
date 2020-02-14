@@ -3,7 +3,7 @@
     <div class="caption">Открытые занятия</div>
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info">Запланировать занятие</button>
-      <button type="submit" class="btn add_btn btn-info">Добавить</button>
+      <button type="submit" class="btn add_btn btn-info" (click)="addLesson(template)">Добавить</button>
       <div class="input-group search">
         <input
           type="text"
@@ -42,3 +42,6 @@
   </div>
 <app-classes-filter></app-classes-filter>
 </div>
+<ng-template #template>
+  <app-update-classes (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
+</ng-template>

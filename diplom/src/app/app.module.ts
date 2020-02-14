@@ -24,6 +24,9 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap';
+import { SyllabusFiltersComponent } from './scientific-and-methodological-support/syllabus/syllabus-filters/syllabus-filters.component';
+import { CurriculumFiltersComponent } from './scientific-and-methodological-support/curriculum/curriculum-filters/curriculum-filters.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     DetailedCurriculumComponent,
     UpdateSyllabusComponent,
     DetailedSyllabusComponent,
+    SyllabusFiltersComponent,
+    CurriculumFiltersComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     FormsModule,
     BsDropdownModule.forRoot(),
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

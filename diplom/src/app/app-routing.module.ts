@@ -6,6 +6,9 @@ import { OpenClassesComponent } from './open-classes/open-classes.component';
 import { LoginComponent } from './login/login.component';
 import { SyllabusComponent } from './scientific-and-methodological-support/syllabus/syllabus.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
+import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
+import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
+import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
 
 
 const routes: Routes = [
@@ -15,8 +18,20 @@ const routes: Routes = [
     component: TeachersComponent
   },
   {
+    path: 'teachers/:id',
+    component: DetailedTeachersComponent
+  },
+  {
     path: 'openClasses',
     component: OpenClassesComponent
+  },
+  {
+    path: 'openClasses/:id',
+    component: DetailedClassesComponent
+  },
+  {
+    path: 'openClasses/add',
+    component: UpdateClassesComponent
   },
   {
     path: 'support/program',

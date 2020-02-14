@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Преподаватели</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info">Добавить</button>
+      <button type="submit" class="btn btn-info" (click)="addTeacher(template)">Добавить</button>
       <div class="input-group search">
         <input type="text" id="Input" class="form-control" placeholder="Search">
         <div class="input-group-append">
@@ -10,7 +10,6 @@
         </div>
       </div>
     </form>
-
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
@@ -34,3 +33,6 @@
   </div>
   <app-teachers-filter></app-teachers-filter>
 </div>
+<ng-template #template>
+    <app-update-teachers (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+</ng-template>
