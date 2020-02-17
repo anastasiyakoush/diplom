@@ -27,6 +27,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap';
 import { SyllabusFiltersComponent } from './scientific-and-methodological-support/syllabus/syllabus-filters/syllabus-filters.component';
 import { CurriculumFiltersComponent } from './scientific-and-methodological-support/curriculum/curriculum-filters/curriculum-filters.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
+import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { CurriculumFiltersComponent } from './scientific-and-methodological-supp
     DetailedSyllabusComponent,
     SyllabusFiltersComponent,
     CurriculumFiltersComponent,
+    ConfigurationComponent,
+    ConfigurationFilterComponent,
+    UpdateConfigurationComponent,
   ],
   imports: [
     BrowserModule,
