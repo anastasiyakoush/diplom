@@ -20,13 +20,12 @@
           <div class="form-group">
             <label for="date">Дата создания</label>
             <div class="form-group">
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <input type="text"
-                           placeholder="Daterangepicker"
-                           class="form-control"
-                           bsDaterangepicker>
-                  </div>
+              <div class="input-group">
+                <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="До">
+                <div class="input-group-btn">
+                </div>
               </div>
+            </div>
           </div>
         </li>
         <li class="list-group-item">

@@ -27,6 +27,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap';
 import { SyllabusFiltersComponent } from './scientific-and-methodological-support/syllabus/syllabus-filters/syllabus-filters.component';
 import { CurriculumFiltersComponent } from './scientific-and-methodological-support/curriculum/curriculum-filters/curriculum-filters.component';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
