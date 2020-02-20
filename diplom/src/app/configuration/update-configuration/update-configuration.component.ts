@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-update-configuration',
@@ -11,12 +12,12 @@ export class UpdateConfigurationComponent implements OnInit {
   bsInlineRangeValue: Date[];
   maxDate = new Date();
 
-  //bsConfig: Partial<BsDatepickerConfig>;
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor() {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-    //this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
    }
 
   @Output() cancelClick = new EventEmitter<any>();
