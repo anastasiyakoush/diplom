@@ -32,6 +32,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
 import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
