@@ -4,6 +4,7 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { OpenClassesComponent } from './open-classes/open-classes.component';
 
 import { LoginComponent } from './login/login.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 import { SyllabusComponent } from './scientific-and-methodological-support/syllabus/syllabus.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
 import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
@@ -13,6 +14,9 @@ import { UpdateClassesComponent } from './open-classes/update-classes/update-cla
 
 const routes: Routes = [
   { path: 'authorization/login', component: LoginComponent },
+  {
+    path: 'configuration', component: ConfigurationComponent
+  },
   {
     path: 'teachers',
     component: TeachersComponent

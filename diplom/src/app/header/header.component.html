@@ -11,7 +11,9 @@
       </li>
 
       <li dropdown triggers="mouseover" placement="right" container="body">
-        <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">учебная программа</a>
+
+        <a dropdownToggle class="dropdown-item" (click)="false">учебная программа</a>
+
         <ul *dropdownMenu class="dropdown-menu">
 
           <li dropdown triggers="mouseover" placement="right" container="body">
@@ -27,6 +29,7 @@
     </ul>
   </div>
   <a routerLink="/openClasses" class="menu"> Открытые занятия</a>
-  <a routerLink="/authorization/login" class="menu menu-right">Вход</a>
+  <a routerLink="//authorization/login" class="menu menu-right">Вход</a>
+  <a routerLink="configuration" class="menu menu-right">Конфигурация</a>
 </nav>
 </header>

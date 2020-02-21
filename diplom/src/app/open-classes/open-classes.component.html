@@ -16,7 +16,6 @@
         </div>
       </div>
     </form>
-
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
@@ -30,7 +29,7 @@
       </thead>
       <tbody *ngFor="let lesson of lessons">
         <tr>
-          <th scope="row">{{lesson.id }}</th>
+          <td scope="row">{{lesson.id }}</td>
           <td>{{lesson.topic}}</td>
           <td>{{lesson.group}}</td>
           <td>{{lesson.teacher}}</td>

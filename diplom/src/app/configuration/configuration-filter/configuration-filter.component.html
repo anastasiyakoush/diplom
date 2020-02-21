@@ -6,25 +6,24 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="form-group">
-            <label for="num">Регистрационный номер плана</label>
-            <input type="text" class="form-control" id="num" placeholder="№ учебного плана">
+            <label for="kategoria">Имя</label>
+            <input type="text" class="form-control" id="imya" placeholder="Имя пользователя">
           </div>
         </li>
         <li class="list-group-item">
-          <div class="form-group">
-            <label for="name">Название плана</label>
-            <input type="text" class="form-control" id="name" placeholder="Название плана">
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group">
-            <label for="date">Дата создания</label>
             <div class="form-group">
-              <div class="input-group">
-                <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="От">
-                <div class="input-group-btn">
-                </div>
+                <label for="kategoria">Роль</label>
+                <input type="text" class="form-control" id="imya" placeholder="Роль пользователя">
               </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                <label for="kategoria">Дата регистрации</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="От">
+                    <div class="input-group-btn">
+                    </div>
+                  </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
@@ -33,13 +32,11 @@
                   </div>
                 </div>
               </div>
-            </div>
         </li>
         <li class="list-group-item">
-          <a href="#" class="btn btn-info">Отфильтровать</a>
+          <a href="#" class="btn mr-3 btn-info">Отфильтровать</a>
           <a href="#" class="btn btn-outline-danger">Сбросить</a>
         </li>
       </ul>
     </div>
   </div>
-<=

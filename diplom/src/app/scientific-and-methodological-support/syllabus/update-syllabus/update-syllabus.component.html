@@ -18,7 +18,11 @@
   </div>
   <div class="form-group">
       <label for="date">Дата создания</label>
-      <input type="text" class="form-control" id="date" placeholder="Дата создания">
+      <div class="input-group">
+        <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="Дата создания">
+        <div class="input-group-btn">
+        </div>
+      </div>
   </div>
   <div class="form-group">
       <label>Разработчик</label>

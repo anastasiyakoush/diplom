@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
-  selector: 'app-curriculum-filters',
-  templateUrl: './curriculum-filters.component.html',
-  styleUrls: ['./curriculum-filters.component.less']
+  selector: 'app-configuration-filter',
+  templateUrl: './configuration-filter.component.html',
+  styleUrls: ['./configuration-filter.component.less']
 })
-export class CurriculumFiltersComponent implements OnInit {
+export class ConfigurationFilterComponent implements OnInit {
+
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -14,11 +15,12 @@ export class CurriculumFiltersComponent implements OnInit {
 
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor() {
+  constructor() { 
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
+
   ngOnInit() {
   }
 

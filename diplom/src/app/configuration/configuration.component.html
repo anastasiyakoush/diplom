@@ -1,0 +1,39 @@
+<div class="d-flex h-100 justify-content-between">
+  <div class="col-sm-8 main align-self-start">
+    <div class="caption">Пользователи</div>
+    <form class="form-inline controls d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-info" (click)="addUser(template)">Добавить</button>
+      <div class="input-group search">
+        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Поиск</button>
+        </div>
+      </div>
+    </form>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th class="my-auto" scope="col ">ID</th>
+          <th scope="col">Пользователь</th>
+          <th scope="col">Роль</th>
+          <th scope="col">Дата регистрации</th>
+          <th scope="col">Действие</th>
+        </tr>
+      </thead>
+      <tbody id="UsersTable">
+        <tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>root</td>
+            <td>admin</td>
+            <td>18/02/2020</td>
+            <td><a href="#"></a></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-configuration-filter></app-configuration-filter>
+</div>
+<ng-template #template>
+    <app-update-configuration (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-configuration>
+</ng-template>

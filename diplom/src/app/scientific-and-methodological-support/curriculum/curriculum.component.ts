@@ -33,7 +33,7 @@ export class CurriculumComponent implements OnInit {
     }
   ];
   modalRef: BsModalRef;
-  constructor(private router: Router,private modalService: BsModalService) {}
+  constructor(private router: Router, private modalService: BsModalService) {}
 
   ngOnInit() {
   }
