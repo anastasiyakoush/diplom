@@ -1,4 +1,4 @@
-﻿namespace DiplomApi.Entities
+﻿namespace DAL.Entities
 {
     public class DocumentType
     {

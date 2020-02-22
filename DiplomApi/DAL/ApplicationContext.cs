@@ -1,7 +1,8 @@
-﻿using DiplomApi.Entities;
+﻿using DAL.Entities;
+using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DiplomApi.DAL
+namespace DAL.DAL
 {
     public class ApplicationContext : DbContext
     {

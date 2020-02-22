@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DiplomApi.Entities
+namespace DAL.Entities
 {
-    public class ObrazovatelnyjStandart
+    public class TipovojUchebnyjPlan
     {
         public int Id { get; set; }
         public string RegistarcionnyjNomer { get; set; }
@@ -13,6 +13,6 @@ namespace DiplomApi.Entities
         public string Link { get; set; }
 
         [Required]
-        public virtual Specialnost Specialnost { get; set; }
+        public virtual ObrazovatelnyjStandart ObrazovatelnyjStandart { get; set; }
     }
 }

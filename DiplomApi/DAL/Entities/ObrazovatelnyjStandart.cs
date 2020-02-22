@@ -2,20 +2,17 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DiplomApi.Entities
+namespace DAL.Entities
 {
-    public class Document
+    public class ObrazovatelnyjStandart
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public string RegistarcionnyjNomer { get; set; }
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
         public string Link { get; set; }
 
         [Required]
-        public DocumentType DocumentType { get; set; }
-        [Required]
-        public UchebnayaDisciplina UchebnayaDisciplina { get; set; }
+        public virtual Specialnost Specialnost { get; set; }
     }
 }

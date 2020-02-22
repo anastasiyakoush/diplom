@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DAL.Entities;
+using System.ComponentModel.DataAnnotations;
 
-namespace DiplomApi.Entities
+namespace DAL.Entities
 {
     public class Teacher
     {

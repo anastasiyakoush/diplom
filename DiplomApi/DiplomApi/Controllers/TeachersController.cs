@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DiplomApi.DAL;
-using DiplomApi.Entities;
+using DAL.DAL;
+using DAL.Entities;
 
-namespace DiplomApi.Controllers
+namespace DAL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DiplomApi.Migrations
+namespace DAL.Migrations
 {
     public partial class InitialMigration : Migration
     {
