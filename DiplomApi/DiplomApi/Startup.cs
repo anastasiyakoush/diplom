@@ -24,6 +24,8 @@ namespace DiplomApi
 
             services.AddDbContext<ApplicationContext>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +46,10 @@ namespace DiplomApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+
+            app.UseSwaggerUi3();
         }
     }
 }
