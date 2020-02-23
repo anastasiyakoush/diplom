@@ -1,4 +1,4 @@
-﻿namespace DAL.Entities
+﻿namespace Common
 {
     public class Enums
     {

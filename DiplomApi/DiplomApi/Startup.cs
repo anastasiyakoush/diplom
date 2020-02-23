@@ -1,3 +1,4 @@
+using BLL.Interfaces;
 using DAL.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,8 @@ namespace DAL
                 => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
             services.AddSwaggerDocument();
+
+            services.AddTransient<ITeacherService>
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

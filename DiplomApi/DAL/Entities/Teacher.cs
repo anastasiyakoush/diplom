@@ -1,4 +1,4 @@
-﻿using DAL.Entities;
+﻿using Common;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities
