@@ -8,12 +8,19 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
   styleUrls: ['./configuration.component.less']
 })
 export class ConfigurationComponent implements OnInit {
+  title: string;
   modalRef: BsModalRef;
   constructor(private router: Router, private modalService: BsModalService) { }
 
   ngOnInit() {}
 
   addUser(template: TemplateRef<any>) {
+    this.title='Добавить пользователя'
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateUser(template: TemplateRef<any>) {
+    this.title='Редактировать пользователя'
     this.modalRef = this.modalService.show(template);
   }
 }

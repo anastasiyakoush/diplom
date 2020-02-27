@@ -14,7 +14,7 @@ import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed
 import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
 import { ClassesFilterComponent } from './open-classes/classes-filter/classes-filter.component';
 import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
-import { SyllabusComponent } from './scientific-and-methodological-support/syllabus/syllabus.component';
+import { DisciplinesComponent } from './scientific-and-methodological-support/syllabus/disciplines.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
 import { UpdateCurriculumComponent } from './scientific-and-methodological-support/curriculum/update-curriculum/update-curriculum.component';
 import { DetailedCurriculumComponent } from './scientific-and-methodological-support/curriculum/detailed-curriculum/detailed-curriculum.component';
@@ -32,7 +32,6 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
 import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +46,7 @@ import { UpdateConfigurationComponent } from './configuration/update-configurati
     DetailedClassesComponent,
     ClassesFilterComponent,
     UpdateClassesComponent,
-    SyllabusComponent,
+    DisciplinesComponent,
     CurriculumComponent,
     UpdateCurriculumComponent,
     DetailedCurriculumComponent,

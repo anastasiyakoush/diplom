@@ -2,31 +2,34 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramType } from './programType.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Program } from './program.model';
+import { Disciplina } from './disciplina.model';
 
 @Component({
-  selector: 'app-syllabus',
-  templateUrl: './syllabus.component.html',
-  styleUrls: ['./syllabus.component.less']
+  selector: 'app-disciplines',
+  templateUrl: './disciplines.component.html',
+  styleUrls: ['./disciplines.component.less']
 })
-export class SyllabusComponent implements OnInit {
-  programs: Program[] = [
+export class DisciplinesComponent implements OnInit {
+  programs: Disciplina[] = [
     {
       id: 1,
-      nomer: 131,
-      date: '26/11/2019',
+      nomer: 11,
+      name: 'математика',
+      plan: 'ссылка',
       hours: '170/12/23'
     },
     {
-      id: 2,
-      nomer: 171,
-      date: '15/09/2019',
-      hours: '	280/23/12'
+      id: 1,
+      nomer: 15,
+      name: 'КПИЯП',
+      plan: 'ссылка',
+      hours: '170/12/23'
     },
     {
-      id: 3,
-      nomer: 191,
-      date: '26/11/2019',
+      id: 1,
+      nomer: 21,
+      name: 'ОТ',
+      plan: 'ссылка',
       hours: '170/12/23'
     }
   ];

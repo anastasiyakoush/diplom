@@ -1,6 +1,6 @@
 <div class="d-flex h-100 justify-content-between">
   <div class="col-sm-8 main align-self-start">
-    <div class="caption">Учебная программа</div>
+    <div class="caption">Учебные дисциплины</div>
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info" (click)="addProgram(template)">Добавить</button>
       <div class="input-group search">
@@ -15,8 +15,9 @@
       <thead class="thead-dark">
         <tr>
           <th class="my-auto" scope="col ">ID</th>
-          <th scope="col">Регистрационный номер</th>
-          <th scope="col">Дата создания</th>
+          <th scope="col">регистрационный номер</th>
+          <th scope="col">название</th>
+          <th scope="col">учебный план</th>
           <th scope="col">Количество часов</th>
         </tr>
       </thead>
@@ -24,7 +25,8 @@
         <tr *ngFor="let program of programs">
           <td scope="row">{{program.id}}</td>
           <td>{{program.nomer}}</td>
-          <td>{{program.date}}</td>
+          <td>{{program.name}}</td>
+          <td>{{program.plan}}</td>
           <td>{{program.hours}}</td>
         </tr>
       </tbody>

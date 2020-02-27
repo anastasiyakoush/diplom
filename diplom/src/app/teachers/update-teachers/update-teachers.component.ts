@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-update-teachers',
@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class UpdateTeachersComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
 
   constructor() { }
   ngOnInit() {}

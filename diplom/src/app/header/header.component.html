@@ -11,20 +11,7 @@
       </li>
 
       <li dropdown triggers="mouseover" placement="right" container="body">
-
-        <a dropdownToggle class="dropdown-item" (click)="false">учебная программа</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-
-          <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'general'}">общеобразовательный компонент</a>
-          </li>
-
-          <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'professional'}">Профессиональный компонент</a>
-          </li>
-
-        </ul>
+        <a dropdownToggle class="dropdown-item"  routerLink="support/disciplines">учебные дисциплины</a>
       </li>
     </ul>
   </div>

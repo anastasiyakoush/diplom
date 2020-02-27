@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
@@ -6,7 +6,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   templateUrl: "./update-classes.component.html",
   styleUrls: ["./update-classes.component.less"]
 })
-export class UpdateClassesComponent 
+export class UpdateClassesComponent
 implements OnInit {
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
@@ -22,6 +22,8 @@ implements OnInit {
   }
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
+
   ngOnInit() {}
 
   cancel() {
