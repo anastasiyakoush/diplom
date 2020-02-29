@@ -26,7 +26,7 @@ export class TeachersComponent implements OnInit {
     },
     {
       id: 3,
-      name: 'Общетехнические дисциплины',
+      name: 'Терешко Ольга Ивановна',
       category: 'Первая',
       commision: 'ПОИТ',
       status: 'Работает'
