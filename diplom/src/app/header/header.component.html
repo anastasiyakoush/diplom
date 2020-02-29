@@ -1,15 +1,29 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a routerLink="/teachers" class="nav-link">Преподаватели</a>
-      <a routerLink="/openClasses" class="nav-link">Открытые занятия</a>
-      <li class="nav-item dropdown">
-       <a class="nav-link" data-toggle="dropdown">Научно-методическое обеспечение</a>
-         <div class="dropdown-menu">
-          <a routerLink="support/plan" class="dropdown-item"> учебный план</a>
-          <a routerLink="support/disciplines" class="dropdown-item"> учебные дисциплины</a>
-          </div>
-      </li>
-      <a routerLink="configuration" class="nav-link navbar-right">Конфигурация</a>
-      <a routerLink="//authorization/login" class="nav-link">Вход</a>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-between">
+      <ul class="navbar-nav">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="/teachers" class="nav-link">Преподаватели</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="/openClasses" class="nav-link">Открытые занятия</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown">Научно-методическое обеспечение</a>
+            <div class="dropdown-menu">
+             <a routerLink="support/plan" class="dropdown-item"> учебный план</a>
+             <a routerLink="support/disciplines" class="dropdown-item"> учебные дисциплины</a>
+             </div>
+         </li>
+      </ul>          
+      <ul class="navbar-nav">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="configuration" class="nav-link navbar-right">Конфигурация</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="//authorization/login" class="nav-link">Вход</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
