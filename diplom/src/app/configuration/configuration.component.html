@@ -22,18 +22,25 @@
       </thead>
       <tbody id="UsersTable">
         <tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>root</td>
-            <td>admin</td>
-            <td>18/02/2020</td>
-            <td><a href="#"></a></td>
-          </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>root</td>
+          <td>admin</td>
+          <td>18/02/2020</td>
+          <td>
+              <button type="submit" class="btn btn-info" style="margin-right: 5px;">
+                удалить
+              </button>
+              <button (click)="updateUser(template)" type="submit" class="btn btn-info">
+                редактировать
+              </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
   <app-configuration-filter></app-configuration-filter>
 </div>
 <ng-template #template>
-    <app-update-configuration (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-configuration>
+  <app-update-configuration [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-configuration>
 </ng-template>

@@ -1,35 +1,29 @@
 <header>
-  <nav>
-  <a routerLink="/teachers" class="menu">Преподаватели</a>
-  <div class="btn-group" dropdown [autoClose]="false" container="body">
-    <button id="button-nested" dropdownToggle type="button" class="btn"> Научно-методическое обеспечение</button>
-    <ul id="dropdown-nested" *dropdownMenu class="dropdown-menu">
-
-      <li dropdown triggers="mouseover" placement="right" container="body">
-        <a dropdownToggle class="dropdown-item"
-        routerLink="support/plan">учебный план</a>
-      </li>
-
-      <li dropdown triggers="mouseover" placement="right" container="body">
-
-        <a dropdownToggle class="dropdown-item" (click)="false">учебная программа</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-
-          <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'general'}">общеобразовательный компонент</a>
-          </li>
-
-          <li dropdown triggers="mouseover" placement="right" container="body">
-            <a dropdownToggle class="dropdown-item" routerLink="support/program" [queryParams]="{type: 'professional'}">Профессиональный компонент</a>
-          </li>
-
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <a routerLink="/openClasses" class="menu"> Открытые занятия</a>
-  <a routerLink="//authorization/login" class="menu menu-right">Вход</a>
-  <a routerLink="configuration" class="menu menu-right">Конфигурация</a>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-between">
+      <ul class="navbar-nav">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="/teachers" class="nav-link">Преподаватели</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="/openClasses" class="nav-link">Открытые занятия</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown">Научно-методическое обеспечение</a>
+            <div class="dropdown-menu">
+             <a routerLink="support/plan" class="dropdown-item"> учебный план</a>
+             <a routerLink="support/disciplines" class="dropdown-item"> учебные дисциплины</a>
+             </div>
+         </li>
+      </ul>          
+      <ul class="navbar-nav">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="configuration" class="nav-link navbar-right">Конфигурация</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a routerLink="//authorization/login" class="nav-link">Вход</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>

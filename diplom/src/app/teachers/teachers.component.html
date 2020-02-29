@@ -21,12 +21,12 @@
         </tr>
       </thead>
       <tbody id="TeachersTable" *ngFor="let teacher of teachers">
-        <tr>
-          <td scope="row">{{teacher.id}}</td>
-          <td>{{teacher.name}}</td>
-          <td>{{teacher.category}}</td>
-          <td>{{teacher.commision}}</td>
-          <td>{{teacher.status}}</td>
+        <tr (click)="onClick(teacher.id)">
+          <td scope="row">{{ teacher.id}}</td>
+          <td>{{ teacher.name }}</td>
+          <td>{{ teacher.category }}</td>
+          <td>{{ teacher.commision }}</td>
+          <td>{{ teacher.status }}</td>
         </tr>
       </tbody>
     </table>
@@ -34,5 +34,5 @@
   <app-teachers-filter></app-teachers-filter>
 </div>
 <ng-template #template>
-    <app-update-teachers (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+    <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
 </ng-template>

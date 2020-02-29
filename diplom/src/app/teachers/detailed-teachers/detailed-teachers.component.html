@@ -122,7 +122,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="px-xl-3">
-                <button class="btn btn-block btn-info">
+                <button class="btn btn-block btn-info" (click)="UpdateTeacher(template)">
                   <i class="fa fa-sign-out"></i>
                   <span>Редактировать</span>
                 </button>
@@ -138,3 +138,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #template>
+  <app-update-teachers title="Изменить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+</ng-template>

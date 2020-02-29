@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Lesson } from 'src/app/open-classes/lesson.model';
 import { Teacher } from '../teacher.model';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detailed-teachers',
@@ -63,7 +65,8 @@ export class DetailedTeachersComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  modalRef: BsModalRef;
+  constructor(private router: Router, private modalService: BsModalService) {}
 
   ngOnInit() {
   }
@@ -77,5 +80,9 @@ export class DetailedTeachersComponent implements OnInit {
       this.actlesson = false;
       this.actsupport = true;
     }
+  }
+
+  UpdateTeacher(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }
