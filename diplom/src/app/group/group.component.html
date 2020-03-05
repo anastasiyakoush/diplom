@@ -1,0 +1,43 @@
+<div class="d-flex h-100 justify-content-between">
+  <div class="col-sm-8 main align-self-start">
+    <div class="caption">Группы</div>
+    <form class="form-inline controls d-flex flex-row-reverse">
+      <button type="submit" class="btn btn-info" (click)="addGroup(template)">Добавить</button>
+      <div class="input-group search">
+        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Поиск</button>
+        </div>
+      </div>
+    </form>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th class="my-auto" scope="col ">ID</th>
+          <th scope="col">№ Группы</th>
+          <th scope="col">ЦК</th>
+          <th scope="col">Действие</th>
+        </tr>
+      </thead>
+      <tbody id="UsersTable">
+        <tr>
+        <tr routerLink="/support/1/disciplines">
+          <th scope="row">1</th>
+          <td>62491</td>
+          <td>КТ</td>
+          <td>
+              <button type="submit" class="btn btn-info" style="margin-right: 5px;">
+                удалить
+              </button>
+              <button (click)="updateGroup(template)" type="submit" class="btn btn-info">
+                редактировать
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #template>
+  <app-update-group [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-group>
+</ng-template>

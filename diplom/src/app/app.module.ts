@@ -31,6 +31,8 @@ import { CurriculumFiltersComponent } from './scientific-and-methodological-supp
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
 import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
+import { GroupComponent } from './group/group.component';
+import { UpdateGroupComponent } from './group/update-group/update-group.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { UpdateConfigurationComponent } from './configuration/update-configurati
     ConfigurationComponent,
     ConfigurationFilterComponent,
     UpdateConfigurationComponent,
+    GroupComponent,
+    UpdateGroupComponent,
   ],
   imports: [
     BrowserModule,

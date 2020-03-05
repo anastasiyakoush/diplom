@@ -10,6 +10,7 @@ import { CurriculumComponent } from './scientific-and-methodological-support/cur
 import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
 import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
 import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
+import { GroupComponent } from './group/group.component';
 
 
 const routes: Routes = [
@@ -38,12 +39,16 @@ const routes: Routes = [
     component: UpdateClassesComponent
   },
   {
-    path: 'support/disciplines',
+    path: 'support/:groupId/disciplines',
     component: DisciplinesComponent
   },
   {
     path: 'support/plan',
     component: CurriculumComponent
+  },
+  {
+    path: 'groups',
+    component: GroupComponent
   },
 ];
 
