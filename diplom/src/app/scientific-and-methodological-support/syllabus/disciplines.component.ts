@@ -10,6 +10,8 @@ import { Disciplina } from './disciplina.model';
   styleUrls: ['./disciplines.component.less']
 })
 export class DisciplinesComponent implements OnInit {
+  spec = false;
+  course = false;
   programs: Disciplina[] = [
     {
       id: 1,
@@ -36,13 +38,24 @@ export class DisciplinesComponent implements OnInit {
 
   type: ProgramType;
   modalRef: BsModalRef;
-  constructor(private route: ActivatedRoute,private modalService: BsModalService) { }
+  constructor(private route: ActivatedRoute, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.type = params['type'];
-      console.log(this.type)
+      console.log(this.type);
   });
+  }
+
+  selectChanged(num: number) {
+    if (num === 1) {
+      this.spec = true;
+    } else if (num === 2) {
+      this.course = true;
+    } else {
+      this.spec = false;
+      this.course = false;
+    }
   }
 
   addProgram(template: TemplateRef<any>) {
