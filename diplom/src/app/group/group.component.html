@@ -21,10 +21,10 @@
       </thead>
       <tbody id="UsersTable">
         <tr>
-        <tr routerLink="/support/1/disciplines">
-          <th scope="row">1</th>
-          <td>62491</td>
-          <td>ПОИТ</td>
+        <tr *ngFor="let group of groups" >
+          <td (click)="navigateToDiscipline(group.id)" scope="row">{{group.id}}</td>
+          <td>{{group.nomer}}</td>
+          <td>{{group.CK}}</td>
           <td>
               <button type="submit" class="btn btn-info" style="margin-right: 5px;">
                 удалить

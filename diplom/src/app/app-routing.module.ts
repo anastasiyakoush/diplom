@@ -39,17 +39,18 @@ const routes: Routes = [
     component: UpdateClassesComponent
   },
   {
-    path: 'support/:groupId/disciplines',
+    path: 'support/disciplines',
     component: DisciplinesComponent
   },
   {
-    path: 'support/plan',
+    path: 'support/:groupId/plan',
     component: CurriculumComponent
   },
   {
     path: 'groups',
     component: GroupComponent
   },
+
 ];
 
 @NgModule({
