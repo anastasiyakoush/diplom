@@ -14,12 +14,12 @@ export class GroupComponent implements OnInit, OnDestroy{
   groups: Group[] = [
     {
       id: 1,
-      nomer: '62491',
+      nomer: 'DM12345',
       CK: 'ПОИТ'
     },
     {
       id: 2,
-      nomer: '7к2411',
+      nomer: 'RM45654',
       CK: 'ПОИТ'
     }
   ];
