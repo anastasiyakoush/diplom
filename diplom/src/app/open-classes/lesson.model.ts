@@ -1,8 +1,8 @@
 export class Lesson {
   id: number;
+  discipline: string;
   topic: string;
   group: string;
   teacher: string;
-  plan: string;
   date: string;
 }

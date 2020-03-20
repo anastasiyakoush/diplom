@@ -1,15 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Lesson } from './lesson.model';
+import { Lesson } from './../lesson.model';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-open-classes',
-  templateUrl: './open-classes.component.html',
-  styleUrls: ['./open-classes.component.less']
+  selector: 'app-planned-classes',
+  templateUrl: './planned-classes.component.html',
+  styleUrls: ['./planned-classes.component.less']
 })
-
-export class OpenClassesComponent implements OnInit {
+export class PlannedClassesComponent implements OnInit {
   lessons: Lesson[] = [
     {
       id: 1,
@@ -39,10 +38,7 @@ export class OpenClassesComponent implements OnInit {
   modalRef: BsModalRef;
   constructor(private router: Router, private modalService: BsModalService) {}
 
-  ngOnInit() {}
-
-  onClick(id: number) {
-    this.router.navigate(['openClasses/' + id]);
+  ngOnInit() {
   }
 
   addClass(template: TemplateRef<any>) {

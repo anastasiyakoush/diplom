@@ -1,8 +1,8 @@
 <div class="d-flex h-100 justify-content-between">
   <div class="col-sm-8 main align-self-start">
-    <div class="caption">Учебный план</div>
+    <div class="caption">Учебные дисциплины</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info" (click)="addPlan(template)">Добавить</button>
+      <button type="submit" class="btn btn-info" (click)="addProgram(template)">Добавить</button>
       <div class="input-group search">
         <input type="text" id="Input" class="form-control" placeholder="Search">
         <div class="input-group-append">
@@ -10,30 +10,28 @@
         </div>
       </div>
     </form>
-
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
           <th class="my-auto" scope="col ">ID</th>
           <th scope="col">Регистрационный номер</th>
-          <th scope="col">Типовой план</th>
-          <th scope="col">Дата разрабоки</th>
-          <th scope="col">Разработчик</th>
+          <th scope="col">Название</th>
+          <th scope="col">Количество часов</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let plan of plans">
-          <th scope="row">{{plan.id}}</th>
-          <td>{{plan.nomer}}</td>
-          <td>{{plan.typePlan}}</td>
-          <td>{{plan.date}}</td>
-          <td>{{plan.developer}}</td>
+      <tbody id="UchPrograma">
+        <tr *ngFor="let program of programs">
+          <td scope="row">{{program.id}}</td>
+          <td>{{program.nomer}}</td>
+          <td>{{program.name}}</td>
+          <td>{{program.hours}}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <app-curriculum-filters></app-curriculum-filters>
+  <app-syllabus-filters></app-syllabus-filters>
 </div>
 <ng-template #template>
-  <app-update-curriculum (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+  <app-update-syllabus (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
 </ng-template>
+

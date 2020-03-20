@@ -17,26 +17,26 @@ export class DetailedTeachersComponent implements OnInit {
   lessons: Lesson[] = [
     {
       id: 1,
+      discipline: 'ПССИП',
       topic: 'CSS',
       group: '62491',
       teacher: 'Терешко',
-      plan: 'ссылка',
       date: '26/11/2019'
     },
     {
       id: 1,
+      discipline: 'ТРПО',
       topic: 'Методологии проектирования',
       group: '62493',
       teacher: 'Тарасова',
-      plan: 'ссылка',
       date: '	15/09/2019'
     },
     {
       id: 1,
+      discipline: 'СиАОД',
       topic: 'Структуры данных',
       group: '7к4911',
       teacher: 'Апанасевич',
-      plan: 'ссылка',
       date: '26/11/2019'
     }
   ];
