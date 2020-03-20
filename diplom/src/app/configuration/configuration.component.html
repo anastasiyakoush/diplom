@@ -3,12 +3,7 @@
     <div class="caption">Пользователи</div>
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info" (click)="addUser(template)">Добавить</button>
-      <div class="input-group search">
-        <input type="text" id="Input" class="form-control" placeholder="Search">
-        <div class="input-group-append">
-          <button class="btn btn-info" type="submit">Поиск</button>
-        </div>
-      </div>
+
     </form>
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
@@ -16,7 +11,6 @@
           <th class="my-auto" scope="col ">ID</th>
           <th scope="col">Пользователь</th>
           <th scope="col">Роль</th>
-          <th scope="col">Дата регистрации</th>
           <th scope="col">Действие</th>
         </tr>
       </thead>
@@ -26,7 +20,6 @@
           <th scope="row">1</th>
           <td>root</td>
           <td>admin</td>
-          <td>18/02/2020</td>
           <td>
               <button type="submit" class="btn btn-info" style="margin-right: 5px;">
                 удалить

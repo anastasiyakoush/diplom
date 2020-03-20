@@ -1,5 +1,5 @@
 <div class="filter">
-    <div class="shadow-lg p-3 mb-5 card" style="height: 110vh;">
+    <div class="shadow-lg p-3 mb-5 card" style="height: 120vh;">
       <div class="card-header text-center">
         Фильтрация
       </div>
@@ -12,8 +12,37 @@
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label for="name">Название программы</label>
-            <input type="text" class="form-control" id="name" placeholder="Название программы">
+            <label for="tsk">Специальность</label>
+            <select class="form-control" id="tsk">
+              <option>ПОИТ</option>
+              <option>ПиПРэС</option>
+              <option>ЭВС</option>
+              <option>Микро- и наноэлектроника</option>
+              <option>ТЭРэС</option>
+              <option>ПМС</option>
+              <option>Общетехнические дисциплины</option>
+              <option>Математические и естесвенно научные дисцциплины</option>
+              <option>Социально-гуманитарные дисциплины</option>
+              <option>Физическое воспитание</option>
+            </select>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="tsk">Учебный план</label>
+            <select class="form-control" id="tsk">
+              <option>Название плана</option>
+              <option>Название плана</option>
+            </select>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="tsk">Компонент</label>
+            <select class="form-control" id="tsk">
+              <option>Общеобразовательный компонент</option>
+              <option>Профессиональный компонент</option>
+            </select>
           </div>
         </li>
         <li class="list-group-item">
@@ -38,7 +67,9 @@
         <li class="list-group-item">
           <div class="form-group">
             <label for="hours">Количество часов</label>
-            <input type="text" class="form-control" id="hours" placeholder="Количество часов">
+            <input type="text" class="form-control" id="hours" placeholder="ЛР часов">
+            <input type="text" class="form-control" id="hours" placeholder="ПР часов">
+            <input type="text" class="form-control" id="hours" placeholder="КП часов">
           </div>
         </li>
         <li class="list-group-item">

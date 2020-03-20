@@ -3,6 +3,5 @@ export class Lesson {
   topic: string;
   group: string;
   teacher: string;
-  plan: string;
   date: string;
 }

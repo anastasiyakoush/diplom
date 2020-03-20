@@ -1,7 +1,7 @@
 export class Plan {
   id: number;
+  name: number;
   nomer: number;
-  typePlan: string;
   date: string;
   developer: string;
 }

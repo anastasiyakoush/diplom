@@ -20,7 +20,6 @@ export class DetailedTeachersComponent implements OnInit {
       topic: 'CSS',
       group: '62491',
       teacher: 'Терешко',
-      plan: 'ссылка',
       date: '26/11/2019'
     },
     {
@@ -28,7 +27,6 @@ export class DetailedTeachersComponent implements OnInit {
       topic: 'Методологии проектирования',
       group: '62493',
       teacher: 'Тарасова',
-      plan: 'ссылка',
       date: '	15/09/2019'
     },
     {
@@ -36,7 +34,6 @@ export class DetailedTeachersComponent implements OnInit {
       topic: 'Структуры данных',
       group: '7к4911',
       teacher: 'Апанасевич',
-      plan: 'ссылка',
       date: '26/11/2019'
     }
   ];

@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Открытые занятия</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info">Запланировать занятие</button>
+      <button type="submit" class="btn btn-info">Запланированные занятия</button>
       <button type="submit" class="btn add_btn btn-info" (click)="addLesson(template)">Добавить</button>
       <div class="input-group search">
         <input
@@ -23,7 +23,6 @@
           <th scope="col">Тема</th>
           <th scope="col">Группа</th>
           <th scope="col">Преподаватель</th>
-          <th scope="col">План занятия</th>
           <th scope="col">Дата проведения</th>
         </tr>
       </thead>
@@ -33,7 +32,6 @@
           <td>{{lesson.topic}}</td>
           <td>{{lesson.group}}</td>
           <td>{{lesson.teacher}}</td>
-          <td>{{lesson.plan}}</td>
           <td>{{lesson.date}}</td>
         </tr>
       </tbody>

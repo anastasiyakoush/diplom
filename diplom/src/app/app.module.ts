@@ -33,6 +33,7 @@ import { ConfigurationFilterComponent } from './configuration/configuration-filt
 import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
 import { GroupComponent } from './group/group.component';
 import { UpdateGroupComponent } from './group/update-group/update-group.component';
+import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { UpdateGroupComponent } from './group/update-group/update-group.componen
     UpdateConfigurationComponent,
     GroupComponent,
     UpdateGroupComponent,
+    PlannedClassesComponent,
   ],
   imports: [
     BrowserModule,

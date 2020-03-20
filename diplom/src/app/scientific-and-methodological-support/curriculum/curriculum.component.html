@@ -16,7 +16,7 @@
         <tr>
           <th class="my-auto" scope="col ">ID</th>
           <th scope="col">Регистрационный номер</th>
-          <th scope="col">Типовой план</th>
+          <th scope="col">Название плана</th>
           <th scope="col">Дата разрабоки</th>
           <th scope="col">Разработчик</th>
         </tr>
@@ -24,8 +24,8 @@
       <tbody>
         <tr *ngFor="let plan of plans">
           <th scope="row">{{plan.id}}</th>
+          <td>{{plan.name}}</td>
           <td>{{plan.nomer}}</td>
-          <td>{{plan.typePlan}}</td>
           <td>{{plan.date}}</td>
           <td>{{plan.developer}}</td>
         </tr>
