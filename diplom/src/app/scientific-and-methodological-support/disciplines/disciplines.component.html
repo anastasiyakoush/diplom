@@ -10,29 +10,7 @@
         </div>
       </div>
     </form>
-    <div class="row m-2">
-      <div class="col-3">
-        <select class="form-control" (click)="selectChanged(1)">
-        <option>Специальность</option>
-        <option>ПОИТ</option>
-        <option>ПиПРэС</option>
-        <option>ЭВС</option>
-        <option>Микро- и наноэлектроника</option>
-        <option>ТЭРэС</option>
-        <option>ПМС</option>
-      </select>
-    </div>
-    <div class="col-3">
-      <select class="form-control" (click)="selectChanged(2)">
-        <option>Курс</option>
-        <option>1 курс</option>
-        <option>2 курс</option>
-        <option>3 курс</option>
-        <option>4 курс</option>
-      </select>
-      </div>
-    </div>
-    <table class="table table-bordered table-hover" *ngIf="spec && course">
+    <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
           <th class="my-auto" scope="col ">ID</th>

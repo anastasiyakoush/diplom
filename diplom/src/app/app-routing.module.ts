@@ -5,12 +5,13 @@ import { OpenClassesComponent } from './open-classes/open-classes.component';
 
 import { LoginComponent } from './login/login.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
-import { DisciplinesComponent } from './scientific-and-methodological-support/syllabus/disciplines.component';
-import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
+import { DisciplinesComponent } from './scientific-and-methodological-support/disciplines/disciplines.component';
+import { CurriculumComponent } from './scientific-and-methodological-support/uch-plans/curriculum.component';
 import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
 import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
 import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
-import { GroupComponent } from './group/group.component';
+import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
+import { PlannedClassesComponent} from './open-classes/planned-classes/planned-classes.component'
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'openClasses',
     component: OpenClassesComponent
+  },
+  {
+    path: 'plannedClasses',
+    component: PlannedClassesComponent
   },
   {
     path: 'openClasses/:id',

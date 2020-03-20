@@ -17,6 +17,7 @@ export class DetailedTeachersComponent implements OnInit {
   lessons: Lesson[] = [
     {
       id: 1,
+      discipline: 'ПССИП',
       topic: 'CSS',
       group: '62491',
       teacher: 'Терешко',
@@ -24,6 +25,7 @@ export class DetailedTeachersComponent implements OnInit {
     },
     {
       id: 1,
+      discipline: 'ТРПО',
       topic: 'Методологии проектирования',
       group: '62493',
       teacher: 'Тарасова',
@@ -31,6 +33,7 @@ export class DetailedTeachersComponent implements OnInit {
     },
     {
       id: 1,
+      discipline: 'СиАОД',
       topic: 'Структуры данных',
       group: '7к4911',
       teacher: 'Апанасевич',

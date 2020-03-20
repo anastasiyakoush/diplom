@@ -8,10 +8,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   templateUrl: './open-classes.component.html',
   styleUrls: ['./open-classes.component.less']
 })
+
 export class OpenClassesComponent implements OnInit {
   lessons: Lesson[] = [
     {
       id: 1,
+      discipline: 'ПССИП',
       topic: 'CSS',
       group: '62491',
       teacher: 'Терешко',
@@ -19,6 +21,7 @@ export class OpenClassesComponent implements OnInit {
     },
     {
       id: 2,
+      discipline: 'ТРПО',
       topic: 'Методологии проектирования',
       group: '62493',
       teacher: 'Тарасова',
@@ -26,6 +29,7 @@ export class OpenClassesComponent implements OnInit {
     },
     {
       id: 3,
+      discipline: 'СиАОД',
       topic: 'Структуры данных',
       group: '7к4911',
       teacher: 'Апанасевич',
@@ -33,7 +37,7 @@ export class OpenClassesComponent implements OnInit {
     }
   ];
   modalRef: BsModalRef;
-  constructor(private router: Router,private modalService: BsModalService) {}
+  constructor(private router: Router, private modalService: BsModalService) {}
 
   ngOnInit() {}
 
@@ -41,7 +45,7 @@ export class OpenClassesComponent implements OnInit {
     this.router.navigate(['openClasses/' + id]);
   }
 
-  addLesson(template: TemplateRef<any>) {
+  addClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 }

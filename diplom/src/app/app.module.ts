@@ -14,25 +14,25 @@ import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed
 import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
 import { ClassesFilterComponent } from './open-classes/classes-filter/classes-filter.component';
 import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
-import { DisciplinesComponent } from './scientific-and-methodological-support/syllabus/disciplines.component';
-import { CurriculumComponent } from './scientific-and-methodological-support/curriculum/curriculum.component';
-import { UpdateCurriculumComponent } from './scientific-and-methodological-support/curriculum/update-curriculum/update-curriculum.component';
-import { DetailedCurriculumComponent } from './scientific-and-methodological-support/curriculum/detailed-curriculum/detailed-curriculum.component';
-import { UpdateSyllabusComponent } from './scientific-and-methodological-support/syllabus/update-syllabus/update-syllabus.component';
-import { DetailedSyllabusComponent } from './scientific-and-methodological-support/syllabus/detailed-syllabus/detailed-syllabus.component';
+import { DisciplinesComponent } from './scientific-and-methodological-support/disciplines/disciplines.component';
+import { CurriculumComponent } from './scientific-and-methodological-support/uch-plans/curriculum.component';
+import { UpdateCurriculumComponent } from './scientific-and-methodological-support/uch-plans/update-curriculum/update-curriculum.component';
+import { DetailedCurriculumComponent } from './scientific-and-methodological-support/uch-plans/detailed-curriculum/detailed-curriculum.component';
+import { UpdateSyllabusComponent } from './scientific-and-methodological-support/disciplines/update-syllabus/update-syllabus.component';
+import { DetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/detailed-syllabus.component';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap';
-import { SyllabusFiltersComponent } from './scientific-and-methodological-support/syllabus/syllabus-filters/syllabus-filters.component';
-import { CurriculumFiltersComponent } from './scientific-and-methodological-support/curriculum/curriculum-filters/curriculum-filters.component';
+import { SyllabusFiltersComponent } from './scientific-and-methodological-support/disciplines/syllabus-filters/syllabus-filters.component';
+import { CurriculumFiltersComponent } from './scientific-and-methodological-support/uch-plans/curriculum-filters/curriculum-filters.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
 import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
-import { GroupComponent } from './group/group.component';
-import { UpdateGroupComponent } from './group/update-group/update-group.component';
+import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
+import { UpdateGroupComponent } from './scientific-and-methodological-support/type-plans/update-type-plan/update-group.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 
 @NgModule({

@@ -2,8 +2,10 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Открытые занятия</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info">Запланированные занятия</button>
-      <button type="submit" class="btn add_btn btn-info" (click)="addLesson(template)">Добавить</button>
+      <button type="submit" class="btn btn-info">
+        <a routerLink="/plannedClasses">Запланированные занятия</a>
+      </button>
+      <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
       <div class="input-group search">
         <input
           type="text"
@@ -20,6 +22,7 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">ID</th>
+          <th scope="col">Дисциплина</th>      
           <th scope="col">Тема</th>
           <th scope="col">Группа</th>
           <th scope="col">Преподаватель</th>
@@ -27,8 +30,9 @@
         </tr>
       </thead>
       <tbody *ngFor="let lesson of lessons">
-        <tr  (click)="onClick(lesson.id)">
+        <tr (click)="onClick(lesson.id)">
           <td scope="row">{{ lesson.id }}</td>
+          <td>{{lesson.discipline}}</td>
           <td>{{lesson.topic}}</td>
           <td>{{lesson.group}}</td>
           <td>{{lesson.teacher}}</td>
