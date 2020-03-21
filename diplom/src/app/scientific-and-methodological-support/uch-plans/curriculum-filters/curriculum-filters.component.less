@@ -3,7 +3,25 @@
     font-weight: 400;
 }
 
-:host ::ng-deep .multiselect-dropdown .dropdown-btn{
-    border: 1px solid #adadad;
-    cursor: pointer;
+:host ::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: #6C757D !important;
+    border: 1px solid #CED4DA !important;
 }
+
+:host ::ng-deep .multiselect-dropdown .dropdown-btn .selected-item {
+    border: 1px solid #17a2b8 !important;
+    background-color: #17a2b8 !important;
+}
+
+:host ::ng-deep .multiselect-dropdown .dropdown-list .multiselect-item-checkbox ::before {
+    border: 2px solid #17a2b8 !important;
+}
+
+
+:host ::ng-deep .multiselect-dropdown .dropdown-list .multiselect-item-checkbox input[type="checkbox"]:checked + div::before {
+    background: #17a2b8 !important;
+}
+
+
+
+
