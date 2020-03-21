@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200201203420_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200315142244_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DiplomApi.Entities.CiklovayaKomissiya", b =>
+            modelBuilder.Entity("DAL.Entities.CiklovayaKomissiya", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace DAL.Migrations
                     b.ToTable("CiklovyeKomissii");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Document", b =>
+            modelBuilder.Entity("DAL.Entities.Document", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace DAL.Migrations
                     b.ToTable("Documents");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.DocumentAuthor", b =>
+            modelBuilder.Entity("DAL.Entities.DocumentAuthor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,7 +92,7 @@ namespace DAL.Migrations
                     b.ToTable("DocumentsAuthors");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.DocumentType", b =>
+            modelBuilder.Entity("DAL.Entities.DocumentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -107,7 +107,7 @@ namespace DAL.Migrations
                     b.ToTable("DocumentTypes");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Group", b =>
+            modelBuilder.Entity("DAL.Entities.Group", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +132,7 @@ namespace DAL.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.ObrazovatelnyjStandart", b =>
+            modelBuilder.Entity("DAL.Entities.ObrazovatelnyjStandart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +158,7 @@ namespace DAL.Migrations
                     b.ToTable("ObrazovatelnyeStandarty");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Position", b =>
+            modelBuilder.Entity("DAL.Entities.Position", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -173,7 +173,7 @@ namespace DAL.Migrations
                     b.ToTable("Positions");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.PublicLesson", b =>
+            modelBuilder.Entity("DAL.Entities.PublicLesson", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -212,7 +212,7 @@ namespace DAL.Migrations
                     b.ToTable("PublicLessons");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Specialnost", b =>
+            modelBuilder.Entity("DAL.Entities.Specialnost", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -230,7 +230,7 @@ namespace DAL.Migrations
                     b.ToTable("Specialnosti");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Teacher", b =>
+            modelBuilder.Entity("DAL.Entities.Teacher", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -267,7 +267,7 @@ namespace DAL.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.TipovojUchebnyjPlan", b =>
+            modelBuilder.Entity("DAL.Entities.TipovojUchebnyjPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,7 +293,7 @@ namespace DAL.Migrations
                     b.ToTable("TipovyeUchebnyePlany");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.UchebnayaDisciplina", b =>
+            modelBuilder.Entity("DAL.Entities.UchebnayaDisciplina", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -333,7 +333,7 @@ namespace DAL.Migrations
                     b.ToTable("UchebnyeDiscipliny");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.UchebnyjPlan", b =>
+            modelBuilder.Entity("DAL.Entities.UchebnyjPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -359,111 +359,111 @@ namespace DAL.Migrations
                     b.ToTable("UchebnyePlany");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Document", b =>
+            modelBuilder.Entity("DAL.Entities.Document", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.DocumentType", "DocumentType")
+                    b.HasOne("DAL.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DiplomApi.Entities.UchebnayaDisciplina", "UchebnayaDisciplina")
+                    b.HasOne("DAL.Entities.UchebnayaDisciplina", "UchebnayaDisciplina")
                         .WithMany()
                         .HasForeignKey("UchebnayaDisciplinaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.DocumentAuthor", b =>
+            modelBuilder.Entity("DAL.Entities.DocumentAuthor", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.Document", "Document")
+                    b.HasOne("DAL.Entities.Document", "Document")
                         .WithMany()
                         .HasForeignKey("DocumentId");
 
-                    b.HasOne("DiplomApi.Entities.Teacher", "Teacher")
+                    b.HasOne("DAL.Entities.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherId");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Group", b =>
+            modelBuilder.Entity("DAL.Entities.Group", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.Specialnost", "Specialnost")
+                    b.HasOne("DAL.Entities.Specialnost", "Specialnost")
                         .WithMany()
                         .HasForeignKey("SpecialnostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DiplomApi.Entities.UchebnyjPlan", "UchebnyjPlan")
+                    b.HasOne("DAL.Entities.UchebnyjPlan", "UchebnyjPlan")
                         .WithMany("Groups")
                         .HasForeignKey("UchebnyjPlanId");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.ObrazovatelnyjStandart", b =>
+            modelBuilder.Entity("DAL.Entities.ObrazovatelnyjStandart", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.Specialnost", "Specialnost")
+                    b.HasOne("DAL.Entities.Specialnost", "Specialnost")
                         .WithMany()
                         .HasForeignKey("SpecialnostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.PublicLesson", b =>
+            modelBuilder.Entity("DAL.Entities.PublicLesson", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.Group", "Group")
+                    b.HasOne("DAL.Entities.Group", "Group")
                         .WithMany()
                         .HasForeignKey("GroupId");
 
-                    b.HasOne("DiplomApi.Entities.Teacher", "Teacher")
+                    b.HasOne("DAL.Entities.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherId");
 
-                    b.HasOne("DiplomApi.Entities.UchebnayaDisciplina", "UchebnayaDisciplina")
+                    b.HasOne("DAL.Entities.UchebnayaDisciplina", "UchebnayaDisciplina")
                         .WithMany()
                         .HasForeignKey("UchebnayaDisciplinaId");
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.Teacher", b =>
+            modelBuilder.Entity("DAL.Entities.Teacher", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.CiklovayaKomissiya", "CiklovayaKomissiya")
+                    b.HasOne("DAL.Entities.CiklovayaKomissiya", "CiklovayaKomissiya")
                         .WithMany()
                         .HasForeignKey("CiklovayaKomissiyaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DiplomApi.Entities.Position", "Position")
+                    b.HasOne("DAL.Entities.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.TipovojUchebnyjPlan", b =>
+            modelBuilder.Entity("DAL.Entities.TipovojUchebnyjPlan", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.ObrazovatelnyjStandart", "ObrazovatelnyjStandart")
+                    b.HasOne("DAL.Entities.ObrazovatelnyjStandart", "ObrazovatelnyjStandart")
                         .WithMany()
                         .HasForeignKey("ObrazovatelnyjStandartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.UchebnayaDisciplina", b =>
+            modelBuilder.Entity("DAL.Entities.UchebnayaDisciplina", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.CiklovayaKomissiya", "CiklovayaKomissiya")
+                    b.HasOne("DAL.Entities.CiklovayaKomissiya", "CiklovayaKomissiya")
                         .WithMany()
                         .HasForeignKey("CiklovayaKomissiyaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DiplomApi.Entities.UchebnyjPlan", "UchebnyjPlan")
+                    b.HasOne("DAL.Entities.UchebnyjPlan", "UchebnyjPlan")
                         .WithMany()
                         .HasForeignKey("UchebnyjPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiplomApi.Entities.UchebnyjPlan", b =>
+            modelBuilder.Entity("DAL.Entities.UchebnyjPlan", b =>
                 {
-                    b.HasOne("DiplomApi.Entities.TipovojUchebnyjPlan", "TipovojUchebnyjPlan")
+                    b.HasOne("DAL.Entities.TipovojUchebnyjPlan", "TipovojUchebnyjPlan")
                         .WithMany()
                         .HasForeignKey("TipovojUchebnyjPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
