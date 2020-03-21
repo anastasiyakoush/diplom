@@ -36,9 +36,10 @@ namespace DiplomApi
       services.AddDbContext<ApplicationContext>(options
           => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
-      // services.AddSwaggerDocument();
+      services.AddSwaggerDocument();
 
       services.AddTransient<ITeacherService, TeacherService>();
+      services.AddTransient<ISubjectService, SubjectService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

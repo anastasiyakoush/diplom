@@ -114,6 +114,27 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlanningPublicLessons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TeacherId = table.Column<int>(nullable: false),
+                    Status = table.Column<bool>(nullable: false),
+                    ExpectedDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlanningPublicLessons", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PlanningPublicLessons_Teachers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipovyeUchebnyePlany",
                 columns: table => new
                 {
@@ -163,7 +184,7 @@ namespace DAL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Number = table.Column<int>(nullable: false),
+                    Number = table.Column<string>(nullable: true),
                     UchebnyjPlanId = table.Column<int>(nullable: true),
                     SpecialnostId = table.Column<int>(nullable: false)
                 },
@@ -345,6 +366,11 @@ namespace DAL.Migrations
                 column: "SpecialnostId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PlanningPublicLessons_TeacherId",
+                table: "PlanningPublicLessons",
+                column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PublicLessons_GroupId",
                 table: "PublicLessons",
                 column: "GroupId");
@@ -394,6 +420,9 @@ namespace DAL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DocumentsAuthors");
+
+            migrationBuilder.DropTable(
+                name: "PlanningPublicLessons");
 
             migrationBuilder.DropTable(
                 name: "PublicLessons");
