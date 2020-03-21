@@ -34,6 +34,7 @@ import { UpdateConfigurationComponent } from './configuration/update-configurati
 import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
 import { UpdateGroupComponent } from './scientific-and-methodological-support/type-plans/update-type-plan/update-group.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
+//import { AngularMultiSelectModule } from 'angular4-multiselect-dropdown/angular4-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { PlannedClassesComponent } from './open-classes/planned-classes/planned-
     UpdateConfigurationComponent,
     GroupComponent,
     UpdateGroupComponent,
-    PlannedClassesComponent,
+    PlannedClassesComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +72,8 @@ import { PlannedClassesComponent } from './open-classes/planned-classes/planned-
     BsDropdownModule.forRoot(),
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    //AngularMultiSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

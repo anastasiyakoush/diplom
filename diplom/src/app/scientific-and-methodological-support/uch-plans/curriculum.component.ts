@@ -16,21 +16,21 @@ export class CurriculumComponent implements OnInit {
       name: 1,
       nomer: 131,
       date: '26/11/2019',
-      developer: 'Фамилия'
+      link: 'ссылка',
     },
     {
       id: 2,
-      name: name,
+      name: 2,
       nomer: 2,
       date: '15/09/2019',
-      developer: 'Фамилия'
+      link: 'ссылка',
     },
     {
       id: 3,
       name: 3,
       nomer: 191,
       date: '26/11/2019',
-      developer: 'Фамилия'
+      link: 'ссылка',
     }
   ];
   modalRef: BsModalRef;
