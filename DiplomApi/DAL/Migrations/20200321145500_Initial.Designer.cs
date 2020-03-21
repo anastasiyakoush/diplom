@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200315142244_Initial")]
+    [Migration("20200321145500_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,8 +114,8 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SpecialnostId")
                         .HasColumnType("int");
@@ -156,6 +156,29 @@ namespace DAL.Migrations
                     b.HasIndex("SpecialnostId");
 
                     b.ToTable("ObrazovatelnyeStandarty");
+                });
+
+            modelBuilder.Entity("DAL.Entities.PlanningPublicLesson", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ExpectedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("PlanningPublicLessons");
                 });
 
             modelBuilder.Entity("DAL.Entities.Position", b =>
@@ -403,6 +426,15 @@ namespace DAL.Migrations
                     b.HasOne("DAL.Entities.Specialnost", "Specialnost")
                         .WithMany()
                         .HasForeignKey("SpecialnostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DAL.Entities.PlanningPublicLesson", b =>
+                {
+                    b.HasOne("DAL.Entities.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

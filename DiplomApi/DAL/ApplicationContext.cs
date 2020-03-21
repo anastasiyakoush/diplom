@@ -20,6 +20,7 @@ namespace DAL.DAL
     public DbSet<TipovojUchebnyjPlan> TipovyeUchebnyePlany { get; set; }
     public DbSet<UchebnayaDisciplina> UchebnyeDiscipliny { get; set; }
     public DbSet<UchebnyjPlan> UchebnyePlany { get; set; }
+    public DbSet<PlanningPublicLesson> PlanningPublicLessons { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

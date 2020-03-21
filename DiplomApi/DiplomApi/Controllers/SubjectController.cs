@@ -9,30 +9,30 @@ using DiplomApi.PostModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DAL.Controllers
+namespace DiplomApi.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class TeachersController : ControllerBase
+  public class SubjectController : ControllerBase
   {
-    private readonly ITeacherService _teacherService;
     private readonly IMapper _mapper;
+    private readonly ISubjectService _subjectService;
 
-    public TeachersController(ITeacherService teacherService, IMapper mapper)
+    public SubjectController(IMapper mapper, ISubjectService subjectService)
     {
-      _teacherService = teacherService;
       _mapper = mapper;
+      _subjectService = subjectService;
     }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<TeacherDto>>> GetTeachersAsync()
+    public async Task<ActionResult<IEnumerable<UchebnayaDisciplinaDto>>> GetAllAsync()
     {
       try
       {
-        return Ok(await _teacherService.GetTeachersAsync());
+        return Ok(await _subjectService.GetAllAsync());
       }
       catch (Exception ex)
       {
@@ -45,18 +45,18 @@ namespace DAL.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<TeacherDto>> GetTeacherAsync(int? id)
+    public async Task<ActionResult<UchebnayaDisciplinaDto>> GetAsync(int? id)
     {
       try
       {
-        var teacherDto = await _teacherService.GetAsync(id);
+        var uchebnayaDisciplinaDto = await _subjectService.GetAsync(id);
 
-        if (teacherDto == null)
+        if (uchebnayaDisciplinaDto == null)
         {
           return NotFound();
         }
 
-        return Ok(teacherDto);
+        return Ok(uchebnayaDisciplinaDto);
       }
       catch (Exception ex)
       {
@@ -69,19 +69,19 @@ namespace DAL.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<TeacherDto>> AddOrUpdateTeacherAsync(PostTeacherModel postTeacherModel)
+    public async Task<ActionResult<UchebnayaDisciplinaDto>> AddOrUpdateAsync(PostSubjectModel postSubjectModel)
     {
       try
       {
-        var updatedTeacherDto =
-          await _teacherService.AddOrUpdateTeacherAsync(_mapper.Map<TeacherDto>(postTeacherModel));
+        var updatedUchebnayaDisciplinaDto =
+          await _subjectService.AddOrUpdateAsync(_mapper.Map<UchebnayaDisciplinaDto>(postSubjectModel));
 
-        if (updatedTeacherDto == null)
+        if (updatedUchebnayaDisciplinaDto == null)
         {
           return NotFound();
         }
 
-        return Ok(updatedTeacherDto);
+        return Ok(updatedUchebnayaDisciplinaDto);
       }
       catch (Exception ex)
       {
@@ -90,11 +90,11 @@ namespace DAL.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTeacherAsync(int? id)
+    public async Task<IActionResult> DeleteAsync(int? id)
     {
       try
       {
-        await _teacherService.DeleteAsync(id);
+        await _subjectService.DeleteAsync(id);
         return Ok();
       }
       catch (Exception ex)
@@ -103,16 +103,16 @@ namespace DAL.Controllers
       }
     }
 
-    [HttpPost("{filter}")]
+    [HttpPost("filter")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<List<TeacherDto>>> FilterTeachersAsync(TeacherFilterCriterias teacherFilterCriterias)
+    public async Task<ActionResult<List<TeacherDto>>> FilterAsync(SubjectFilterCriterias subjectFilterCriterias)
     {
       try
       {
-        return Ok(await _teacherService.FilterTeachersAsync(teacherFilterCriterias));
+        return Ok(await _subjectService.FilterAsync(subjectFilterCriterias));
       }
       catch (Exception ex)
       {
@@ -125,11 +125,11 @@ namespace DAL.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<List<TeacherDto>>> SearchTeachersAsync([FromBody]string query)
+    public async Task<ActionResult<List<UchebnayaDisciplinaDto>>> SearchAsync([FromBody]string query)
     {
       try
       {
-        return Ok(await _teacherService.SearchTeachersAsync(query));
+        return Ok(await _subjectService.SearchAsync(query));
       }
       catch (Exception ex)
       {

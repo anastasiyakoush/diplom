@@ -58,27 +58,23 @@ namespace BLL.Services
 
     public async Task<TeacherDto> AddOrUpdateTeacherAsync(TeacherDto teacherDto)
     {
+      var teacherToUpdate = _mapper.Map<Teacher>(teacherDto);
+
+      await UpdatePositionAsync(teacherToUpdate);
+      await UpdateCiklovayaKomissiyaAsync(teacherToUpdate);
+
       if (teacherDto.Id.HasValue)
       {
-        var teacherToUpdate = _mapper.Map<Teacher>(teacherDto);
-
-        await UpdatePositionAsync(teacherToUpdate);
-        await UpdateCiklovayaKomissiyaAsync(teacherToUpdate);
-
         _context.Teachers.Update(teacherToUpdate);
-        await _context.SaveChangesAsync();
-
-        return _mapper.Map<TeacherDto>(teacherToUpdate);
+      }
+      else
+      {
+        await _context.Teachers.AddAsync(teacherToUpdate);
       }
 
-      var newTeacher = _mapper.Map<Teacher>(teacherDto);
-      await UpdatePositionAsync(newTeacher);
-      await UpdateCiklovayaKomissiyaAsync(newTeacher);
-
-      await _context.Teachers.AddAsync(newTeacher);
       await _context.SaveChangesAsync();
 
-      return _mapper.Map<TeacherDto>(newTeacher);
+      return _mapper.Map<TeacherDto>(teacherToUpdate);
     }
 
     public async Task<List<TeacherDto>> FilterTeachersAsync(TeacherFilterCriterias teacherFilterCriterias)
