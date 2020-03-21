@@ -1,9 +1,13 @@
 <div class="filter">
     <div class="shadow-lg p-3 mb-5 card" style="height: 110vh;">
-      <div class="card-header text-center">
-        Фильтрация
-      </div>
+      <div class="card-header text-center"> Фильтрация </div>
       <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="group">Дисциплина</label>
+            <input type="text" class="form-control" id="group" placeholder="Дисциплина">
+          </div>
+        </li>
         <li class="list-group-item">
           <div class="form-group">
             <label for="group">Группа</label>
@@ -12,24 +16,46 @@
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label>Дата проведения</label>
-            <div class="input-group">
-              <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="От">
-              <div class="input-group-btn">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="До">
-              <div class="input-group-btn">
-              </div>
-            </div>
+            <label for="group">Преподаватель</label>
+            <input type="text" class="form-control" id="group" placeholder="Преподаватель">
           </div>
         </li>
         <li class="list-group-item">
-          <a href="#" class="btn btn-info mr-3">Отфильтровать</a>
-          <a href="#" class="btn btn-outline-danger">Сбросить</a>
+          <div class="form-group">
+            <label>Дата проведения</label>
+            <div class="row">
+              <div class="form-group col">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    bsDatepicker
+                    #dp="bsDatepicker"
+                    [bsConfig]="bsConfig"
+                    placeholder="От"
+                  />
+                  <div class="input-group-btn"></div>
+                </div>
+              </div>
+              <div class="form-group col">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    bsDatepicker
+                    #dp="bsDatepicker"
+                    [bsConfig]="bsConfig"
+                    placeholder="До"
+                  />
+                  <div class="input-group-btn"></div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+          <a href="" class="btn btn-info mr-3">Отфильтровать</a>
+          <a href="" class="btn btn-outline-danger">Сбросить</a>
         </li>
       </ul>
     </div>

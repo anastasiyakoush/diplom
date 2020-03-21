@@ -58,7 +58,7 @@ export class DisciplinesComponent implements OnInit {
     }
   }
 
-  addProgram(template: TemplateRef<any>) {
+  addDiscipline(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 }
