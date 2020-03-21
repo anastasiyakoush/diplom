@@ -3,5 +3,5 @@ export class Plan {
   name: number;
   nomer: number;
   date: string;
-  developer: string;
+  link: string;
 }

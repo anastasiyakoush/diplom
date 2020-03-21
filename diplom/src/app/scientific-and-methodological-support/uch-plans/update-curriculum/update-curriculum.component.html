@@ -9,21 +9,18 @@
       <input type="text" class="form-control" id="num" placeholder="№ учебного плана">
   </div>
   <div class="form-group">
-      <label for="name">Название плана</label>
-      <input type="text" class="form-control" id="name" placeholder="Название плана">
-  </div>
-  <div class="form-group">
       <label for="file1">Учебный план</label>
       <input type="file" class="form-control-file border" name="file1">
   </div>
   <div class="form-group">
       <label for="file2">Типовой план</label>
+<!--  <input type="file" class="file" name="file2" multiple data-show-upload="true" data-show-caption="true"> -->
       <input type="file" class="form-control-file border" name="file2">
   </div>
   <div class="form-group">
       <label for="date">Дата создания</label>
       <div class="input-group">
-        <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="Дата создания">
+        <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" [bsValue]="bsValue" placeholder="Дата создания">
         <div class="input-group-btn">
         </div>
       </div>
