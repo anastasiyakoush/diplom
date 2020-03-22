@@ -1,0 +1,99 @@
+<div class="modal-header">
+  <h4 class="modal-title">Добавить научно-методическое обеспечение</h4>
+  <button type="button" class="close" data-dismiss="modal" (click)="cancel()">
+    &times;
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group">
+    <label for="imya">Название</label>
+    <input type="text" class="form-control" placeholder="Название" />
+  </div>
+  <div class="form-group">
+    <label for="date">Дата создания</label>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        bsDatepicker
+        #dp="bsDatepicker"
+        [bsConfig]="bsConfig"
+        [bsValue]="bsValue"
+        placeholder="Дата создания"
+      />
+      <div class="input-group-btn"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="group">Файл</label>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input"/>
+      <label class="custom-file-label" for="customFile">Выберите файл</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tsk">Тип</label>
+    <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+      <option (click)="specSelect()">Образовательный стандарт</option>
+      <option (click)="standartSelect()">Типовой план</option>
+      <option (click)="disciplineSelect()">Методическая разработка</option>
+      <option (click)="disciplineSelect()">Учебная программа</option>
+      <option (click)="disciplineSelect()">Другой документ</option>
+    </select>
+  </div>
+  <div class="form-group" *ngIf="spec">
+    <label>Специальность</label>
+    <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+  </div>
+  <div class="form-group" *ngIf="standart">
+    <label>Образовательный стандарт</label>
+    <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+      <option>Стандарт 1</option>
+      <option>Стандарт 2</option>
+      <option>Стандарт 3</option>
+    </select>
+  </div>
+  <div class="form-group" *ngIf="discipline">
+    <label>Дисциплина</label>
+    <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+      <option>КПиЯП</option>
+      <option>ТРПО</option>
+      <option>ОАиП</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Разработчик</label>
+    <ng-multiselect-dropdown
+      [placeholder]="'Разработчик'"
+      [data]="dropdownList"
+      [(ngModel)]="selectedItems"
+      [settings]="dropdownSettings"
+    >
+    </ng-multiselect-dropdown>
+  </div>
+</div>
+<div class="modal-footer">
+  <input
+    type="button"
+    class="btn btn-outline-danger"
+    data-dismiss="modal"
+    value="Отменить"
+    (click)="cancel()"
+  />
+  <input
+    type="submit"
+    class="btn btn-info"
+    data-dismiss="modal"
+    value="Сохранить"
+    (click)="save()"
+  />
+</div>

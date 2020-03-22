@@ -39,12 +39,7 @@ export class CurriculumFiltersComponent implements OnInit {
       unSelectAllText: 'Отменить все',
       itemsShowLimit: 3,
       allowSearchFilter: true
-    }; 
+    };
   }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
+
 }

@@ -15,6 +15,7 @@ import { DolzhnostiComponent } from './configuration/dolzhnosti/dolzhnosti.compo
 import { DoctypeComponent } from './configuration/doctype/doctype.component';
 import { GroupsComponent } from './configuration/groups/groups.component';
 import { SpecialtyComponent } from './configuration/specialty/specialty.component';
+import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: 'uchPlan',
     component: CurriculumComponent
+  },
+  {
+    path: 'addDocument',
+    component: AddDocumentComponent
   },
 ];
 

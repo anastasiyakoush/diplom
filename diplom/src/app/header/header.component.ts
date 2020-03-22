@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
-  group: number;
+  title: string;
+  modalRef: BsModalRef;
+  constructor(private route: ActivatedRoute, private router: Router, private modalService: BsModalService) { }
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  ngOnInit() {
+  }
 
-  ngOnInit() {}
-
+  addDocument(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }
