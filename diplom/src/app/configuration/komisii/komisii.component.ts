@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-komisii',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./komisii.component.less']
 })
 export class KomisiiComponent implements OnInit {
-
-  constructor() { }
+  title: string;
+  modalRef: BsModalRef;
+  constructor(private router: Router, private modalService: BsModalService) { }
 
   ngOnInit() {
+  }
+
+  addUser(template: TemplateRef<any>) {
+    this.title = 'Добавить пользователя';
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateUser(template: TemplateRef<any>) {
+    this.title = 'Редактировать пользователя';
+    this.modalRef = this.modalService.show(template);
   }
 
 }
