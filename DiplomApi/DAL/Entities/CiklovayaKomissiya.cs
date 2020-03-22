@@ -1,8 +1,6 @@
-﻿namespace DAL.Entities
+namespace DAL.Entities
 {
-    public class CiklovayaKomissiya
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+  public class CiklovayaKomissiya : DictionaryModel
+  {
+  }
 }

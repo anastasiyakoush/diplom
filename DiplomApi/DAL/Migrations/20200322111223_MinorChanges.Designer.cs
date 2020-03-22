@@ -4,14 +4,16 @@ using DAL.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200322111223_MinorChanges")]
+    partial class MinorChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,7 +120,7 @@ namespace DAL.Migrations
                     b.Property<int>("SpecialnostId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UchebnyjPlanId")
+                    b.Property<int>("UchebnyjPlanId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -416,7 +418,9 @@ namespace DAL.Migrations
 
                     b.HasOne("DAL.Entities.UchebnyjPlan", "UchebnyjPlan")
                         .WithMany("Groups")
-                        .HasForeignKey("UchebnyjPlanId");
+                        .HasForeignKey("UchebnyjPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DAL.Entities.ObrazovatelnyjStandart", b =>

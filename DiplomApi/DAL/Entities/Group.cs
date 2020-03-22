@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities
 {
-  public class Group
+  public class Group : DictionaryModel
   {
-    public int Id { get; set; }
-    public string Number { get; set; }
+    public int SpecialnostId { get; set; }
+    public int? UchebnyjPlanId { get; set; }
 
     public virtual UchebnyjPlan UchebnyjPlan { get; set; }
     [Required]
