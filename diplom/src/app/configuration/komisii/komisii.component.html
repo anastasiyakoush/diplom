@@ -39,7 +39,7 @@
                             <th scope="row">1</th>
                             <td>ПОИТ</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateUser(template)">
+                              <button class="btn btn-outline-info" (click)="updateKomisii(template)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -93,7 +93,7 @@
             <div class="card mb-3">
               <div class="card-body">
                 <div class="px-xl-3">
-                  <button class="btn btn-block btn-info" (click)="addUser(template)">
+                  <button class="btn btn-block btn-info" (click)="addKomisii(template)">
                     <i class="fa fa-sign-out"></i>
                     <span>Добавить</span>
                   </button>
@@ -106,9 +106,9 @@
     </div>
   </div>
   <ng-template #template>
-    <app-update-users
+    <app-update-komisii
       [title]="title"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
-    ></app-update-users>
-  </ng-template> -->
+    ></app-update-komisii>
+  </ng-template>

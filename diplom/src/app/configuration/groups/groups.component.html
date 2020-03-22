@@ -41,7 +41,7 @@
                             <td>root</td>
                             <td>admin</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateUser(template)">
+                              <button class="btn btn-outline-info" (click)="updateGroup(template)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -95,7 +95,7 @@
             <div class="card mb-3">
               <div class="card-body">
                 <div class="px-xl-3">
-                  <button class="btn btn-block btn-info" (click)="addUser(template)">
+                  <button class="btn btn-block btn-info" (click)="addGroup(template)">
                     <i class="fa fa-sign-out"></i>
                     <span>Добавить</span>
                   </button>
@@ -108,9 +108,9 @@
     </div>
   </div>
   <ng-template #template>
-    <app-update-users
+    <app-update-groups
       [title]="title"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
-    ></app-update-users>
+    ></app-update-groups>
   </ng-template>

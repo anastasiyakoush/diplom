@@ -15,13 +15,13 @@ export class DoctypeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(template: TemplateRef<any>) {
-    this.title = 'Добавить пользователя';
+  addType(template: TemplateRef<any>) {
+    this.title = 'Добавить тип документа';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
-    this.title = 'Редактировать пользователя';
+  updateType(template: TemplateRef<any>) {
+    this.title = 'Редактировать тип документа';
     this.modalRef = this.modalService.show(template);
   }
 }

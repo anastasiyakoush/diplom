@@ -15,13 +15,13 @@ export class SpecialtyComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(template: TemplateRef<any>) {
-    this.title = 'Добавить пользователя';
+  addSpecialty(template: TemplateRef<any>) {
+    this.title = 'Добавить специальность';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
-    this.title = 'Редактировать пользователя';
+  updateSpecialty(template: TemplateRef<any>) {
+    this.title = 'Редактировать специальность';
     this.modalRef = this.modalService.show(template);
   }
 }

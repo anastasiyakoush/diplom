@@ -72,5 +72,5 @@
   <app-curriculum-filters></app-curriculum-filters>
 </div>
 <ng-template #template>
-  <app-update-curriculum (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+  <app-update-curriculum [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
 </ng-template>

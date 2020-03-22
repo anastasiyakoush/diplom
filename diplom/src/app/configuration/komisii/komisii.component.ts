@@ -15,13 +15,13 @@ export class KomisiiComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(template: TemplateRef<any>) {
-    this.title = 'Добавить пользователя';
+  addKomisii(template: TemplateRef<any>) {
+    this.title = 'Добавить цикловую комиссию';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
-    this.title = 'Редактировать пользователя';
+  updateKomisii(template: TemplateRef<any>) {
+    this.title = 'Редактировать цикловую комиссию';
     this.modalRef = this.modalService.show(template);
   }
 

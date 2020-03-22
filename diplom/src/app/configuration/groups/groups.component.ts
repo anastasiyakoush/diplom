@@ -15,13 +15,13 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(template: TemplateRef<any>) {
-    this.title = 'Добавить пользователя';
+  addGroup(template: TemplateRef<any>) {
+    this.title = 'Добавить группу';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
-    this.title = 'Редактировать пользователя';
+  updateGroup(template: TemplateRef<any>) {
+    this.title = 'Редактировать группу';
     this.modalRef = this.modalService.show(template);
   }
 }

@@ -16,13 +16,13 @@ export class DolzhnostiComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(template: TemplateRef<any>) {
-    this.title = 'Добавить пользователя';
+  addDolzhnost(template: TemplateRef<any>) {
+    this.title = 'Добавить должность';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUser(template: TemplateRef<any>) {
-    this.title = 'Редактировать пользователя';
+  updateDolzhnost(template: TemplateRef<any>) {
+    this.title = 'Редактировать должность';
     this.modalRef = this.modalService.show(template);
   }
 

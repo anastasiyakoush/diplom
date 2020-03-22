@@ -29,8 +29,7 @@
                         <thead class="thead-dark">
                           <tr>
                             <th class="my-auto" scope="col ">ID</th>
-                            <th scope="col">Пользователь</th>
-                            <th scope="col">Роль</th>
+                            <th scope="col">Тип документа</th>
                             <th scope="col">Действие</th>
                           </tr>
                         </thead>
@@ -38,10 +37,9 @@
                           <tr></tr>
                           <tr>
                             <th scope="row">1</th>
-                            <td>root</td>
-                            <td>admin</td>
+                            <td>тип документа</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateUser(template)">
+                              <button class="btn btn-outline-info" (click)="updateType(template)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -95,7 +93,7 @@
             <div class="card mb-3">
               <div class="card-body">
                 <div class="px-xl-3">
-                  <button class="btn btn-block btn-info" (click)="addUser(template)">
+                  <button class="btn btn-block btn-info" (click)="addType(template)">
                     <i class="fa fa-sign-out"></i>
                     <span>Добавить</span>
                   </button>
@@ -108,9 +106,9 @@
     </div>
   </div>
   <ng-template #template>
-    <app-update-users
+    <app-update-doctype
       [title]="title"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
-    ></app-update-users>
+    ></app-update-doctype>
   </ng-template>

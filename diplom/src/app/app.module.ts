@@ -37,6 +37,11 @@ import { DolzhnostiComponent } from './configuration/dolzhnosti/dolzhnosti.compo
 import { DoctypeComponent } from './configuration/doctype/doctype.component';
 import { GroupsComponent } from './configuration/groups/groups.component';
 import { SpecialtyComponent } from './configuration/specialty/specialty.component';
+import { UpdateDoctypeComponent } from './configuration/doctype/update-doctype/update-doctype.component';
+import { UpdateDolzhnostiComponent } from './configuration/dolzhnosti/update-dolzhnosti/update-dolzhnosti.component';
+import { UpdateGroupsComponent } from './configuration/groups/update-groups/update-groups.component';
+import { UpdateKomisiiComponent } from './configuration/komisii/update-komisii/update-komisii.component';
+import { UpdateSpecialtyComponent } from './configuration/specialty/update-specialty/update-specialty.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,12 @@ import { SpecialtyComponent } from './configuration/specialty/specialty.componen
     DolzhnostiComponent,
     DoctypeComponent,
     GroupsComponent,
-    SpecialtyComponent
+    SpecialtyComponent,
+    UpdateDoctypeComponent,
+    UpdateDolzhnostiComponent,
+    UpdateGroupsComponent,
+    UpdateKomisiiComponent,
+    UpdateSpecialtyComponent
   ],
   imports: [
     BrowserModule,
