@@ -3,16 +3,17 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
-  selector: 'app-configuration',
-  templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.less']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.less']
 })
-export class ConfigurationComponent implements OnInit {
+export class UsersComponent implements OnInit {
   title: string;
   modalRef: BsModalRef;
   constructor(private router: Router, private modalService: BsModalService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   addUser(template: TemplateRef<any>) {
     this.title='Добавить пользователя'
@@ -23,4 +24,5 @@ export class ConfigurationComponent implements OnInit {
     this.title='Редактировать пользователя'
     this.modalRef = this.modalService.show(template);
   }
+
 }

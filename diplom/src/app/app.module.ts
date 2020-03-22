@@ -28,13 +28,13 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap';
 import { SyllabusFiltersComponent } from './scientific-and-methodological-support/disciplines/syllabus-filters/syllabus-filters.component';
 import { CurriculumFiltersComponent } from './scientific-and-methodological-support/uch-plans/curriculum-filters/curriculum-filters.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { ConfigurationFilterComponent } from './configuration/configuration-filter/configuration-filter.component';
-import { UpdateConfigurationComponent } from './configuration/update-configuration/update-configuration.component';
 import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
 import { UpdateGroupComponent } from './scientific-and-methodological-support/type-plans/update-type-plan/update-group.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { UsersComponent } from './configuration/users/users.component';
+import { KomisiiComponent } from './configuration/komisii/komisii.component';
+import { UpdateUsersComponent } from './configuration/users/update-users/update-users.component';
 
 @NgModule({
   declarations: [
@@ -58,12 +58,13 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     DetailedSyllabusComponent,
     SyllabusFiltersComponent,
     CurriculumFiltersComponent,
-    ConfigurationComponent,
-    ConfigurationFilterComponent,
-    UpdateConfigurationComponent,
+    UpdateUsersComponent,
     GroupComponent,
     UpdateGroupComponent,
-    PlannedClassesComponent
+    PlannedClassesComponent,
+    UsersComponent,
+    KomisiiComponent,
+    UpdateUsersComponent
   ],
   imports: [
     BrowserModule,

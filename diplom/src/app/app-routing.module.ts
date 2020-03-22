@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeachersComponent } from './teachers/teachers.component';
 import { OpenClassesComponent } from './open-classes/open-classes.component';
-
+import { UsersComponent } from './../app/configuration/users/users.component';
 import { LoginComponent } from './login/login.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
 import { DisciplinesComponent } from './scientific-and-methodological-support/disciplines/disciplines.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/uch-plans/curriculum.component';
 import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
@@ -17,7 +16,7 @@ import { PlannedClassesComponent} from './open-classes/planned-classes/planned-c
 const routes: Routes = [
   { path: 'authorization/login', component: LoginComponent },
   {
-    path: 'configuration', component: ConfigurationComponent
+    path: 'users', component: UsersComponent
   },
   {
     path: 'teachers',
