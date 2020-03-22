@@ -2,7 +2,9 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Profiles;
 using BLL.Services;
+using Common.Dtos;
 using DAL.DAL;
+using DAL.Entities;
 using DiplomApi.Profiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +42,13 @@ namespace DiplomApi
 
       services.AddTransient<ITeacherService, TeacherService>();
       services.AddTransient<ISubjectService, SubjectService>();
+      services.AddTransient<IPlanService, PlanService>();
+      services.AddTransient<IPublicLessonService, PublicLessonService>();
+      services.AddTransient<ICrudService<SpecialnostDto>, CrudService<SpecialnostDto, Specialnost>>();
+      services.AddTransient<ICrudService<CiklovayaKomissiyaDto>, CrudService<CiklovayaKomissiyaDto, CiklovayaKomissiya>>();
+      services.AddTransient<ICrudService<PositionDto>, CrudService<PositionDto, Position>>();
+      services.AddTransient<ICrudService<DocumentTypeDto>, CrudService<DocumentTypeDto, DocumentType>>();
+      services.AddTransient<ICrudService<GroupDto>, CrudService<GroupDto, Group>>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Common.Dtos
 {
-  public class GroupDto
+  public class GroupDto : DictionaryModelDto
   {
-    public int? Id { get; set; }
-    public string Number { get; set; }
+    public int? SpecialnostId { get; set; }
+    public int? UchebnyjPlanId { get; set; }
 
     public UchebnyjPlanDto UchebnyjPlan { get; set; }
 
