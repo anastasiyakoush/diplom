@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { Plan } from './plan.model';
-import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
 
 @Component({
   selector: 'app-curriculum',
@@ -33,13 +32,21 @@ export class CurriculumComponent implements OnInit {
       link: 'ссылка',
     }
   ];
+
+  title: string;
   modalRef: BsModalRef;
   constructor(private router: Router, private modalService: BsModalService) {}
 
   ngOnInit() {
   }
 
-  addPlan(template: TemplateRef<any>) {
+  addUchPlan(template: TemplateRef<any>) {
+    this.title = 'Добавить учебный план';
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateUchPlan(template: TemplateRef<any>) {
+    this.title = 'Редактировать учебный план';
     this.modalRef = this.modalService.show(template);
   }
 }

@@ -28,13 +28,15 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap';
 import { SyllabusFiltersComponent } from './scientific-and-methodological-support/disciplines/syllabus-filters/syllabus-filters.component';
 import { CurriculumFiltersComponent } from './scientific-and-methodological-support/uch-plans/curriculum-filters/curriculum-filters.component';
-import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
-import { UpdateGroupComponent } from './scientific-and-methodological-support/type-plans/update-type-plan/update-group.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { UsersComponent } from './configuration/users/users.component';
 import { KomisiiComponent } from './configuration/komisii/komisii.component';
 import { UpdateUsersComponent } from './configuration/users/update-users/update-users.component';
+import { DolzhnostiComponent } from './configuration/dolzhnosti/dolzhnosti.component';
+import { DoctypeComponent } from './configuration/doctype/doctype.component';
+import { GroupsComponent } from './configuration/groups/groups.component';
+import { SpecialtyComponent } from './configuration/specialty/specialty.component';
 
 @NgModule({
   declarations: [
@@ -59,12 +61,14 @@ import { UpdateUsersComponent } from './configuration/users/update-users/update-
     SyllabusFiltersComponent,
     CurriculumFiltersComponent,
     UpdateUsersComponent,
-    GroupComponent,
-    UpdateGroupComponent,
     PlannedClassesComponent,
     UsersComponent,
     KomisiiComponent,
-    UpdateUsersComponent
+    UpdateUsersComponent,
+    DolzhnostiComponent,
+    DoctypeComponent,
+    GroupsComponent,
+    SpecialtyComponent
   ],
   imports: [
     BrowserModule,

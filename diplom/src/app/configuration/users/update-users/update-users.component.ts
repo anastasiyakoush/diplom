@@ -17,11 +17,11 @@ export class UpdateUsersComponent implements OnInit, OnDestroy {
   ngOnDestroy() { }
 
   cancel() {
-    this.cancelClick.emit()
+    this.cancelClick.emit();
   }
 
   save() {
-    this.saveClick.emit()
+    this.saveClick.emit();
   }
 
 }

@@ -10,7 +10,7 @@
                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                       <div class="text-center text-sm-left mb-2 mb-sm-0">
                         <h2 class="pt-sm-2 pb-1 mb-0 text-nowrap caption">
-                          Цикловые комиссии
+                          Должности
                         </h2>
                       </div>
                     </div>
@@ -37,7 +37,7 @@
                           <tr></tr>
                           <tr>
                             <th scope="row">1</th>
-                            <td>ПОИТ</td>
+                            <td>должность</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateUser(template)">
                                 <svg
@@ -105,10 +105,10 @@
       </div>
     </div>
   </div>
-<!--   <ng-template #template>
-    <app-update-komisii
+  <ng-template #template>
+    <app-update-users
       [title]="title"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
-    ></app-update-komisii>
-  </ng-template> -->
+    ></app-update-users>
+  </ng-template>

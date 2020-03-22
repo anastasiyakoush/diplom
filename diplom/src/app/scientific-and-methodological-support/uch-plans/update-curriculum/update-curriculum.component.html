@@ -1,47 +1,89 @@
 <div class="modal-header">
-  <h4 class="modal-title">Добавить учебный план</h4>
-  <button type="button" class="close" data-dismiss="modal" (click)="cancel()">&times;</button>
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" data-dismiss="modal" (click)="cancel()">
+    &times;
+  </button>
 </div>
 
 <div class="modal-body">
   <div class="form-group">
-      <label for="num">Регистрационный номер плана</label>
-      <input type="text" class="form-control" id="num" placeholder="№ учебного плана">
+    <label for="num">Регистрационный номер плана</label>
+    <input
+      type="text"
+      class="form-control"
+      id="num"
+      placeholder="№ учебного плана"
+    />
   </div>
   <div class="form-group">
-      <label for="file1">Учебный план</label>
-      <input type="file" class="form-control-file border" name="file1">
+    <label for="file1">Учебный план</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" (click)="addFile()">
+        <label class="custom-file-label" for="customFile">Выберите файл</label>
+    </div>
   </div>
   <div class="form-group">
-      <label for="file2">Типовой план</label>
-<!--  <input type="file" class="file" name="file2" multiple data-show-upload="true" data-show-caption="true"> -->
-      <input type="file" class="form-control-file border" name="file2">
-  </div>
-  <div class="form-group">
-      <label for="date">Дата создания</label>
-      <div class="input-group">
-        <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" [bsValue]="bsValue" placeholder="Дата создания">
-        <div class="input-group-btn">
+    <label for="file2">Типовой план</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-info" (click)="addFile()">Обновить</button>
         </div>
-      </div>
+        <div class="custom-file col">
+            <input type="file" class="custom-file-input">
+            <label class="custom-file-label">Выберите файл</label>
+        </div>
+    </div>
+    <div class="input-group" *ngIf="addBtn">
+        <div class="custom-file col">
+            <input type="file" class="custom-file-input">
+            <label class="custom-file-label" for="customFile">Выберите файл</label>
+        </div>
+    </div>
   </div>
   <div class="form-group">
-      <label>Разработчик</label>
-      <div class="row">
-          <div class="col">
-              <input type="text" class="form-control" placeholder="Фамилия">
-          </div>
-          <div class="col">
-              <input type="text" class="form-control" placeholder="Имя">
-          </div>
-          <div class="col">
-              <input type="text" class="form-control" placeholder="Отчество">
-          </div>
+    <label for="date">Дата создания</label>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        bsDatepicker
+        #dp="bsDatepicker"
+        [bsConfig]="bsConfig"
+        [bsValue]="bsValue"
+        placeholder="Дата создания"
+      />
+      <div class="input-group-btn"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Разработчик</label>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Фамилия" />
       </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Имя" />
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Отчество" />
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="modal-footer">
-  <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
-  <input type="submit" class="btn btn-info" data-dismiss="modal" value="Добавить" (click)="save()">
+  <input
+    type="button"
+    class="btn btn-outline-danger"
+    data-dismiss="modal"
+    value="Отменить"
+    (click)="cancel()"
+  />
+  <input
+    type="submit"
+    class="btn btn-info"
+    data-dismiss="modal"
+    value="Добавить"
+    (click)="save()"
+  />
 </div>

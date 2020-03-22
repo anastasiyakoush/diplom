@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.less']
+  selector: 'app-dolzhnosti',
+  templateUrl: './dolzhnosti.component.html',
+  styleUrls: ['./dolzhnosti.component.less']
 })
-export class UsersComponent implements OnInit {
+export class DolzhnostiComponent implements OnInit {
   title: string;
   modalRef: BsModalRef;
+
   constructor(private router: Router, private modalService: BsModalService) { }
 
   ngOnInit() {
