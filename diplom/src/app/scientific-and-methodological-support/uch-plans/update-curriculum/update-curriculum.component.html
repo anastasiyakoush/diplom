@@ -28,10 +28,11 @@
         <div class="input-group-prepend">
           <button class="btn btn-outline-info" (click)="addFile()">Обновить</button>
         </div>
-        <div class="custom-file col">
-            <input type="file" class="custom-file-input">
-            <label class="custom-file-label">Выберите файл</label>
-        </div>
+        <select class="form-control col">
+          <option>План 1</option>
+          <option>План 2</option>
+          <option>План 3</option>
+        </select>
     </div>
     <div class="input-group" *ngIf="addBtn">
         <div class="custom-file col">
@@ -53,20 +54,6 @@
         placeholder="Дата создания"
       />
       <div class="input-group-btn"></div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label>Разработчик</label>
-    <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Фамилия" />
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Имя" />
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Отчество" />
-      </div>
     </div>
   </div>
 </div>
