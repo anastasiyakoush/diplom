@@ -2,22 +2,41 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeachersComponent } from './teachers/teachers.component';
 import { OpenClassesComponent } from './open-classes/open-classes.component';
-
+import { UsersComponent } from './../app/configuration/users/users.component';
 import { LoginComponent } from './login/login.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
 import { DisciplinesComponent } from './scientific-and-methodological-support/disciplines/disciplines.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/uch-plans/curriculum.component';
 import { DetailedTeachersComponent } from './teachers/detailed-teachers/detailed-teachers.component';
 import { DetailedClassesComponent } from './open-classes/detailed-classes/detailed-classes.component';
 import { UpdateClassesComponent } from './open-classes/update-classes/update-classes.component';
-import { GroupComponent } from './scientific-and-methodological-support/type-plans/group.component';
-import { PlannedClassesComponent} from './open-classes/planned-classes/planned-classes.component'
+import { PlannedClassesComponent} from './open-classes/planned-classes/planned-classes.component';
+import { KomisiiComponent} from './configuration/komisii/komisii.component';
+import { DolzhnostiComponent } from './configuration/dolzhnosti/dolzhnosti.component';
+import { DoctypeComponent } from './configuration/doctype/doctype.component';
+import { GroupsComponent } from './configuration/groups/groups.component';
+import { SpecialtyComponent } from './configuration/specialty/specialty.component';
+import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
 
 
 const routes: Routes = [
   { path: 'authorization/login', component: LoginComponent },
   {
-    path: 'configuration', component: ConfigurationComponent
+    path: 'users', component: UsersComponent
+  },
+  {
+    path: 'komisii', component: KomisiiComponent
+  },
+  {
+    path: 'dolzhnosti', component: DolzhnostiComponent
+  },
+  {
+    path: 'doctype', component: DoctypeComponent
+  },
+  {
+    path: 'groups', component: GroupsComponent
+  },
+  {
+    path: 'specialty', component: SpecialtyComponent
   },
   {
     path: 'teachers',
@@ -48,14 +67,13 @@ const routes: Routes = [
     component: DisciplinesComponent
   },
   {
-    path: 'support/:groupId/plan',
+    path: 'uchPlan',
     component: CurriculumComponent
   },
   {
-    path: 'groups',
-    component: GroupComponent
+    path: 'addDocument',
+    component: AddDocumentComponent
   },
-
 ];
 
 @NgModule({
