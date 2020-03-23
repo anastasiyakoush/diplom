@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Lesson } from './lesson.model';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { EndpointsService } from '../endpoints.service';
 
 @Component({
   selector: 'app-open-classes',
@@ -37,9 +38,13 @@ export class OpenClassesComponent implements OnInit {
     }
   ];
   modalRef: BsModalRef;
-  constructor(private router: Router, private modalService: BsModalService) {}
+  constructor(private router: Router,
+    private modalService: BsModalService,
+    private endpointService: EndpointsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  // this.endpointService.getLessons().subscribe((data:Lesson[])=>this.lessons = data)
+  }
 
   onClick(id: number) {
     this.router.navigate(['openClasses/' + id]);
@@ -49,3 +54,4 @@ export class OpenClassesComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 }
+

@@ -3,6 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { Plan } from './plan.model';
 import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
   selector: 'app-curriculum',
@@ -34,9 +35,12 @@ export class CurriculumComponent implements OnInit {
     }
   ];
   modalRef: BsModalRef;
-  constructor(private router: Router, private modalService: BsModalService) {}
+  constructor(private router: Router,
+     private modalService: BsModalService,
+     private endpointService: EndpointsService) {}
 
   ngOnInit() {
+  //  this.endpointService.getPlans().subscribe(data=> this.plans = data)
   }
 
   addPlan(template: TemplateRef<any>) {

@@ -7,19 +7,19 @@
               <div class="modal-body">
                   <div class="form-group">
                       <label for="familia">Фамилия</label>
-                      <input type="text" class="form-control" id="familia" placeholder="Фамилия">
+                      <input type="text" class="form-control" [(ngModel)]="form.surname" placeholder="Фамилия">
                   </div>
                   <div class="form-group">
                       <label for="imya">Имя</label>
-                      <input type="text" class="form-control" id="imya" placeholder="Имя">
+                      <input type="text" class="form-control" [(ngModel)]="form.name" placeholder="Имя">
                   </div>
                   <div class="form-group">
                       <label for="otchestvo">Отчество</label>
-                      <input type="text" class="form-control" id="otchestvo" placeholder="Отчество">
+                      <input type="text" class="form-control" [(ngModel)]="form.fathername" placeholder="Отчество">
                   </div>
                   <div class="form-group">
                       <label for="kategoria">Категория</label>
-                      <select class="form-control" id="kategoria">
+                      <select class="form-control" [(ngModel)]="form.Category">
                           <option>Высшая</option>
                           <option>Первая</option>
                           <option>Вторая</option>
@@ -27,17 +27,8 @@
                   </div>
                   <div class="form-group">
                       <label for="tsk">Цикловая комиссия</label>
-                      <select class="form-control" id="tsk">
-                          <option>ПОИТ</option>
-                          <option>ПиПРэС</option>
-                          <option>ЭВС</option>
-                          <option>Микро- и наноэлектроника</option>
-                          <option>ТЭРэС</option>
-                          <option>ПМС</option>
-                          <option>Общетехнические дисциплины</option>
-                          <option>Математические и естесвенно научные дисцциплины</option>
-                          <option>Социально-гуманитарные дисциплины</option>
-                          <option>Физическое воспитание</option>
+                      <select class="form-control" [(ngModel)]="tsk">
+                          <option *ngFor="let cks of ck">{{ck.name}}</option>
                       </select>
                   </div>
                   <div class="form-group">

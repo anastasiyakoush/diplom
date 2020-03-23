@@ -35,6 +35,7 @@ import { GroupComponent } from './scientific-and-methodological-support/type-pla
 import { UpdateGroupComponent } from './scientific-and-methodological-support/type-plans/update-type-plan/update-group.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProgramType } from './programType.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Disciplina } from './disciplina.model';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
   selector: 'app-disciplines',
@@ -38,13 +39,16 @@ export class DisciplinesComponent implements OnInit {
 
   type: ProgramType;
   modalRef: BsModalRef;
-  constructor(private route: ActivatedRoute, private modalService: BsModalService) { }
+  constructor(private route: ActivatedRoute,
+    private modalService: BsModalService,
+    private endpointService: EndpointsService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.type = params['type'];
       console.log(this.type);
   });
+ // this.endpointService.getSubjects().subscribe(data=> this.programs = data)
   }
 
   selectChanged(num: number) {
