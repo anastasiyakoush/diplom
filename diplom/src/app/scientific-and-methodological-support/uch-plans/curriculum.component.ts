@@ -34,6 +34,8 @@ export class CurriculumComponent implements OnInit {
       link: 'ссылка',
     }
   ];
+
+  title: string;
   modalRef: BsModalRef;
   constructor(private router: Router,
      private modalService: BsModalService,
@@ -43,7 +45,13 @@ export class CurriculumComponent implements OnInit {
   //  this.endpointService.getPlans().subscribe(data=> this.plans = data)
   }
 
-  addPlan(template: TemplateRef<any>) {
+  addUchPlan(template: TemplateRef<any>) {
+    this.title = 'Добавить учебный план';
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateUchPlan(template: TemplateRef<any>) {
+    this.title = 'Редактировать учебный план';
     this.modalRef = this.modalService.show(template);
   }
 }

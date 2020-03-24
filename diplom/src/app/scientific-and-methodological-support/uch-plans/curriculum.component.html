@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Учебный план</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info" (click)="addPlan(template)">Добавить</button>
+      <button type="submit" class="btn btn-info" (click)="addUchPlan(template)">Добавить</button>
     </form>
 
     <table class="table table-bordered table-hover">
@@ -24,7 +24,7 @@
           <td>{{plan.date}}</td>
           <td>{{plan.link}}</td>
           <td>            
-            <button class="btn btn-outline-info" (click)="addPlan(template)">
+            <button class="btn btn-outline-info" (click)="updateUchPlan(template)">
             <svg
               class="bi bi-pencil"
               width="1.5em"
@@ -72,5 +72,5 @@
   <app-curriculum-filters></app-curriculum-filters>
 </div>
 <ng-template #template>
-  <app-update-curriculum (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+  <app-update-curriculum [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
 </ng-template>

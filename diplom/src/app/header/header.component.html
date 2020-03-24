@@ -11,15 +11,24 @@
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown">Научно-методическое обеспечение</a>
             <div class="dropdown-menu">
-             <a routerLink="/support/:groupId/plan" class="dropdown-item">учебный план</a>
-             <a routerLink="support/disciplines"  class="dropdown-item">учебные дисциплины</a>
+             <a routerLink="uchPlan" class="dropdown-item">Учебный план</a>
+             <a routerLink="support/disciplines"  class="dropdown-item">Учебные дисциплины</a>
+             <a class="dropdown-item"><button (click)="addDocument(template)">Добавить документ</button></a>
              </div>
          </li>
       </ul>
       <ul class="navbar-nav">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-          <a routerLink="configuration" class="nav-link navbar-right">Конфигурация</a>
-        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown">Конфигурация</a>
+            <div class="dropdown-menu">
+             <a routerLink="users" class="dropdown-item">Пользователи</a>
+             <a routerLink="komisii"  class="dropdown-item">Цикловые комиссии</a>
+             <a routerLink="specialty"  class="dropdown-item">Специальности</a>
+             <a routerLink="groups"  class="dropdown-item">Группы</a>
+             <a routerLink="dolzhnosti"  class="dropdown-item">Должности</a>
+             <a routerLink="doctype"  class="dropdown-item">Типы документов</a>
+             </div>
+         </li>
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a routerLink="//authorization/login" class="nav-link">Вход</a>
         </li>
@@ -27,3 +36,9 @@
     </div>
   </nav>
 </header>
+<ng-template #template>
+  <app-add-document
+    (cancelClick)="modalRef.hide()"
+    (saveClick)="modalRef.hide()"
+  ></app-add-document>
+</ng-template>
