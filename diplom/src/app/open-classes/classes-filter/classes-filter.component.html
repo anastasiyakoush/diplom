@@ -10,19 +10,31 @@
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label for="group">Группа</label>
-            <input type="text" class="form-control" id="group" placeholder="Номер группы">
+            <label>Группа</label>
+            <ng-multiselect-dropdown
+              [placeholder]="'Номер группы'"
+              [data]="dropdownList1"
+              [(ngModel)]="selectedItems1"
+              [settings]="dropdownSettings"
+            >
+            </ng-multiselect-dropdown>
           </div>
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label for="group">Преподаватель</label>
-            <input type="text" class="form-control" id="group" placeholder="Преподаватель">
+            <label>Преподаватель</label>
+            <ng-multiselect-dropdown
+              [placeholder]="'Преподаватель'"
+              [data]="dropdownList2"
+              [(ngModel)]="selectedItems2"
+              [settings]="dropdownSettings"
+            >
+            </ng-multiselect-dropdown>
           </div>
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label>Дата проведения</label>
+            <label>Дата</label>
             <div class="row">
               <div class="form-group col">
                 <div class="input-group">

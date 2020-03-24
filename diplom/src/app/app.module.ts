@@ -45,6 +45,7 @@ import { UpdateKomisiiComponent } from './configuration/komisii/update-komisii/u
 import { UpdateSpecialtyComponent } from './configuration/specialty/update-specialty/update-specialty.component';
 import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
 import { UpdateDetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/update-detailed-syllabus/update-detailed-syllabus.component';
+import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { UpdateDetailedSyllabusComponent } from './scientific-and-methodological
     UpdateSpecialtyComponent,
     AddDocumentComponent,
     UpdateDetailedSyllabusComponent,
+    CompareClassesComponent,
   ],
   imports: [
     BrowserModule,

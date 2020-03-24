@@ -1,9 +1,7 @@
 <div class="d-flex h-100 justify-content-between">
     <div class="col-sm-8 main align-self-start">
-      <div class="caption">Запланированные занятия</div>
+      <div class="caption">Сравнение запланированных и проведённых</div>
       <form class="form-inline controls d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-info"><a routerLink="/compareClasses"> Сравнить</a></button>
-        <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
         <div class="input-group search">
           <input
             type="text"
@@ -21,18 +19,15 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Дисциплина</th>
-            <th scope="col">Тема</th>
-            <th scope="col">Группа</th>
             <th scope="col">Преподаватель</th>
-            <th scope="col">Месяц</th>
+            <th scope="col">Запланированная дата</th>
+            <th scope="col">Дата проведения</th>
           </tr>
         </thead>
         <tbody *ngFor="let lesson of lessons">
           <tr>
             <td scope="row">{{ lesson.id }}</td>
             <td>{{lesson.discipline}}</td>
-            <td>{{lesson.topic}}</td>
-            <td>{{lesson.group}}</td>
             <td>{{lesson.teacher}}</td>
             <td>{{lesson.date}}</td>
           </tr>
@@ -45,3 +40,4 @@
     <app-update-classes title="Добавить открытое занятие" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
   </ng-template>
   
+
