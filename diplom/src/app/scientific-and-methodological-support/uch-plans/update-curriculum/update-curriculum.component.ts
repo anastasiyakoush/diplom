@@ -11,6 +11,9 @@ import { EndpointsService } from 'src/app/endpoints.service';
 })
 export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   addBtn = false;
+  spec = false;
+  standart = false;
+  tipovoi = false;
 
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
@@ -51,6 +54,24 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
 
   addFile() {
     this.addBtn = true;
+  }
+
+  specSelect() {
+    this.spec = true;
+    this.standart = false;
+    this.tipovoi = false;
+  }
+
+  standartSelect() {
+    this.standart = true;
+    this.spec = false;
+    this.tipovoi = false;
+  }
+
+  tipovoiSelect() {
+    this.tipovoi = true;
+    this.standart = false;
+    this.spec = false;
   }
 
 }
