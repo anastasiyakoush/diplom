@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import {FormControl} from '@angular/forms';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 
 @Component({
@@ -21,16 +22,23 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-
+  form ={
+    registarcionnyjNomer: '',
+    date: new Date(),
+    fileName: 'учебый план'
+  }
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor() {
+  constructor( private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-   }
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+
+  }
   ngOnDestroy() { }
 
   cancel() {
@@ -38,7 +46,7 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    this.saveClick.emit();
+    this.endpointService.createOrUpdatePlan(this.form).subscribe(data =>     this.saveClick.emit()    )
   }
 
   addFile() {

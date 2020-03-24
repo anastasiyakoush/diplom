@@ -14,27 +14,7 @@ export class DisciplinesComponent implements OnInit {
   spec = false;
   course = false;
   programs: Disciplina[] = [
-    {
-      id: 1,
-      nomer: 11,
-      name: 'математика',
-      plan: 'ссылка',
-      hours: '170/12/23'
-    },
-    {
-      id: 1,
-      nomer: 15,
-      name: 'КПИЯП',
-      plan: 'ссылка',
-      hours: '170/12/23'
-    },
-    {
-      id: 1,
-      nomer: 21,
-      name: 'ОТ',
-      plan: 'ссылка',
-      hours: '170/12/23'
-    }
+
   ];
 
   type: ProgramType;
@@ -48,8 +28,14 @@ export class DisciplinesComponent implements OnInit {
       this.type = params['type'];
       console.log(this.type);
   });
- // this.endpointService.getSubjects().subscribe(data=> this.programs = data)
-  }
+  this.endpointService.getSubjects().subscribe(data=>{
+    this.programs = data
+    data.forEach((program:any, index)=> {
+      this.programs[index].hours = program.laboratornye + program.practika + program.kursovoeProectirovanie;
+    });
+
+  })
+}
 
   selectChanged(num: number) {
     if (num === 1) {

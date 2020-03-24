@@ -1,7 +1,7 @@
 export class Plan {
   id: number;
   name: number;
-  nomer: number;
+  registarcionnyjNomer: string;
   date: string;
   link: string;
 }

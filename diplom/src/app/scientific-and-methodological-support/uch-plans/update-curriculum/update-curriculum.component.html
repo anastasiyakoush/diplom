@@ -7,11 +7,11 @@
 
 <div class="modal-body">
   <div class="form-group">
-    <label for="num">Регистрационный номер плана</label>
+    <label for="regNumber">Регистрационный номер плана</label>
     <input
       type="text"
       class="form-control"
-      id="num"
+      [(ngModel)]="form.registarcionnyjNomer"
       placeholder="№ учебного плана"
     />
   </div>
@@ -50,7 +50,7 @@
         bsDatepicker
         #dp="bsDatepicker"
         [bsConfig]="bsConfig"
-        [bsValue]="bsValue"
+        [bsValue]="form.date"
         placeholder="Дата создания"
       />
       <div class="input-group-btn"></div>

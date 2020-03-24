@@ -35,9 +35,9 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>ПОИТ</td>
+                          <tr *ngFor="let c of komisia">
+                            <th scope="row">{{c.id}}</th>
+                            <td>{{c.name}}</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateKomisii(template)">
                                 <svg
@@ -60,7 +60,7 @@
                                   ></path>
                                 </svg>
                             </button>
-                            <button class="btn btn-outline-info">
+                            <button class="btn btn-outline-info" (onClick)="delete(c.id)">
                                 <svg
                                   class="bi bi-trash"
                                   width="1.5em"
@@ -109,6 +109,6 @@
     <app-update-komisii
       [title]="title"
       (cancelClick)="modalRef.hide()"
-      (saveClick)="modalRef.hide()"
+      (saveClick)="saveClick()"
     ></app-update-komisii>
   </ng-template>

@@ -41,5 +41,5 @@
   <app-teachers-filter></app-teachers-filter>
 </div>
 <ng-template #template>
-    <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+    <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="onSave()"></app-update-teachers>
 </ng-template>

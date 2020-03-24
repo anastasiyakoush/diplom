@@ -12,27 +12,6 @@ import { EndpointsService } from 'src/app/endpoints.service';
 })
 export class CurriculumComponent implements OnInit {
   plans: Plan[] = [
-    {
-      id: 1,
-      name: 1,
-      nomer: 131,
-      date: '26/11/2019',
-      link: 'ссылка',
-    },
-    {
-      id: 2,
-      name: 2,
-      nomer: 2,
-      date: '15/09/2019',
-      link: 'ссылка',
-    },
-    {
-      id: 3,
-      name: 3,
-      nomer: 191,
-      date: '26/11/2019',
-      link: 'ссылка',
-    }
   ];
 
   title: string;
@@ -42,7 +21,7 @@ export class CurriculumComponent implements OnInit {
      private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  //  this.endpointService.getPlans().subscribe(data=> this.plans = data)
+  this.endpointService.getPlans().subscribe(data=> this.plans = data)
   }
 
   addUchPlan(template: TemplateRef<any>) {

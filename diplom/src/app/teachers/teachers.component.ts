@@ -39,4 +39,9 @@ export class TeachersComponent implements OnInit {
       this.teachers = data;
     })
   }
+
+  onSave() {
+    this.modalRef.hide();
+    location.reload();
+  }
 }

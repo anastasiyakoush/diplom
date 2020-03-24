@@ -15,29 +15,24 @@
                   </div>
                   <div class="form-group">
                       <label for="otchestvo">Отчество</label>
-                      <input type="text" class="form-control" [(ngModel)]="form.fathername" placeholder="Отчество">
+                      <input type="text" class="form-control" [(ngModel)]="form.fatherName" placeholder="Отчество">
                   </div>
                   <div class="form-group">
                       <label for="kategoria">Категория</label>
-                      <select class="form-control" [(ngModel)]="form.Category">
-                          <option>Высшая</option>
-                          <option>Первая</option>
-                          <option>Вторая</option>
+                      <select class="form-control" (ngModelChange)="onCategoryChange($event)">
+                          <option  *ngFor="let category of keys(categories)" [ngValue]="categories[category]">{{category}}</option>
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="tsk">Цикловая комиссия</label>
-                      <select class="form-control" [(ngModel)]="tsk">
-                          <option *ngFor="let cks of ck">{{ck.name}}</option>
+                      <label for="ck">Цикловая комиссия</label>
+                      <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
+                          <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
                       </select>
                   </div>
                   <div class="form-group">
                       <label for="status">Статус</label>
-                      <select class="form-control" id="status">
-                          <option>Работает</option>
-                          <option>Уволен</option>
-                          <option>Декретный отпуск</option>
-                          <option>Армия</option>
+                      <select class="form-control" (ngModelChange)="onStatusChange($event)">
+                          <option *ngFor="let status of keys(statuses)" [ngValue]="statuses[status]">{{status}}</option>
                       </select>
                   </div>
               </div>
