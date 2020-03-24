@@ -6,14 +6,14 @@ export enum Component
 
 export enum Status
 {
-    Faired = 0,
-    Employee = 1,
-    InDekret = 2
+    работает = 0,
+    уволен = 1,
+    декрет = 2
 }
 
 export enum Category
 {
-    Superior = 0,
-    First = 1,
-    Second = 2
+    Высшая = 0,
+    Первая = 1,
+    Вторая = 2
 }

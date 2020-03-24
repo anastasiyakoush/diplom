@@ -12,7 +12,7 @@ export class EndpointsService {
   teacherBaseURI = 'https://localhost:44312/api/Teachers';
   PlanBaseURI = 'https://localhost:44312/api/Plan';
   PublicLessonBaseURI = 'https://localhost:44312/api/PublicLesson';
-  SubjectBaseURI = 'https://localhost:44312/api/Plan';
+  SubjectBaseURI = 'https://localhost:44312/api/Subject';
   ConfigurationBaseURI = 'https://localhost:44312/api/Configuration';
   constructor(private http: HttpClient) {}
 
@@ -37,18 +37,18 @@ export class EndpointsService {
   }
 
   SearchTeacher(searchText: string) {
-    return this.http.post(this.teacherBaseURI, searchText);
+    return this.http.post(this.teacherBaseURI+"/search", searchText);
   }
 
   getPlans() {
-    return this.http.get<Plan[]>(this.PlanBaseURI);
+    return this.http.get<any[]>(this.PlanBaseURI);
   }
 
   getPlanById(id: number) {
     return this.http.get<Plan>(this.PlanBaseURI + `/${id}`);
   }
 
-  createOrUpdatePlan(data: Plan) {
+  createOrUpdatePlan(data: any) {
     return this.http.post(this.PlanBaseURI, data);
   }
 
@@ -89,5 +89,18 @@ export class EndpointsService {
 
   getCK() {
     return this.http.get<any[]>(this.ConfigurationBaseURI+ "/ck");
+  }
+
+  createCK(ck) {
+    return this.http.post<any[]>(this.ConfigurationBaseURI+ "/ck", ck);
+
+  }
+
+  getGroups() {
+    return this.http.get<any[]>("/api/Configuration/group");
+  }
+
+  deleteCK(id) {
+    return this.http.delete(this.ConfigurationBaseURI+ "/ck", id);
   }
 }
