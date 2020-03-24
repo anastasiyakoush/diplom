@@ -53,8 +53,7 @@ export class EndpointsService {
   }
 
   getLessons() {
-    return this.http.get<Lesson[]>(this.PublicLessonBaseURI
-    );
+    return this.http.get<Lesson[]>(this.PublicLessonBaseURI);
   }
 
   getLessonById(id: number) {
