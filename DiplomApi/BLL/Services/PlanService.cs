@@ -3,9 +3,11 @@ using BLL.Interfaces;
 using Common.Dtos;
 using Common.FilterCriterias;
 using DAL.DAL;
+using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +25,49 @@ namespace BLL.Services
       _mapper = mapper;
     }
 
-    public Task<UchebnyjPlanDto> AddOrUpdateUchebnyiPlanAsync(UchebnyjPlanDto uchebnyjPlanDto)
+    public async Task<ObrazovatelnyjStandartDto> AddOrUpdateObrStandrtAsync(ObrazovatelnyjStandartDto obrazovatelnyjStandartDto)
     {
-      throw new NotImplementedException();
+      var toUpdate = _mapper.Map<ObrazovatelnyjStandart>(obrazovatelnyjStandartDto);
+
+      var dependency = await _context.Specialnosti
+       .FirstOrDefaultAsync(x => x.Id == toUpdate.Specialnost.Id);
+      toUpdate.Specialnost = dependency;
+
+      _context.ObrazovatelnyeStandarty.Update(toUpdate);
+
+      await _context.SaveChangesAsync();
+
+      return _mapper.Map<ObrazovatelnyjStandartDto>(toUpdate);
+    }
+
+    public async Task<TipovojUchebnyjPlanDto> AddOrUpdateTipovoyPlanAsync(TipovojUchebnyjPlanDto tipovojUchebnyjPlanDto)
+    {
+      var toUpdate = _mapper.Map<TipovojUchebnyjPlan>(tipovojUchebnyjPlanDto);
+
+      var dependency = await _context.ObrazovatelnyeStandarty
+        .FirstOrDefaultAsync(x => x.Id == toUpdate.ObrazovatelnyjStandart.Id);
+      toUpdate.ObrazovatelnyjStandart = dependency;
+
+      _context.TipovyeUchebnyePlany.Update(toUpdate);
+
+      await _context.SaveChangesAsync();
+
+      return _mapper.Map<TipovojUchebnyjPlanDto>(toUpdate);
+    }
+
+    public async Task<UchebnyjPlanDto> AddOrUpdateUchebnyiPlanAsync(UchebnyjPlanDto uchebnyjPlanDto)
+    {
+      var toUpdate = _mapper.Map<UchebnyjPlan>(uchebnyjPlanDto);
+
+      var dependency = await _context.TipovyeUchebnyePlany
+       .FirstOrDefaultAsync(x => x.Id == toUpdate.TipovojUchebnyjPlan.Id);
+      toUpdate.TipovojUchebnyjPlan = dependency;
+
+      _context.UchebnyePlany.Update(toUpdate);
+
+      await _context.SaveChangesAsync();
+
+      return _mapper.Map<UchebnyjPlanDto>(toUpdate);
     }
 
     public Task DeleteUchebnyiPlanAsync(int? id)

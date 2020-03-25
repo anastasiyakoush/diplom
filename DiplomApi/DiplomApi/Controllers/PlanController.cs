@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
@@ -9,6 +11,7 @@ using Common.FilterCriterias;
 using DiplomApi.PostModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Common.Enums;
 
 namespace DiplomApi.Controllers
 {
@@ -65,7 +68,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [HttpPost]
+    [HttpPost("filter")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -81,30 +84,75 @@ namespace DiplomApi.Controllers
       }
     }
 
-    //[HttpPost]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<UchebnyjPlanDto>> AddOrUpdateUchebnyiPlanAsync(PostPlanModel postPlanModel)
-    //{
-    //  try
-    //  {
-    //    var uchebnyjPlanDto =
-    //      await _planService.AddOrUpdateUchebnyiPlanAsync(_mapper.Map<UchebnyjPlanDto>(postPlanModel));
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> AddOrUpdatePlanAsync(PostPlanModel postPlanModel)
+    {
+      try
+      {
+        switch (postPlanModel.PlanType)
+        {
+          case PlanType.ObrazovatelnyeStardarty:
+            {
+              await _planService.AddOrUpdateObrStandrtAsync(_mapper.Map<ObrazovatelnyjStandartDto>(postPlanModel));
+            }
+            break;
+          case PlanType.TipovyePlany:
+            {
+              await _planService.AddOrUpdateTipovoyPlanAsync(_mapper.Map<TipovojUchebnyjPlanDto>(postPlanModel));
+            }
+            break;
+          case PlanType.UchebnyePlany:
+            {
+              await _planService.AddOrUpdateUchebnyiPlanAsync(_mapper.Map<UchebnyjPlanDto>(postPlanModel));
+            }
+            break;
+        }
 
-    //    if (uchebnyjPlanDto == null)
-    //    {
-    //      return NotFound();
-    //    }
+        return Ok();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //    return Ok(uchebnyjPlanDto);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpPost("upload"), DisableRequestSizeLimit]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<string>> UploadPlanAsync([FromQuery] int plan)
+    {
+      try
+      {
+        var planType = (PlanType)plan;
+        var file = Request.Form.Files.FirstOrDefault();
+        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        var directory = Path.Combine("D:\\DiplomFiles", planType.ToString());
+
+        if (!Directory.Exists(directory))
+        {
+          Directory.CreateDirectory(directory);
+        }
+
+        var link = Path.Combine(directory, fileName);
+
+        using (var stream = System.IO.File.Create(link))
+        {
+          await file.CopyToAsync(stream);
+        }
+
+        return Ok(link);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
     //[HttpDelete("{id}")]
     //public async Task<IActionResult> DeleteUchebnyiPlanAsync(int? id)
