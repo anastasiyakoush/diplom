@@ -6,7 +6,8 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="imya">Должность</label>
-        <input type="text" class="form-control" id="imya" placeholder="Должность">
+        <input type="text" class="form-control" [(ngModel)]="position.name" [ngModelOptions]="{standalone: true}"
+        id="imya" placeholder="Должность">
     </div>
 </div>
 

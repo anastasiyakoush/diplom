@@ -17,9 +17,9 @@
                   </div>
                   <div class="row">
                     <div class="input-group search">
-                      <input type="text" id="Input" class="form-control" placeholder="Search">
+                      <input type="text" id="Input" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
                       <div class="input-group-append">
-                        <button class="btn btn-info" type="submit">Поиск</button>
+                        <button class="btn btn-info" (click)="search()" type="submit">Поиск</button>
                       </div>
                     </div>
                   </div>
@@ -35,11 +35,11 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>должность</td>
+                          <tr *ngFor="let position of positions">
+                            <th scope="row">{{position.id}}</th>
+                            <td>{{position.name}}</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateDolzhnost(template)">
+                              <button class="btn btn-outline-info" (click)="updateDolzhnost(template,position.id)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -60,7 +60,7 @@
                                   ></path>
                                 </svg>
                             </button>
-                            <button class="btn btn-outline-info">
+                            <button class="btn btn-outline-info" (click)="delete(position.id)">
                                 <svg
                                   class="bi bi-trash"
                                   width="1.5em"
@@ -107,7 +107,9 @@
   </div>
   <ng-template #template>
     <app-update-dolzhnosti
+    [update]="updateFlag"
       [title]="title"
+      [positionId]="positionId"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
     ></app-update-dolzhnosti>

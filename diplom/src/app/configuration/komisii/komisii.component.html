@@ -17,9 +17,9 @@
                   </div>
                   <div class="row">
                     <div class="input-group search">
-                      <input type="text" id="Input" class="form-control" placeholder="Search">
+                      <input type="text" id="Input" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}"  placeholder="Search">
                       <div class="input-group-append">
-                        <button class="btn btn-info" type="submit">Поиск</button>
+                        <button class="btn btn-info" type="submit" (click)="search()">Поиск</button>
                       </div>
                     </div>
                   </div>
@@ -60,7 +60,7 @@
                                   ></path>
                                 </svg>
                             </button>
-                            <button class="btn btn-outline-info">
+                            <button class="btn btn-outline-info" (click)="delete(c.id)">
                                 <svg
                                   class="bi bi-trash"
                                   width="1.5em"

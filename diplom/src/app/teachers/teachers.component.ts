@@ -2,6 +2,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Teacher } from './teacher.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { EndpointsService } from '../endpoints.service';
+import { Status, Category } from '../enums';
 
 @Component({
   selector: 'app-teachers',
@@ -9,33 +11,22 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
   styleUrls: ['./teachers.component.less']
 })
 export class TeachersComponent implements OnInit {
-  teachers: Teacher[] = [
-    {
-      id: 1,
-      name: 'Лазицкас Екатерина Александровна',
-      category: 'Высшая',
-      commision: 'ПОИТ',
-      status: 'Работает'
-    },
-    {
-      id: 2,
-      name: 'Науменко Жанна Николаевна',
-      category: 'Первая',
-      commision: '	Общетехнические дисциплины',
-      status: 'Работает'
-    },
-    {
-      id: 3,
-      name: 'Терешко Ольга Ивановна',
-      category: 'Первая',
-      commision: 'ПОИТ',
-      status: 'Работает'
-    }
-  ];
+  teachers: Teacher[] = [];
+  searchText ="";
   modalRef: BsModalRef;
-  constructor(private router: Router, private modalService: BsModalService) {}
+  constructor(private router: Router, private modalService: BsModalService, private endpointService: EndpointsService
+    ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.endpointService.getTeachers().subscribe((data: any)=>{
+      this.teachers = data;
+    data.forEach((teacher, index)=> {
+      this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
+      this.teachers[index].position = teacher.position.name;
+      this.teachers[index].status = Status[teacher.status];
+      this.teachers[index].category = Category[teacher.category];
+    });
+    })  }
 
   onClick(id: number) {
     this.router.navigate(['teachers/' + id]);
@@ -43,5 +34,22 @@ export class TeachersComponent implements OnInit {
 
   addTeacher(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  search() {
+    this.endpointService.SearchTeacher(this.searchText).subscribe((data: any) => {
+      this.teachers = data;
+      data.forEach((teacher, index)=> {
+        this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
+        this.teachers[index].position = teacher.position.name;
+        this.teachers[index].status = Status[teacher.status];
+        this.teachers[index].category = Category[teacher.category];
+      })
+    })
+  }
+
+  onSave() {
+    this.modalRef.hide();
+    location.reload();
   }
 }
