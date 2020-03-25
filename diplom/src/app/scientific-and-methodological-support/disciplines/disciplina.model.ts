@@ -1,7 +1,7 @@
 export class Disciplina {
   id: number;
   nomer: number;
-  name: string;
+  registarcionnyjNomer: string;
   plan: string;
   hours: string;
 }

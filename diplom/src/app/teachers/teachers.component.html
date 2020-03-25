@@ -4,7 +4,7 @@
     <form class="form-inline controls d-flex flex-row-reverse">
       <button type="submit" class="btn btn-info" (click)="addTeacher(template)">Добавить</button>
       <div class="input-group search">
-        <input type="text" id="Input" class="form-control" placeholder="Search">
+        <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
         <div class="input-group-append">
           <button class="btn btn-info" (click)="search()" type="submit">Поиск</button>
         </div>
@@ -25,7 +25,7 @@
           <td scope="row">{{ teacher.id}}</td>
           <td>{{ teacher.name }}</td>
           <td>{{ teacher.category }}</td>
-          <td>{{ teacher.commision }}</td>
+          <td>{{ teacher.position }}</td>
           <td>{{ teacher.status }}</td>
         </tr>
       </tbody>
@@ -41,5 +41,5 @@
   <app-teachers-filter></app-teachers-filter>
 </div>
 <ng-template #template>
-    <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+    <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="onSave()"></app-update-teachers>
 </ng-template>

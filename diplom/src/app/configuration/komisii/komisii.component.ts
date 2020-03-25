@@ -28,6 +28,7 @@ export class KomisiiComponent implements OnInit {
   addKomisii(template: TemplateRef<any>) {
     this.title = "Добавить цикловую комиссию";
     this.modalRef = this.modalService.show(template);
+
   }
 
   updateKomisii(template: TemplateRef<any>) {

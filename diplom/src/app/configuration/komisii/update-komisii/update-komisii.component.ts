@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy  } from '@angular/core';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
   selector: 'app-update-komisii',
@@ -7,12 +8,15 @@ import { Component, OnInit, Output, EventEmitter, Input, OnDestroy  } from '@ang
 })
 export class UpdateKomisiiComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor( private endpointService: EndpointsService) { }
 
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
-
+form = {
+  name:''
+}
+ck:string;
   ngOnInit() {}
   ngOnDestroy() { }
 
@@ -21,7 +25,9 @@ export class UpdateKomisiiComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    this.saveClick.emit();
+    this.form.name = this.ck;
+this.endpointService.createCK(this.form).subscribe(()=>this.saveClick.emit()
+)
   }
 
 }
