@@ -10,29 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DetailedClassesComponent implements OnInit {
 
-  teachers: Teacher[] = [
-    {
-      id: 1,
-      name: 'Лазицкас Екатерина Александровна',
-      category: 'Высшая',
-      commision: 'ПОИТ',
-      status: 'Работает'
-    },
-    {
-      id: 2,
-      name: 'Науменко Жанна Николаевна',
-      category: 'Первая',
-      commision: '	Общетехнические дисциплины',
-      status: 'Работает'
-    },
-    {
-      id: 3,
-      name: 'Общетехнические дисциплины',
-      category: 'Первая',
-      commision: 'ПОИТ',
-      status: 'Работает'
-    }
-  ];
+  teachers: Teacher[] = [ ];
 
   modalRef: BsModalRef;
   constructor(private router: Router,private modalService: BsModalService) {}

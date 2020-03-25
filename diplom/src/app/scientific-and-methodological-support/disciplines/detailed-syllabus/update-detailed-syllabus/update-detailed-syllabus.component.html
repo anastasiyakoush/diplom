@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h4 class="modal-title">Добавить учебную дисциплину</h4>
+    <button type="button" class="close" data-dismiss="modal" (click)="cancel()">
+      &times;
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="num">Название документа</label>
+      <input
+        type="text"
+        class="form-control"
+        id="num"
+        placeholder="Название документа"
+      />
+    </div>
+    <div class="form-group">
+      <label>Тип документа</label>
+      <select class="form-control">
+        <option>Не выбрано</option>
+        <option>Методическая разработка</option>
+        <option>Учебная программа</option>
+        <option>Другой документ</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <input
+      type="button"
+      class="btn btn-outline-danger"
+      data-dismiss="modal"
+      value="Отменить"
+      (click)="cancel()"
+    />
+    <input
+      type="submit"
+      class="btn btn-info"
+      data-dismiss="modal"
+      value="Добавить"
+      (click)="save()"
+    />
+  </div>
+  

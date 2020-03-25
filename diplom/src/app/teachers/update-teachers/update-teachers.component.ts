@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { EndpointsService } from 'src/app/endpoints.service';
+import { Category, Status } from 'src/app/enums';
 
 @Component({
   selector: 'app-update-teachers',
@@ -9,15 +11,45 @@ export class UpdateTeachersComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
+  cks :any;
+  ck: any;
+  form = {
+  id: 0,
+  surname:'',
+  name:'',
+  fatherName:'',
+  category: Category.Первая,
+  ciklovayaKomissiyaId: 0,
+  status: 0,
+  positionId: 1
+}
+ statuses = Status;
+ categories = Category;
+ keys = Object.keys;
 
-  constructor() { }
-  ngOnInit() {}
+  constructor( private endpointService: EndpointsService) { }
+  ngOnInit() {
+    this.endpointService.getCK().subscribe(data => this.cks = data)
+  }
 
   cancel() {
     this.cancelClick.emit()
   }
 
   save() {
-    this.saveClick.emit()
+    this.endpointService.CreateOrUpdateTeacher(this.form).subscribe(data => this.saveClick.emit()
+    )
+  }
+
+  onChange(ck) {
+    this.form.ciklovayaKomissiyaId = ck.id;
+  }
+
+  onStatusChange(status) {
+    this.form.status = status;
+  }
+
+  onCategoryChange(category) {
+    this.form.category = category;
   }
 }

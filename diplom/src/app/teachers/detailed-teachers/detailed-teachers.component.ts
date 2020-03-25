@@ -46,21 +46,21 @@ export class DetailedTeachersComponent implements OnInit {
       id: 1,
       name: 'Лазицкас Екатерина Александровна',
       category: 'Высшая',
-      commision: 'ПОИТ',
+      position: 'ПОИТ',
       status: 'Работает'
     },
     {
       id: 2,
       name: 'Науменко Жанна Николаевна',
       category: 'Первая',
-      commision: '	Общетехнические дисциплины',
+      position: '	Общетехнические дисциплины',
       status: 'Работает'
     },
     {
       id: 3,
       name: 'Общетехнические дисциплины',
       category: 'Первая',
-      commision: 'ПОИТ',
+      position: 'ПОИТ',
       status: 'Работает'
     }
   ];

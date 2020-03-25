@@ -16,6 +16,7 @@ import { DoctypeComponent } from './configuration/doctype/doctype.component';
 import { GroupsComponent } from './configuration/groups/groups.component';
 import { SpecialtyComponent } from './configuration/specialty/specialty.component';
 import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
+import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component'
 
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'openClasses/add',
     component: UpdateClassesComponent
+  },
+  {
+    path: 'compareClasses',
+    component: CompareClassesComponent
   },
   {
     path: 'support/disciplines',

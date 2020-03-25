@@ -30,6 +30,7 @@ import { SyllabusFiltersComponent } from './scientific-and-methodological-suppor
 import { CurriculumFiltersComponent } from './scientific-and-methodological-support/uch-plans/curriculum-filters/curriculum-filters.component';
 import { PlannedClassesComponent } from './open-classes/planned-classes/planned-classes.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UsersComponent } from './configuration/users/users.component';
 import { KomisiiComponent } from './configuration/komisii/komisii.component';
 import { UpdateUsersComponent } from './configuration/users/update-users/update-users.component';
@@ -43,6 +44,8 @@ import { UpdateGroupsComponent } from './configuration/groups/update-groups/upda
 import { UpdateKomisiiComponent } from './configuration/komisii/update-komisii/update-komisii.component';
 import { UpdateSpecialtyComponent } from './configuration/specialty/update-specialty/update-specialty.component';
 import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
+import { UpdateDetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/update-detailed-syllabus/update-detailed-syllabus.component';
+import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,9 @@ import { AddDocumentComponent } from './scientific-and-methodological-support/ad
     UpdateGroupsComponent,
     UpdateKomisiiComponent,
     UpdateSpecialtyComponent,
-    AddDocumentComponent
+    AddDocumentComponent,
+    UpdateDetailedSyllabusComponent,
+    CompareClassesComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +96,7 @@ import { AddDocumentComponent } from './scientific-and-methodological-support/ad
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
