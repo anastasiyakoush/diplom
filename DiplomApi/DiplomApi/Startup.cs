@@ -42,6 +42,7 @@ namespace DiplomApi
 
       services.AddTransient<ITeacherService, TeacherService>();
       services.AddTransient<ISubjectService, SubjectService>();
+      services.AddTransient<IDocumentService, DocumentService>();
       services.AddTransient<IPlanService, PlanService>();
       services.AddTransient<IPublicLessonService, PublicLessonService>();
       services.AddTransient<ICrudService<SpecialnostDto>, CrudService<SpecialnostDto, Specialnost>>();

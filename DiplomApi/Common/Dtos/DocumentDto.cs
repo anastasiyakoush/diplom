@@ -13,5 +13,6 @@ namespace Common.Dtos
     public string Link { get; set; }
     public DocumentTypeDto DocumentType { get; set; }
     public UchebnayaDisciplinaDto UchebnayaDisciplina { get; set; }
+    public List<TeacherDto> Authors { get; set; }
   }
 }

@@ -26,6 +26,18 @@ namespace DAL.DAL
     {
       base.OnModelCreating(modelBuilder);
 
+      modelBuilder.Entity<DocumentAuthor>().HasKey(x => new { x.TeacherId, x.DocumentId });
+
+      modelBuilder.Entity<DocumentAuthor>()
+          .HasOne(x => x.Teacher)
+          .WithMany(x => x.DocumentAuthors)
+          .HasForeignKey(x => x.TeacherId);
+
+
+      modelBuilder.Entity<DocumentAuthor>()
+          .HasOne(x => x.Document)
+          .WithMany(x => x.DocumentAuthors)
+          .HasForeignKey(x => x.DocumentId);
       //modelBuilder.Seed();
     }
   }

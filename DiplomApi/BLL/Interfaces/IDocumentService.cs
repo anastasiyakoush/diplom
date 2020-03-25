@@ -8,12 +8,12 @@ namespace BLL.Interfaces
 {
   public interface IDocumentService
   {
-    //Task<T> GetAsync(int? id);
+    Task<DocumentDto> AddOrUpdateAsync(DocumentDto t);
 
-    Task<string> AddOrUpdateAsync(DocumentDto t);
+    Task DeleteAsync(int? id);
 
-    // Task DeleteAsync(int? id);
+    Task<List<DocumentDto>> GetAllByDisciplineAsync(int? disciplineId);
 
-    // Task<List<T>> SearchAsync(string query);
+    Task<List<DocumentDto>> GetAllByAuthorAsync(int? authorId);
   }
 }
