@@ -5,18 +5,20 @@
               </div>
 
               <div class="modal-body">
-                  <div class="form-group">
-                      <label for="familia">Фамилия</label>
-                      <input type="text" class="form-control" [(ngModel)]="form.surname" placeholder="Фамилия">
-                  </div>
-                  <div class="form-group">
-                      <label for="imya">Имя</label>
-                      <input type="text" class="form-control" [(ngModel)]="form.name" placeholder="Имя">
-                  </div>
-                  <div class="form-group">
-                      <label for="otchestvo">Отчество</label>
-                      <input type="text" class="form-control" [(ngModel)]="form.fatherName" placeholder="Отчество">
-                  </div>
+                <div class="form-group">
+                    <label for="familia">Преподаватель</label>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="form.surname" placeholder="Фамилия">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="form.name" placeholder="Имя">
+                         </div>
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="form.fatherName" placeholder="Отчество">
+                         </div>
+                    </div>
+                </div>
                   <div class="form-group">
                       <label for="kategoria">Категория</label>
                       <select class="form-control" (ngModelChange)="onCategoryChange($event)">
@@ -35,7 +37,7 @@
                           <option *ngFor="let status of keys(statuses)" [ngValue]="statuses[status]">{{status}}</option>
                       </select>
                   </div>
-              </div>
+
 
               <div class="modal-footer">
                   <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
