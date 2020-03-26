@@ -139,8 +139,48 @@ export class EndpointsService {
   getDoctypeById(id) {
     return this.http.get<any>(this.ConfigurationBaseURI+ `/doctype/${id}`);
   }
+
   SearchDoctype(searchText: string) {
     return this.http.post(this.ConfigurationBaseURI+ "/doctype" + "/search", JSON.stringify(searchText), {headers: this.headers});
+  }
+  createGroup(position) {
+    return this.http.post<any[]>(this.ConfigurationBaseURI+ "/group", position);
+  }
+
+  getGroup() {
+    return this.http.get<any[]>(this.ConfigurationBaseURI+ "/group");
+  }
+
+  deleteGroup(id) {
+    return this.http.delete(this.ConfigurationBaseURI+ `/group/${id}`);
+  }
+
+  SearchGroup(searchText: string) {
+    return this.http.post(this.ConfigurationBaseURI+ "/group" + "/search", JSON.stringify(searchText), {headers: this.headers});
+  }
+
+  getGroupById(id) {
+    return this.http.get<any>(this.ConfigurationBaseURI+ `/group/${id}`);
+  }
+
+  createSpec(position) {
+    return this.http.post<any[]>(this.ConfigurationBaseURI+ "/specialnost", position);
+  }
+
+  getSpecialnost() {
+    return this.http.get<any[]>(this.ConfigurationBaseURI+ "/specialnost");
+  }
+
+  deleteSpec(id) {
+    return this.http.delete(this.ConfigurationBaseURI+ `/specialnost/${id}`);
+  }
+
+  SearchSpec(searchText: string) {
+    return this.http.post(this.ConfigurationBaseURI+ "/specialnost" + "/search", JSON.stringify(searchText), {headers: this.headers});
+  }
+
+  getSpecById(id) {
+    return this.http.get<any>(this.ConfigurationBaseURI+ `/specialnost/${id}`);
   }
 }
 

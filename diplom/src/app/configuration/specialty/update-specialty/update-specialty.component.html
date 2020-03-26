@@ -6,8 +6,12 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="imya">Название специальности</label>
-        <input type="text" class="form-control" id="imya" placeholder="Специальность">
+        <input type="text" class="form-control" id="imya" [(ngModel)]="spec.name" [ngModelOptions]="{standalone: true}" placeholder="Специальность">
     </div>
+    <div class="form-group">
+      <label for="imya">Код</label>
+      <input type="text" class="form-control" id="imya" [(ngModel)]="spec.code" [ngModelOptions]="{standalone: true}" placeholder="код">
+  </div>
 </div>
 
 <div class="modal-footer">
