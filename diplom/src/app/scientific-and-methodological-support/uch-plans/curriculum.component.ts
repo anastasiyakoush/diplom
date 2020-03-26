@@ -33,4 +33,8 @@ export class CurriculumComponent implements OnInit {
     this.title = 'Редактировать учебный план';
     this.modalRef = this.modalService.show(template);
   }
+
+  download(link) {
+    this.endpointService.documentDownload(link).subscribe(()=> alert("ujnjdj"))
+  }
 }

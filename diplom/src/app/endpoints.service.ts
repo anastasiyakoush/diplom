@@ -182,5 +182,10 @@ export class EndpointsService {
   getSpecById(id) {
     return this.http.get<any>(this.ConfigurationBaseURI+ `/specialnost/${id}`);
   }
+
+  documentDownload(link: string) {
+    return this.http.post<any>('https://localhost:44312/api/Document/download', JSON.stringify(link),{headers: this.headers});
+
+  }
 }
 
