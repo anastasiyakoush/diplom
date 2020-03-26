@@ -30,8 +30,9 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
     registarcionnyjNomer: '',
     date: new Date(),
     planType: 1,
-link: '',
-dependencyId: 2
+    link: '',
+    dependencyId: 2
+
   }
   bsConfig: Partial<BsDatepickerConfig>;
 

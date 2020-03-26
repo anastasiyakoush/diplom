@@ -36,9 +36,14 @@ export class TeachersFilterComponent implements OnInit {
   }
 
   filter() {
-    this.endpointService.FilterTeacher(this.form).subscribe((data)=>{
-      this.teachers = data ;
-      this.onChanged.emit()
+    this.endpointService.FilterTeacher(this.form).subscribe((data:any[])=>{
+      data.forEach((teacher, index)=> {
+        data[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
+        data[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
+        data[index].status = Status[teacher.status];
+        data[index].category = Category[teacher.category];
+      })
+      this.onChanged.emit(data);
     })
   }
 }

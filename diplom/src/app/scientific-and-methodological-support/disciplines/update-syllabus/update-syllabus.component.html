@@ -12,6 +12,7 @@
       type="text"
       class="form-control"
       id="num"
+      [(ngModel)]="form.registarcionnyjNomer"
       placeholder="№ учебной дисциплины"
     />
   </div>
@@ -21,6 +22,7 @@
       type="text"
       class="form-control"
       id="name"
+      [(ngModel)]="form.name"
       placeholder="Название дисциплины"
     />
   </div>
@@ -60,17 +62,18 @@
     <label for="date">Количество часов</label>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="ЛР часов" />
+        <input type="text" class="form-control" [(ngModel)]="form.laboratornye"
+        placeholder="ЛР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="ПР часов" />
+        <input type="text" class="form-control" [(ngModel)]="form.practika"  placeholder="ПР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="КП часов" />
+        <input type="text" class="form-control" [(ngModel)]="form.kursovoeProectirovanie" placeholder="КП часов" />
       </div>
     </div>
   </div>

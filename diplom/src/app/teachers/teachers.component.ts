@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { EndpointsService } from '../endpoints.service';
 import { Status, Category } from '../enums';
 import { TeachersFilterComponent } from './teachers-filter/teachers-filter.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-teachers',
@@ -24,7 +25,7 @@ export class TeachersComponent implements OnInit {
       this.teachers = data;
     data.forEach((teacher, index)=> {
       this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-      this.teachers[index].position = teacher.position.name;
+      this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
       this.teachers[index].status = Status[teacher.status];
       this.teachers[index].category = Category[teacher.category];
     });
@@ -43,7 +44,7 @@ export class TeachersComponent implements OnInit {
       this.teachers = data;
       data.forEach((teacher, index)=> {
         this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-        this.teachers[index].position = teacher.position.name;
+        this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
         this.teachers[index].status = Status[teacher.status];
         this.teachers[index].category = Category[teacher.category];
       })
@@ -55,8 +56,8 @@ export class TeachersComponent implements OnInit {
     location.reload();
   }
 
-  filterChange() {
-
-   this.teachers = this.teacherFilter.teachers;
+  filterChange($event) {
+    console.log($event)
+    this.teachers = $event;
   }
 }
