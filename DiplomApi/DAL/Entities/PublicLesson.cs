@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities
@@ -8,8 +8,8 @@ namespace DAL.Entities
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Topic { get; set; }
-        public int MetodicheskieNarabotki { get; set; }
-        public int AnalisUroka { get; set; }
+        public string MetodicheskieNarabotki { get; set; }
+        public string AnalisUroka { get; set; }
 
 
         public Group Group { get; set; }

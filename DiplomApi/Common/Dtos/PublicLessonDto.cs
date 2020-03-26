@@ -8,11 +8,11 @@ namespace Common.Dtos
     public int Id { get; set; }
     public DateTime Date { get; set; }
     public string Topic { get; set; }
-    public int MetodicheskieNarabotki { get; set; }
-    public int AnalisUroka { get; set; }
+    public string MetodicheskieNarabotki { get; set; }
+    public string AnalisUroka { get; set; }
 
 
-    public Group Group { get; set; }
+    public GroupDto Group { get; set; }
     public TeacherDto Teacher { get; set; }
     public UchebnayaDisciplinaDto UchebnayaDisciplina { get; set; }
   }

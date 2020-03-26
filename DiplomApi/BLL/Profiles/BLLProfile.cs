@@ -18,6 +18,7 @@ namespace BLL.Profiles
       CreateMap<UchebnayaDisciplina, UchebnayaDisciplinaDto>().ReverseMap();
       CreateMap<Group, GroupDto>().ReverseMap();
       CreateMap<PublicLesson, PublicLessonDto>().ReverseMap();
+      CreateMap<PlanningPublicLesson, PlanningPublicLessonDto>().ReverseMap();
       CreateMap<DocumentType, DocumentTypeDto>().ReverseMap();
       CreateMap<Document, DocumentDto>()
         .ForMember(d => d.Authors, s => s.MapFrom(x => x.DocumentAuthors))
