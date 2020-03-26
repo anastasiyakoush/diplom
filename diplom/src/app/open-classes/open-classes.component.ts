@@ -11,7 +11,7 @@ import { EndpointsService } from '../endpoints.service';
 })
 
 export class OpenClassesComponent implements OnInit {
-  lessons: Lesson[] = [];
+  lessons: any[] = [];
   modalRef: BsModalRef;
   searchText: string = "";
   constructor(private router: Router,
@@ -19,7 +19,15 @@ export class OpenClassesComponent implements OnInit {
     private endpointService: EndpointsService) {}
 
   ngOnInit() {
-   this.endpointService.getLessons().subscribe((data:Lesson[])=>this.lessons = data)
+   this.endpointService.getLessons().subscribe((data:any[])=>{
+     this.lessons = data;
+     data.forEach((lesson, index)=> {
+      this.lessons[index].teacher = lesson.teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+      this.lessons[index].group = lesson.group.name;
+      this.lessons[index].uchebnayaDisciplina = lesson.uchebnayaDisciplina.name;
+    })
+
+    })
   }
 
   onClick(id: number) {
