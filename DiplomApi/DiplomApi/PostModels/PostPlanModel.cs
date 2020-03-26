@@ -1,4 +1,5 @@
 using System;
+using static Common.Enums;
 
 namespace DiplomApi.PostModels
 {
@@ -8,6 +9,10 @@ namespace DiplomApi.PostModels
 
     public DateTime? Date { get; set; }
 
-    public string FileName { get; set; }
+    public int? DependencyId { get; set; }
+
+    public PlanType PlanType { get; set; }
+
+    public string Link { get; set; }
   }
 }

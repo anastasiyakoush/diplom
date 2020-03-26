@@ -19,7 +19,7 @@ namespace BLL.Interfaces
 
     //Task<UchebnyjPlanDto> GetTipovoyPlanAsync(int? id);
 
-    //Task<UchebnyjPlanDto> AddOrUpdateTipovoyPlanAsync(TipovojUchebnyjPlanDto tipovojUchebnyjPlanDto);
+    Task<TipovojUchebnyjPlanDto> AddOrUpdateTipovoyPlanAsync(TipovojUchebnyjPlanDto tipovojUchebnyjPlanDto);
 
     //Task DeleteTipovoyPlanAsync(int? id);
 
@@ -30,6 +30,7 @@ namespace BLL.Interfaces
     //Task<UchebnyjPlanDto> GetUchebnyiPlanAsync(int? id);
 
     Task<UchebnyjPlanDto> AddOrUpdateUchebnyiPlanAsync(UchebnyjPlanDto uchebnyjPlanDto);
+    Task<ObrazovatelnyjStandartDto> AddOrUpdateObrStandrtAsync(ObrazovatelnyjStandartDto obrazovatelnyjStandartDto);
 
     Task DeleteUchebnyiPlanAsync(int? id);
 

@@ -40,7 +40,7 @@ namespace BLL.Services
     {
       if (!id.HasValue) return null;
 
-      var teacher = await _context.Teachers.FindAsync(id.Value);
+      var teacher = await _context.Teachers.Include(x => x.CiklovayaKomissiya).Include(x => x.Position).FirstOrDefaultAsync(x => x.Id == id.Value);
 
       return _mapper.Map<TeacherDto>(teacher);
     }

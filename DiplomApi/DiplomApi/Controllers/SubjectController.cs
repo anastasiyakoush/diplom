@@ -69,12 +69,12 @@ namespace DiplomApi.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<UchebnayaDisciplinaDto>> AddOrUpdateAsync(PostSubjectModel postSubjectModel)
+    public async Task<ActionResult<UchebnayaDisciplinaDto>> AddOrUpdateAsync(UchebnayaDisciplinaDto uchebnayaDisciplinaDto)
     {
       try
       {
         var updatedUchebnayaDisciplinaDto =
-          await _subjectService.AddOrUpdateAsync(_mapper.Map<UchebnayaDisciplinaDto>(postSubjectModel));
+          await _subjectService.AddOrUpdateAsync(uchebnayaDisciplinaDto);
 
         if (updatedUchebnayaDisciplinaDto == null)
         {
