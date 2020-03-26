@@ -9,7 +9,7 @@ namespace DAL.Entities
     public int Id { get; set; }
     public int TeacherId { get; set; }
     public bool Status { get; set; }
-    public DateTime ExpectedDate { get; set; }
+    public string Month { get; set; }
 
     public virtual Teacher Teacher { get; set; }
   }
