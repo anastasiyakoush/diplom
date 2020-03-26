@@ -25,16 +25,20 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Преподаватель</th>
-          <th scope="col">Дата проведения</th>
-          <th scope="col">Статус</th>
+          <th scope="col">Дисциплина</th>
+          <th scope="col">Тема</th>
+          <th scope="col">Группа</th>
+
         </tr>
       </thead>
       <tbody *ngFor="let lesson of lessons">
         <tr (click)="onClick(lesson.id)">
           <td scope="row">{{ lesson.id }}</td>
           <td>{{lesson.teacher}}</td>
+          <td>{{lesson.discipline}}</td>
+          <td>{{lesson.topic}}</td>
+          <td>{{lesson.group}}</td>
           <td>{{lesson.date}}</td>
-          <td></td>
         </tr>
       </tbody>
     </table>
