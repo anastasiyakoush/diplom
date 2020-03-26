@@ -128,25 +128,25 @@ namespace DiplomApi.Controllers
     public async Task<ActionResult<string>> UploadPlanAsync([FromQuery] int plan)
     {
       try
-
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<UchebnyjPlanDto>> AddOrUpdateUchebnyiPlanAsync(PostPlanModel postPlanModel)
-    {
-      try
       {
-        var uchebnyjPlanDto =
-          await _planService.AddOrUpdateUchebnyiPlanAsync(_mapper.Map<UchebnyjPlanDto>(postPlanModel));
+        var planType = (PlanType)plan;
+        var file = Request.Form.Files.FirstOrDefault();
+        var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        var directory = Path.Combine("D:\\DiplomFiles", planType.ToString());
 
-        if (uchebnyjPlanDto == null)
+        if (!Directory.Exists(directory))
         {
-          return NotFound();
+          Directory.CreateDirectory(directory);
         }
 
-        return Ok(uchebnyjPlanDto);
+        var link = Path.Combine(directory, fileName);
+
+        using (var stream = System.IO.File.Create(link))
+        {
+          await file.CopyToAsync(stream);
+        }
+
+        return Ok(link);
       }
       catch (Exception ex)
       {
