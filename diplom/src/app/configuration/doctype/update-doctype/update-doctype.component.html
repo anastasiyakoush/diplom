@@ -6,7 +6,7 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="imya">Тип документа</label>
-        <input type="text" class="form-control" id="imya" placeholder="Тип документа">
+        <input type="text" class="form-control" id="imya"  [(ngModel)]="doctype.name" [ngModelOptions]="{standalone: true}" placeholder="Тип документа">
     </div>
 </div>
 

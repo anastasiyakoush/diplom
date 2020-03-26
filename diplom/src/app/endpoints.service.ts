@@ -127,7 +127,20 @@ export class EndpointsService {
   getPositionById(id) {
     return this.http.get<any>(this.ConfigurationBaseURI+ `/position/${id}`);
   }
-
-
+  getDoctype() {
+    return this.http.get<any[]>(this.ConfigurationBaseURI+ "/doctype");
+  }
+  createDoctype(position) {
+    return this.http.post<any[]>(this.ConfigurationBaseURI+ "/doctype", position);
+  }
+  deleteDoctype(id) {
+    return this.http.delete(this.ConfigurationBaseURI+ `/doctype/${id}`);
+  }
+  getDoctypeById(id) {
+    return this.http.get<any>(this.ConfigurationBaseURI+ `/doctype/${id}`);
+  }
+  SearchDoctype(searchText: string) {
+    return this.http.post(this.ConfigurationBaseURI+ "/doctype" + "/search", JSON.stringify(searchText), {headers: this.headers});
+  }
 }
 

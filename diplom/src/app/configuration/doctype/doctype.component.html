@@ -17,9 +17,9 @@
                   </div>
                   <div class="row">
                     <div class="input-group search">
-                      <input type="text" id="Input" class="form-control" placeholder="Search">
+                      <input type="text" id="Input" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
                       <div class="input-group-append">
-                        <button class="btn btn-info" type="submit">Поиск</button>
+                        <button class="btn btn-info" type="submit" (click)="search()" >Поиск</button>
                       </div>
                     </div>
                   </div>
@@ -35,11 +35,11 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>тип документа</td>
+                          <tr *ngFor="let doctype of doctypes">
+                            <th scope="row">{{doctype.id}}</th>
+                            <td>{{doctype.name}}</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateType(template)">
+                              <button class="btn btn-outline-info" (click)="updateType(template, doctype.id)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -60,7 +60,7 @@
                                   ></path>
                                 </svg>
                             </button>
-                            <button class="btn btn-outline-info">
+                            <button class="btn btn-outline-info" (click)="delete(doctype.id)">
                                 <svg
                                   class="bi bi-trash"
                                   width="1.5em"
@@ -107,7 +107,9 @@
   </div>
   <ng-template #template>
     <app-update-doctype
-      [title]="title"
+    [doctypeId]="doctypeId"
+    [update]="updateFlag"
+    [title]="title"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
     ></app-update-doctype>
