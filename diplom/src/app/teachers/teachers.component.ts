@@ -1,9 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Teacher } from './teacher.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { EndpointsService } from '../endpoints.service';
 import { Status, Category } from '../enums';
+import { TeachersFilterComponent } from './teachers-filter/teachers-filter.component';
 
 @Component({
   selector: 'app-teachers',
@@ -14,6 +15,7 @@ export class TeachersComponent implements OnInit {
   teachers: Teacher[] = [];
   searchText ="";
   modalRef: BsModalRef;
+  @ViewChild('app-teachers-filter', {static: false}) teacherFilter: TeachersFilterComponent;
   constructor(private router: Router, private modalService: BsModalService, private endpointService: EndpointsService
     ) {}
 
@@ -51,5 +53,10 @@ export class TeachersComponent implements OnInit {
   onSave() {
     this.modalRef.hide();
     location.reload();
+  }
+
+  filterChange() {
+
+   this.teachers = this.teacherFilter.teachers;
   }
 }

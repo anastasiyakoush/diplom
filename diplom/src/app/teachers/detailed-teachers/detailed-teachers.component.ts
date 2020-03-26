@@ -63,6 +63,7 @@ export class DetailedTeachersComponent implements OnInit {
       this.teacher.name =
         data.surname + " " + data.name + " " + data.fatherName;
       this.teacher.position = data.position.name;
+      this.teacher.ciklovayaKomissiya = data.ciklovayaKomissiya.name;
 
     });
   }

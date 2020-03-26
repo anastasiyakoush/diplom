@@ -18,8 +18,8 @@
   <div class="form-group">
     <label for="file1">Учебный план</label>
     <div class="custom-file">
-        <input type="file" class="custom-file-input" (click)="addFile()">
-        <label class="custom-file-label" for="customFile">Выберите файл</label>
+        <input type="file" #file class="custom-file-input" (change)="addFile(file.files)" multiple>
+        <label class="custom-file-label" for="customFile" (click)="file.click()">Выберите файл</label>
     </div>
   </div>
   <div class="form-group">

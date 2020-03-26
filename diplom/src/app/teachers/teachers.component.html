@@ -38,7 +38,7 @@
       <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul>  -->
   </div>
-  <app-teachers-filter></app-teachers-filter>
+  <app-teachers-filter (onChanged)="filterChange()"></app-teachers-filter>
 </div>
 <ng-template #template>
     <app-update-teachers title="Добавить преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="onSave()"></app-update-teachers>

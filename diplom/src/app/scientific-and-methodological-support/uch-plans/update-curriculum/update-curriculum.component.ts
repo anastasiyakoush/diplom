@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output, OnDestroy } from '@angu
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import {FormControl} from '@angular/forms';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -28,11 +29,13 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   form ={
     registarcionnyjNomer: '',
     date: new Date(),
-    fileName: 'учебый план'
+    planType: 1,
+link: '',
+dependencyId: 2
   }
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor( private endpointService: EndpointsService) {
+  constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
@@ -52,9 +55,33 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
     this.endpointService.createOrUpdatePlan(this.form).subscribe(data =>     this.saveClick.emit()    )
   }
 
-  addFile() {
-    this.addBtn = true;
-  }
+  addFile = (files: Array<File>) => {
+      if (files.length === 0) {
+        return;
+      }
+
+      const formData = new FormData();
+
+      for (let file of files) {
+        formData.append(file.name, file);
+      }
+
+      this.http
+        .post('https://localhost:44312/api/document/upload', formData, {
+          reportProgress: true
+        })
+        .subscribe((link:any) => {
+this.form.link = link.link;
+       //   if (event.type === HttpEventType.UploadProgress)
+        //    this.progress = Math.round((100 * event.loaded) / event.total);
+         // else if (event.type === HttpEventType.Response) {
+           // this.message = 'Upload success.';
+           // this.hotelService.setImagePath(event.body);
+           // this.roomService.setImagePath(event.body);
+         // }
+        });
+    };
+
 
   specSelect() {
     this.spec = true;

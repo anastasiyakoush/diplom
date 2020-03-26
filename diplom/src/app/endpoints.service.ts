@@ -36,7 +36,7 @@ export class EndpointsService {
   }
 
   FilterTeacher(filter: any) {
-    return this.http.post(this.teacherBaseURI,filter);
+    return this.http.post(this.teacherBaseURI+'/filter', filter);
   }
 
   SearchTeacher(searchText: string) {
@@ -127,4 +127,7 @@ export class EndpointsService {
   getPositionById(id) {
     return this.http.get<any>(this.ConfigurationBaseURI+ `/position/${id}`);
   }
+
+
 }
+
