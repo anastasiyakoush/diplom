@@ -39,7 +39,7 @@
                             <th scope="row">{{c.id}}</th>
                             <td>{{c.name}}</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateKomisii(template)">
+                              <button class="btn btn-outline-info" (click)="updateKomisii(template, c.id)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -107,7 +107,9 @@
   </div>
   <ng-template #template>
     <app-update-komisii
-      [title]="title"
+    [update]="updateFlag"
+    [title]="title"
+    [ckId]="ckId"
       (cancelClick)="modalRef.hide()"
       (saveClick)="saveClick()"
     ></app-update-komisii>

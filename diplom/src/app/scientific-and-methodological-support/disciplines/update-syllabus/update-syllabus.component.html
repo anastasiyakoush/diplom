@@ -28,52 +28,40 @@
   </div>
   <div class="form-group">
     <label for="tsk">Цикловая комиссия</label>
-    <select class="form-control" id="tsk">
-      <option>Не выбрано</option>
-      <option>ПОИТ</option>
-      <option>ПиПРэС</option>
-      <option>ЭВС</option>
-      <option>Микро- и наноэлектроника</option>
-      <option>ТЭРэС</option>
-      <option>ПМС</option>
-      <option>Общетехнические дисциплины</option>
-      <option>Математические и естесвенно научные дисцциплины</option>
-      <option>Социально-гуманитарные дисциплины</option>
-      <option>Физическое воспитание</option>
-    </select>
+    <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
+      <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
+  </select>
   </div>
   <div class="form-group">
     <label for="file1">Учебный план</label>
-    <select class="form-control" id="tsk">
-      <option>Не выбрано</option>
-        <option>Учебный план 1</option>
-        <option>Учебный план 2</option>
+    <select class="form-control" [(ngModel)]="plan" (ngModelChange)="onPlanChange($event)">
+      <option  *ngFor="let plan of plans" [ngValue]="plan" >{{plan.registarcionnyjNomer}}</option>
       </select>
   </div>
   <div class="form-group">
     <label for="tsk">Компонент</label>
     <select class="form-control" id="tsk">
     <option>Не выбрано</option>
-      <option>Общеобразовательный компонент</option>
-      <option>Профессиональный компонент</option>
+      <option (click)="selectComponent(0)">Общеобразовательный компонент</option>
+      <option (click)="selectComponent(1)">Профессиональный компонент</option>
     </select>
   </div>
   <div class="form-group">
     <label for="date">Количество часов</label>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" [(ngModel)]="form.laboratornye"
+        <input type="number" class="form-control" [(ngModel)]="form.laboratornye"
         placeholder="ЛР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" [(ngModel)]="form.practika"  placeholder="ПР часов" />
+        <input class="form-control" type="number" [(ngModel)]="form.practika"  placeholder="ПР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" [(ngModel)]="form.kursovoeProectirovanie" placeholder="КП часов" />
+        <input class="form-control" type="number" [(ngModel)]="form.kursovoeProectirovanie" placeholder="КП часов" />
       </div>
     </div>
   </div>

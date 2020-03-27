@@ -28,9 +28,9 @@
           <tr>
             <td scope="row">{{ lesson.id }}</td>
             <td>{{lesson.teacher}}</td>
+            <td>{{lesson.month}}</td>
             <td>{{lesson.date}}</td>
-            <td></td>
-            <td></td>
+            <td>{{lesson.topic}}</td>
           </tr>
         </tbody>
       </table>
@@ -39,5 +39,5 @@
   <ng-template #template>
     <app-update-classes title="Добавить открытое занятие" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
   </ng-template>
-  
+
 

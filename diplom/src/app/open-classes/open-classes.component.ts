@@ -22,10 +22,13 @@ export class OpenClassesComponent implements OnInit {
    this.endpointService.getLessons().subscribe((data:any[])=>{
      this.lessons = data;
      data.forEach((lesson, index)=> {
-      this.lessons[index].teacher = lesson.teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
-      this.lessons[index].group = lesson.group.name;
-      this.lessons[index].uchebnayaDisciplina = lesson.uchebnayaDisciplina.name;
-    })
+       if(this.lessons[index].teacher ) {
+        this.lessons[index].teachername = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+        this.lessons[index].groupname = lesson.group.name;
+        this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
+
+       }
+        })
 
     })
   }
@@ -39,7 +42,17 @@ export class OpenClassesComponent implements OnInit {
   }
 
   search() {
-     this.endpointService.SearchPublicLesson(this.searchText).subscribe((data:Lesson[])=>this.lessons = data)
+     this.endpointService.SearchPublicLesson(this.searchText).subscribe((data:any[])=> {
+      this.lessons = data;
+     data.forEach((lesson, index)=> {
+       if(this.lessons[index].teacher ) {
+        this.lessons[index].teachername = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+        this.lessons[index].groupname = lesson.group.name;
+        this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
+       }
+        })
+     }
+     )
   }
 }
 

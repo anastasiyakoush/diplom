@@ -19,6 +19,8 @@ namespace BLL.Interfaces
 
     Task<PlanningPublicLessonDto> GetPlanningLessonAsync(int? id);
 
+    Task<List<ComparableLessonsDto>> GetComparableLessonAsync();
+
     Task<List<PublicLessonDto>> FilterAsync(PublicLessonFilterCriterias filterCriterias);
 
     Task<List<PublicLessonDto>> SearchAsync(string query);

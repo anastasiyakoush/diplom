@@ -6,14 +6,16 @@
         <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
         <div class="input-group search">
           <input
-            type="text"
-            id="Input"
-            class="form-control"
-            placeholder="Search"
-          />
-          <div class="input-group-append">
-            <button class="btn btn-info" type="submit">Поиск</button>
-          </div>
+          type="text"
+          id="Input"
+          class="form-control"
+          placeholder="Search"
+          [(ngModel)]="searchText"
+          [ngModelOptions]="{standalone: true}"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit" (click)="search()">Поиск</button>
+        </div>
         </div>
       </form>
       <table class="table table-bordered table-hover">
@@ -29,8 +31,8 @@
           <tr>
             <td scope="row">{{ lesson.id }}</td>
             <td>{{lesson.teacher}}</td>
-            <td>{{lesson.date}}</td>
-            <td>Статус</td>
+            <td>{{lesson.month}}</td>
+            <td>{{lesson.status}}</td>
           </tr>
         </tbody>
       </table>
@@ -40,4 +42,4 @@
   <ng-template #template>
     <app-update-planned title="Добавить открытое занятие" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-planned>
   </ng-template>
-  
+

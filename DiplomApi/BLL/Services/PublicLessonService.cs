@@ -5,7 +5,9 @@ using Common.FilterCriterias;
 using DAL.DAL;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -137,6 +139,44 @@ namespace BLL.Services
        .ToListAsync());
     }
 
+    public async Task<List<ComparableLessonsDto>> GetComparableLessonAsync()
+    {
+      var result = new List<ComparableLessonsDto>();
+      var plannings = await _context.PlanningPublicLessons.Include(x => x.Teacher).AsQueryable().ToListAsync();
+
+      foreach (var plannig in plannings)
+      {
+        var lessons = _context.PublicLessons.Include(x => x.Teacher)
+          .ToList().Where(x => x.Teacher.Id == plannig.Teacher.Id
+        && CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.Date.Month) == plannig.Month)
+          .ToList();
+
+        if (lessons?.Count() > 0)
+        {
+          foreach (var lesson in lessons)
+          {
+            result.Add(new ComparableLessonsDto
+            {
+              Teacher = _mapper.Map<TeacherDto>(plannig.Teacher),
+              Month = plannig.Month,
+              Topic = lesson.Topic,
+              Date = lesson.Date
+            });
+          }
+        }
+        else
+        {
+          result.Add(new ComparableLessonsDto
+          {
+            Teacher = _mapper.Map<TeacherDto>(plannig.Teacher),
+            Month = plannig.Month
+          });
+        }
+      }
+
+      return result;
+    }
+
     public async Task<PlanningPublicLessonDto> GetPlanningLessonAsync(int? id)
     {
       if (!id.HasValue) return null;
@@ -152,6 +192,9 @@ namespace BLL.Services
 
       var lessons = await _context.PublicLessons
         .Where(x => x.Topic.ToLower().Contains(query))
+        .Include(x => x.Teacher)
+       .Include(x => x.Group)
+       .Include(x => x.UchebnayaDisciplina)
         .ToListAsync();
 
       return _mapper.Map<List<PublicLessonDto>>(lessons);

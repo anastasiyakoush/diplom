@@ -13,11 +13,19 @@ export class UpdateKomisiiComponent implements OnInit, OnDestroy {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
+  @Input() ckId: number;
+  @Input() update: boolean;
 form = {
+  id:0,
   name:''
 }
 ck:string;
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.update)
+    this.endpointService
+      .getCKById(this.ckId)
+      .subscribe(data => (this.form = data));
+  }
   ngOnDestroy() { }
 
   cancel() {
@@ -25,9 +33,21 @@ ck:string;
   }
 
   save() {
-    this.form.name = this.ck;
-this.endpointService.createCK(this.form).subscribe(()=>this.saveClick.emit()
-)
+    if (this.update) {
+      this.endpointService
+        .createCK({ id: this.form.id, name: this.form.name })
+        .subscribe(() => {
+          this.saveClick.emit();
+          location.reload();
+        });
+    } else {
+      this.endpointService
+        .createCK({ name: this.form.name })
+        .subscribe(() => {
+          this.saveClick.emit();
+          location.reload();
+        });
+    }
   }
 
 }

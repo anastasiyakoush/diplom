@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     Password: ''
   };
 
-  constructor() { }
+  constructor(private router: Router,) { }
 
   ngOnInit() {
   }
@@ -21,5 +22,9 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
 
   }
+  click() {
+    sessionStorage.setItem('token', 'вошел');
+    this.router.navigate(['teachers']);
 
+  }
 }
