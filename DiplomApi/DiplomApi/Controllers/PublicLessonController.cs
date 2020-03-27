@@ -106,6 +106,30 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [HttpGet("teacher/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<PublicLessonDto>> GetByTeacherAsync(int? id)
+    {
+      try
+      {
+        var uchebnyjPlanDto = await _publicLessonService.GetByTeacherAsync(id);
+
+        if (uchebnyjPlanDto == null)
+        {
+          return NotFound();
+        }
+
+        return Ok(uchebnyjPlanDto);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
     [HttpPost("filter")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

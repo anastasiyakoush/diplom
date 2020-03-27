@@ -44,6 +44,22 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [HttpGet("tipovoj")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> GetAllTipPlansAsync()
+    {
+      try
+      {
+        return Ok(await _planService.GetAllTipovoyPlansAsync());
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

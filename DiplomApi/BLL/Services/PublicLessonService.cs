@@ -192,6 +192,9 @@ namespace BLL.Services
 
       var lessons = await _context.PublicLessons
         .Where(x => x.Topic.ToLower().Contains(query))
+        .Include(x => x.Teacher)
+       .Include(x => x.Group)
+       .Include(x => x.UchebnayaDisciplina)
         .ToListAsync();
 
       return _mapper.Map<List<PublicLessonDto>>(lessons);

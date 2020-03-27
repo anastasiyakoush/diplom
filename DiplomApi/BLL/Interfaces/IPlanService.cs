@@ -15,7 +15,7 @@ namespace BLL.Interfaces
 
     //Task<List<UchebnyjPlanDto>> SearchUchebnyiPlanAsync(string query);
 
-    //Task<IEnumerable<UchebnyjPlanDto>> GetAllTipovoyPlansAsync();
+    Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync();
 
     //Task<UchebnyjPlanDto> GetTipovoyPlanAsync(int? id);
 
