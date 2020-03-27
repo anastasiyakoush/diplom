@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
 import { EndpointsService } from 'src/app/endpoints.service';
 
@@ -12,10 +12,22 @@ import { EndpointsService } from 'src/app/endpoints.service';
 export class DetailedSyllabusComponent implements OnInit {
   title: string;
   modalRef: BsModalRef;
+  id: number;
+  docs: any[];
   constructor(private router: Router,
+    private route: ActivatedRoute,
+    private endpointService: EndpointsService,
      private modalService: BsModalService) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = +params["id"];
+    });
+    this.endpointService.getDocByDiscId(this.id).subscribe((data)=> this.docs = data)
+  }
+
+  download(link) {
+    this.endpointService.documentDownload(link)
   }
 
   addDocument(template: TemplateRef<any>) {
@@ -29,6 +41,5 @@ export class DetailedSyllabusComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.router.navigate(['detailedSyllabus/' + id]);
   }
 }

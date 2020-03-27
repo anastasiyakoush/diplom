@@ -239,5 +239,10 @@ header = new HttpHeaders({
     return this.http.get<any[]>('https://localhost:44312/api/Document/author/'
     + `${id}`);
 }
+
+getDocByDiscId(id) {
+  return this.http.get<any[]>('https://localhost:44312/api/Document/discipline/'
+  + `${id}`);
+}
 }
 
