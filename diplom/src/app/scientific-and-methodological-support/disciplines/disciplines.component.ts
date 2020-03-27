@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramType } from './programType.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Disciplina } from './disciplina.model';
 import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
@@ -13,9 +12,7 @@ import { EndpointsService } from 'src/app/endpoints.service';
 export class DisciplinesComponent implements OnInit {
   spec = false;
   course = false;
-  programs: Disciplina[] = [
-
-  ];
+  programs: any[] = [];
 
   type: ProgramType;
   modalRef: BsModalRef;

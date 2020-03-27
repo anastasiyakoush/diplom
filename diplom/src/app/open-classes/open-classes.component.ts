@@ -3,7 +3,6 @@ import { Lesson } from './lesson.model';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { EndpointsService } from '../endpoints.service';
-import { lstat } from 'fs';
 
 @Component({
   selector: 'app-open-classes',
