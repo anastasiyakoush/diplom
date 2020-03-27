@@ -27,4 +27,8 @@ export class DetailedSyllabusComponent implements OnInit {
     this.title = 'Редактировать документ';
     this.modalRef = this.modalService.show(template);
   }
+
+  onClick(id: number) {
+    this.router.navigate(['detailedSyllabus/' + id]);
+  }
 }

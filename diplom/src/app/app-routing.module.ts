@@ -16,7 +16,8 @@ import { DoctypeComponent } from './configuration/doctype/doctype.component';
 import { GroupsComponent } from './configuration/groups/groups.component';
 import { SpecialtyComponent } from './configuration/specialty/specialty.component';
 import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
-import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component'
+import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
+import { DetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/detailed-syllabus.component';
 
 
 const routes: Routes = [
@@ -78,6 +79,10 @@ const routes: Routes = [
   {
     path: 'addDocument',
     component: AddDocumentComponent
+  },
+  {
+    path: 'detailedSyllabus/:id',
+    component: DetailedSyllabusComponent
   },
 ];
 

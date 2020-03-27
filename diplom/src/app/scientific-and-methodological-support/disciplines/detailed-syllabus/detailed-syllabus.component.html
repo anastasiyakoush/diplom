@@ -1,6 +1,6 @@
 <div class="d-flex h-100 justify-content-between">
     <div class="col-sm-8 main align-self-start">
-      <div class="caption">Доументы учебной дисциплины</div>
+      <div class="caption">Документы учебной дисциплины</div>
       <form class="form-inline controls d-flex flex-row-reverse">
         <button type="submit" class="btn btn-info" (click)="addDocument(template)">Добавить документ</button>
       </form>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr (click)="onClick(syllabus.id)">
             <th scope="row">1</th>
             <td>Название</td>
             <td>Тип</td>
