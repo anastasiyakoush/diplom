@@ -13,6 +13,8 @@ export class KomisiiComponent implements OnInit {
   komisia = [];
   modalRef: BsModalRef;
   searchText: string;
+  ckId: any;
+  updateFlag: boolean;
   constructor(
     private router: Router,
     private modalService: BsModalService,
@@ -26,13 +28,16 @@ export class KomisiiComponent implements OnInit {
   }
 
   addKomisii(template: TemplateRef<any>) {
+    this.updateFlag=false;
     this.title = "Добавить цикловую комиссию";
     this.modalRef = this.modalService.show(template);
 
   }
 
-  updateKomisii(template: TemplateRef<any>) {
+  updateKomisii(template: TemplateRef<any>,id) {
+    this.ckId = id
     this.title = "Редактировать цикловую комиссию";
+    this.updateFlag=true;
     this.modalRef = this.modalService.show(template);
   }
   saveClick() {
@@ -41,6 +46,7 @@ export class KomisiiComponent implements OnInit {
   }
 
   delete(id) {
+    console.log(id)
     this.endpointService.deleteCK(id).subscribe(() => location.reload());
   }
 

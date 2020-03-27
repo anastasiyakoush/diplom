@@ -135,7 +135,9 @@ header = new HttpHeaders({
   deleteCK(id) {
     return this.http.delete(this.ConfigurationBaseURI+ `/ck/${id}`);
   }
-
+  getCKById(id) {
+    return this.http.get<any>(this.ConfigurationBaseURI+ `/ck/${id}`);
+  }
   searchCK(searchText: string) {
     return this.http.post(this.ConfigurationBaseURI+ "/ck/search", JSON.stringify(searchText), {headers: this.headers});
   }
