@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
   selector: 'app-compare-classes',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./compare-classes.component.less']
 })
 export class CompareClassesComponent implements OnInit {
-
-  constructor() { }
+  lessons: any[] = [];
+  constructor(    private endpointService: EndpointsService) {}
 
   ngOnInit() {
+    this.endpointService.getCompareLessons().subscribe((data:any[])=>{
+      this.lessons = data;
+      data.forEach((lesson, index)=> {
+        if(this.lessons[index].teacher ) {
+         this.lessons[index].teacher = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+         this.lessons[index].month = lesson.month;
+         this.lessons[index].date = lesson.date;
+
+        }
+         })
+
+     })
   }
 
 }

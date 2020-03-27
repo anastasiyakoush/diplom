@@ -68,6 +68,10 @@ header = new HttpHeaders({
     return this.http.get<Lesson[]>(this.PublicLessonBaseURI);
   }
 
+  getCompareLessons() {
+    return this.http.get<any[]>(this.PublicLessonBaseURI+'/compare');
+  }
+
   getLessonById(id: number) {
     return this.http.get<Lesson>(this.PublicLessonBaseURI
     + `/${id}`);
