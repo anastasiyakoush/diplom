@@ -28,8 +28,11 @@
              <a routerLink="doctype"  class="dropdown-item">Типы документов</a>
              </div>
          </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <li  *ngIf="!token" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a routerLink="//authorization/login" class="nav-link">Вход</a>
+        </li>
+        <li *ngIf="token" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a (click)="logout()"  class="nav-link">Выход</a>
         </li>
       </ul>
     </div>

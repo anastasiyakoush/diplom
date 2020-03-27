@@ -21,12 +21,14 @@ export class UpdateSyllabusComponent implements OnInit {
     name: "",
     laboratornye:0,
     practika:0,
+    component: 0,
     kursovoeProectirovanie:0,
-    link: '',
-    dependencyId: 2
-
+    ciklovayaKomissiya: {},
+    uchebnyjPlan:{},
+    tipovojUchebnyjPlan: {},
   }
   bsConfig: Partial<BsDatepickerConfig>;
+  cks: any[];
 
   constructor( private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -34,13 +36,20 @@ export class UpdateSyllabusComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.endpointService.getCK().subscribe(data => (this.cks = data));
+  }
 
   cancel() {
     this.cancelClick.emit()
   }
 
+  onChange(ck) {
+    this.form.ciklovayaKomissiya = ck;
+  }
+
   save() {
-    this.saveClick.emit()
+    this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  this.saveClick.emit())
+
   }
 }

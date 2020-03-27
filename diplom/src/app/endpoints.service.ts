@@ -105,7 +105,11 @@ header = new HttpHeaders({
   }
 
   FilterSubject(filter: any) {
-    return this.http.post(this.SubjectBaseURI,filter);
+    return this.http.post(this.SubjectBaseURI+'/filter',filter);
+  }
+
+  CreateorUpdateSubject(data: any) {
+    return this.http.post(this.SubjectBaseURI,data);
   }
 
   SearchSubject(searchText: string) {
