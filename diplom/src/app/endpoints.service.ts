@@ -230,5 +230,14 @@ header = new HttpHeaders({
           downloadLink.click();
       });
   }
+
+  getLessonByTeacherId(id) {
+      return this.http.get<any[]>('https://localhost:44312/api/PublicLesson/teacher/'
+      + `${id}`);
+  }
+  getDocByTeacherId(id) {
+    return this.http.get<any[]>('https://localhost:44312/api/Document/author/'
+    + `${id}`);
+}
 }
 

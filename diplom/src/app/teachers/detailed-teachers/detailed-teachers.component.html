@@ -81,7 +81,7 @@
                           <th scope="row">{{ lesson.id }}</th>
                           <td>{{ lesson.topic }}</td>
                           <td>{{ lesson.group }}</td>
-                          <td>{{ lesson.date }}</td>
+                          <td>{{ lesson.date | date}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -99,10 +99,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Название</td>
-                          <td>Соавторы</td>
+                        <tr style="font-weight: lighter;"*ngFor="let doc of documents">
+                          <th scope="row ">{{doc.id}}</th>
+                          <th >{{doc.name}}</th>
+                          <th><div *ngFor="let aut of doc.authors">{{aut.surname+' '+aut.name+' '+aut.fatherName}}</div></th>
                         </tr>
                       </tbody>
                     </table>

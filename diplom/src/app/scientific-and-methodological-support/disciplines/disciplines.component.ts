@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramType } from './programType.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { EndpointsService } from 'src/app/endpoints.service';
@@ -18,7 +18,8 @@ export class DisciplinesComponent implements OnInit {
   modalRef: BsModalRef;
   constructor(private route: ActivatedRoute,
     private modalService: BsModalService,
-    private endpointService: EndpointsService) { }
+    private endpointService: EndpointsService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -47,5 +48,9 @@ export class DisciplinesComponent implements OnInit {
 
   addDiscipline(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  onClick(id: number) {
+    this.router.navigate(['detailedSyllabus/' + id]);
   }
 }

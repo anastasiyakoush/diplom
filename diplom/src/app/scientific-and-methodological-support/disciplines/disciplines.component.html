@@ -21,8 +21,8 @@
         </tr>
       </thead>
       <tbody id="UchPrograma">
-        <tr *ngFor="let program of programs">
-          <td scope="row">{{program.id}}</td>
+        <tr (click)="onClick(program.id)" *ngFor="let program of programs">
+          <td scope="row" >{{program.id}}</td>
           <td>{{program.registarcionnyjNomer}}</td>
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>

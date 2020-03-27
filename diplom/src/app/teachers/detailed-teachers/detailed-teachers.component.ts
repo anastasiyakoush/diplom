@@ -16,34 +16,10 @@ export class DetailedTeachersComponent implements OnInit {
   actsupport: boolean = false;
   id: number;
 
-  lessons: Lesson[] = [
-    {
-      id: 1,
-      discipline: "ПССИП",
-      topic: "CSS",
-      group: "62491",
-      teacher: "Терешко",
-      date: "26/11/2019"
-    },
-    {
-      id: 1,
-      discipline: "ТРПО",
-      topic: "Методологии проектирования",
-      group: "62493",
-      teacher: "Тарасова",
-      date: "	15/09/2019"
-    },
-    {
-      id: 1,
-      discipline: "СиАОД",
-      topic: "Структуры данных",
-      group: "7к4911",
-      teacher: "Апанасевич",
-      date: "26/11/2019"
-    }
+  lessons: any[] = [
   ];
   teacher: any;
-
+documents: any[];
   modalRef: BsModalRef;
   constructor(
     private router: Router,
@@ -66,6 +42,25 @@ export class DetailedTeachersComponent implements OnInit {
       this.teacher.ciklovayaKomissiya = data.ciklovayaKomissiya.name;
 
     });
+    this.endpointService.getLessonByTeacherId(this.id).subscribe((data: any[]) => {
+      this.lessons = data;
+      data.forEach((lesson, index)=> {
+        if(this.lessons[index].teacher ) {
+         this.lessons[index].teacher = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+         this.lessons[index].group = lesson.group.name;
+         this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
+        }
+         })
+    })
+    this.endpointService.getDocByTeacherId(this.id).subscribe((data: any[]) => {
+this.documents = data;
+data.forEach((doc, index)=> {
+  if(this.documents[index].authors ) {
+   this.documents[index].name = this.documents[index].name;
+   this.documents[index].authors = doc.authors;
+  }
+   })
+    })
   }
 
   change(num: number) {
