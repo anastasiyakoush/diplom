@@ -43,6 +43,7 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
 
   }
 
+
   ngOnInit() {
 
   }

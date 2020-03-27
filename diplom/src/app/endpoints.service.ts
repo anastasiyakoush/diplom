@@ -244,5 +244,9 @@ getDocByDiscId(id) {
   return this.http.get<any[]>('https://localhost:44312/api/Document/discipline/'
   + `${id}`);
 }
+
+CreateDocByDiscId(data) {
+  return this.http.post('https://localhost:44312/api/Document', data );
+}
 }
 
