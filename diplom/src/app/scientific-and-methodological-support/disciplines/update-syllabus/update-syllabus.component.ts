@@ -16,7 +16,7 @@ export class UpdateSyllabusComponent implements OnInit {
   bsInlineRangeValue: Date[];
   maxDate = new Date();
   form ={
-    registarcionnyjNomer: '',
+    registarcionnyjNomer: "",
     date: new Date(),
     name: "",
     laboratornye:0,
@@ -24,12 +24,11 @@ export class UpdateSyllabusComponent implements OnInit {
     component: 0,
     kursovoeProectirovanie:0,
     ciklovayaKomissiya: {},
-    uchebnyjPlan:{},
-    tipovojUchebnyjPlan: {},
-  }
+    uchebnyjPlan:{}  }
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
-
+plans: any[];
+plan: any;
   constructor( private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -38,6 +37,7 @@ export class UpdateSyllabusComponent implements OnInit {
 
   ngOnInit() {
     this.endpointService.getCK().subscribe(data => (this.cks = data));
+    this.endpointService.getPlans().subscribe(data => this.plans = data)
   }
 
   cancel() {
@@ -47,9 +47,15 @@ export class UpdateSyllabusComponent implements OnInit {
   onChange(ck) {
     this.form.ciklovayaKomissiya = ck;
   }
-
+  onPlanChange(plan) {
+    this.form.uchebnyjPlan = plan;
+  }
   save() {
-    this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  this.saveClick.emit())
+    this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  {this.saveClick.emit()
+    location.reload()})
+  }
 
+  selectComponent(num) {
+    this.form.component = num;
   }
 }
