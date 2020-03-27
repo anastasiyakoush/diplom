@@ -18,7 +18,7 @@ export class CompareClassesComponent implements OnInit {
          this.lessons[index].teacher = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
          this.lessons[index].month = lesson.month;
          this.lessons[index].date = lesson.date;
-
+          this.lessons[index].id = index+1;
         }
          })
 
