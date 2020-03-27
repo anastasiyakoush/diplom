@@ -224,5 +224,21 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [HttpGet("compare")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<List<ComparableLessonsDto>>> ComapreLessonsAsync()
+    {
+      try
+      {
+        return Ok(await _publicLessonService.GetComparableLessonAsync());
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
   }
 }
