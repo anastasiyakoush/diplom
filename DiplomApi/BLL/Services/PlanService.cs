@@ -110,6 +110,11 @@ namespace BLL.Services
       return _mapper.Map<List<UchebnyjPlanDto>>(await result.ToListAsync());
     }
 
+    public async Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync()
+    {
+      return _mapper.Map<List<TipovojUchebnyjPlanDto>>(await _context.TipovyeUchebnyePlany.ToListAsync());
+    }
+
     public async Task<List<UchebnyjPlanDto>> GetAllUchebnyePlansAsync()
     {
       return _mapper.Map<List<UchebnyjPlanDto>>(await _context.UchebnyePlany.ToListAsync());
