@@ -34,10 +34,10 @@
       <tbody *ngFor="let lesson of lessons">
         <tr (click)="onClick(lesson.id)">
           <td scope="row">{{ lesson.id }}</td>
-          <td>{{lesson.teacher}}</td>
-          <td>{{lesson.uchebnayaDisciplina}}</td>
+          <td>{{lesson.teachername}}</td>
+          <td>{{lesson.uchebnayaDisciplinaname}}</td>
           <td>{{lesson.topic}}</td>
-          <td>{{lesson.group}}</td>
+          <td>{{lesson.groupname}}</td>
           <td>{{lesson.date}}</td>
         </tr>
       </tbody>

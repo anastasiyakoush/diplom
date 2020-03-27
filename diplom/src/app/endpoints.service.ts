@@ -4,6 +4,7 @@ import { Teacher } from './teachers/teacher.model';
 import { Plan } from './scientific-and-methodological-support/uch-plans/plan.model';
 import { Lesson } from './open-classes/lesson.model';
 import { Disciplina } from './scientific-and-methodological-support/disciplines/disciplina.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class EndpointsService {
   ConfigurationBaseURI = 'https://localhost:44312/api/Configuration';
   headers = new HttpHeaders({
     'Content-Type': 'application/json'
+});
+header = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'responseType': 'application/octet-stream',
+ 'observe':'response'
 });
   constructor(private http: HttpClient) {}
 
@@ -55,12 +61,26 @@ export class EndpointsService {
     return this.http.post(this.PlanBaseURI, data);
   }
 
+  createOrUpdateLesson(data: any) {
+    return this.http.post(this.PublicLessonBaseURI, data);
+  }
   getLessons() {
     return this.http.get<Lesson[]>(this.PublicLessonBaseURI);
   }
 
   getLessonById(id: number) {
     return this.http.get<Lesson>(this.PublicLessonBaseURI
+    + `/${id}`);
+  }
+  createOrUpdatePlannedLesson(data: any) {
+    return this.http.post(this.PublicLessonBaseURI +'/planning', data);
+  }
+  getPlannedLessons() {
+    return this.http.get<any[]>(this.PublicLessonBaseURI+'/planning');
+  }
+
+  getPlannedLessonById(id: number) {
+    return this.http.get<any>(this.PublicLessonBaseURI+'/planning'
     + `/${id}`);
   }
 
@@ -71,7 +91,9 @@ export class EndpointsService {
   SearchPublicLesson(searchText: string) {
     return this.http.post(this.PublicLessonBaseURI +"/search", JSON.stringify(searchText), {headers: this.headers});
   }
-
+  SearchPlannedPublicLesson(searchText: string) {
+    return this.http.post(this.PublicLessonBaseURI +'/planning'+"/search", JSON.stringify(searchText), {headers: this.headers});
+  }
   getSubjects() {
     return this.http.get<Disciplina[]>(this.SubjectBaseURI
     );
@@ -184,8 +206,19 @@ export class EndpointsService {
   }
 
   documentDownload(link: string) {
-    return this.http.post<any>('https://localhost:44312/api/Document/download', JSON.stringify(link),{headers: this.headers});
 
+    return  this.http.post(  'https://localhost:44312/api/Document/download',JSON.stringify(link),{headers: this.headers, responseType: 'blob' as 'json'}).subscribe(
+      (response: any) =>{
+          let dataType = response.type;
+          let binaryData = [];
+          binaryData.push(response);
+          let downloadLink = document.createElement('a');
+          downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+          if (link)
+              downloadLink.setAttribute('download', link);
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+      });
   }
 }
 

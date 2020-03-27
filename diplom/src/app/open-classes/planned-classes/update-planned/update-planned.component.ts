@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { Teacher } from 'src/app/teachers/teacher.model';
 
 @Component({
   selector: 'app-update-planned',
@@ -13,9 +14,9 @@ export class UpdatePlannedComponent
     bsInlineValue = new Date();
     bsInlineRangeValue: Date[];
     maxDate = new Date();
-  
+
     bsConfig: Partial<BsDatepickerConfig>;
-  
+
     constructor(private endpointService: EndpointsService) {
       this.maxDate.setDate(this.maxDate.getDate() + 7);
       this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -24,15 +25,32 @@ export class UpdatePlannedComponent
     @Output() cancelClick = new EventEmitter<any>();
     @Output() saveClick = new EventEmitter<any>();
     @Input() title: string;
-  
-    ngOnInit() {}
+    teachers: Teacher[] = [];
+    teacher: any;
+  form = {
+    teacher: {},
+    status: true,
+    month: "",
+  };
+    ngOnInit() {
+      this.endpointService.getTeachers().subscribe((data: any[]) => {
+        this.teachers = data;
+        data.forEach((teacher, index) => {
+          this.teachers[index].name =
+            teacher.surname + " " + teacher.name + " " + teacher.fatherName;
+        });
+      });
+    }
 
   cancel() {
     this.cancelClick.emit()
   }
 
+  onTeacherChange(teacher) {
+    this.form.teacher = teacher;
+      }
   save() {
-   // this.endpointService.cre
-    this.saveClick.emit()
+    this.endpointService.createOrUpdatePlannedLesson(this.form).subscribe(()=>    this.saveClick.emit())
+
   }
 }

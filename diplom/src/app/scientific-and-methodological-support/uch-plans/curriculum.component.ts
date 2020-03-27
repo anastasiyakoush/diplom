@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Plan } from './plan.model';
 import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { HttpResponse } from '@angular/common/http/http';
 
 @Component({
   selector: 'app-curriculum',
@@ -35,6 +36,7 @@ export class CurriculumComponent implements OnInit {
   }
 
   download(link) {
-    this.endpointService.documentDownload(link).subscribe(()=> alert("ujnjdj"))
+    this.endpointService.documentDownload(link)
   }
+
 }
