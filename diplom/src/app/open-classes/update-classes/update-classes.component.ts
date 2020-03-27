@@ -16,7 +16,7 @@ export class UpdateClassesComponent implements OnInit {
   maxDate = new Date();
 
   bsConfig: Partial<BsDatepickerConfig>;
-  disciplines: import("d:/diplom/diplom/src/app/scientific-and-methodological-support/disciplines/disciplina.model").Disciplina[];
+  disciplines: any[];
   groups: any;
 group:any;
 disciplin: any;
