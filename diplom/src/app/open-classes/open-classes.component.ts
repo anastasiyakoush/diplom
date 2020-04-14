@@ -54,5 +54,17 @@ export class OpenClassesComponent implements OnInit {
      }
      )
   }
+
+  filter(data) {
+    this.lessons = data;
+    data.forEach((lesson, index)=> {
+      if(this.lessons[index].teacher ) {
+       this.lessons[index].teachername = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+       this.lessons[index].groupname = lesson.group.name;
+       this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
+      }
+       })
+
+  }
 }
 

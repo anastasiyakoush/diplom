@@ -11,36 +11,22 @@
             type="text"
             class="form-control"
             id="num"
+            [(ngModel)]="form.regNumber"
             placeholder="№ учебной дисциплины"
           />
         </div>
       </li>
       <li class="list-group-item">
         <div class="form-group">
-          <label for="tsk">Цикловая комиссия</label>
-          <select class="form-control" id="tsk">
-            <option>Не выбрано</option>
-            <option>ПОИТ</option>
-            <option>ПиПРэС</option>
-            <option>ЭВС</option>
-            <option>Микро- и наноэлектроника</option>
-            <option>ТЭРэС</option>
-            <option>ПМС</option>
-            <option>Общетехнические дисциплины</option>
-            <option>Математические и естесвенно научные дисцциплины</option>
-            <option>Социально-гуманитарные дисциплины</option>
-            <option>Физическое воспитание</option>
-          </select>
+
         </div>
       </li>
       <li class="list-group-item">
         <div class="form-group">
           <label for="tsk">Учебный план</label>
-          <select class="form-control" id="tsk">
-            <option>Не выбрано</option>
-            <option>Название плана</option>
-            <option>Название плана</option>
-          </select>
+          <select class="form-control" [(ngModel)]="plan" (ngModelChange)="onPlanChange($event)">
+            <option  *ngFor="let plan of plans" [ngValue]="plan" >{{plan.registarcionnyjNomer}}</option>
+            </select>
         </div>
       </li>
       <li class="list-group-item">
@@ -59,27 +45,13 @@
           <div class="row">
           <div class="form-group col">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="ЛР часов"
+              <input type="number" class="form-control" [(ngModel)]="form.lrStart" placeholder="ЛР часов"
               />
             </div>
           </div>
           <div class="form-group col">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="ЛР часов"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="ПР часов"
-              />
-            </div>
-          </div>
-          <div class="form-group col">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="ПР часов"
+              <input type="number" class="form-control" [(ngModel)]="form.lrEnd" placeholder="ЛР часов"
               />
             </div>
           </div>
@@ -87,13 +59,27 @@
         <div class="row">
           <div class="form-group col">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="КП часов"
+              <input type="number" class="form-control" [(ngModel)]="form.prStart" placeholder="ПР часов"
               />
             </div>
           </div>
           <div class="form-group col">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="КП часов"
+              <input type="number" class="form-control" [(ngModel)]="form.prEnd" placeholder="ПР часов"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <div class="input-group">
+              <input type="number" class="form-control" [(ngModel)]="form.kpStart" placeholder="КП часов"
+              />
+            </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+              <input type="number" class="form-control" [(ngModel)]="form.kpEnd" placeholder="КП часов"
               />
             </div>
           </div>
@@ -101,8 +87,8 @@
         </div>
       </li>
       <li class="list-group-item">
-        <a href="#" class="btn btn-info mr-3">Отфильтровать</a>
-        <a href="#" class="btn btn-outline-danger">Сбросить</a>
+        <a class="btn btn-info mr-3" (click)="filter()">Отфильтровать</a>
+        <a class="btn btn-outline-danger">Сбросить</a>
       </li>
     </ul>
   </div>

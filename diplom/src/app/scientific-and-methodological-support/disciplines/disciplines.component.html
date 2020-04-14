@@ -72,7 +72,7 @@
       </tbody>
     </table>
   </div>
-  <app-syllabus-filters></app-syllabus-filters>
+  <app-syllabus-filters (onChanged)="filter($event)" ></app-syllabus-filters>
 </div>
 <ng-template #template>
   <app-update-syllabus (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>

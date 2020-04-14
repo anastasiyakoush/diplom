@@ -35,6 +35,7 @@ export class TeachersFilterComponent implements OnInit {
     this.form.category = category;
   }
 
+
   filter() {
     this.endpointService.FilterTeacher(this.form).subscribe((data:any[])=>{
       data.forEach((teacher, index)=> {

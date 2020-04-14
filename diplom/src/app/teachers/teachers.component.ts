@@ -42,12 +42,12 @@ export class TeachersComponent implements OnInit {
   search() {
     this.endpointService.SearchTeacher(this.searchText).subscribe((data: any) => {
       this.teachers = data;
-      data.forEach((teacher, index)=> {
-        this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-        this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
-        this.teachers[index].status = Status[teacher.status];
-        this.teachers[index].category = Category[teacher.category];
-      })
+    data.forEach((teacher, index)=> {
+      this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
+      this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
+      this.teachers[index].status = teacher.status;
+      this.teachers[index].category = teacher.category;
+    });
     })
   }
 

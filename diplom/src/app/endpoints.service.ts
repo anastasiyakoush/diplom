@@ -52,6 +52,9 @@ header = new HttpHeaders({
   getPlans() {
     return this.http.get<any[]>(this.PlanBaseURI);
   }
+  getTypePlans() {
+    return this.http.get<any[]>(this.PlanBaseURI+'/tipovoj');
+  }
 
   getPlanById(id: number) {
     return this.http.get<Plan>(this.PlanBaseURI + `/${id}`);
@@ -89,7 +92,7 @@ header = new HttpHeaders({
   }
 
   FilterPublicLesson(filter: any) {
-    return this.http.post(this.PublicLessonBaseURI,filter);
+    return this.http.post(this.PublicLessonBaseURI +'/filter',filter);
   }
 
   SearchPublicLesson(searchText: string) {
