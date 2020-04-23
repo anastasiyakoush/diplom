@@ -28,10 +28,7 @@ namespace DiplomApi.Controllers
       _planService = planService;
     }
 
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpGet("uch")]
     public async Task<ActionResult<List<UchebnyjPlanDto>>> GetAllUchebnyePlansAsync()
     {
       try
@@ -44,27 +41,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [HttpGet("tipovoj")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> GetAllTipPlansAsync()
-    {
-      try
-      {
-        return Ok(await _planService.GetAllTipovoyPlansAsync());
-      }
-      catch (Exception ex)
-      {
-        return BadRequest(ex.Message);
-      }
-    }
-
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpGet("uch/{id}")]
     public async Task<ActionResult<UchebnyjPlanDto>> GetUchebnyiPlanAsync(int? id)
     {
       try
@@ -84,10 +61,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [HttpPost("filter")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [HttpPost("uch/filter")]
     public async Task<ActionResult<List<UchebnyjPlanDto>>> FilterUchebnyePlansAsync(UchebnyiPlanFilterCriterias criterias)
     {
       try
@@ -101,10 +75,6 @@ namespace DiplomApi.Controllers
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> AddOrUpdatePlanAsync(PostPlanModel postPlanModel)
     {
       try
@@ -132,16 +102,11 @@ namespace DiplomApi.Controllers
       }
       catch (Exception ex)
       {
-        Console.WriteLine(ex.Message);
         return BadRequest(ex.Message);
       }
     }
 
     [HttpPost("upload"), DisableRequestSizeLimit]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UploadPlanAsync([FromQuery] int plan)
     {
       try
@@ -171,132 +136,152 @@ namespace DiplomApi.Controllers
       }
     }
 
-    //[HttpDelete("{id}")]
-    //public async Task<IActionResult> DeleteUchebnyiPlanAsync(int? id)
-    //{
-    //  try
-    //  {
-    //    await _planService.DeleteUchebnyiPlanAsync(id);
-    //    return Ok();
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpDelete("uch/{id}")]
+    public async Task<IActionResult> DeleteUchebnyiPlanAsync(int? id)
+    {
+      try
+      {
+        await _planService.DeleteUchebnyiPlanAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //[HttpPost("search")]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<List<UchebnayaDisciplinaDto>>> SearchUchebnyiPlanAsync([FromBody]string query)
-    //{
-    //  try
-    //  {
-    //    return Ok(await _planService.SearchUchebnyiPlanAsync(query));
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpGet("tip")]
+    public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> GetAllTipPlansAsync()
+    {
+      try
+      {
+        return Ok(await _planService.GetAllTipovoyPlansAsync());
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //[HttpGet]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<IEnumerable<TipovojUchebnyjPlanDto>>> GetAllTipovojPlansAsync()
-    //{
-    //  try
-    //  {
-    //    return Ok(await _planService.GetAllTipovoyPlansAsync());
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpGet("tip/{id}")]
+    public async Task<ActionResult<TipovojUchebnyjPlanDto>> GetTipovojPlanAsync(int? id)
+    {
+      try
+      {
+        var uchebnyjPlanDto = await _planService.GetTipovoyPlanAsync(id);
 
-    //[HttpGet("{id}")]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<TipovojUchebnyjPlanDto>> GetTipovojPlanAsync(int? id)
-    //{
-    //  try
-    //  {
-    //    var uchebnyjPlanDto = await _planService.GetTipovoyPlanAsync(id);
+        if (uchebnyjPlanDto == null)
+        {
+          return NotFound();
+        }
 
-    //    if (uchebnyjPlanDto == null)
-    //    {
-    //      return NotFound();
-    //    }
+        return Ok(uchebnyjPlanDto);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //    return Ok(uchebnyjPlanDto);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpDelete("tip/{id}")]
+    public async Task<IActionResult> DeleteTipovojAsync(int? id)
+    {
+      try
+      {
+        await _planService.DeleteTipovoyPlanAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //[HttpPost]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<TipovojUchebnyjPlanDto>> AddOrUpdateTipovojAsync(PostTipovoyPlanModel postTipovoyPlanModel)
-    //{
-    //  try
-    //  {
-    //    var uchebnyjPlanDto =
-    //      await _planService.AddOrUpdateTipovoyPlanAsync(_mapper.Map<TipovojUchebnyjPlanDto>(postTipovoyPlanModel));
+    [HttpPost("tip/filter")]
+    public async Task<ActionResult<List<UchebnyjPlanDto>>> FilterTipPlansAsync(TipovojPlanFilterCriterias criterias)
+    {
+      try
+      {
+        return Ok(await _planService.FilterTipovyePlany(criterias));
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //    if (uchebnyjPlanDto == null)
-    //    {
-    //      return NotFound();
-    //    }
+    [HttpGet("obr")]
+    public async Task<ActionResult<List<ObrazovatelnyjStandartDto>>> GetAllObrStandartsAsync()
+    {
+      try
+      {
+        return Ok(await _planService.GetAllObrStandartsAsync());
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
 
-    //    return Ok(uchebnyjPlanDto);
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+    [HttpGet("obr/{id}")]
+    public async Task<ActionResult<ObrazovatelnyjStandartDto>> GetObrStandartAsync(int? id)
+    {
+      try
+      {
+        var obrazovatelnyjStandart = await _planService.GetObrStandartAsync(id);
 
-    //[HttpDelete("{id}")]
-    //public async Task<IActionResult> DeleteTipovojAsync(int? id)
-    //{
-    //  try
-    //  {
-    //    await _planService.DeleteTipovoyPlanAsync(id);
-    //    return Ok();
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+        if (obrazovatelnyjStandart == null)
+        {
+          return NotFound();
+        }
 
-    //[HttpPost("search")]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-    //public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> SearchTipovojAsync([FromBody]string query)
-    //{
-    //  try
-    //  {
-    //    return Ok(await _planService.SearchTipovoyPlanAsync(query));
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.Message);
-    //  }
-    //}
+        return Ok(obrazovatelnyjStandart);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
+    [HttpDelete("obr/{id}")]
+    public async Task<IActionResult> DeleteObrStandartAsync(int? id)
+    {
+      try
+      {
+        await _planService.DeleteObrStandartAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
+    [HttpPost("obr/filter")]
+    public async Task<ActionResult<List<ObrazovatelnyjStandartDto>>> FilterObrStandartAsync(ObrStandartFilterCriterias criterias)
+    {
+      try
+      {
+        return Ok(await _planService.FilterObrStandartsAsync(criterias));
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
   }
 }
 

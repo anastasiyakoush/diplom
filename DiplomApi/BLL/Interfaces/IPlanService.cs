@@ -11,31 +11,30 @@ namespace BLL.Interfaces
 
     Task<UchebnyjPlanDto> GetUchebnyiPlanAsync(int? id);
 
-    Task<List<UchebnyjPlanDto>> FilterUchebnyePlany(UchebnyiPlanFilterCriterias filterCriterias);
-
-    //Task<List<UchebnyjPlanDto>> SearchUchebnyiPlanAsync(string query);
-
-    Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync();
-
-    //Task<UchebnyjPlanDto> GetTipovoyPlanAsync(int? id);
-
-    Task<TipovojUchebnyjPlanDto> AddOrUpdateTipovoyPlanAsync(TipovojUchebnyjPlanDto tipovojUchebnyjPlanDto);
-
-    //Task DeleteTipovoyPlanAsync(int? id);
-
-    //Task<List<UchebnyjPlanDto>> SearchTipovoyPlanAsync(string query);
-
-    //Task<IEnumerable<UchebnyjPlanDto>> GetAllUchebnyePlansAsync();
-
-    //Task<UchebnyjPlanDto> GetUchebnyiPlanAsync(int? id);
-
     Task<UchebnyjPlanDto> AddOrUpdateUchebnyiPlanAsync(UchebnyjPlanDto uchebnyjPlanDto);
-    Task<ObrazovatelnyjStandartDto> AddOrUpdateObrStandrtAsync(ObrazovatelnyjStandartDto obrazovatelnyjStandartDto);
 
     Task DeleteUchebnyiPlanAsync(int? id);
 
-    //Task<List<UchebnyjPlanDto>> FilterUchebnyiPlanAsync(SubjectFilterCriterias subjectFilterCriterias);
+    Task<List<UchebnyjPlanDto>> FilterUchebnyePlany(UchebnyiPlanFilterCriterias filterCriterias);
 
-    //Task<List<UchebnyjPlanDto>> SearchUchebnyiPlanAsync(string query);
+    Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync();
+
+    Task<TipovojUchebnyjPlanDto> GetTipovoyPlanAsync(int? id);
+
+    Task<TipovojUchebnyjPlanDto> AddOrUpdateTipovoyPlanAsync(TipovojUchebnyjPlanDto tipovojUchebnyjPlanDto);
+
+    Task DeleteTipovoyPlanAsync(int? id);
+
+    Task<List<TipovojUchebnyjPlanDto>> FilterTipovyePlany(TipovojPlanFilterCriterias filterCriterias);
+
+    Task<IEnumerable<ObrazovatelnyjStandartDto>> GetAllObrStandartsAsync();
+
+    Task<ObrazovatelnyjStandartDto> GetObrStandartAsync(int? id);
+
+    Task<ObrazovatelnyjStandartDto> AddOrUpdateObrStandrtAsync(ObrazovatelnyjStandartDto obrazovatelnyjStandartDto);
+
+    Task<List<ObrazovatelnyjStandartDto>> FilterObrStandartsAsync(ObrStandartFilterCriterias filterCriterias);
+
+    Task DeleteObrStandartAsync(int? id);
   }
 }

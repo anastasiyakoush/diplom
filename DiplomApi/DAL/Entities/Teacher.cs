@@ -13,10 +13,8 @@ namespace DAL.Entities
     public Enums.Category Category { get; set; }
     public Enums.Status Status { get; set; }
 
-    [Required]
     public Position Position { get; set; }
-    [Required]
     public CiklovayaKomissiya CiklovayaKomissiya { get; set; }
-    public List<DocumentAuthor> DocumentAuthors { get; set; }
+    public virtual IList<DocumentAuthor> DocumentAuthors { get; set; }
   }
 }

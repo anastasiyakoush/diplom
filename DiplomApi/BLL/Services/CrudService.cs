@@ -28,6 +28,12 @@ namespace BLL.Services
 
     public async Task<T> AddOrUpdateAsync(T t)
     {
+      if (t.Id.HasValue
+        && await _context.Set<V>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == t.Id.Value) is null)
+      {
+        return null;
+      }
+
       var toUpdate = _mapper.Map<V>(t);
 
       _context.Set<V>().Update(toUpdate);

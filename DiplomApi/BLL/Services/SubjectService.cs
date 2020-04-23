@@ -66,13 +66,6 @@ namespace BLL.Services
                             .ThenInclude(x => x.Specialnost)
                           .Include(x => x.CiklovayaKomissiya)
                           .AsQueryable();
-
-      if (!string.IsNullOrEmpty(filterCriterias?.RegNumber))
-      {
-        result = result.Where(x =>
-        x.RegistarcionnyjNomer.ToLower().Contains(filterCriterias.RegNumber.ToLower()));
-      }
-
       if (filterCriterias.UchebnyiPlanId.HasValue)
       {
         result = result.Where(x => x.UchebnyjPlan.Id == filterCriterias.UchebnyiPlanId);

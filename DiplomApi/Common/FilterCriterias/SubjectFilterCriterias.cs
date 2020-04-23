@@ -4,7 +4,6 @@ namespace Common.FilterCriterias
 {
   public class SubjectFilterCriterias
   {
-    public string RegNumber { get; set; }
     public int? SpecialnostId { get; set; }
     public int? UchebnyiPlanId { get; set; }
     public int Component { get; set; }

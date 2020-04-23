@@ -20,13 +20,16 @@ namespace DiplomApi.Controllers
     private readonly ICrudService<DocumentTypeDto> _docTypeService;
     private readonly ICrudService<PositionDto> _positionService;
     private readonly IMapper _mapper;
+    private readonly IPlanService _planService;
 
-    public ConfigurationController(IMapper mapper,
+    public ConfigurationController(
+      IMapper mapper,
       ICrudService<SpecialnostDto> specialnostService,
       ICrudService<GroupDto> groupService,
       ICrudService<CiklovayaKomissiyaDto> ckService,
       ICrudService<DocumentTypeDto> docTypeService,
-      ICrudService<PositionDto> positionService)
+      ICrudService<PositionDto> positionService,
+      IPlanService planService)
     {
       _mapper = mapper;
       _ckService = ckService;
@@ -34,6 +37,7 @@ namespace DiplomApi.Controllers
       _groupService = groupService;
       _docTypeService = docTypeService;
       _positionService = positionService;
+      _planService = planService;
     }
 
     [HttpGet("specialnost")]
@@ -104,6 +108,10 @@ namespace DiplomApi.Controllers
       {
         await _specialnostService.DeleteAsync(id);
         return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
       }
       catch (Exception ex)
       {
@@ -189,12 +197,16 @@ namespace DiplomApi.Controllers
     }
 
     [HttpDelete("doctype/{id}")]
-    public async Task<IActionResult> DeleteDoumentTypeAsync(int? id)
+    public async Task<IActionResult> DeleteDocumentTypeAsync(int? id)
     {
       try
       {
         await _docTypeService.DeleteAsync(id);
         return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
       }
       catch (Exception ex)
       {
@@ -224,7 +236,8 @@ namespace DiplomApi.Controllers
     {
       try
       {
-        return Ok(await _groupService.GetAllAsync("Specialnost"));
+        var groups = await _groupService.GetAllAsync("UchebnyjPlan");
+        return Ok(groups);
       }
       catch (Exception ex)
       {
@@ -263,7 +276,12 @@ namespace DiplomApi.Controllers
     {
       try
       {
-        // groupDto.Specialnost = await _specialnostService.GetAsync(groupDto.SpecialnostId);
+        if (groupDto.UchebnyjPlanId.HasValue || groupDto.UchebnyjPlan != null)
+        {
+          groupDto.UchebnyjPlan = await _planService.GetUchebnyiPlanAsync(groupDto.UchebnyjPlanId);
+          groupDto.UchebnyjPlanId = groupDto.UchebnyjPlan is null ? null : groupDto.UchebnyjPlanId;
+        }
+
         var result = await _groupService.AddOrUpdateAsync(groupDto);
 
         if (result is null)
@@ -286,6 +304,10 @@ namespace DiplomApi.Controllers
       {
         await _groupService.DeleteAsync(id);
         return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
       }
       catch (Exception ex)
       {
@@ -374,8 +396,12 @@ namespace DiplomApi.Controllers
     {
       try
       {
-        await _docTypeService.DeleteAsync(id);
+        await _ckService.DeleteAsync(id);
         return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
       }
       catch (Exception ex)
       {
@@ -467,6 +493,10 @@ namespace DiplomApi.Controllers
       {
         await _positionService.DeleteAsync(id);
         return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
       }
       catch (Exception ex)
       {

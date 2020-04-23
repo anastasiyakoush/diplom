@@ -33,12 +33,60 @@ namespace DAL.DAL
           .WithMany(x => x.DocumentAuthors)
           .HasForeignKey(x => x.TeacherId);
 
-
       modelBuilder.Entity<DocumentAuthor>()
           .HasOne(x => x.Document)
           .WithMany(x => x.DocumentAuthors)
           .HasForeignKey(x => x.DocumentId);
-      //modelBuilder.Seed();
+
+      modelBuilder.Entity<Teacher>()
+        .HasOne(x => x.CiklovayaKomissiya)
+        .WithMany(x => x.Teachers)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<Teacher>()
+        .HasOne(x => x.Position)
+        .WithMany(x => x.Teachers)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<UchebnayaDisciplina>()
+        .HasOne(x => x.UchebnyjPlan)
+        .WithMany(x => x.UchebnayaDisciplinas)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<UchebnayaDisciplina>()
+        .HasOne(x => x.CiklovayaKomissiya)
+        .WithMany(x => x.UchebnayaDisciplinas)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<Document>()
+        .HasOne(x => x.DocumentType)
+        .WithMany(x => x.Documents)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<PublicLesson>()
+        .HasOne(x => x.Group)
+        .WithMany(x => x.PublicLessons)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<ObrazovatelnyjStandart>()
+        .HasOne(x => x.Specialnost)
+        .WithMany(x => x.ObrazovatelnyjStandarts)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<UchebnyjPlan>()
+        .HasOne(x => x.TipovojUchebnyjPlan)
+        .WithMany(x => x.UchebnyjPlans)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<TipovojUchebnyjPlan>()
+        .HasOne(x => x.ObrazovatelnyjStandart)
+        .WithMany(x => x.TipovojUchebnyjPlans)
+        .OnDelete(DeleteBehavior.SetNull);
+
+      modelBuilder.Entity<Group>()
+        .HasOne(x => x.UchebnyjPlan)
+        .WithMany(x => x.Groups)
+        .OnDelete(DeleteBehavior.SetNull);
     }
   }
 }

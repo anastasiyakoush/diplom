@@ -5,6 +5,8 @@ namespace DiplomApi.PostModels
 {
   public class PostPlanModel
   {
+    public int Id { get; set; }
+
     public string RegistarcionnyjNomer { get; set; }
 
     public DateTime? Date { get; set; }
