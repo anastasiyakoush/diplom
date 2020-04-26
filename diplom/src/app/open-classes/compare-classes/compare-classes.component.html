@@ -18,7 +18,7 @@
             <td scope="row">{{ lesson.id }}</td>
             <td>{{lesson.teacher}}</td>
             <td>{{lesson.month}}</td>
-            <td>{{lesson.date | date}}</td>
+            <td>{{lesson.date | date: 'MM/dd/yyyy'}}</td>
             <td>{{lesson.topic}}</td>
           </tr>
         </tbody>

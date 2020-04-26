@@ -2,21 +2,36 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { IDropdownSettings } from "ng-multiselect-dropdown";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { EndpointsService } from "src/app/endpoints.service";
+import { LessonFilter } from '../lesson.model';
 
 @Component({
   selector: "app-classes-filter",
   templateUrl: "./classes-filter.component.html",
-  styleUrls: ["./classes-filter.component.less"]
+  styleUrls: ["./classes-filter.component.less"],
 })
 export class ClassesFilterComponent implements OnInit {
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
+  dropdownSettings: IDropdownSettings;
+  dropdownList1 = [];
+  dropdownList2 = [];
+  dropdownList3 = [];
+  selectedItems1 = [];
+  selectedItems2 = [];
+  selectedItems3 = [];
   maxDate = new Date();
-  form = {
-    groupIds: [7]
+  beginDate: Date;
+  endDate: Date;
+  form : LessonFilter =  {
+    groupIds: this.selectedItems1,
+    teachersIds: [],
+    subjectsIds: [],
+    beginDate: null,
+    endDate: null
   };
   bsConfig: Partial<BsDatepickerConfig>;
+  bsConfig1: Partial<BsDatepickerConfig>;
   lessons: any[];
   @Output() onChangedFilter = new EventEmitter<any[]>();
 
@@ -24,36 +39,59 @@ export class ClassesFilterComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.bsConfig1 = Object.assign({}, { containerClass: this.colorTheme });
   }
 
-  dropdownSettings: IDropdownSettings;
-  dropdownList1 = [];
-  dropdownList2 = [];
-  selectedItems1 = [];
-  selectedItems2 = [];
   ngOnInit() {
-    this.dropdownList1 = [
-      { item_id: 1, item_text: "62491" },
-      { item_id: 2, item_text: "62492" },
-      { item_id: 3, item_text: "62493" },
-      { item_id: 4, item_text: "7к2411" }
-    ];
-    this.dropdownList2 = [
-      { item_id: 1, item_text: "Лазицкас" },
-      { item_id: 2, item_text: "Карпович" },
-      { item_id: 3, item_text: "Ашуркевич" },
-      { item_id: 4, item_text: "Виничук" }
-    ];
+    this.endpointService.getSubjects().subscribe(
+      (data) =>
+        (this.dropdownList3 = data.map((item) => {
+          return {
+            name: item.name,
+            id: item.id,
+          };
+        }))
+    );
+    this.endpointService.getGroup().subscribe(
+      (data) =>
+        (this.dropdownList1 = data.map((item) => {
+          return {
+            name: item.name,
+            id: item.id,
+          };
+        }))
+    );
+    this.endpointService.getTeachers().subscribe((data) => {
+      this.dropdownList2 = data.map((item) => {
+        return {
+          name: item.surname + " " + item.name + " " + item.fatherName,
+          id: item.id,
+        };
+      });
+    });
     this.dropdownSettings = {
       singleSelection: false,
-      idField: "item_id",
-      textField: "item_text",
+      idField: "id",
+      textField: "name",
       selectAllText: "Выбрать все",
       unSelectAllText: "Отменить все",
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
   }
+
+  onItem1Select(item: any) {
+    this.form.groupIds.push(item.id);
+  }
+
+  onItem2Select(item: any) {
+    this.form.teachersIds.push(item.id);
+  }
+
+  onItem3Select(item: any) {
+    this.form.subjectsIds.push(item.id);
+  }
+
   filter() {
     this.endpointService
       .FilterPublicLesson(this.form)

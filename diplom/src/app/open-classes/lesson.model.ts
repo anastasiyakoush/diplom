@@ -6,3 +6,11 @@ export class Lesson {
   teacher: string;
   date: string;
 }
+
+export class LessonFilter {
+  groupIds?: number[];
+  teachersIds?: number[];
+  subjectsIds?: number[];
+  beginDate?: Date;
+  endDate?: Date;
+}

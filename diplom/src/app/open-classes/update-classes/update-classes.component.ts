@@ -7,31 +7,23 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: "app-update-classes",
   templateUrl: "./update-classes.component.html",
-  styleUrls: ["./update-classes.component.less"]
+  styleUrls: ["./update-classes.component.less"],
 })
 export class UpdateClassesComponent implements OnInit {
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-
   bsConfig: Partial<BsDatepickerConfig>;
   disciplines: any[];
   groups: any;
-group:any;
-disciplin: any;
-teacher: any;
-  constructor(
-    private endpointService: EndpointsService,
-    private http: HttpClient
-  ) {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-  }
+  group: any;
+  disciplin: any;
+  selectedteacher: any;
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
+  @Input() lessonId: number;
   teachers: Teacher[] = [];
   form = {
     metodicheskieNarabotki: "",
@@ -40,8 +32,19 @@ teacher: any;
     analisUroka: "",
     uchebnayaDisciplina: {},
     teacher: {},
-    group: {}
+    group: {},
   };
+
+  constructor(
+    private endpointService: EndpointsService,
+    private http: HttpClient
+  ) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+  }
+
+
   ngOnInit() {
     this.endpointService.getTeachers().subscribe((data: any[]) => {
       this.teachers = data;
@@ -50,12 +53,23 @@ teacher: any;
           teacher.surname + " " + teacher.name + " " + teacher.fatherName;
       });
     });
-    this.endpointService.getSubjects().subscribe(data => {
+    this.endpointService.getSubjects().subscribe((data) => {
       this.disciplines = data;
     });
     this.endpointService
       .getGroup()
       .subscribe((data: any) => (this.groups = data));
+
+    if (this.lessonId) {
+      this.endpointService.getLessonById(this.lessonId).subscribe((lesson) => {
+      this.form.date = new Date(lesson.date);
+      this.form.teacher = lesson.teacher;
+      this.selectedteacher = lesson.teacher;
+      this.group = lesson.group
+      this.form.group = lesson.group;
+
+      })
+    }
   }
 
   cancel() {
@@ -74,10 +88,10 @@ teacher: any;
 
     this.http
       .post("https://localhost:44312/api/document/upload", formData, {
-        reportProgress: true
+        reportProgress: true,
       })
       .subscribe((link: any) => {
-        if(metodic) {
+        if (metodic) {
           this.form.metodicheskieNarabotki = link.link;
         } else this.form.analisUroka = link.link;
       });
@@ -88,15 +102,16 @@ teacher: any;
   }
 
   onTeacherChange(teacher) {
-this.form.teacher = teacher;
+    this.form.teacher = teacher;
   }
 
   onGroupChange(group) {
-this.form.group = group;
+    this.form.group = group;
   }
 
   save() {
- this.endpointService.createOrUpdateLesson(this.form).subscribe(()=>    this.saveClick.emit()
- )
+    this.endpointService
+      .createOrUpdateLesson(this.form)
+      .subscribe(() => this.saveClick.emit());
   }
 }

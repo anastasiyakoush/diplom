@@ -11,7 +11,7 @@
                     class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                       <h2 class="pt-sm-2 pb-1 mb-0 text-nowrap">
-                        Тема: <span>CSS</span>
+                        Тема: <span>{{lesson.topic}}</span>
                       </h2>
                     </div>
                     <div class="text-center text-sm-right">
@@ -26,13 +26,13 @@
                         <div class="col">
                           <div class="form-group">
                             <label class="mr-2">Группа:</label>
-                            <label>62491</label>
+                            <label>{{lesson.group.name}}</label>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                             <label class="mr-2">План занятия:</label>
-                            <label>ссылка</label>
+                            <a href="javascript:;" (click)="download(lesson.analisUroka)">скачать</a>
                           </div>
                         </div>
                       </div>
@@ -40,48 +40,17 @@
                         <div class="col">
                           <div class="form-group">
                             <label class="mr-2">Дата проведения:</label>
-                            <label>26/11/2019</label>
+                            <label>{{lesson.date | date : 'MM/dd/yyyy'}}</label>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
                             <label class="mr-2">Методическая разработка:</label>
-                            <label>ссылка</label>
+                            <a href="javascript:;" (click)="download(lesson.metodicheskieNarabotki)">скачать</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col d-flex justify-content-start my-2">
-                      <button class="btn btn-outline-info" type="submit">
-                        Преподаватели
-                      </button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <table class="table table-bordered table-hover">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th class="my-auto" scope="col ">ID</th>
-                          <th scope="col">ФИО</th>
-                          <th scope="col">Категория</th>
-                          <th scope="col">Цикловая комиссия</th>
-                          <th scope="col">Статус</th>
-                        </tr>
-                      </thead>
-                      <tbody
-                        id="TeachersTable"
-                        *ngFor="let teacher of teachers">
-                        <tr (click)="onClick(teacher.id)">
-                          <th scope="row">{{ teacher.id }}</th>
-                          <td>{{ teacher.name }}</td>
-                          <td>{{ teacher.category }}</td>
-                          <td>{{ teacher.commision }}</td>
-                          <td>{{ teacher.status }}</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </form>
               </div>
@@ -114,5 +83,5 @@
 </div>
 
 <ng-template #template>
-  <app-update-classes title="Редактировать открытое занятие"  (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
+  <app-update-classes [lessonId]="id" title="Редактировать открытое занятие"  (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-classes>
 </ng-template>

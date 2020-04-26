@@ -1,7 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Teacher } from 'src/app/teachers/teacher.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EndpointsService } from 'src/app/endpoints.service';
 
 @Component({
   selector: 'app-detailed-classes',
@@ -10,15 +11,30 @@ import { Router } from '@angular/router';
 })
 export class DetailedClassesComponent implements OnInit {
 
-  teachers: Teacher[] = [ ];
+  lesson: any = [ ];
 
   modalRef: BsModalRef;
-  constructor(private router: Router,private modalService: BsModalService) {}
+  id: number;
+  constructor(private router: Router,
+    private modalService: BsModalService,
+    private route: ActivatedRoute,
+    private endpointService: EndpointsService) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = +params["id"];
+    });
+    this.endpointService.getLessonById(this.id).subscribe((lesson)=>{
+      this.lesson = lesson;
+    })
+  }
+
+  download(link) {
+    this.endpointService.documentDownload(link)
   }
 
   updateLesson(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+
 }

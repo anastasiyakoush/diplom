@@ -5,7 +5,14 @@
         <li class="list-group-item">
           <div class="form-group">
             <label for="group">Дисциплина</label>
-            <input type="text" class="form-control" id="group" placeholder="Дисциплина">
+            <ng-multiselect-dropdown
+            [placeholder]="'Дисциплина'"
+            [data]="dropdownList3"
+            [(ngModel)]="selectedItems3"
+            [settings]="dropdownSettings"
+            (onSelect)="onItem3Select($event)"
+          >
+          </ng-multiselect-dropdown>
           </div>
         </li>
         <li class="list-group-item">
@@ -16,6 +23,7 @@
               [data]="dropdownList1"
               [(ngModel)]="selectedItems1"
               [settings]="dropdownSettings"
+              (onSelect)="onItem1Select($event)"
             >
             </ng-multiselect-dropdown>
           </div>
@@ -28,6 +36,7 @@
               [data]="dropdownList2"
               [(ngModel)]="selectedItems2"
               [settings]="dropdownSettings"
+              (onSelect)="onItem2Select($event)"
             >
             </ng-multiselect-dropdown>
           </div>
@@ -42,6 +51,7 @@
                     type="text"
                     class="form-control"
                     bsDatepicker
+                    [bsValue]="form.beginDate"
                     #dp="bsDatepicker"
                     [bsConfig]="bsConfig"
                     placeholder="От"
@@ -56,7 +66,8 @@
                     class="form-control"
                     bsDatepicker
                     #dp="bsDatepicker"
-                    [bsConfig]="bsConfig"
+                    [bsValue]="form.endDate"
+                    [bsConfig]="bsConfig1"
                     placeholder="До"
                   />
                   <div class="input-group-btn"></div>

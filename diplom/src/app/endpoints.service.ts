@@ -26,7 +26,7 @@ header = new HttpHeaders({
   constructor(private http: HttpClient) {}
 
   getTeachers() {
-    return this.http.get<Teacher[]>(this.teacherBaseURI);
+    return this.http.get<any[]>(this.teacherBaseURI);
   }
 
   getTeacherById(id: number) {
@@ -102,7 +102,7 @@ header = new HttpHeaders({
     return this.http.post(this.PublicLessonBaseURI +'/planning'+"/search", JSON.stringify(searchText), {headers: this.headers});
   }
   getSubjects() {
-    return this.http.get<Disciplina[]>(this.SubjectBaseURI
+    return this.http.get<any[]>(this.SubjectBaseURI
     );
   }
 

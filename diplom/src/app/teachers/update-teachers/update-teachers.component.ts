@@ -35,6 +35,8 @@ export class UpdateTeachersComponent implements OnInit {
       this.endpointService
         .getTeacherById(this.teacherId)
         .subscribe((data:any) => {this.form = data;  this.form.status = data.status;
+          this.form.ciklovayaKomissiyaId = data.ciklovayaKomissiya.id;
+          this.ck = data.ciklovayaKomissiya;
           this.form.category = data.category});
     this.endpointService.getCK().subscribe(data => (this.cks = data));
   }
