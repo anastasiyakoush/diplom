@@ -12,16 +12,20 @@ export class TeachersFilterComponent implements OnInit {
   statuses = Status;
   categories = Category;
   keys = Object.keys;
-  ck: any;
+  ck: any = 0;
   @Output() onChanged = new EventEmitter<any>();
   constructor(private endpointService: EndpointsService) {}
   form = {
-    category: Category.Первая,
+    category: 3,
     ciklovayaKomissiya: 0,
-    status: 0  };
+    status: 3  };
     teachers: any;
   ngOnInit() {
-    this.endpointService.getCK().subscribe(data => (this.cks = data));
+    this.endpointService.getCK().subscribe(data => {
+      this.cks = data;
+      this.cks.push({id: 0, name: 'не выбрано'})
+    });
+
   }
   onChange(ck) {
     this.form.ciklovayaKomissiya = ck.id;
@@ -35,9 +39,13 @@ export class TeachersFilterComponent implements OnInit {
     this.form.category = category;
   }
 
-
   filter() {
-    this.endpointService.FilterTeacher(this.form).subscribe((data:any[])=>{
+    let filterObject = Object.assign({}, this.form);
+    filterObject.category = this.form.category === 3? null: this.form.category;
+    filterObject.status = this.form.status === 3? null: this.form.status;
+    filterObject.ciklovayaKomissiya = this.form.ciklovayaKomissiya === 0? null: this.form.ciklovayaKomissiya;
+
+    this.endpointService.FilterTeacher(filterObject).subscribe((data:any[])=>{
       data.forEach((teacher, index)=> {
         data[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
         data[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;

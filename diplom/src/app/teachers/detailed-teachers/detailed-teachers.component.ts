@@ -36,8 +36,7 @@ documents: any[];
       this.teacher = data;
       this.teacher.status = Status[data.status];
       this.teacher.category = Category[data.category];
-      this.teacher.name =
-        data.surname + " " + data.name + " " + data.fatherName;
+      this.teacher.name = data.surname + " " + data.name + " " + data.fatherName;
       this.teacher.position = data.position.name;
       this.teacher.ciklovayaKomissiya = data.ciklovayaKomissiya.name;
 
@@ -53,13 +52,13 @@ documents: any[];
          })
     })
     this.endpointService.getDocByTeacherId(this.id).subscribe((data: any[]) => {
-this.documents = data;
-data.forEach((doc, index)=> {
-  if(this.documents[index].authors ) {
-   this.documents[index].name = this.documents[index].name;
-   this.documents[index].authors = doc.authors;
-  }
-   })
+      this.documents = data;
+      data.forEach((doc, index) => {
+        if (this.documents[index].authors) {
+          this.documents[index].name = this.documents[index].name;
+          this.documents[index].authors = doc.authors;
+        }
+      })
     })
   }
 
@@ -71,6 +70,14 @@ data.forEach((doc, index)=> {
       this.actlesson = false;
       this.actsupport = true;
     }
+  }
+
+  download(link) {
+    this.endpointService.documentDownload(link)
+  }
+
+  onClick(id: number) {
+    this.router.navigate(['openClasses/' + id]);
   }
 
   UpdateTeacher(template: TemplateRef<any>) {

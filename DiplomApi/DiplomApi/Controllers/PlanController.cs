@@ -28,7 +28,7 @@ namespace DiplomApi.Controllers
       _planService = planService;
     }
 
-    [HttpGet("uch")]
+    [HttpGet]
     public async Task<ActionResult<List<UchebnyjPlanDto>>> GetAllUchebnyePlansAsync()
     {
       try

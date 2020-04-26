@@ -13,7 +13,7 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./teachers.component.less']
 })
 export class TeachersComponent implements OnInit {
-  teachers: Teacher[] = [];
+  teachers: any[] = [];
   searchText ="";
   modalRef: BsModalRef;
   @ViewChild('app-teachers-filter', {static: false}) teacherFilter: TeachersFilterComponent;
@@ -42,13 +42,13 @@ export class TeachersComponent implements OnInit {
   search() {
     this.endpointService.SearchTeacher(this.searchText).subscribe((data: any) => {
       this.teachers = data;
-    data.forEach((teacher, index)=> {
-      this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-      this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
-      this.teachers[index].status = teacher.status;
-      this.teachers[index].category = teacher.category;
-    });
-    })
+      for(let index=0;index<=this.teachers.length;index++) {
+        this.teachers[index].name = this.teachers[index].surname +" "+ this.teachers[index].name  +" "+  this.teachers[index].fatherName;
+        this.teachers[index].ciklovayaKomissiya = this.teachers[index].ciklovayaKomissiya? this.teachers[index].ciklovayaKomissiya.name : '';
+        this.teachers[index].status = Status[this.teachers[index].status];
+        this.teachers[index].category = Category[this.teachers[index].category];
+      }
+      })
   }
 
   onSave() {
