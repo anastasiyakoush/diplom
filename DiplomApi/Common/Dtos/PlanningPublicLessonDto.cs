@@ -8,7 +8,7 @@ namespace Common.Dtos
   {
     public int? Id { get; set; }
     public bool Status { get; set; }
-    public string Month { get; set; }
+    public int Month { get; set; }
 
     public TeacherDto Teacher { get; set; }
   }

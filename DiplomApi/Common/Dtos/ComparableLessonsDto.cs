@@ -7,7 +7,7 @@ namespace Common.Dtos
   public class ComparableLessonsDto
   {
     public TeacherDto Teacher { get; set; }
-    public string Month { get; set; }
+    public int Month { get; set; }
     public DateTime? Date { get; set; }
     public string Topic { get; set; }
   }

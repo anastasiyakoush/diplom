@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DAL.Entities
@@ -9,7 +10,8 @@ namespace DAL.Entities
     public int Id { get; set; }
     public int TeacherId { get; set; }
     public bool Status { get; set; }
-    public string Month { get; set; }
+    [Range(1, 12)]
+    public int Month { get; set; }
 
     public virtual Teacher Teacher { get; set; }
   }

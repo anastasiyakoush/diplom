@@ -228,7 +228,7 @@ namespace DiplomApi.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<PlanningPublicLessonDto>> AddOrUpdatePlanningTeacherAsync(PlanningPublicLessonDto publicLessonDto)
+    public async Task<ActionResult<PlanningPublicLessonDto>> AddOrUpdatePlanningLessonAsync(PlanningPublicLessonDto publicLessonDto)
     {
       try
       {

@@ -148,7 +148,7 @@ namespace BLL.Services
       {
         var lessons = _context.PublicLessons.Include(x => x.Teacher)
           .ToList().Where(x => x.Teacher.Id == plannig.Teacher.Id
-        && CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.Date.Month) == plannig.Month)
+        && x.Date.Month == plannig.Month)
           .ToList();
 
         if (lessons?.Count() > 0)
