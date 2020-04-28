@@ -7,16 +7,6 @@
 
 <div class="modal-body">
   <div class="form-group">
-    <label for="num">Регистрационный номер дисциплины</label>
-    <input
-      type="text"
-      class="form-control"
-      id="num"
-      [(ngModel)]="form.registarcionnyjNomer"
-      placeholder="№ учебной дисциплины"
-    />
-  </div>
-  <div class="form-group">
     <label for="name">Название дисциплины</label>
     <input
       type="text"
@@ -50,17 +40,20 @@
     <label for="date">Количество часов</label>
     <div class="form-group">
       <div class="input-group">
+        <span style="margin-right: 10px; margin-top: 5px;">ЛР</span>
         <input type="number" class="form-control" [(ngModel)]="form.laboratornye"
         placeholder="ЛР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
+        <span style="margin-right: 10px; margin-top: 5px;">ПР</span>
         <input class="form-control" type="number" [(ngModel)]="form.practika"  placeholder="ПР часов" />
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
+        <span style="margin-right: 10px; margin-top: 5px;">КП</span>
         <input class="form-control" type="number" [(ngModel)]="form.kursovoeProectirovanie" placeholder="КП часов" />
       </div>
     </div>

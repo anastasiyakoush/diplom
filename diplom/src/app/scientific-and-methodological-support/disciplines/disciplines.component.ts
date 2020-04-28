@@ -13,7 +13,7 @@ export class DisciplinesComponent implements OnInit {
   spec = false;
   course = false;
   programs: any[] = [];
-
+searchText:string;
   type: ProgramType;
   modalRef: BsModalRef;
   constructor(
@@ -31,9 +31,9 @@ export class DisciplinesComponent implements OnInit {
       this.programs = data;
       data.forEach((program: any, index) => {
         this.programs[index].hours =
-          program.laboratornye +
-          program.practika +
-          program.kursovoeProectirovanie;
+        program.laboratornye +'/'+
+        program.practika + '/'+
+        program.kursovoeProectirovanie;
       });
     });
   }
@@ -50,6 +50,18 @@ export class DisciplinesComponent implements OnInit {
       this.spec = false;
       this.course = false;
     }
+  }
+
+  search() {
+    this.endpointService.SearchSubject(this.searchText).subscribe((data: any) => {
+      this.programs = data;
+      data.forEach((program: any, index) => {
+        this.programs[index].hours =
+          program.laboratornye +
+          program.practika +
+          program.kursovoeProectirovanie;
+      });
+    });
   }
 
   addDiscipline(template: TemplateRef<any>) {

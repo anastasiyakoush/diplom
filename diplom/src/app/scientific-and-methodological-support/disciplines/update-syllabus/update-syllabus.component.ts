@@ -16,7 +16,6 @@ export class UpdateSyllabusComponent implements OnInit {
   bsInlineRangeValue: Date[];
   maxDate = new Date();
   form ={
-    registarcionnyjNomer: "",
     date: new Date(),
     name: "",
     laboratornye:0,

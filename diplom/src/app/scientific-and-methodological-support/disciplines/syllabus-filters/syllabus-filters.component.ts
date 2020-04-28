@@ -19,7 +19,6 @@ export class SyllabusFiltersComponent implements OnInit {
   plans: any[];
   plan: any;
   form = {
-    regNumber: "",
     specialnostId: 3,
     component: 0,
     lrStart: 0,
@@ -31,7 +30,9 @@ export class SyllabusFiltersComponent implements OnInit {
     uchebnyjPlanId: 0
   };
   disciplines: any[];
-
+specs: any[];
+spec:any;
+  sp: any;
   constructor(
     private endpointService: EndpointsService,
     private http: HttpClient
@@ -42,18 +43,24 @@ export class SyllabusFiltersComponent implements OnInit {
   }
 
   onPlanChange(plan) {
-    this.form.uchebnyjPlanId = plan.шв;
+    this.form.uchebnyjPlanId = plan.id;
   }
+
+  onSpecChange(spec) {
+this.form.specialnostId = spec.id;
+  }
+
   ngOnInit() {
     this.endpointService.getPlans().subscribe(data => (this.plans = data));
+    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
   }
   filter() {
     this.endpointService.FilterSubject(this.form).subscribe((data: any[]) => {
       this.disciplines = data;
       data.forEach((program: any, index) => {
         this.disciplines[index].hours =
-          program.laboratornye +
-          program.practika +
+          program.laboratornye +'/'+
+          program.practika + '/'+
           program.kursovoeProectirovanie;
       });
       this.onChanged.emit(this.disciplines);

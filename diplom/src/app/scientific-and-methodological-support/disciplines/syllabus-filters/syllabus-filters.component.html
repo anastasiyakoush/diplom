@@ -6,26 +6,17 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="form-group">
-          <label for="num">Регистрационный номер дисциплины</label>
-          <input
-            type="text"
-            class="form-control"
-            id="num"
-            [(ngModel)]="form.regNumber"
-            placeholder="№ учебной дисциплины"
-          />
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="form-group">
-
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="form-group">
           <label for="tsk">Учебный план</label>
           <select class="form-control" [(ngModel)]="plan" (ngModelChange)="onPlanChange($event)">
             <option  *ngFor="let plan of plans" [ngValue]="plan" >{{plan.registarcionnyjNomer}}</option>
+            </select>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group">
+          <label for="tsk">Специальность</label>
+          <select class="form-control" [(ngModel)]="spec" (ngModelChange)="onSpecChange($event)">
+            <option  *ngFor="let plan of specs" [ngValue]="spec" >{{plan.name}}</option>
             </select>
         </div>
       </li>
@@ -45,6 +36,7 @@
           <div class="row">
           <div class="form-group col">
             <div class="input-group">
+              <span style="margin-right: 10px; margin-top: 5px;">ЛР</span>
               <input type="number" class="form-control" [(ngModel)]="form.lrStart" placeholder="ЛР часов"
               />
             </div>
@@ -59,6 +51,7 @@
         <div class="row">
           <div class="form-group col">
             <div class="input-group">
+              <span style="margin-right: 10px; margin-top: 5px;">ПР</span>
               <input type="number" class="form-control" [(ngModel)]="form.prStart" placeholder="ПР часов"
               />
             </div>
@@ -73,6 +66,7 @@
         <div class="row">
           <div class="form-group col">
             <div class="input-group">
+              <span style="margin-right: 10px; margin-top: 5px;">КП</span>
               <input type="number" class="form-control" [(ngModel)]="form.kpStart" placeholder="КП часов"
               />
             </div>
