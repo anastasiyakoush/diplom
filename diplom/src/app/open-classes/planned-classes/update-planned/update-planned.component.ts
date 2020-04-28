@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
 import { Teacher } from 'src/app/teachers/teacher.model';
+import { Month } from '../../lesson.model';
 
 @Component({
   selector: 'app-update-planned',
@@ -27,10 +28,12 @@ export class UpdatePlannedComponent
     @Input() title: string;
     teachers: Teacher[] = [];
     teacher: any;
+    keys = Object.keys;
+    months = Month;
   form = {
     teacher: {},
     status: true,
-    month: "",
+    month: Month.Декабрь,
   };
     ngOnInit() {
       this.endpointService.getTeachers().subscribe((data: any[]) => {

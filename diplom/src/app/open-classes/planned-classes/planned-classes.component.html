@@ -4,19 +4,6 @@
       <form class="form-inline controls d-flex flex-row-reverse">
         <button type="submit" class="btn btn-info"><a routerLink="/compareClasses"> Сравнить</a></button>
         <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
-        <div class="input-group search">
-          <input
-          type="text"
-          id="Input"
-          class="form-control"
-          placeholder="Search"
-          [(ngModel)]="searchText"
-          [ngModelOptions]="{standalone: true}"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-info" type="submit" (click)="search()">Поиск</button>
-        </div>
-        </div>
       </form>
       <table class="table table-bordered table-hover">
         <thead class="thead-dark">
@@ -37,7 +24,7 @@
         </tbody>
       </table>
     </div>
-  <app-classes-filter></app-classes-filter>
+  <app-planned-classes-filter></app-planned-classes-filter>
   </div>
   <ng-template #template>
     <app-update-planned title="Добавить открытое занятие" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()" ></app-update-planned>

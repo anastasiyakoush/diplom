@@ -6,8 +6,8 @@
 <div class="modal-body">
     <div class="form-group">
         <label>Преподаватель</label>
-        <select class="form-control" [(ngModel)]="selectedteacher"  (ngModelChange)="onTeacherChange($event)">
-            <option *ngFor="let teacher of teachers" selected value="selectedteacher" [ngValue]="teacher">{{teacher.name}}</option>
+        <select class="form-control" [(ngModel)]="form.teacher"  (ngModelChange)="onTeacherChange($event)">
+            <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher.name}}</option>
         </select>
     </div>
     <div class="form-group">

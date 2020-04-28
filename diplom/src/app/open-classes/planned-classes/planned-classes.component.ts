@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
-import { Lesson } from "./../lesson.model";
+import { Lesson, Month } from "./../lesson.model";
 import { Router } from "@angular/router";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { EndpointsService } from "src/app/endpoints.service";
@@ -30,8 +30,9 @@ export class PlannedClassesComponent implements OnInit {
             lesson.teacher.name +
             " " +
             lesson.teacher.fatherName;
+            this.lessons[index].month = Month[lesson.month],
           this.lessons[index].status = lesson.status
-            ? "планируутся"
+            ? "планируется"
             : "проведено";
         }
       });

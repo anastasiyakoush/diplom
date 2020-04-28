@@ -1,0 +1,32 @@
+<div class="filter">
+    <div class="shadow-lg p-3 mb-5 card" style="height: 110vh;">
+      <div class="card-header text-center"> Фильтрация </div>
+      <ul class="list-group list-group-flush">
+
+        <li class="list-group-item">
+          <div class="form-group">
+            <label>Преподаватель</label>
+            <ng-multiselect-dropdown
+              [placeholder]="'Преподаватель'"
+              [data]="dropdownList2"
+              [(ngModel)]="selectedItems2"
+              [settings]="dropdownSettings"
+              (onSelect)="onItem2Select($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </li>
+        <li class="list-group-item">
+        <div class="form-group">
+          <label for="date">Месяц</label>
+          <select class="form-control" [(ngModel)]="form.month" (ngModelChange)="onMonthChange($event)">
+            <option  *ngFor="let month of keys(months)" [ngValue]="months[month]">{{month}}</option>
+        </select>
+      </div>
+      </li>
+        <li class="list-group-item">
+          <a class="btn btn-info mr-3"(click)="filter()">Отфильтровать</a>
+          <a  class="btn btn-outline-danger">Сбросить</a>
+        </li>
+      </ul>
+    </div>

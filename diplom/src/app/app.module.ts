@@ -47,6 +47,7 @@ import { AddDocumentComponent } from './scientific-and-methodological-support/ad
 import { UpdateDetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/update-detailed-syllabus/update-detailed-syllabus.component';
 import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
 import { UpdatePlannedComponent } from './open-classes/planned-classes/update-planned/update-planned.component';
+import { PlannedClassesFilterComponent } from './open-classes/planned-classes/planned-classes-filter/planned-classes-filter.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { UpdatePlannedComponent } from './open-classes/planned-classes/update-pl
     UpdateDetailedSyllabusComponent,
     CompareClassesComponent,
     UpdatePlannedComponent,
+    PlannedClassesFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -13,4 +13,20 @@ export class LessonFilter {
   subjectsIds?: number[];
   beginDate?: Date;
   endDate?: Date;
+  month: Month
+}
+
+export enum Month {
+Январь = 1,
+Февраль,
+Март,
+Апрель,
+Май,
+Июнь,
+Июль,
+Август,
+Сенятбрь,
+Октябрь,
+Ноябрь,
+Декабрь
 }
