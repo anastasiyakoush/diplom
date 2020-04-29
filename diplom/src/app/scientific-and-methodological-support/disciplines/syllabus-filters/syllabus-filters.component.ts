@@ -27,6 +27,8 @@ export class SyllabusFiltersComponent implements OnInit {
     prEnd: 0,
     kpStart: 0,
     kpEnd: 0,
+    allStart: 0,
+    allEnd: 0,
     uchebnyjPlanId: 0
   };
   disciplines: any[];
@@ -47,6 +49,7 @@ spec:any;
   }
 
   onSpecChange(spec) {
+    debugger
 this.form.specialnostId = spec.id;
   }
 
@@ -66,4 +69,19 @@ this.form.specialnostId = spec.id;
       this.onChanged.emit(this.disciplines);
     });
   }
+
+  restore() {
+    this.endpointService.getSubjects().subscribe(data=>{
+      this.disciplines = data;
+      data.forEach((program: any, index) => {
+        this.disciplines[index].hours =
+          program.laboratornye +'/'+
+          program.practika + '/'+
+          program.kursovoeProectirovanie;
+      });
+      this.onChanged.emit(this.disciplines);
+    })
+    }
+
+
 }

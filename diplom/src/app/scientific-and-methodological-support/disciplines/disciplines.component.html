@@ -20,8 +20,8 @@
         </tr>
       </thead>
       <tbody id="UchPrograma">
-        <tr (click)="onClick(program.id)" *ngFor="let program of programs">
-          <td scope="row" >{{program.id}}</td>
+        <tr *ngFor="let program of programs">
+          <td scope="row" (click)="onClick(program.id)">{{program.id}}</td>
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>
           <td>
@@ -46,7 +46,7 @@
                 ></path>
               </svg>
           </button>
-          <button class="btn btn-outline-info">
+          <button class="btn btn-outline-info" (click)="delete(program.id)">
               <svg
                 class="bi bi-trash"
                 width="1.5em"

@@ -16,7 +16,7 @@
         <div class="form-group">
           <label for="tsk">Специальность</label>
           <select class="form-control" [(ngModel)]="spec" (ngModelChange)="onSpecChange($event)">
-            <option  *ngFor="let plan of specs" [ngValue]="spec" >{{plan.name}}</option>
+            <option  *ngFor="let spec of specs" [ngValue]="spec" >{{spec.name}}</option>
             </select>
         </div>
       </li>
@@ -78,11 +78,26 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group col">
+            <div class="input-group">
+              <span style="margin-right: 10px; margin-top: 5px;">Всего</span>
+              <input type="number" class="form-control" [(ngModel)]="form.allStart" placeholder="КП часов"
+              />
+            </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+              <input type="number" class="form-control" [(ngModel)]="form.allEnd" placeholder="КП часов"
+              />
+            </div>
+          </div>
+        </div>
         </div>
       </li>
       <li class="list-group-item">
         <a class="btn btn-info mr-3" (click)="filter()">Отфильтровать</a>
-        <a class="btn btn-outline-danger">Сбросить</a>
+        <a class="btn btn-outline-danger" (click)="restore()">Сбросить</a>
       </li>
     </ul>
   </div>

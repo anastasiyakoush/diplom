@@ -117,6 +117,9 @@ header = new HttpHeaders({
   FilterSubject(filter: any) {
     return this.http.post(this.SubjectBaseURI+'/filter',filter);
   }
+  DeleteSubject(id:number) {
+    return this.http.delete(this.SubjectBaseURI+`/${id}`);
+  }
 
   CreateorUpdateSubject(data: any) {
     return this.http.post(this.SubjectBaseURI,data);

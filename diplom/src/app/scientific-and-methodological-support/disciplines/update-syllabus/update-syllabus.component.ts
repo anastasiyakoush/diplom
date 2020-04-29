@@ -21,6 +21,7 @@ export class UpdateSyllabusComponent implements OnInit {
     laboratornye:0,
     practika:0,
     component: 0,
+    all:0,
     kursovoeProectirovanie:0,
     ciklovayaKomissiya: {},
     uchebnyjPlan:{}  }

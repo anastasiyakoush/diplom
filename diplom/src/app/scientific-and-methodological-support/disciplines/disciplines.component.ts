@@ -33,7 +33,7 @@ searchText:string;
         this.programs[index].hours =
         program.laboratornye +'/'+
         program.practika + '/'+
-        program.kursovoeProectirovanie;
+        program.kursovoeProectirovanie + '/'+program.all;
       });
     });
   }
@@ -57,9 +57,9 @@ searchText:string;
       this.programs = data;
       data.forEach((program: any, index) => {
         this.programs[index].hours =
-          program.laboratornye +
-          program.practika +
-          program.kursovoeProectirovanie;
+        program.laboratornye +'/'+
+        program.practika + '/'+
+        program.kursovoeProectirovanie + '/'+program.all;
       });
     });
   }
@@ -70,5 +70,9 @@ searchText:string;
 
   onClick(id: number) {
     this.router.navigate(["detailedSyllabus/" + id]);
+  }
+
+  delete(id) {
+    this.endpointService.DeleteSubject(id).subscribe(()=> location.reload() )
   }
 }
