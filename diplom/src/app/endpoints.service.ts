@@ -58,6 +58,9 @@ header = new HttpHeaders({
   filterPlan(filter:any) {
     return this.http.post(this.PlanBaseURI+'/uch/filter',filter)
   }
+  DeletePlan(id: number) {
+    return this.http.delete(this.PlanBaseURI+'/uch'+`/${id}`);
+  }
 
   getPlanById(id: number) {
     return this.http.get<Plan>(this.PlanBaseURI + `/${id}`);

@@ -43,4 +43,7 @@ export class CurriculumComponent implements OnInit {
     console.log($event)
     this.plans = $event;
   }
+  delete(id) {
+    this.endpointService.DeletePlan(id).subscribe(()=> location.reload())
+  }
 }
