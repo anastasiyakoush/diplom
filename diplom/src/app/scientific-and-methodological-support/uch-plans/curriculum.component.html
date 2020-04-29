@@ -73,7 +73,7 @@
       </tbody>
     </table>
   </div>
-  <app-curriculum-filters></app-curriculum-filters>
+  <app-curriculum-filters (onChanged)="filterChange($event)"></app-curriculum-filters>
 </div>
 <ng-template #template>
   <app-update-curriculum [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>

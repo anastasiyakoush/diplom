@@ -13,7 +13,7 @@ export class LessonFilter {
   subjectsIds?: number[];
   beginDate?: Date;
   endDate?: Date;
-  month: Month
+  month?: Month
 }
 
 export enum Month {

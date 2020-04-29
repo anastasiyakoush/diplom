@@ -39,4 +39,8 @@ export class CurriculumComponent implements OnInit {
     this.endpointService.documentDownload(link)
   }
 
+  filterChange($event) {
+    console.log($event)
+    this.plans = $event;
+  }
 }

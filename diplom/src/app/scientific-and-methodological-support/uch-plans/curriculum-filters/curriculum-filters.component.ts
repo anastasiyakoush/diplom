@@ -16,17 +16,19 @@ export class CurriculumFiltersComponent implements OnInit {
   maxDate = new Date();
 
   bsConfig: Partial<BsDatepickerConfig>;
-  @Output() onChanged = new EventEmitter<any>();
+  @Output() onChanged = new EventEmitter<any[]>();
 
-
+tp:any;
   form ={
-    registarcionnyjNomer: '',
+    regNumber: '',
     date: new Date(),
-    planType: 1,
+    tipovoyPlanId: 1,
     link: '',
-    dependencyId: 2
+    dependencyId: 2,
+    groupIds:[]
 
   }
+  plans: any[];
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -38,14 +40,40 @@ export class CurriculumFiltersComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
+    this.endpointService.getGroup().subscribe(
+      (data) =>
+        (this.dropdownList = data.map((item) => {
+          return {
+            name: item.name,
+            id: item.id,
+          };
+        }))
+    );
+    this.endpointService.getTypePlans().subscribe(data=> this.plans = data)
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: "id",
+      textField: "name",
+      selectAllText: "Выбрать все",
+      unSelectAllText: "Отменить все",
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+    };
   }
+  onChange(tp) {
+    this.form.tipovoyPlanId = tp.id
+  }
+  onItem1Select(item: any) {
+    this.form.groupIds.push(item.id);
+  }
+
   filter() {
-    this.endpointService.FilterSubject(this.form).subscribe((data:any[])=>
-     data.forEach((teacher, index)=> {
-        data[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-        data[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
-      })
-   //   this.onChanged.emit(data);
-  )
+    this.endpointService.filterPlan(this.form).subscribe((data:any[])=>
+     this.onChanged.emit(data))
+  }
+
+  restore() {
+    this.endpointService.getPlans().subscribe((data:any[])=>
+    this.onChanged.emit(data))
   }
 }

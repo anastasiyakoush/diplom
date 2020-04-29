@@ -53,7 +53,10 @@ header = new HttpHeaders({
     return this.http.get<any[]>(this.PlanBaseURI);
   }
   getTypePlans() {
-    return this.http.get<any[]>(this.PlanBaseURI+'/tipovoj');
+    return this.http.get<any[]>(this.PlanBaseURI+'/tip');
+  }
+  filterPlan(filter:any) {
+    return this.http.post(this.PlanBaseURI+'/uch/filter',filter)
   }
 
   getPlanById(id: number) {

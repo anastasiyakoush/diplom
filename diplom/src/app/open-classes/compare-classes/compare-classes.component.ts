@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { Month } from '../lesson.model';
 
 @Component({
   selector: 'app-compare-classes',
@@ -16,7 +17,7 @@ export class CompareClassesComponent implements OnInit {
       data.forEach((lesson, index)=> {
         if(this.lessons[index].teacher ) {
          this.lessons[index].teacher = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
-         this.lessons[index].month = lesson.month;
+         this.lessons[index].month = Month[lesson.month];
          this.lessons[index].date = lesson.date;
           this.lessons[index].id = index+1;
         }
