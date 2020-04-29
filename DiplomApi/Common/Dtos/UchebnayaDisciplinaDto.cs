@@ -6,7 +6,7 @@ namespace Common.Dtos
 
     public string Name { get; set; }
 
-    public string RegistarcionnyjNomer { get; set; }
+    public int All { get; set; }
 
     public int Laboratornye { get; set; }
 
