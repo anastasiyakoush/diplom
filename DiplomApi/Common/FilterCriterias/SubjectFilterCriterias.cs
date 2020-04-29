@@ -13,5 +13,7 @@ namespace Common.FilterCriterias
     public int? PREnd { get; set; }
     public int? KPStart { get; set; }
     public int? KPEnd { get; set; }
+    public int? AllStart { get; set; }
+    public int? AllEnd { get; set; }
   }
 }

@@ -106,6 +106,16 @@ namespace BLL.Services
         result = result.Where(x => x.Practika <= filterCriterias.PREnd);
       }
 
+      if (filterCriterias.AllStart.HasValue)
+      {
+        result = result.Where(x => x.All >= filterCriterias.AllStart);
+      }
+
+      if (filterCriterias.AllEnd.HasValue)
+      {
+        result = result.Where(x => x.All <= filterCriterias.AllEnd);
+      }
+
       return _mapper.Map<List<UchebnayaDisciplinaDto>>(await result.ToListAsync());
     }
 
