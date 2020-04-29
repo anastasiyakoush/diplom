@@ -21,12 +21,10 @@ export class CurriculumFiltersComponent implements OnInit {
 tp:any;
   form ={
     regNumber: '',
-    date: new Date(),
-    tipovoyPlanId: 1,
-    link: '',
-    dependencyId: 2,
+    beginDate: null,
+    endDate: null,
+    tipovoyPlanId: null,
     groupIds:[]
-
   }
   plans: any[];
 
