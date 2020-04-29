@@ -19,7 +19,7 @@ export class SyllabusFiltersComponent implements OnInit {
   plans: any[];
   plan: any;
   form = {
-    specialnostId: 3,
+    specialnostId: null,
     component: 0,
     lrStart: 0,
     lrEnd: 0,
@@ -62,9 +62,9 @@ this.form.specialnostId = spec.id;
       this.disciplines = data;
       data.forEach((program: any, index) => {
         this.disciplines[index].hours =
-          program.laboratornye +'/'+
-          program.practika + '/'+
-          program.kursovoeProectirovanie;
+        program.laboratornye +'/'+
+        program.practika + '/'+
+        program.kursovoeProectirovanie + '/'+program.all;
       });
       this.onChanged.emit(this.disciplines);
     });
@@ -75,9 +75,9 @@ this.form.specialnostId = spec.id;
       this.disciplines = data;
       data.forEach((program: any, index) => {
         this.disciplines[index].hours =
-          program.laboratornye +'/'+
-          program.practika + '/'+
-          program.kursovoeProectirovanie;
+        program.laboratornye +'/'+
+        program.practika + '/'+
+        program.kursovoeProectirovanie + '/'+program.all;
       });
       this.onChanged.emit(this.disciplines);
     })
