@@ -1,18 +1,27 @@
 <div class="filter">
     <div class="shadow-lg p-3 mb-5 card" style="height: 110vh;">
-      <div class="card-header text-center"> Фильтрация </div>
+      <div class="card-header text-center">
+        Фильтрация
+      </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="form-group">
-            <label for="group">Учебная дисциплина</label>
-            <ng-multiselect-dropdown
-            [placeholder]="'Учебная дисциплина'"
-            [data]="dropdownList3"
-            [(ngModel)]="selectedItems3"
-            [settings]="dropdownSettings"
-            (onSelect)="onItem3Select($event)"
-          >
-          </ng-multiselect-dropdown>
+            <label for="num">Регистрационный номер стандарта</label>
+            <input
+              type="text"
+              class="form-control"
+              id="num"
+              [(ngModel)]="form.regNumber"
+              placeholder="№ учебного плана"
+            />
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
+            <label for="file2">Типовой план</label>
+            <select  [(ngModel)]="tp" class="form-control" (ngModelChange)="onChange($event)">
+              <option *ngFor="let plan of plans" [ngValue]="tp">{{standart.registarcionnyjNomer}}</option>
+            </select>
           </div>
         </li>
         <li class="list-group-item">
@@ -20,8 +29,8 @@
             <label>Группа</label>
             <ng-multiselect-dropdown
               [placeholder]="'Номер группы'"
-              [data]="dropdownList1"
-              [(ngModel)]="selectedItems1"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
               [settings]="dropdownSettings"
               (onSelect)="onItem1Select($event)"
             >
@@ -30,20 +39,7 @@
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label>Преподаватель</label>
-            <ng-multiselect-dropdown
-              [placeholder]="'Преподаватель'"
-              [data]="dropdownList2"
-              [(ngModel)]="selectedItems2"
-              [settings]="dropdownSettings"
-              (onSelect)="onItem2Select($event)"
-            >
-            </ng-multiselect-dropdown>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group">
-            <label>Дата</label>
+            <label for="date">Дата создания</label>
             <div class="row">
               <div class="form-group col">
                 <div class="input-group">
@@ -51,8 +47,8 @@
                     type="text"
                     class="form-control"
                     bsDatepicker
-                    [bsValue]="form.beginDate"
                     #dp="bsDatepicker"
+                    [bsValue]="form.beginDate"
                     [bsConfig]="bsConfig"
                     placeholder="От"
                   />
@@ -67,18 +63,20 @@
                     bsDatepicker
                     #dp="bsDatepicker"
                     [bsValue]="form.endDate"
-                    [bsConfig]="bsConfig1"
+                    [bsConfig]="bsConfig"
                     placeholder="До"
                   />
                   <div class="input-group-btn"></div>
                 </div>
               </div>
             </div>
-            </div>
+          </div>
         </li>
         <li class="list-group-item">
-          <button class="btn btn-info mr-3" (click)="filter()">Отфильтровать</button>
-          <button  class="btn btn-outline-danger" (click)="restore()">Сбросить</button>
+          <button (click)="filter()" class="btn btn-info mr-3">Отфильтровать</button>
+          <button (click)="restore()" class="btn btn-outline-danger">Сбросить</button>
         </li>
       </ul>
     </div>
+  </div>
+  
