@@ -91,8 +91,8 @@ namespace DiplomApi.Controllers
     {
       try
       {
-        var t = Path.GetFileName(url);
-        return PhysicalFile(url, "application/octet-stream", Path.GetFileName(url));
+        var fileNmae = Path.GetFileName(url);
+        return PhysicalFile(url, "application/octet-stream", fileNmae);
       }
       catch (Exception ex)
       {

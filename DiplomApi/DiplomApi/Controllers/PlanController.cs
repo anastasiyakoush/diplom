@@ -9,6 +9,7 @@ using BLL.Interfaces;
 using Common.Dtos;
 using Common.FilterCriterias;
 using DiplomApi.PostModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static Common.Enums;
@@ -28,6 +29,7 @@ namespace DiplomApi.Controllers
       _planService = planService;
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<List<UchebnyjPlanDto>>> GetAllUchebnyePlansAsync()
     {

@@ -1,6 +1,7 @@
 using AutoMapper;
 using Common.Dtos;
 using DiplomApi.PostModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace DiplomApi.Profiles
 {
@@ -21,6 +22,7 @@ namespace DiplomApi.Profiles
       CreateMap<UchebnyjPlanDto, PostPlanModel>()
          .ForMember(d => d.DependencyId, s => s.MapFrom(x => x.TipovojUchebnyjPlan.Id))
          .ReverseMap();
+      CreateMap<PostUserModel, IdentityUser>().ReverseMap();
     }
   }
 }

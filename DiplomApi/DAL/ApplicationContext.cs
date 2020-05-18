@@ -1,9 +1,11 @@
 using DAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.DAL
 {
-  public class ApplicationContext : DbContext
+  public class ApplicationContext : IdentityDbContext<IdentityUser>
   {
     public ApplicationContext(DbContextOptions options) : base(options) { }
 
@@ -25,6 +27,10 @@ namespace DAL.DAL
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
+
+      modelBuilder.Seed();
+
+      modelBuilder.Entity<IdentityUser>().Property(x => x.Id).ValueGeneratedOnAdd();
 
       modelBuilder.Entity<DocumentAuthor>().HasKey(x => new { x.TeacherId, x.DocumentId });
 

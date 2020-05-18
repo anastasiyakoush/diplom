@@ -1,4 +1,5 @@
 using DAL.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,29 +9,42 @@ namespace DAL
 {
   public static class DbSeeder
   {
-    private static List<Position> positions = new List<Position>{
-      new Position{ Id=1, Name="Преподаватель"},
-      new Position{ Id=2, Name="Методист"},
-      new Position{ Id=3, Name="Начальник"}
+    private static List<IdentityRole> roles = new List<IdentityRole>{
+      new IdentityRole{ Id="1", Name="Admin", NormalizedName="ADMIN"},
+      new IdentityRole{ Id="2", Name="User", NormalizedName="USER" }
     };
 
-    private static List<CiklovayaKomissiya> ciklovayaKomissiyas = new List<CiklovayaKomissiya> {
-      new CiklovayaKomissiya{ Id=1, Name="Информационные технологии"},
-      new CiklovayaKomissiya{ Id=2, Name="Физкультура"},
-      new CiklovayaKomissiya{ Id=3, Name="Естественные науки"}
+    private static List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>{
+      new IdentityUserRole<string>{ UserId="1", RoleId="1"}
     };
 
-    private static List<DocumentType> documentTypes = new List<DocumentType> {
-      new DocumentType{ Id=1, Name="Учебная программа"},
-      new DocumentType{ Id=2, Name="Методическая разработка"},
-      new DocumentType{ Id=3, Name="Электронный ресурс"}
-    };
+    private static IdentityUser GetAdminUser()
+    {
+      var user = new IdentityUser { Id = "1", UserName = "admin", NormalizedUserName = "ADMIN" };
 
-    private static List<Specialnost> specialnosts = new List<Specialnost> {
-      new Specialnost{ Id=1, Name="ПОИТ", Code="1223554542"},
-      new Specialnost{ Id=2, Name="ПМС", Code="4321254542"},
-      new Specialnost{ Id=3, Name="ЭВС", Code="3223554542"}
-    };
+      var ph = new PasswordHasher<IdentityUser>();
+      user.PasswordHash = ph.HashPassword(user, "admin");
+
+      return user;
+    }
+
+    //private static List<CiklovayaKomissiya> ciklovayaKomissiyas = new List<CiklovayaKomissiya> {
+    //  new CiklovayaKomissiya{ Id=1, Name="Информационные технологии"},
+    //  new CiklovayaKomissiya{ Id=2, Name="Физкультура"},
+    //  new CiklovayaKomissiya{ Id=3, Name="Естественные науки"}
+    //};
+
+    //private static List<DocumentType> documentTypes = new List<DocumentType> {
+    //  new DocumentType{ Id=1, Name="Учебная программа"},
+    //  new DocumentType{ Id=2, Name="Методическая разработка"},
+    //  new DocumentType{ Id=3, Name="Электронный ресурс"}
+    //};
+
+    //private static List<Specialnost> specialnosts = new List<Specialnost> {
+    //  new Specialnost{ Id=1, Name="ПОИТ", Code="1223554542"},
+    //  new Specialnost{ Id=2, Name="ПМС", Code="4321254542"},
+    //  new Specialnost{ Id=3, Name="ЭВС", Code="3223554542"}
+    //};
 
     //private static List<ObrazovatelnyjStandart> obrazovatelnyjStandarts = new List<ObrazovatelnyjStandart>
     //{
@@ -85,16 +99,16 @@ namespace DAL
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<Position>().HasData(positions);
-      modelBuilder.Entity<CiklovayaKomissiya>().HasData(ciklovayaKomissiyas);
-      modelBuilder.Entity<DocumentType>().HasData(documentTypes);
-    //  modelBuilder.Entity<Specialnost>().HasData(specialnosts);
-    //  modelBuilder.Entity<ObrazovatelnyjStandart>().HasData(obrazovatelnyjStandarts);
-    //  modelBuilder.Entity<TipovojUchebnyjPlan>().HasData(tipovojUchebnyjPlans);
-    //  modelBuilder.Entity<UchebnyjPlan>().HasData(uchebnyjPlans);
-    ////  modelBuilder.Entity<Group>().HasData(groups);
-    //  modelBuilder.Entity<Teacher>().HasData(teachers);
-    //  modelBuilder.Entity<UchebnayaDisciplina>().HasData(uchebnayaDisciplinas);
+      modelBuilder.Entity<IdentityRole>().HasData(roles);
+      modelBuilder.Entity<IdentityUser>().HasData(GetAdminUser());
+      modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles);
+      //  modelBuilder.Entity<Specialnost>().HasData(specialnosts);
+      //  modelBuilder.Entity<ObrazovatelnyjStandart>().HasData(obrazovatelnyjStandarts);
+      //  modelBuilder.Entity<TipovojUchebnyjPlan>().HasData(tipovojUchebnyjPlans);
+      //  modelBuilder.Entity<UchebnyjPlan>().HasData(uchebnyjPlans);
+      ////  modelBuilder.Entity<Group>().HasData(groups);
+      //  modelBuilder.Entity<Teacher>().HasData(teachers);
+      //  modelBuilder.Entity<UchebnayaDisciplina>().HasData(uchebnayaDisciplinas);
     }
   }
 }

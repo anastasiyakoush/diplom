@@ -4,14 +4,16 @@ using DAL.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200507192948_RolesSeed")]
+    partial class RolesSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -398,16 +400,14 @@ namespace DAL.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "3573dcce-b1f6-47cf-89bf-cb4af27b1cb1",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            ConcurrencyStamp = "693dc604-0b79-48de-a585-aa87e7e18aac",
+                            Name = "Admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "9cc094bd-437e-4f25-b0f8-c8c5134fdae1",
-                            Name = "User",
-                            NormalizedName = "USER"
+                            ConcurrencyStamp = "1f513b1b-5f0b-4864-9797-d81d9224845d",
+                            Name = "User"
                         });
                 });
 
@@ -504,13 +504,12 @@ namespace DAL.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3ebc61ad-bc70-4bdf-99fd-70cde3371753",
+                            ConcurrencyStamp = "94642037-8459-4a09-9513-eb2e52331cd8",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOvaXy6KCiVHvypw292W1+DGf3kzsG7mWIWOVYgUcDI0qCe+thaaFZi1mdUBC+DQOA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFxiIXSzRbxy+odly8VkPGyltgf8pQ28kiPgGF7b5cmPU620Y/DXoU0PEsbfPEeUkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dd12bd7e-371a-43db-9e13-7c482fdb32cf",
+                            SecurityStamp = "fc8598ba-d411-462d-b66f-339041247cfc",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

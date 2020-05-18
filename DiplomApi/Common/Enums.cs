@@ -28,5 +28,11 @@ namespace Common
       UchebnyePlany = 1,
       TipovyePlany = 2
     }
+
+    public enum Role : byte
+    {
+      Admin = 0,
+      User = 1
+    }
   }
 }

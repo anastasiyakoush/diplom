@@ -7,14 +7,16 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200427141105_PlanninglessonMonth.cs" />
     <Compile Remove="Migrations\20200427141105_PlanninglessonMonth.Designer.cs" />
+    <Compile Remove="Migrations\20200507185905_Roles.cs" />
+    <Compile Remove="Migrations\20200507185905_Roles.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>
