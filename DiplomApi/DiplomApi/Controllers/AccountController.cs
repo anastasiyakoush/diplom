@@ -132,7 +132,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [Authorize(Roles = Roles.Admin)]
+    //[Authorize(Roles = Roles.Admin)]
     [HttpGet("all")]
     public async Task<ActionResult> GetAll()
     {
