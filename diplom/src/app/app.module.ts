@@ -51,6 +51,8 @@ import { ObrazovStandartComponent } from './scientific-and-methodological-suppor
 import { TipPlanyComponent } from './scientific-and-methodological-support/tip-plany/tip-plany.component';
 import { StandartFilterComponent } from './scientific-and-methodological-support/obrazov-standart/standart-filter/standart-filter.component';
 import { TipFilterComponent } from './scientific-and-methodological-support/tip-plany/tip-filter/tip-filter.component';
+import { UpdateObrazovStandartComponent } from './scientific-and-methodological-support/obrazov-standart/update-obrazov-standart/update-obrazov-standart.component';
+import { UpdateTipPlanyComponent } from './scientific-and-methodological-support/tip-plany/update-tip-plany/update-tip-plany.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { TipFilterComponent } from './scientific-and-methodological-support/tip-
     ObrazovStandartComponent,
     TipPlanyComponent,
     StandartFilterComponent,
-    TipFilterComponent
+    TipFilterComponent,
+    UpdateObrazovStandartComponent,
+    UpdateTipPlanyComponent
   ],
   imports: [
     BrowserModule,

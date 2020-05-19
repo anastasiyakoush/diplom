@@ -2,7 +2,7 @@
     <div class="col-sm-8 main align-self-start">
       <div class="caption">Типовые планы</div>
       <form class="form-inline controls d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-info" (click)="addUchPlan(template)">Добавить</button>
+        <button type="submit" class="btn btn-info" (click)="addTipPlan(template)">Добавить</button>
       </form>
   
       <table class="table table-bordered table-hover">
@@ -28,7 +28,7 @@
               </svg>
             </button></td>
             <td>
-              <button class="btn btn-outline-info" (click)="updateUchPlan(template)">
+              <button class="btn btn-outline-info" (click)="updateTipPlan(template)">
               <svg
                 class="bi bi-pencil"
                 width="1.5em"
@@ -76,6 +76,6 @@
     <app-tip-filter (onChanged)="filterChange($event)"></app-tip-filter>
   </div>
   <ng-template #template>
-    <app-update-curriculum [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+    <app-update-tip-plany [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-tip-plany>
   </ng-template>
   

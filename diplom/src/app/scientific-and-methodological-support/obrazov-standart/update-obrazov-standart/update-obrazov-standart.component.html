@@ -1,0 +1,85 @@
+<div class="modal-header">
+    <h4 class="modal-title">Добавить образовательный стандарт</h4>
+    <button type="button" class="close" data-dismiss="modal" (click)="cancel()">
+      &times;
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="name">Название дисциплины</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="form.name"
+        placeholder="Название дисциплины"
+      />
+    </div>
+    <div class="form-group">
+      <label for="tsk">Цикловая комиссия</label>
+      <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
+        <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="file1">Учебный план</label>
+      <select class="form-control" [(ngModel)]="plan" (ngModelChange)="onPlanChange($event)">
+        <option  *ngFor="let plan of plans" [ngValue]="plan" >{{plan.registarcionnyjNomer}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label for="tsk">Компонент</label>
+      <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+        <option (click)="selectComponent(0)">Общеобразовательный компонент</option>
+        <option (click)="selectComponent(1)">Профессиональный компонент</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="date">Количество часов</label>
+      <div class="form-group">
+        <div class="input-group">
+          <span style="margin-right: 10px; margin-top: 5px;">ЛР</span>
+          <input type="number" class="form-control" [(ngModel)]="form.laboratornye"
+          placeholder="ЛР часов" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span style="margin-right: 10px; margin-top: 5px;">ПР</span>
+          <input class="form-control" type="number" [(ngModel)]="form.practika"  placeholder="ПР часов" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span style="margin-right: 10px; margin-top: 5px;">КП</span>
+          <input class="form-control" type="number" [(ngModel)]="form.kursovoeProectirovanie" placeholder="КП часов" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span style="margin-right: 10px; margin-top: 5px;">Всего часов</span>
+          <input class="form-control" type="number" [(ngModel)]="form.all" placeholder="Всего часов" />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <input
+      type="button"
+      class="btn btn-outline-danger"
+      data-dismiss="modal"
+      value="Отменить"
+      (click)="cancel()"
+    />
+    <input
+      type="submit"
+      class="btn btn-info"
+      data-dismiss="modal"
+      value="Добавить"
+      (click)="save()"
+    />
+  </div>
+  
