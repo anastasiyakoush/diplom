@@ -12,23 +12,15 @@
               class="form-control"
               id="num"
               [(ngModel)]="form.regNumber"
-              placeholder="№ учебного плана"
+              placeholder="Регистрационный номер"
             />
           </div>
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label for="file2">Типовой план</label>
-            <select  [(ngModel)]="tp" class="form-control" (ngModelChange)="onChange($event)">
-              <option *ngFor="let plan of plans" [ngValue]="tp">{{standart.registarcionnyjNomer}}</option>
-            </select>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group">
-            <label>Группа</label>
+            <label>Специальность</label>
             <ng-multiselect-dropdown
-              [placeholder]="'Номер группы'"
+              [placeholder]="'Специальность'"
               [data]="dropdownList"
               [(ngModel)]="selectedItems"
               [settings]="dropdownSettings"
