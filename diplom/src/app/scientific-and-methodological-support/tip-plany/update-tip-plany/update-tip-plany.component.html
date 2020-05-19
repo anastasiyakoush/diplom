@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title">Добавить типовой план</h4>
+    <button type="button" class="close" data-dismiss="modal" (click)="cancel()">
+      &times;
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="name">Регистрационный номер плана</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="form.name"
+        placeholder="Регистрационный номер"
+      />
+    </div>
+    <div class="form-group">
+      <label for="tsk">Компонент</label>
+      <select class="form-control" id="tsk">
+      <option>Не выбрано</option>
+        <option (click)="selectComponent(0)">Общеобразовательный компонент</option>
+        <option (click)="selectComponent(1)">Профессиональный компонент</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="file1">Типовой план</label>
+      <div class="custom-file">
+          <input type="file" #file class="custom-file-input" (change)="addFile(file.files)" multiple>
+          <label class="custom-file-label" for="customFile" (click)="file.click()">Выберите файл</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <input
+      type="button"
+      class="btn btn-outline-danger"
+      data-dismiss="modal"
+      value="Отменить"
+      (click)="cancel()"
+    />
+    <input
+      type="submit"
+      class="btn btn-info"
+      data-dismiss="modal"
+      value="Добавить"
+      (click)="save()"
+    />
+  </div>
+  

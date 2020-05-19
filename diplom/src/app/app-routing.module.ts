@@ -18,6 +18,8 @@ import { SpecialtyComponent } from './configuration/specialty/specialty.componen
 import { AddDocumentComponent } from './scientific-and-methodological-support/add-document/add-document.component';
 import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
 import { DetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/detailed-syllabus.component';
+import { TipPlanyComponent } from "./scientific-and-methodological-support/tip-plany/tip-plany.component";
+import { ObrazovStandartComponent } from "./scientific-and-methodological-support/obrazov-standart/obrazov-standart.component";
 
 
 const routes: Routes = [
@@ -69,12 +71,20 @@ const routes: Routes = [
     component: CompareClassesComponent
   },
   {
-    path: 'support/disciplines',
+    path: 'disciplines',
     component: DisciplinesComponent
   },
   {
     path: 'uchPlan',
     component: CurriculumComponent
+  },
+  {
+    path: 'tipPlans',
+    component: TipPlanyComponent
+  },
+  {
+    path: 'obrazStandart',
+    component: ObrazovStandartComponent
   },
   {
     path: 'addDocument',

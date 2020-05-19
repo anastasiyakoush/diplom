@@ -17,7 +17,6 @@ import { UpdateClassesComponent } from './open-classes/update-classes/update-cla
 import { DisciplinesComponent } from './scientific-and-methodological-support/disciplines/disciplines.component';
 import { CurriculumComponent } from './scientific-and-methodological-support/uch-plans/curriculum.component';
 import { UpdateCurriculumComponent } from './scientific-and-methodological-support/uch-plans/update-curriculum/update-curriculum.component';
-import { DetailedCurriculumComponent } from './scientific-and-methodological-support/uch-plans/detailed-curriculum/detailed-curriculum.component';
 import { UpdateSyllabusComponent } from './scientific-and-methodological-support/disciplines/update-syllabus/update-syllabus.component';
 import { DetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/detailed-syllabus.component';
 import { FormsModule } from '@angular/forms';
@@ -48,6 +47,12 @@ import { UpdateDetailedSyllabusComponent } from './scientific-and-methodological
 import { CompareClassesComponent } from './open-classes/compare-classes/compare-classes.component';
 import { UpdatePlannedComponent } from './open-classes/planned-classes/update-planned/update-planned.component';
 import { PlannedClassesFilterComponent } from './open-classes/planned-classes/planned-classes-filter/planned-classes-filter.component';
+import { ObrazovStandartComponent } from './scientific-and-methodological-support/obrazov-standart/obrazov-standart.component';
+import { TipPlanyComponent } from './scientific-and-methodological-support/tip-plany/tip-plany.component';
+import { StandartFilterComponent } from './scientific-and-methodological-support/obrazov-standart/standart-filter/standart-filter.component';
+import { TipFilterComponent } from './scientific-and-methodological-support/tip-plany/tip-filter/tip-filter.component';
+import { UpdateObrazovStandartComponent } from './scientific-and-methodological-support/obrazov-standart/update-obrazov-standart/update-obrazov-standart.component';
+import { UpdateTipPlanyComponent } from './scientific-and-methodological-support/tip-plany/update-tip-plany/update-tip-plany.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +71,6 @@ import { PlannedClassesFilterComponent } from './open-classes/planned-classes/pl
     DisciplinesComponent,
     CurriculumComponent,
     UpdateCurriculumComponent,
-    DetailedCurriculumComponent,
     UpdateSyllabusComponent,
     DetailedSyllabusComponent,
     SyllabusFiltersComponent,
@@ -89,7 +93,13 @@ import { PlannedClassesFilterComponent } from './open-classes/planned-classes/pl
     UpdateDetailedSyllabusComponent,
     CompareClassesComponent,
     UpdatePlannedComponent,
-    PlannedClassesFilterComponent
+    PlannedClassesFilterComponent,
+    ObrazovStandartComponent,
+    TipPlanyComponent,
+    StandartFilterComponent,
+    TipFilterComponent,
+    UpdateObrazovStandartComponent,
+    UpdateTipPlanyComponent
   ],
   imports: [
     BrowserModule,
