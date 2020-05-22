@@ -9,10 +9,15 @@ import { Status, Category } from 'src/app/enums';
 })
 export class TeachersFilterComponent implements OnInit {
   cks: any[];
-  statuses = Status;
+  statuses :string[];
   categories = Category;
   keys = Object.keys;
   ck: any = 0;
+  options : string[];
+  myValue: Category;
+  status: Status;
+  Category : typeof Category = Category;
+  Status : typeof Status = Status;
   @Output() onChanged = new EventEmitter<any>();
   constructor(private endpointService: EndpointsService) {}
   form = {
@@ -21,6 +26,10 @@ export class TeachersFilterComponent implements OnInit {
     status: 3  };
     teachers: any;
   ngOnInit() {
+    var options = Object.keys(Category);
+    this.options = options.slice(options.length / 2);
+    var statuses = Object.keys(Status);
+    this.statuses = statuses.slice(statuses.length / 2);
     this.endpointService.getCK().subscribe(data => {
       this.cks = data;
       this.cks.push({id: 0, name: 'не выбрано'})
@@ -31,14 +40,18 @@ export class TeachersFilterComponent implements OnInit {
     this.form.ciklovayaKomissiya = ck.id;
   }
 
-  onStatusChange(status) {
-    this.form.status = status;
+  onStatusChange(status: string) {
+    this.status = Status[status]
+    this.form.status = this.status;
   }
 
   onCategoryChange(category) {
     this.form.category = category;
   }
-
+  parseValue(value : string) {
+    this.myValue = Category[value];
+    this.form.category = this.myValue;
+  }
   filter() {
     let filterObject = Object.assign({}, this.form);
     filterObject.category = this.form.category === 3? null: this.form.category;
