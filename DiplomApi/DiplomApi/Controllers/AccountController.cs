@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common;
@@ -43,6 +44,65 @@ namespace DiplomApi.Controllers
       _signInManager = signInManager;
       _mapper = mapper;
       _roleManager = roleManager;
+    }
+    [HttpGet("user/{id}")]
+    public async Task<ActionResult<PostUserModel>> GetUserAsync(string id)
+    {
+      try
+      {
+        if (string.IsNullOrEmpty(id))
+        {
+          return BadRequest();
+        }
+
+        var user = await _userManager.FindByIdAsync(id);
+        var roles = await _userManager.GetRolesAsync(user);
+
+        var model = new PostUserModel
+        {
+          UserName = user.UserName,
+          Id = user.Id,
+          Role = roles.FirstOrDefault().Equals("admin", StringComparison.CurrentCultureIgnoreCase) ? Role.Admin : Role.User
+        };
+
+        return Ok(model);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
+    [HttpPost("search")]
+    public async Task<ActionResult<IList<PostUserModel>>> SearchUsersAsync([FromBody] string searchQuery)
+    {
+      try
+      {
+        searchQuery = Regex.Replace(searchQuery.Trim(), "\\s+", " ").ToLower();
+
+        var users = await _userManager.Users
+          .Where(x => x.UserName.ToLower().Contains(searchQuery))
+          .ToListAsync();
+
+        var result = new List<PostUserModel>();
+        foreach (var user in users)
+        {
+          var roles = await _userManager.GetRolesAsync(user);
+
+          result.Add(new PostUserModel
+          {
+            Id = user.Id,
+            UserName = user.UserName,
+            Role = roles.FirstOrDefault().Equals("admin", StringComparison.CurrentCultureIgnoreCase) ? Role.Admin : Role.User
+          });
+        }
+
+        return Ok(result);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
     }
     [AllowAnonymous]
     [HttpPost]

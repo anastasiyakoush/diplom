@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
+using Common;
 using Common.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -425,6 +427,7 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [Authorize]
     [HttpGet("position")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -440,6 +443,7 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [Authorize]
     [HttpGet("position/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -462,7 +466,7 @@ namespace DiplomApi.Controllers
         return BadRequest(ex.Message);
       }
     }
-
+    [Authorize(Roles = Roles.Admin)]
     [HttpPost("position")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -486,6 +490,7 @@ namespace DiplomApi.Controllers
       }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("position/{id}")]
     public async Task<IActionResult> DeletePositionAsync(int? id)
     {
@@ -503,7 +508,7 @@ namespace DiplomApi.Controllers
         return BadRequest(ex.Message);
       }
     }
-
+    [Authorize]
     [HttpPost("position/search")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
