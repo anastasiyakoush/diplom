@@ -14,23 +14,27 @@ import { HttpResponse } from '@angular/common/http/http';
 export class TipPlanyComponent implements OnInit {
   tipPlans: tipPlan[] = [
   ];
-
+  tipPlanId: number;
   title: string;
+  update: boolean;
   modalRef: BsModalRef;
   constructor(private router: Router,
      private modalService: BsModalService,
      private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  this.endpointService.getPlans().subscribe(data=> this.tipPlans = data)
+  this.endpointService.getTypePlans().subscribe(data=> this.tipPlans = data)
   }
 
   addTipPlan(template: TemplateRef<any>) {
     this.title = 'Добавить типовой план';
+    this.update = false;
     this.modalRef = this.modalService.show(template);
   }
 
-  updateTipPlan(template: TemplateRef<any>) {
+  updateTipPlan(template: TemplateRef<any>, id) {
+    this.tipPlanId = id;
+    this.update = true;
     this.title = 'Редактировать типовой план';
     this.modalRef = this.modalService.show(template);
   }
@@ -40,10 +44,10 @@ export class TipPlanyComponent implements OnInit {
   }
 
   filterChange($event) {
-    console.log($event)
     this.tipPlans = $event;
   }
+
   delete(id) {
-    this.endpointService.DeletePlan(id).subscribe(()=> location.reload())
+    this.endpointService.DeleteTypePlan(id).subscribe(()=> location.reload())
   }
 }

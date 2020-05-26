@@ -4,7 +4,7 @@
       <form class="form-inline controls d-flex flex-row-reverse">
         <button type="submit" class="btn btn-info" (click)="addUchPlan(template)">Добавить</button>
       </form>
-  
+
       <table class="table table-bordered table-hover">
         <thead class="thead-dark">
           <tr>
@@ -16,10 +16,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let plan of plans">
-            <th scope="row">{{standart.id}}</th>
-            <td>{{standart.registarcionnyjNomer}}</td>
-            <td>{{standart.date|  date : 'MM/dd/yyyy'}}</td>
+          <tr *ngFor="let plan of standarts">
+            <th scope="row">{{plan.id}}</th>
+            <td>{{plan.registarcionnyjNomer}}</td>
+            <td>{{plan.date|  date : 'MM/dd/yyyy'}}</td>
             <td><button class="btn btn-outline-info"(click)="download(plan.link)">
               <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd"/>
@@ -28,7 +28,7 @@
               </svg>
             </button></td>
             <td>
-              <button class="btn btn-outline-info" (click)="updateUchPlan(template)">
+              <button class="btn btn-outline-info" (click)="updateUchPlan(template, plan.id)">
               <svg
                 class="bi bi-pencil"
                 width="1.5em"
@@ -76,6 +76,5 @@
     <app-standart-filter (onChanged)="filterChange($event)"></app-standart-filter>
   </div>
   <ng-template #template>
-    <app-update-obrazov-standart [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-obrazov-standart>
+    <app-update-obrazov-standart [title]="title" [update]="update" [obrStId]="obrStId" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-obrazov-standart>
   </ng-template>
-  

@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-obrazov-standart',
@@ -10,52 +11,72 @@ import { EndpointsService } from 'src/app/endpoints.service';
 export class UpdateObrazovStandartComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
-
+  @Input() title: string;
+  @Input() obrStId: number;
+  @Input() update: boolean;
+form ={
+    id: 0,
+    date: new Date(),
+    registarcionnyjNomer: "",
+    planType: 0,
+    link:'',
+    dependencyId:0
+   }
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-  form ={
-    date: new Date(),
-    name: "",
-    laboratornye:0,
-    practika:0,
-    component: 0,
-    all:0,
-    kursovoeProectirovanie:0,
-    ciklovayaKomissiya: {},
-    uchebnyjPlan:{}  }
+
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
+  ck: any;
 plans: any[];
 plan: any;
-  constructor( private endpointService: EndpointsService) {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
+constructor( private endpointService: EndpointsService,  private http: HttpClient) {
+  this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
    }
 
   ngOnInit() {
-    this.endpointService.getCK().subscribe(data => (this.cks = data));
+    if(this.update && this.obrStId) {
+      this.endpointService.getObrPlanById(this.obrStId).subscribe((data: any)=>{
+        this.form = data;
+        this.form.date = new Date(data.date)
+      })
+    }
+    this.endpointService.getSpecialnost().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
   }
 
   cancel() {
     this.cancelClick.emit()
   }
-
-  onChange(ck) {
-    this.form.ciklovayaKomissiya = ck;
-  }
-  onPlanChange(plan) {
-    this.form.uchebnyjPlan = plan;
-  }
   save() {
-    this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  {this.saveClick.emit()
+    this.endpointService.createOrUpdatePlan(this.form).subscribe(()=>  {this.saveClick.emit()
     location.reload()})
   }
+  addFile = (files: Array<File>) => {
+    if (files.length === 0) {
+      return;
+    }
+    const formData = new FormData();
 
-  selectComponent(num) {
-    this.form.component = num;
+    for (let file of files) {
+      formData.append(file.name, file);
+    }
+    this.http
+      .post("https://localhost:44312/api/document/upload", formData, {
+        reportProgress: true,
+      })
+      .subscribe((link: any) => {
+        this.form.link = link.link;
+      });
+  };
+
+  onChange(tp) {
+    debugger
+    this.form.dependencyId = tp.id
   }
+
 }

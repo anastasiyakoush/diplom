@@ -45,9 +45,6 @@ export class TeachersFilterComponent implements OnInit {
     this.form.status = this.status;
   }
 
-  onCategoryChange(category) {
-    this.form.category = category;
-  }
   parseValue(value : string) {
     this.myValue = Category[value];
     this.form.category = this.myValue;

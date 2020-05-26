@@ -14,23 +14,27 @@ import { HttpResponse } from '@angular/common/http/http';
 export class ObrazovStandartComponent implements OnInit {
   standarts: Standart[] = [
   ];
-
+  update: boolean;
   title: string;
   modalRef: BsModalRef;
+  obrStId: number;
   constructor(private router: Router,
      private modalService: BsModalService,
      private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  this.endpointService.getPlans().subscribe(data=> this.standarts = data)
+  this.endpointService.getObrPlans().subscribe(data=> this.standarts = data)
   }
 
   addUchPlan(template: TemplateRef<any>) {
+    this.update = false;
     this.title = 'Добавить образовательный стандарт';
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUchPlan(template: TemplateRef<any>) {
+  updateUchPlan(template: TemplateRef<any>,id) {
+    this.update = true;
+    this.obrStId = id;
     this.title = 'Редактировать образовательный стандарт';
     this.modalRef = this.modalService.show(template);
   }

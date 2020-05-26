@@ -19,3 +19,8 @@ export enum Category
     Вторая = 2,
     'не выбрано' = 3
 }
+
+export enum Role {
+  админ = 0,
+  пользователь
+}

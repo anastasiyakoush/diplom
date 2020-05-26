@@ -6,15 +6,18 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="imya">Пользователь</label>
-        <input type="text" class="form-control" id="imya" placeholder="Имя пользователя">
+        <input type="text" [(ngModel)]="form.userName" class="form-control" id="imya" placeholder="Имя пользователя">
     </div>
     <div class="form-group">
         <label for="group">Роль</label>
-        <input type="text" class="form-control" id="role" placeholder="Роль">
+        <select class="form-control" (change)="parseValue($event.target.value)">
+          <option *ngFor="let name of options"
+              [value]="name">{{name}}</option>
+        </select>
     </div>
     <div class="form-group">
       <label for="imya">Пароль</label>
-      <input type="Пароль" class="form-control" id="imya" placeholder="Пароль">
+      <input type="Пароль" class="form-control" [(ngModel)]="form.password" id="imya" placeholder="Пароль">
   </div>
 </div>
 

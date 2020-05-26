@@ -20,7 +20,7 @@
          </li>
       </ul>
       <ul class="navbar-nav">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
+        <li *ngIf="this.auth.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown">Конфигурация</a>
             <div class="dropdown-menu">
              <a routerLink="users" class="dropdown-item">Пользователи</a>
@@ -31,10 +31,10 @@
              <a routerLink="doctype"  class="dropdown-item">Типы документов</a>
              </div>
          </li>
-        <li  *ngIf="!token" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-          <a routerLink="//authorization/login" class="nav-link">Вход</a>
+        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+          <a (click)="login()" class="nav-link">Вход</a>
         </li>
-        <li *ngIf="token" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a (click)="logout()"  class="nav-link">Выход</a>
         </li>
       </ul>

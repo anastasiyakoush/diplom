@@ -236,7 +236,7 @@ namespace DiplomApi.Controllers
     //  }
     //}
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(string id)
     {
       try
