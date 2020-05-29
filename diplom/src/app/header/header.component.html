@@ -2,13 +2,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse justify-content-between">
       <ul class="navbar-nav">
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <li *ngIf="!this.auth.isAuthenticated()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a routerLink="/teachers" class="nav-link">Преподаватели</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <li *ngIf="!this.auth.isAuthenticated()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
           <a routerLink="/openClasses" class="nav-link">Открытые занятия</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
+        <li *ngIf="!this.auth.isAuthenticated()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown">Научно-методическое обеспечение</a>
             <div class="dropdown-menu">
              <a routerLink="uchPlan" class="dropdown-item">Учебный план</a>

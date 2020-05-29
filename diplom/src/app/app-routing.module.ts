@@ -20,31 +20,55 @@ import { CompareClassesComponent } from './open-classes/compare-classes/compare-
 import { DetailedSyllabusComponent } from './scientific-and-methodological-support/disciplines/detailed-syllabus/detailed-syllabus.component';
 import { TipPlanyComponent } from "./scientific-and-methodological-support/tip-plany/tip-plany.component";
 import { ObrazovStandartComponent } from "./scientific-and-methodological-support/obrazov-standart/obrazov-standart.component";
-
+import { AuthGuardService as AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'authorization/login', component: LoginComponent },
   {
-    path: 'users', component: UsersComponent
+    path: 'users', component: UsersComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
-    path: 'komisii', component: KomisiiComponent
+    path: 'komisii', component: KomisiiComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
-    path: 'dolzhnosti', component: DolzhnostiComponent
+    path: 'dolzhnosti', component: DolzhnostiComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
-    path: 'doctype', component: DoctypeComponent
+    path: 'doctype', component: DoctypeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
-    path: 'groups', component: GroupsComponent
+    path: 'groups', component: GroupsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
-    path: 'specialty', component: SpecialtyComponent
+    path: 'specialty', component: SpecialtyComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
     path: 'teachers',
-    component: TeachersComponent
+    component: TeachersComponent,
   },
   {
     path: 'teachers/:id',

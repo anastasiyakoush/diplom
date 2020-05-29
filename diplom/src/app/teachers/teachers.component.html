@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Преподаватели</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info" (click)="addTeacher(template)">Добавить</button>
+      <button *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addTeacher(template)">Добавить</button>
       <div class="input-group search">
         <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
         <div class="input-group-append">

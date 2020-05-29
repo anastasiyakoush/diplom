@@ -6,6 +6,7 @@ import { EndpointsService } from '../endpoints.service';
 import { Status, Category } from '../enums';
 import { TeachersFilterComponent } from './teachers-filter/teachers-filter.component';
 import { ThrowStmt } from '@angular/compiler';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-teachers',
@@ -17,7 +18,9 @@ export class TeachersComponent implements OnInit {
   searchText ="";
   modalRef: BsModalRef;
   @ViewChild('app-teachers-filter', {static: false}) teacherFilter: TeachersFilterComponent;
-  constructor(private router: Router, private modalService: BsModalService, private endpointService: EndpointsService
+  constructor(private router: Router, private modalService: BsModalService,
+     private endpointService: EndpointsService,
+     private auth: AuthService
     ) {}
 
   ngOnInit() {
