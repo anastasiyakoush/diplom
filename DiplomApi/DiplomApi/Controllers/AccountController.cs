@@ -262,6 +262,7 @@ namespace DiplomApi.Controllers
       var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Role, role),
+                new Claim("role", role),
                 new Claim(ClaimTypes.Name, userId)
             };
 
