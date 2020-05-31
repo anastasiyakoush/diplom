@@ -29,13 +29,18 @@ namespace DiplomApi.Controllers
       _planService = planService;
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpGet]
-    public async Task<ActionResult<List<UchebnyjPlanDto>>> GetAllUchebnyePlansAsync()
+    public async Task<ActionResult<List<UchebnyjPlanDto>>> GetAllUchebnyePlansAsync(bool f = false)
     {
       try
       {
-        return Ok(await _planService.GetAllUchebnyePlansAsync());
+        var t = await _planService.GetAllUchebnyePlansAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new UchebnyjPlanDto { Id = null, RegistarcionnyjNomer = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -157,11 +162,16 @@ namespace DiplomApi.Controllers
     }
 
     [HttpGet("tip")]
-    public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> GetAllTipPlansAsync()
+    public async Task<ActionResult<List<TipovojUchebnyjPlanDto>>> GetAllTipPlansAsync(bool f = false)
     {
       try
       {
-        return Ok(await _planService.GetAllTipovoyPlansAsync());
+        var t = await _planService.GetAllTipovoyPlansAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new TipovojUchebnyjPlanDto { Id = null, RegistarcionnyjNomer = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -221,11 +231,16 @@ namespace DiplomApi.Controllers
     }
 
     [HttpGet("obr")]
-    public async Task<ActionResult<List<ObrazovatelnyjStandartDto>>> GetAllObrStandartsAsync()
+    public async Task<ActionResult<List<ObrazovatelnyjStandartDto>>> GetAllObrStandartsAsync(bool f = false)
     {
       try
       {
-        return Ok(await _planService.GetAllObrStandartsAsync());
+        var t = await _planService.GetAllObrStandartsAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new ObrazovatelnyjStandartDto { Id = null, RegistarcionnyjNomer = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {

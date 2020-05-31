@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static Common.Enums;
 
 namespace BLL.Services
 {
@@ -74,6 +75,11 @@ namespace BLL.Services
       if (filterCriterias.SpecialnostId.HasValue)
       {
         result = result.Where(x => x.UchebnyjPlan.TipovojUchebnyjPlan.ObrazovatelnyjStandart.Specialnost.Id == filterCriterias.SpecialnostId);
+      }
+
+      if (filterCriterias.Component.HasValue)
+      {
+        result = result.Where(x => x.Component == filterCriterias.Component);
       }
 
       if (filterCriterias.LRStart.HasValue)

@@ -92,7 +92,12 @@ namespace DiplomApi.Controllers
       try
       {
         var fileNmae = Path.GetFileName(url);
-        return PhysicalFile(url, "application/octet-stream", fileNmae);
+        if (System.IO.File.Exists(url))
+        {
+          return PhysicalFile(url, "application/octet-stream", "file");
+        }
+
+        return BadRequest("File not found.");
       }
       catch (Exception ex)
       {

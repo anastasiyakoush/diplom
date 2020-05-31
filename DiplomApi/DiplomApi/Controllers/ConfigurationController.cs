@@ -45,11 +45,16 @@ namespace DiplomApi.Controllers
     [HttpGet("specialnost")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<SpecialnostDto>>> GetAllSpecialnostAsync()
+    public async Task<ActionResult<IEnumerable<SpecialnostDto>>> GetAllSpecialnostAsync(bool f = false)
     {
       try
       {
-        return Ok(await _specialnostService.GetAllAsync());
+        var t = await _specialnostService.GetAllAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new SpecialnostDto { Id = null, Name = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -140,11 +145,16 @@ namespace DiplomApi.Controllers
     [HttpGet("doctype")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<DocumentTypeDto>>> GetAllDocumentTypesAsync()
+    public async Task<ActionResult<IEnumerable<DocumentTypeDto>>> GetAllDocumentTypesAsync(bool f = false)
     {
       try
       {
-        return Ok(await _docTypeService.GetAllAsync());
+        var t = await _docTypeService.GetAllAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new DocumentTypeDto { Id = null, Name = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -335,11 +345,16 @@ namespace DiplomApi.Controllers
     [HttpGet("ck")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<CiklovayaKomissiyaDto>>> GetAllCiklovayaKomissiyasAsync()
+    public async Task<ActionResult<IEnumerable<CiklovayaKomissiyaDto>>> GetAllCiklovayaKomissiyasAsync(bool f = false)
     {
       try
       {
-        return Ok(await _ckService.GetAllAsync());
+        var t = await _ckService.GetAllAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new CiklovayaKomissiyaDto { Id = null, Name = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -427,15 +442,20 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpGet("position")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<PositionDto>>> GetAllPositionAsync()
+    public async Task<ActionResult<IEnumerable<PositionDto>>> GetAllPositionAsync(bool f = false)
     {
       try
       {
-        return Ok(await _positionService.GetAllAsync());
+        var t = await _positionService.GetAllAsync();
+        if (t?.Count() > 0 && f)
+        {
+          t.Insert(0, new PositionDto { Id = null, Name = "Не выбрано" });
+        }
+        return Ok(t);
       }
       catch (Exception ex)
       {
@@ -443,7 +463,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpGet("position/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -466,7 +486,7 @@ namespace DiplomApi.Controllers
         return BadRequest(ex.Message);
       }
     }
-    [Authorize(Roles = Roles.Admin)]
+    //[Authorize(Roles = Roles.Admin)]
     [HttpPost("position")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -490,7 +510,7 @@ namespace DiplomApi.Controllers
       }
     }
 
-    [Authorize(Roles = Roles.Admin)]
+    //[Authorize(Roles = Roles.Admin)]
     [HttpDelete("position/{id}")]
     public async Task<IActionResult> DeletePositionAsync(int? id)
     {
@@ -508,7 +528,7 @@ namespace DiplomApi.Controllers
         return BadRequest(ex.Message);
       }
     }
-    [Authorize]
+    //[Authorize]
     [HttpPost("position/search")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

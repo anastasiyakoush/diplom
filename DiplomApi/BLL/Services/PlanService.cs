@@ -166,6 +166,7 @@ namespace BLL.Services
 
     public async Task<List<UchebnyjPlanDto>> FilterUchebnyePlany(UchebnyiPlanFilterCriterias filterCriterias)
     {
+      // var filtred = new Queryable<UchebnayaDisciplina>();
       var result = _context.UchebnyePlany.Include(x => x.TipovojUchebnyjPlan).Include(x => x.Groups).AsQueryable();
 
       if (!string.IsNullOrEmpty(filterCriterias?.RegNumber))
@@ -199,12 +200,12 @@ namespace BLL.Services
       return _mapper.Map<List<UchebnyjPlanDto>>(await result.ToListAsync());
     }
 
-    public async Task<IEnumerable<ObrazovatelnyjStandartDto>> GetAllObrStandartsAsync()
+    public async Task<List<ObrazovatelnyjStandartDto>> GetAllObrStandartsAsync()
     {
       return _mapper.Map<List<ObrazovatelnyjStandartDto>>(await _context.ObrazovatelnyeStandarty.ToListAsync());
     }
 
-    public async Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync()
+    public async Task<List<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync()
     {
       return _mapper.Map<List<TipovojUchebnyjPlanDto>>(await _context.TipovyeUchebnyePlany.ToListAsync());
     }

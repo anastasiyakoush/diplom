@@ -1,4 +1,5 @@
 using System;
+using static Common.Enums;
 
 namespace Common.FilterCriterias
 {
@@ -6,7 +7,7 @@ namespace Common.FilterCriterias
   {
     public int? SpecialnostId { get; set; }
     public int? UchebnyiPlanId { get; set; }
-    public int Component { get; set; }
+    public Component? Component { get; set; }
     public int? LRStart { get; set; }
     public int? LREnd { get; set; }
     public int? PRStart { get; set; }

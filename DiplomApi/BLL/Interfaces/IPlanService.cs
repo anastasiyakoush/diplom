@@ -17,7 +17,7 @@ namespace BLL.Interfaces
 
     Task<List<UchebnyjPlanDto>> FilterUchebnyePlany(UchebnyiPlanFilterCriterias filterCriterias);
 
-    Task<IEnumerable<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync();
+    Task<List<TipovojUchebnyjPlanDto>> GetAllTipovoyPlansAsync();
 
     Task<TipovojUchebnyjPlanDto> GetTipovoyPlanAsync(int? id);
 
@@ -27,7 +27,7 @@ namespace BLL.Interfaces
 
     Task<List<TipovojUchebnyjPlanDto>> FilterTipovyePlany(TipovojPlanFilterCriterias filterCriterias);
 
-    Task<IEnumerable<ObrazovatelnyjStandartDto>> GetAllObrStandartsAsync();
+    Task<List<ObrazovatelnyjStandartDto>> GetAllObrStandartsAsync();
 
     Task<ObrazovatelnyjStandartDto> GetObrStandartAsync(int? id);
 
