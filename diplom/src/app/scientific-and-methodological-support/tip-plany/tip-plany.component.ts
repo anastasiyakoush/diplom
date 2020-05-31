@@ -5,6 +5,7 @@ import { tipPlan } from './tipPlan.model';
 import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
 import { EndpointsService } from 'src/app/endpoints.service';
 import { HttpResponse } from '@angular/common/http/http';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-tip-plany',
@@ -20,6 +21,7 @@ export class TipPlanyComponent implements OnInit {
   modalRef: BsModalRef;
   constructor(private router: Router,
      private modalService: BsModalService,
+     private auth: AuthService,
      private endpointService: EndpointsService) {}
 
   ngOnInit() {

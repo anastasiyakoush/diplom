@@ -2,7 +2,7 @@
     <div class="col-sm-8 main align-self-start">
       <div class="caption">Образовательные стандарты</div>
       <form class="form-inline controls d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-info" (click)="addUchPlan(template)">Добавить</button>
+        <button  *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addUchPlan(template)">Добавить</button>
       </form>
 
       <table class="table table-bordered table-hover">
@@ -12,7 +12,7 @@
             <th scope="col">Регистрационный номер</th>
             <th scope="col">Дата разработки</th>
             <th scope="col">Скачать</th>
-            <th scope="col">Действия</th>
+            <th *ngIf="this.auth.isAdmin()" scope="col">Действия</th>
           </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
             <th scope="row">{{plan.id}}</th>
             <td>{{plan.registarcionnyjNomer}}</td>
             <td>{{plan.date|  date : 'MM/dd/yyyy'}}</td>
-            <td><button class="btn btn-outline-info"(click)="download(plan.link)">
+            <td  *ngIf="this.auth.isAdmin()"><button class="btn btn-outline-info"(click)="download(plan.link)">
               <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd"/>
                 <path fill-rule="evenodd" d="M5 7.5a.5.5 0 01.707 0L8 9.793 10.293 7.5a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L5 8.207A.5.5 0 015 7.5z" clip-rule="evenodd"/>

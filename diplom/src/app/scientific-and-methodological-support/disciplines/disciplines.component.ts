@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ProgramType } from "./programType.model";
 import { BsModalRef, BsModalService } from "ngx-bootstrap";
 import { EndpointsService } from "src/app/endpoints.service";
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: "app-disciplines",
@@ -19,6 +20,7 @@ searchText:string;
   constructor(
     private route: ActivatedRoute,
     private modalService: BsModalService,
+    private auth: AuthService,
     private endpointService: EndpointsService,
     private router: Router
   ) {}

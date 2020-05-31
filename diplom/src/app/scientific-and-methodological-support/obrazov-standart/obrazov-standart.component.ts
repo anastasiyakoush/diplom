@@ -5,6 +5,7 @@ import { Standart } from './standart.model';
 import { setMonth } from 'ngx-bootstrap/chronos/utils/date-setters';
 import { EndpointsService } from 'src/app/endpoints.service';
 import { HttpResponse } from '@angular/common/http/http';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-obrazov-standart',
@@ -20,6 +21,7 @@ export class ObrazovStandartComponent implements OnInit {
   obrStId: number;
   constructor(private router: Router,
      private modalService: BsModalService,
+     private auth: AuthService,
      private endpointService: EndpointsService) {}
 
   ngOnInit() {

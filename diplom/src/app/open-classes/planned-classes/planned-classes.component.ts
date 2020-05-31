@@ -3,6 +3,7 @@ import { Lesson, Month } from "./../lesson.model";
 import { Router } from "@angular/router";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { EndpointsService } from "src/app/endpoints.service";
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: "app-planned-classes",
@@ -16,6 +17,7 @@ export class PlannedClassesComponent implements OnInit {
   constructor(
     private router: Router,
     private modalService: BsModalService,
+    private auth: AuthService,
     private endpointService: EndpointsService
   ) {}
 

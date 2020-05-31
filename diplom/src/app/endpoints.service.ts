@@ -18,33 +18,32 @@ export class EndpointsService {
   ConfigurationBaseURI = 'https://localhost:44312/api/Configuration';
   AccountBaseURI = 'https://localhost:44312/api/Account';
   headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-  header = new HttpHeaders({
     'Content-Type': 'application/json',
     'responseType': 'application/octet-stream',
+     Authorization: 'Bearer ' + this.getToken(),
     'observe': 'response'
   });
+
   constructor(private http: HttpClient) { }
 
   getTeachers() {
-    return this.http.get<any[]>(this.teacherBaseURI);
+    return this.http.get<any[]>(this.teacherBaseURI, {headers: this.headers});
   }
 
   getTeacherById(id: number) {
-    return this.http.get<Teacher>(this.teacherBaseURI + `/${id}`);
+    return this.http.get<Teacher>(this.teacherBaseURI + `/${id}`, {headers: this.headers});
   }
 
   CreateOrUpdateTeacher(data: any) {
-    return this.http.post(this.teacherBaseURI, data);
+    return this.http.post(this.teacherBaseURI, data,{headers: this.headers});
   }
 
   DeleteTeacher(id: number) {
-    return this.http.delete(this.teacherBaseURI + `/${id}`);
+    return this.http.delete(this.teacherBaseURI + `/${id}`, {headers: this.headers});
   }
 
   FilterTeacher(filter: any) {
-    return this.http.post(this.teacherBaseURI + '/filter', filter);
+    return this.http.post(this.teacherBaseURI + '/filter', filter, {headers: this.headers});
   }
 
   SearchTeacher(searchText: string) {
@@ -53,98 +52,78 @@ export class EndpointsService {
 
   getPlans() {
     const token = this.getToken();
-    const header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'responseType': 'application/octet-stream',
-       Authorization: 'Bearer ' + token,
-      'observe': 'response'
-    });
-    return this.http.get<any[]>(this.PlanBaseURI,{headers: header});
+
+    return this.http.get<any[]>(this.PlanBaseURI,{headers: this.headers});
   }
 
   getObrPlans() {
-    const token = this.getToken();
-    const header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'responseType': 'application/octet-stream',
-       Authorization: 'Bearer ' + token,
-      'observe': 'response'
-    });
-    return this.http.get<any[]>(this.PlanBaseURI +'/obr',{headers: header});
+    return this.http.get<any[]>(this.PlanBaseURI +'/obr',{headers: this.headers});
   }
 
   getTypePlans() {
-    const token = this.getToken();
-    const header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'responseType': 'application/octet-stream',
-       Authorization: 'Bearer ' + token,
-      'observe': 'response'
-    });
-    return this.http.get<any[]>(this.PlanBaseURI + '/tip', {headers: header});
+    return this.http.get<any[]>(this.PlanBaseURI + '/tip', {headers: this.headers});
   }
   filterTypePlan(filter: any) {
-    return this.http.post(this.PlanBaseURI + '/tip/filter', filter)
+    return this.http.post(this.PlanBaseURI + '/tip/filter', filter, {headers: this.headers})
   }
 
   DeleteTypePlan(id: number) {
-    return this.http.delete(this.PlanBaseURI + '/tip' + `/${id}`);
+    return this.http.delete(this.PlanBaseURI + '/tip' + `/${id}`, {headers: this.headers});
   }
 
   getTypePlanById(id: number) {
-    return this.http.get<Plan>(this.PlanBaseURI + `/tip/${id}`);
+    return this.http.get<Plan>(this.PlanBaseURI + `/tip/${id}`, {headers: this.headers});
   }
 
   getObrPlanById(id: number) {
-    return this.http.get<Plan>(this.PlanBaseURI + `/obr/${id}`);
+    return this.http.get<Plan>(this.PlanBaseURI + `/obr/${id}`, {headers: this.headers});
   }
 
   filterPlan(filter: any) {
-    return this.http.post(this.PlanBaseURI + '/uch/filter', filter)
+    return this.http.post(this.PlanBaseURI + '/uch/filter', filter, {headers: this.headers})
   }
+
   DeletePlan(id: number) {
-    return this.http.delete(this.PlanBaseURI + '/uch' + `/${id}`);
+    return this.http.delete(this.PlanBaseURI + '/uch' + `/${id}`, {headers: this.headers});
   }
 
   getPlanById(id: number) {
-    return this.http.get<Plan>(this.PlanBaseURI + `/${id}`);
+    return this.http.get<Plan>(this.PlanBaseURI + `/${id}`, {headers: this.headers});
   }
 
   createOrUpdatePlan(data: any) {
-    return this.http.post(this.PlanBaseURI, data);
+    return this.http.post(this.PlanBaseURI, data, {headers: this.headers});
   }
 
   createOrUpdateLesson(data: any) {
-    return this.http.post(this.PublicLessonBaseURI, data);
+    return this.http.post(this.PublicLessonBaseURI, data, {headers: this.headers});
   }
   getLessons() {
-    return this.http.get<Lesson[]>(this.PublicLessonBaseURI);
+    return this.http.get<Lesson[]>(this.PublicLessonBaseURI, {headers: this.headers});
   }
 
   getCompareLessons() {
-    return this.http.get<any[]>(this.PublicLessonBaseURI + '/compare');
+    return this.http.get<any[]>(this.PublicLessonBaseURI + '/compare', {headers: this.headers});
   }
 
   getLessonById(id: number) {
-    return this.http.get<Lesson>(this.PublicLessonBaseURI
-      + `/${id}`);
+    return this.http.get<Lesson>(this.PublicLessonBaseURI + `/${id}`, {headers: this.headers});
   }
 
   createOrUpdatePlannedLesson(data: any) {
-    return this.http.post(this.PublicLessonBaseURI + '/planning', data);
+    return this.http.post(this.PublicLessonBaseURI + '/planning', data, {headers: this.headers});
   }
 
   getPlannedLessons() {
-    return this.http.get<any[]>(this.PublicLessonBaseURI + '/planning');
+    return this.http.get<any[]>(this.PublicLessonBaseURI + '/planning', {headers: this.headers});
   }
 
   getPlannedLessonById(id: number) {
-    return this.http.get<any>(this.PublicLessonBaseURI + '/planning'
-      + `/${id}`);
+    return this.http.get<any>(this.PublicLessonBaseURI + '/planning' + `/${id}`, {headers: this.headers});
   }
 
   FilterPublicLesson(filter: any) {
-    return this.http.post(this.PublicLessonBaseURI + '/filter', filter);
+    return this.http.post(this.PublicLessonBaseURI + '/filter', filter, {headers: this.headers});
   }
 
   SearchPublicLesson(searchText: string) {
@@ -156,24 +135,23 @@ export class EndpointsService {
   }
 
   getSubjects() {
-    return this.http.get<any[]>(this.SubjectBaseURI
-    );
+    return this.http.get<any[]>(this.SubjectBaseURI, {headers: this.headers});
   }
 
   getSubjectById(id: number) {
-    return this.http.get<Disciplina>(this.SubjectBaseURI
-      + `/${id}`);
+    return this.http.get<Disciplina>(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
   }
 
   FilterSubject(filter: any) {
-    return this.http.post(this.SubjectBaseURI + '/filter', filter);
+    return this.http.post(this.SubjectBaseURI + '/filter', filter, {headers: this.headers});
   }
+
   DeleteSubject(id: number) {
-    return this.http.delete(this.SubjectBaseURI + `/${id}`);
+    return this.http.delete(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
   }
 
   CreateorUpdateSubject(data: any) {
-    return this.http.post(this.SubjectBaseURI, data);
+    return this.http.post(this.SubjectBaseURI, data, {headers: this.headers});
   }
 
   SearchSubject(searchText: string) {
@@ -181,23 +159,23 @@ export class EndpointsService {
   }
 
   getCK() {
-    return this.http.get<any[]>(this.ConfigurationBaseURI + "/ck");
+    return this.http.get<any[]>(this.ConfigurationBaseURI + "/ck", {headers: this.headers});
   }
 
   createCK(ck) {
-    return this.http.post<any[]>(this.ConfigurationBaseURI + "/ck", ck);
+    return this.http.post<any[]>(this.ConfigurationBaseURI + "/ck", ck, {headers: this.headers});
   }
 
   getGroups() {
-    return this.http.get<any[]>("/api/Configuration/group");
+    return this.http.get<any[]>("/api/Configuration/group", {headers: this.headers});
   }
 
   deleteCK(id) {
-    return this.http.delete(this.ConfigurationBaseURI + `/ck/${id}`);
+    return this.http.delete(this.ConfigurationBaseURI + `/ck/${id}`, {headers: this.headers});
   }
 
   getCKById(id) {
-    return this.http.get<any>(this.ConfigurationBaseURI + `/ck/${id}`);
+    return this.http.get<any>(this.ConfigurationBaseURI + `/ck/${id}`, {headers: this.headers});
   }
 
   searchCK(searchText: string) {
@@ -205,15 +183,15 @@ export class EndpointsService {
   }
 
   createPosition(position) {
-    return this.http.post<any[]>(this.ConfigurationBaseURI + "/position", position);
+    return this.http.post<any[]>(this.ConfigurationBaseURI + "/position", position, {headers: this.headers});
   }
 
   getPosition() {
-    return this.http.get<any[]>(this.ConfigurationBaseURI + "/position");
+    return this.http.get<any[]>(this.ConfigurationBaseURI + "/position", {headers: this.headers});
   }
 
   deleteposition(id) {
-    return this.http.delete(this.ConfigurationBaseURI + `/position/${id}`);
+    return this.http.delete(this.ConfigurationBaseURI + `/position/${id}`, {headers: this.headers});
   }
 
   getToken() {
@@ -221,11 +199,11 @@ export class EndpointsService {
   }
 
   getAllUsers() {
-    return this.http.get<any[]>('https://localhost:44312/api/Account/all');
+    return this.http.get<any[]>('https://localhost:44312/api/Account/all', {headers: this.headers});
   }
 
   getUserById(id) {
-    return this.http.get<any>(this.AccountBaseURI+`/user/${id}`);
+    return this.http.get<any>(this.AccountBaseURI+`/user/${id}`, {headers: this.headers});
   }
 
   searchUser(searchText: string) {
@@ -238,7 +216,7 @@ export class EndpointsService {
   }
 
   deleteUser(id) {
-    return this.http.delete(this.AccountBaseURI+`/${id}`);
+    return this.http.delete(this.AccountBaseURI+`/${id}`, {headers: this.headers});
   }
 
   signIn(data: any) {
@@ -250,23 +228,23 @@ export class EndpointsService {
   }
 
   getPositionById(id) {
-    return this.http.get<any>(this.ConfigurationBaseURI + `/position/${id}`);
+    return this.http.get<any>(this.ConfigurationBaseURI + `/position/${id}`, {headers: this.headers});
   }
 
   getDoctype() {
-    return this.http.get<any[]>(this.ConfigurationBaseURI + "/doctype");
+    return this.http.get<any[]>(this.ConfigurationBaseURI + "/doctype",{headers: this.headers});
   }
 
   createDoctype(position) {
-    return this.http.post<any[]>(this.ConfigurationBaseURI + "/doctype", position);
+    return this.http.post<any[]>(this.ConfigurationBaseURI + "/doctype", position, {headers: this.headers});
   }
 
   deleteDoctype(id) {
-    return this.http.delete(this.ConfigurationBaseURI + `/doctype/${id}`);
+    return this.http.delete(this.ConfigurationBaseURI + `/doctype/${id}`, {headers: this.headers});
   }
 
   getDoctypeById(id) {
-    return this.http.get<any>(this.ConfigurationBaseURI + `/doctype/${id}`);
+    return this.http.get<any>(this.ConfigurationBaseURI + `/doctype/${id}`, {headers: this.headers});
   }
 
   SearchDoctype(searchText: string) {
@@ -274,15 +252,15 @@ export class EndpointsService {
   }
 
   createGroup(position) {
-    return this.http.post<any[]>(this.ConfigurationBaseURI + "/group", position);
+    return this.http.post<any[]>(this.ConfigurationBaseURI + "/group", position, {headers: this.headers});
   }
 
   getGroup() {
-    return this.http.get<any[]>(this.ConfigurationBaseURI + "/group");
+    return this.http.get<any[]>(this.ConfigurationBaseURI + "/group", {headers: this.headers});
   }
 
   deleteGroup(id) {
-    return this.http.delete(this.ConfigurationBaseURI + `/group/${id}`);
+    return this.http.delete(this.ConfigurationBaseURI + `/group/${id}`, {headers: this.headers});
   }
 
   SearchGroup(searchText: string) {
@@ -290,19 +268,19 @@ export class EndpointsService {
   }
 
   getGroupById(id) {
-    return this.http.get<any>(this.ConfigurationBaseURI + `/group/${id}`);
+    return this.http.get<any>(this.ConfigurationBaseURI + `/group/${id}`, {headers: this.headers});
   }
 
   createSpec(position) {
-    return this.http.post<any[]>(this.ConfigurationBaseURI + "/specialnost", position);
+    return this.http.post<any[]>(this.ConfigurationBaseURI + "/specialnost", position, {headers: this.headers});
   }
 
   getSpecialnost() {
-    return this.http.get<any[]>(this.ConfigurationBaseURI + "/specialnost");
+    return this.http.get<any[]>(this.ConfigurationBaseURI + "/specialnost", {headers: this.headers});
   }
 
   deleteSpec(id) {
-    return this.http.delete(this.ConfigurationBaseURI + `/specialnost/${id}`);
+    return this.http.delete(this.ConfigurationBaseURI + `/specialnost/${id}`, {headers: this.headers});
   }
 
   SearchSpec(searchText: string) {
@@ -310,7 +288,7 @@ export class EndpointsService {
   }
 
   getSpecById(id) {
-    return this.http.get<any>(this.ConfigurationBaseURI + `/specialnost/${id}`);
+    return this.http.get<any>(this.ConfigurationBaseURI + `/specialnost/${id}`, {headers: this.headers});
   }
 
   documentDownload(link: string) {
@@ -331,20 +309,20 @@ export class EndpointsService {
 
   getLessonByTeacherId(id) {
     return this.http.get<any[]>('https://localhost:44312/api/PublicLesson/teacher/'
-      + `${id}`);
+      + `${id}`, {headers: this.headers});
   }
   getDocByTeacherId(id) {
     return this.http.get<any[]>('https://localhost:44312/api/Document/author/'
-      + `${id}`);
+      + `${id}`, {headers: this.headers});
   }
 
   getDocByDiscId(id) {
     return this.http.get<any[]>('https://localhost:44312/api/Document/discipline/'
-      + `${id}`);
+      + `${id}`, {headers: this.headers});
   }
 
   CreateDocByDiscId(data) {
-    return this.http.post('https://localhost:44312/api/Document', data);
+    return this.http.post('https://localhost:44312/api/Document', data, {headers: this.headers});
   }
 }
 

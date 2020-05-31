@@ -3,6 +3,7 @@ import { Lesson } from './lesson.model';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { EndpointsService } from '../endpoints.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-open-classes',
@@ -16,6 +17,7 @@ export class OpenClassesComponent implements OnInit {
   searchText: string = "";
   constructor(private router: Router,
     private modalService: BsModalService,
+    private auth: AuthService,
     private endpointService: EndpointsService) {}
 
   ngOnInit() {

@@ -5,7 +5,7 @@
       <button type="submit" class="btn btn-info">
         <a routerLink="/plannedClasses">Запланированные занятия</a>
       </button>
-      <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
+      <button *ngIf="this.auth.isAdmin()" type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
       <div class="input-group search">
         <input
           type="text"

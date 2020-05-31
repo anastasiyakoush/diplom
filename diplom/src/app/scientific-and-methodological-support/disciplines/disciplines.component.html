@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Учебные дисциплины</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button type="submit" class="btn btn-info" (click)="addDiscipline(template)">Добавить</button>
+      <button  *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addDiscipline(template)">Добавить</button>
       <div class="input-group search">
         <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
         <div class="input-group-append">
@@ -16,7 +16,7 @@
           <th class="my-auto" scope="col ">&#8470;</th>
           <th scope="col">Название</th>
           <th scope="col">Количество часов</th>
-          <th scope="col">Действие</th>
+          <th  *ngIf="this.auth.isAdmin()" scope="col">Действие</th>
         </tr>
       </thead>
       <tbody id="UchPrograma">
@@ -24,7 +24,7 @@
           <td scope="row" (click)="onClick(program.id)">{{program.id}}</td>
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>
-          <td>
+          <td *ngIf="this.auth.isAdmin()">
             <button class="btn btn-outline-info" (click)="addDiscipline(template)">
               <svg
                 class="bi bi-pencil"

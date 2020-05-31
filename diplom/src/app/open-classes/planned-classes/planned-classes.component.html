@@ -3,7 +3,7 @@
       <div class="caption">Запланированные занятия</div>
       <form class="form-inline controls d-flex flex-row-reverse">
         <button type="submit" class="btn btn-info"><a routerLink="/compareClasses"> Сравнить</a></button>
-        <button type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
+        <button *ngIf="this.auth.isAdmin()" type="submit" class="btn add_btn btn-info" (click)="addClass(template)">Добавить</button>
       </form>
       <table class="table table-bordered table-hover">
         <thead class="thead-dark">

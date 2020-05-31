@@ -120,11 +120,11 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-3 mb-3">
+        <div *ngIf="this.auth.isAdmin()" class="col-12 col-md-3 mb-3">
           <div class="card mb-3">
             <div class="card-body">
               <div class="px-xl-3">
-                <button class="btn btn-block btn-info" (click)="UpdateTeacher(template)">
+                <button class="btn btn-block btn-info"  (click)="UpdateTeacher(template)">
                   <i class="fa fa-sign-out"></i>
                   <span>Редактировать</span>
                 </button>

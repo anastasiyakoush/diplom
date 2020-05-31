@@ -88,7 +88,11 @@ const routes: Routes = [
   },
   {
     path: 'openClasses/add',
-    component: UpdateClassesComponent
+    component: UpdateClassesComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
     path: 'compareClasses',
@@ -112,7 +116,11 @@ const routes: Routes = [
   },
   {
     path: 'addDocument',
-    component: AddDocumentComponent
+    component: AddDocumentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
     path: 'detailedSyllabus/:id',

@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap";
 import { Router, ActivatedRoute } from "@angular/router";
 import { EndpointsService } from "src/app/endpoints.service";
 import { Status, Category } from "src/app/enums";
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: "app-detailed-teachers",
@@ -25,7 +26,8 @@ documents: any[];
     private router: Router,
     private modalService: BsModalService,
     private route: ActivatedRoute,
-    private endpointService: EndpointsService
+    private endpointService: EndpointsService,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import { Teacher } from 'src/app/teachers/teacher.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-detailed-classes',
@@ -18,6 +19,7 @@ export class DetailedClassesComponent implements OnInit {
   constructor(private router: Router,
     private modalService: BsModalService,
     private route: ActivatedRoute,
+    private auth: AuthService,
     private endpointService: EndpointsService) {}
 
   ngOnInit() {
