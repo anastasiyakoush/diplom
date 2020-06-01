@@ -21,12 +21,9 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.endpointService.getAllUsers().subscribe((data) => {
       this.users = data;
-      this.users.map((user,index)=>{
-        if(user.role == 0) {
-          user.role = 'admin'
-        } else {
-          user.role = 'user'
-        }})
+      this.users.map((user,index)=>
+          user.role =Role[user.role]
+      )
     });
   }
 
