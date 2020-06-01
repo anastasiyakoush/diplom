@@ -2,7 +2,7 @@
     <div class="col-sm-8 main align-self-start">
       <div class="caption">Документы учебной дисциплины</div>
       <form class="form-inline controls d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-info" (click)="addDocument(template)">Добавить документ</button>
+        <button *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addDocument(template)">Добавить документ</button>
       </form>
 
       <table class="table table-bordered table-hover">
@@ -12,7 +12,7 @@
             <th scope="col">Название</th>
             <th scope="col">Тип</th>
             <th scope="col">Скачать</th>
-            <th scope="col">Действия</th>
+            <th *ngIf="this.auth.isAdmin()" scope="col">Действия</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 <path fill-rule="evenodd" d="M8 1a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 1z" clip-rule="evenodd"/>
               </svg>
             </button></td>
-            <td>
+            <td *ngIf="this.auth.isAdmin()">
               <button class="btn btn-outline-info" (click)="updateDocument(template)">
               <svg
                 class="bi bi-pencil"

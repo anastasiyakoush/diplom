@@ -12,7 +12,7 @@ export class TeachersFilterComponent implements OnInit {
   statuses :string[];
   categories = Category;
   keys = Object.keys;
-  ck: any = 0;
+  ck: any = null;
   options : string[];
   myValue: Category;
   status: Status;
@@ -21,9 +21,9 @@ export class TeachersFilterComponent implements OnInit {
   @Output() onChanged = new EventEmitter<any>();
   constructor(private endpointService: EndpointsService) {}
   form = {
-    category: 3,
-    ciklovayaKomissiya: 0,
-    status: 3  };
+    category: null,
+    ciklovayaKomissiya: null,
+    status: null  };
     teachers: any;
   ngOnInit() {
     var options = Object.keys(Category);

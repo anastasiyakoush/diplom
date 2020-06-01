@@ -17,6 +17,7 @@
           <div class="form-group">
             <label for="tsk">Цикловая комиссия</label>
             <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
+              <option [ngValue]="null"[selected]="true">не выбрано</option>
               <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
           </select>
           </div>

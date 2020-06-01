@@ -23,22 +23,48 @@ export class UpdateTeachersComponent implements OnInit {
     status: 0,
     positionId: 1
   };
-  statuses = Status;
+  statuses : string[];
   categories = Category;
   keys = Object.keys;
   @Input() update;
   @Input() teacherId;
+  ckValue: any;
+  options : string[];
+  myValue: Category;
+  status: Status;
+  Category : typeof Category = Category;
+  Status : typeof Status = Status;
 
   constructor(private endpointService: EndpointsService) {}
   ngOnInit() {
+    var options = Object.keys(Category);
+    this.options = options.slice(options.length / 2);
+    var statuses = Object.keys(Status);
+    this.statuses = statuses.slice(statuses.length / 2);
     if (this.update)
       this.endpointService
         .getTeacherById(this.teacherId)
-        .subscribe((data:any) => {this.form = data;  this.form.status = data.status;
+        .subscribe((data:any) => {
+          this.form.id = data.id;
+          this.form.positionId = data.position.id;
+          this.form.name = data.name;
+          this.form.surname = data.surname;
+          this.form.fatherName = data.fatherName;
+          this.form.status = data.status;
           this.form.ciklovayaKomissiyaId = data.ciklovayaKomissiya.id;
-          this.ck = data.ciklovayaKomissiya;
+          this.ckValue = data.ciklovayaKomissiya;
           this.form.category = data.category});
     this.endpointService.getCK().subscribe(data => (this.cks = data));
+  }
+
+  onStatusChange(status: string) {
+    this.status = Status[status]
+    this.form.status = this.status;
+  }
+
+  parseValue(value : string) {
+    this.myValue = Category[value];
+    this.form.category = this.myValue;
   }
 
   cancel() {
@@ -52,14 +78,7 @@ export class UpdateTeachersComponent implements OnInit {
   }
 
   onChange(ck) {
-    this.form.ciklovayaKomissiyaId = ck.id;
+    this.form.ciklovayaKomissiyaId = Number(ck);
   }
 
-  onStatusChange(status) {
-    this.form.status = status;
-  }
-
-  onCategoryChange(category) {
-    this.form.category = category;
-  }
 }

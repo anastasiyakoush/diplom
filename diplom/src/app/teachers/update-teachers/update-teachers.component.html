@@ -19,23 +19,25 @@
                          </div>
                     </div>
                 </div>
-                  <div class="form-group">
-                      <label for="kategoria">Категория</label>
-                      <select class="form-control" [(ngModel)]="form.category" (ngModelChange)="onCategoryChange($event)">
-                          <option  *ngFor="let category of keys(categories)" [ngValue]="categories[category]">{{category}}</option>
-                      </select>
-                  </div>
+                <div class="form-group">
+                  <label for="kategoria">Категория</label>
+                  <select class="form-control" (change)="parseValue($event.target.value)">
+                    <option *ngFor="let name of options" [selected]=" Category[name]===form.category"
+                        [value]="name">{{name}}</option>
+                  </select>
+                </div>
                   <div class="form-group">
                       <label for="ck">Цикловая комиссия</label>
-                      <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
-                          <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
+                      <select class="form-control"  (change)="onChange($event.target.value)">
+                          <option *ngFor="let ck of cks" [value]="ck.id" [selected]="ck.id === form.ciklovayaKomissiyaId">{{ck.name}}</option>
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="status">Статус</label>
-                      <select class="form-control" [(ngModel)]="form.status" (ngModelChange)="onStatusChange($event)">
-                          <option *ngFor="let status of keys(statuses)" [ngValue]="statuses[status]">{{status}}</option>
-                      </select>
+                    <label for="status">Статус</label>
+                    <select class="form-control" (change)="onStatusChange($event.target.value)">
+                      <option *ngFor="let name of statuses" [selected]=" Status[name]===form.status"
+                          [value]="name">{{name}}</option>
+                    </select>
                   </div>
 
 

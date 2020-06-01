@@ -6,18 +6,18 @@ export enum Component
 
 export enum Status
 {
+  'не выбрано' = 3,
     'работает' = 0,
     'уволен' = 1,
     'декрет' = 2,
-    'не выбрано' = 3
 }
 
 export enum Category
 {
+  'не выбрано' = 3,
     Высшая = 0,
     Первая = 1,
     Вторая = 2,
-    'не выбрано' = 3
 }
 
 export enum Role {
