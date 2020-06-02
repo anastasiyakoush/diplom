@@ -16,8 +16,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let plan of standarts">
-            <th scope="row">{{plan.id}}</th>
+          <tr *ngFor="let plan of standarts; let i=index">
+            <th scope="row">{{i+1}}</th>
             <td>{{plan.registarcionnyjNomer}}</td>
             <td>{{plan.date|  date : 'MM/dd/yyyy'}}</td>
             <td  *ngIf="this.auth.isAdmin()"><button class="btn btn-outline-info"(click)="download(plan.link)">

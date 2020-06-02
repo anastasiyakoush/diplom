@@ -31,7 +31,6 @@ export class OpenClassesComponent implements OnInit {
 
        }
         })
-
     })
   }
 
@@ -69,4 +68,3 @@ export class OpenClassesComponent implements OnInit {
 
   }
 }
-

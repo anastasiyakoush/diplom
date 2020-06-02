@@ -36,13 +36,15 @@
                     <table class="table table-bordered table-hover">
                       <thead class="thead-dark">
                         <tr>
+                          <th class="my-auto" scope="col ">&#8470;</th>
                           <th scope="col">Пользователь</th>
                           <th scope="col">Роль</th>
                           <th scope="col">Действие</th>
                         </tr>
                       </thead>
                       <tbody id="UsersTable">
-                        <tr *ngFor="let user of users">
+                        <tr *ngFor="let user of users; let i=index">
+                          <th scope="row">{{i+1}}</th>
                           <td>{{user.userName}}</td>
                           <td>{{user.role}}</td>
                           <td>

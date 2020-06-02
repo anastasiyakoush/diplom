@@ -35,8 +35,8 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr *ngFor="let c of komisia">
-                            <th scope="row">{{c.id}}</th>
+                          <tr *ngFor="let c of komisia; let i=index">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{c.name}}</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateKomisii(template, c.id)">

@@ -14,9 +14,9 @@
             <th scope="col">Статус</th>
           </tr>
         </thead>
-        <tbody *ngFor="let lesson of lessons">
+        <tbody *ngFor="let lesson of lessons; let i=index">
           <tr>
-            <td scope="row">{{ lesson.id }}</td>
+            <td scope="row">{{ i+1 }}</td>
             <td>{{lesson.teacher}}</td>
             <td>{{lesson.month}}</td>
             <td>{{lesson.status}}</td>

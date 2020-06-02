@@ -20,8 +20,8 @@
         </tr>
       </thead>
       <tbody id="UchPrograma">
-        <tr *ngFor="let program of programs">
-          <td scope="row" (click)="onClick(program.id)">{{program.id}}</td>
+        <tr *ngFor="let program of programs; let i=index">
+          <th scope="row" (click)="onClick(program.id)">{{i+1}}</th>
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>
           <td *ngIf="this.auth.isAdmin()">

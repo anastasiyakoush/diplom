@@ -31,9 +31,9 @@
           <th scope="col">Дата</th>
         </tr>
       </thead>
-      <tbody *ngFor="let lesson of lessons">
+      <tbody *ngFor="let lesson of lessons; let i=index">
         <tr (click)="onClick(lesson.id)">
-          <td scope="row">{{ lesson.id }}</td>
+          <th scope="row">{{ i+1 }}</th>
           <td>{{lesson.teachername}}</td>
           <td>{{lesson.uchebnayaDisciplinaname}}</td>
           <td>{{lesson.topic}}</td>

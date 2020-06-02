@@ -36,8 +36,8 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr *ngFor="let spec of specs">
-                            <th scope="row">{{spec.id}}</th>
+                          <tr *ngFor="let spec of specs; let i=index">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{spec.name}}</td>
                             <td>{{spec.code}}</td>
                             <td>

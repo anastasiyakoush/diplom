@@ -35,8 +35,8 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr *ngFor="let group of groups">
-                            <th scope="row">{{group.id}}</th>
+                          <tr *ngFor="let group of groups; let i=index">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{group.name}}</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateGroup(template)">

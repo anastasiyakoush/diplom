@@ -35,8 +35,8 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr *ngFor="let position of positions">
-                            <th scope="row">{{position.id}}</th>
+                          <tr *ngFor="let position of positions; let i=index">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{position.name}}</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateDolzhnost(template,position.id)">

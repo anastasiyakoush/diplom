@@ -35,8 +35,8 @@
                         </thead>
                         <tbody id="UsersTable">
                           <tr></tr>
-                          <tr *ngFor="let doctype of doctypes">
-                            <th scope="row">{{doctype.id}}</th>
+                          <tr *ngFor="let doctype of doctypes; let i=index">
+                            <th scope="row">{{i+1}}</th>
                             <td>{{doctype.name}}</td>
                             <td>
                               <button class="btn btn-outline-info" (click)="updateType(template, doctype.id)">

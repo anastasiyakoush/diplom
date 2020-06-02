@@ -20,9 +20,9 @@
           <th scope="col">Статус</th>
         </tr>
       </thead>
-      <tbody id="TeachersTable" *ngFor="let teacher of teachers">
+      <tbody *ngFor="let teacher of teachers; let i=index">
         <tr (click)="onClick(teacher.id)">
-          <td scope="row">{{ teacher.id}}</td>
+          <th scope="row">{{ i+1}}</th>
           <td>{{ teacher.name }}</td>
           <td>{{ teacher.category }}</td>
           <td>{{ teacher.ciklovayaKomissiya }}</td>

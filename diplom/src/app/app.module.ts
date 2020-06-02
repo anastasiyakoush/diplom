@@ -99,7 +99,7 @@ import { UpdateTipPlanyComponent } from './scientific-and-methodological-support
     StandartFilterComponent,
     TipFilterComponent,
     UpdateObrazovStandartComponent,
-    UpdateTipPlanyComponent
+    UpdateTipPlanyComponent,
   ],
   imports: [
     BrowserModule,

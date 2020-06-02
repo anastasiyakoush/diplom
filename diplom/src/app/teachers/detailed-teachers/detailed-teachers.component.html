@@ -76,9 +76,9 @@
                           <th scope="col">Дата проведения</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let lesson of lessons">
+                      <tbody *ngFor="let lesson of lessons; let i=index">
                         <tr>
-                          <th scope="row" (click)="onClick(lesson.id)">{{ lesson.id }}</th>
+                          <th scope="row" (click)="onClick(lesson.id)">{{ i+1 }}</th>
                           <td>{{ lesson.topic }}</td>
                           <td>{{ lesson.group }}</td>
                           <td>{{ lesson.date |  date : 'MM/dd/yyyy'}}</td>
@@ -99,11 +99,11 @@
                           <th scope="col">Скачать</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let doc of documents">
+                      <tbody *ngFor="let doc of documents; let i=index">
                         <tr>
-                          <th scope="row ">{{doc.id}}</th>
-                          <th >{{doc.name}}</th>
-                          <th><span *ngFor="let aut of doc.authors">{{aut.surname +' '+ aut.name +' '+ aut.fatherName}}</span></th>
+                          <th scope="row ">{{i+1}}</th>
+                          <td >{{doc.name}}</td>
+                          <td><span *ngFor="let aut of doc.authors">{{aut.surname +' '+ aut.name +' '+ aut.fatherName}}</span></td>
                           <td><button class="btn btn-outline-info"(click)="download(doc.link)">
                             <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd"/>
