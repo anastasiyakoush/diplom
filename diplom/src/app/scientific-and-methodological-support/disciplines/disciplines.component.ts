@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { disciplina } from './disciplina.model';
 import { ProgramType } from "./programType.model";
 import { BsModalRef, BsModalService } from "ngx-bootstrap";
 import { EndpointsService } from "src/app/endpoints.service";
@@ -11,9 +12,13 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ["./disciplines.component.less"]
 })
 export class DisciplinesComponent implements OnInit {
+  disciplina: disciplina[] = [
+  ];
   spec = false;
   course = false;
   programs: any[] = [];
+  title: string;
+  update: boolean;
 searchText:string;
   type: ProgramType;
   modalRef: BsModalRef;
@@ -39,6 +44,20 @@ searchText:string;
       });
     });
   }
+
+  addDisciplina(template: TemplateRef<any>) {
+    this.title = 'Добавить дисциплилну';
+    this.update = false;
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updateDisciplina(template: TemplateRef<any>, id) {
+    this.disciplina = id;
+    this.update = true;
+    this.title = 'Редактировать дисциплилну';
+    this.modalRef = this.modalService.show(template);
+  }
+
   filter($event) {
     console.log($event);
     this.programs = $event;

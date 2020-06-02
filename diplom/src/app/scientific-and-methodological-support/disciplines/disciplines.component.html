@@ -15,7 +15,7 @@
         <tr>
           <th class="my-auto" scope="col ">&#8470;</th>
           <th scope="col">Название</th>
-          <th scope="col">Количество часов</th>
+          <th scope="col">Количество часов (ЛР/ПР/КП/Всего)</th>
           <th  *ngIf="this.auth.isAdmin()" scope="col">Действие</th>
         </tr>
       </thead>
@@ -73,6 +73,6 @@
   <app-syllabus-filters (onChanged)="filter($event)" ></app-syllabus-filters>
 </div>
 <ng-template #template>
-  <app-update-syllabus (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
+  <app-update-syllabus [title]="title" [update]="update" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
 </ng-template>
 

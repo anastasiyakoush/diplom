@@ -32,7 +32,7 @@ export class TeachersFilterComponent implements OnInit {
     this.statuses = statuses.slice(statuses.length / 2);
     this.endpointService.getCK().subscribe(data => {
       this.cks = data;
-      this.cks.push({id: 0, name: 'не выбрано'})
+      this.cks.push({id: 0, name: 'Не выбрано'})
     });
 
   }

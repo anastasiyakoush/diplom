@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Teacher } from './teachers/teacher.model';
 import { Plan } from './scientific-and-methodological-support/uch-plans/plan.model';
 import { Lesson } from './open-classes/lesson.model';
-import { Disciplina } from './scientific-and-methodological-support/disciplines/disciplina.model';
+import { disciplina } from './scientific-and-methodological-support/disciplines/disciplina.model';
 import { Observable } from 'rxjs';
 import { User } from './configuration/users/teacher.model';
 
@@ -139,7 +139,7 @@ export class EndpointsService {
   }
 
   getSubjectById(id: number) {
-    return this.http.get<Disciplina>(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
+    return this.http.get<disciplina>(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
   }
 
   FilterSubject(filter: any) {

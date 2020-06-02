@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
 
@@ -10,6 +10,8 @@ import { EndpointsService } from 'src/app/endpoints.service';
 export class UpdateSyllabusComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
+  @Input() update: boolean;
 
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();

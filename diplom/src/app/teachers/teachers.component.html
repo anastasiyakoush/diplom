@@ -4,7 +4,7 @@
     <form class="form-inline controls d-flex flex-row-reverse">
       <button *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addTeacher(template)">Добавить</button>
       <div class="input-group search">
-        <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
+        <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Преподаватель">
         <div class="input-group-append">
           <button class="btn btn-info" (click)="search()" type="submit">Поиск</button>
         </div>

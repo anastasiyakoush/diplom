@@ -1,4 +1,4 @@
-export class Disciplina {
+export class disciplina {
   id: number;
   nomer: number;
   registarcionnyjNomer: string;
