@@ -101,15 +101,18 @@ export class ClassesFilterComponent implements OnInit {
       });
   }
 
-/*   restore() {
-    this.endpointService.getTeachers().subscribe((data:any[])=>{
-      data.forEach((teacher, index)=> {
-        data[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-        data[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
-        data[index].status = Status[teacher.status];
-        data[index].category = Category[teacher.category];
-      })
-      this.onChanged.emit(data);
+  restore() {
+    this.endpointService.getLessons().subscribe((data:any[])=>{
+      this.lessons = data;
+      data.forEach((lesson, index)=> {
+        if(this.lessons[index].teacher ) {
+         this.lessons[index].teachername = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
+         this.lessons[index].groupname = lesson.group.name;
+         this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
+
+        }
+         })
+          this.onChangedFilter.emit(data);
     })
-  } */
+  }
 }
