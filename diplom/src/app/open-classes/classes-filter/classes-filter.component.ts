@@ -24,7 +24,7 @@ export class ClassesFilterComponent implements OnInit {
   beginDate: Date;
   endDate: Date;
   form : LessonFilter =  {
-    groupIds: this.selectedItems1,
+    groupsIds: this.selectedItems1,
     teachersIds: [],
     subjectsIds: [],
     beginDate: null,
@@ -81,7 +81,7 @@ export class ClassesFilterComponent implements OnInit {
   }
 
   onItem1Select(item: any) {
-    this.form.groupIds.push(item.id);
+    this.form.groupsIds.push(item.id);
   }
 
   onItem2Select(item: any) {
