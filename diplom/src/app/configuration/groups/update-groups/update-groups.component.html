@@ -6,15 +6,13 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="imya">Группа</label>
-        <input type="text" class="form-control" id="imya" placeholder="Номер группы">
+        <input [(ngModel)]="group.name" type="text" class="form-control" id="imya" placeholder="Номер группы">
     </div>
     <div class="form-group">
         <label>Учебный план</label>
-        <select class="form-control">
-          <option>Не выбрано</option>
-          <option>Группа 1</option>
-          <option>Группа 1</option>
-        </select>
+        <select class="form-control" (change)="onPlanChange($event.target.value)">
+          <option  *ngFor="let plan of plans" [value]="plan.id"  [selected]="plan.id === group.uchebnyjPlanId" >{{plan.registarcionnyjNomer}}</option>
+          </select>
       </div>
 </div>
 

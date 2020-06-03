@@ -39,7 +39,7 @@
                             <th scope="row">{{i+1}}</th>
                             <td>{{group.name}}</td>
                             <td>
-                              <button class="btn btn-outline-info" (click)="updateGroup(template)">
+                              <button class="btn btn-outline-info" (click)="updateGroup(template, group.id)">
                                 <svg
                                   class="bi bi-pencil"
                                   width="1.5em"
@@ -107,7 +107,9 @@
   </div>
   <ng-template #template>
     <app-update-groups
-      [title]="title"
+    [update]="updateFlag"
+    [title]="title"
+    [groupId]="groupId"
       (cancelClick)="modalRef.hide()"
       (saveClick)="modalRef.hide()"
     ></app-update-groups>
