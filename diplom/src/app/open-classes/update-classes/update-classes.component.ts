@@ -10,6 +10,11 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./update-classes.component.less"],
 })
 export class UpdateClassesComponent implements OnInit {
+  @Output() cancelClick = new EventEmitter<any>();
+  @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
+  @Input() lessonId: number;
+
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -20,18 +25,14 @@ export class UpdateClassesComponent implements OnInit {
   group: any;
   disciplin: any;
   selectedteacher: any;
-  @Output() cancelClick = new EventEmitter<any>();
-  @Output() saveClick = new EventEmitter<any>();
-  @Input() title: string;
-  @Input() lessonId: number;
   teachers: Teacher[] = [];
   form = {
+    teacher: {},
     metodicheskieNarabotki: "",
     date: new Date(),
     topic: "",
-    analisUroka: "",
+    planUroka: "",
     uchebnayaDisciplina: {},
-    teacher: {},
     group: {},
   };
 
@@ -43,7 +44,6 @@ export class UpdateClassesComponent implements OnInit {
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
-
 
   ngOnInit() {
     this.endpointService.getTeachers().subscribe((data: any[]) => {
@@ -67,7 +67,6 @@ export class UpdateClassesComponent implements OnInit {
       this.selectedteacher = lesson.teacher;
       this.group = lesson.group
       this.form.group = lesson.group;
-
       })
     }
   }
@@ -93,7 +92,7 @@ export class UpdateClassesComponent implements OnInit {
       .subscribe((link: any) => {
         if (metodic) {
           this.form.metodicheskieNarabotki = link.link;
-        } else this.form.analisUroka = link.link;
+        } else this.form.planUroka = link.link;
       });
   };
 

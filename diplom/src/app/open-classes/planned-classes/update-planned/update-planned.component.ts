@@ -9,32 +9,32 @@ import { Month } from '../../lesson.model';
   templateUrl: './update-planned.component.html',
   styleUrls: ['./update-planned.component.less']
 })
-export class UpdatePlannedComponent
-  implements OnInit {
+export class UpdatePlannedComponent implements OnInit {
+  @Output() cancelClick = new EventEmitter<any>();
+  @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
+  @Input() lessonId: number;
+  @Input() update: boolean;
+
     colorTheme = 'theme-blue';
     bsInlineValue = new Date();
     bsInlineRangeValue: Date[];
     maxDate = new Date();
-
     bsConfig: Partial<BsDatepickerConfig>;
-
-    constructor(private endpointService: EndpointsService) {
-      this.maxDate.setDate(this.maxDate.getDate() + 7);
-      this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-      this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-    }
-    @Output() cancelClick = new EventEmitter<any>();
-    @Output() saveClick = new EventEmitter<any>();
-    @Input() title: string;
     teachers: Teacher[] = [];
     teacher: any;
     keys = Object.keys;
     months = Month;
-  form = {
-    teacher: {},
-    status: true,
-    month: Month.Декабрь,
-  };
+    form = {
+      teacher: {},
+      status: true,
+      month: Month.Декабрь,
+    };
+  constructor(private endpointService: EndpointsService) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+  }
     ngOnInit() {
       this.endpointService.getTeachers().subscribe((data: any[]) => {
         this.teachers = data;

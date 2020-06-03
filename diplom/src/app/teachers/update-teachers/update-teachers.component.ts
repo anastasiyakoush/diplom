@@ -11,6 +11,8 @@ export class UpdateTeachersComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
+  @Input() update;
+  @Input() teacherId;
   cks: any;
   ck: any;
   form = {
@@ -26,8 +28,6 @@ export class UpdateTeachersComponent implements OnInit {
   statuses : string[];
   categories = Category;
   keys = Object.keys;
-  @Input() update;
-  @Input() teacherId;
   ckValue: any;
   options : string[];
   myValue: Category;
@@ -41,7 +41,7 @@ export class UpdateTeachersComponent implements OnInit {
     this.options = options.slice(options.length / 2);
     var statuses = Object.keys(Status);
     this.statuses = statuses.slice(statuses.length / 2);
-    if (this.update)
+    if (this.update) {
       this.endpointService
         .getTeacherById(this.teacherId)
         .subscribe((data:any) => {
@@ -54,6 +54,7 @@ export class UpdateTeachersComponent implements OnInit {
           this.form.ciklovayaKomissiyaId = data.ciklovayaKomissiya.id;
           this.ckValue = data.ciklovayaKomissiya;
           this.form.category = data.category});
+    }
     this.endpointService.getCK().subscribe(data => (this.cks = data));
   }
 

@@ -157,6 +157,10 @@ export class EndpointsService {
   SearchPlannedPublicLesson(searchText: string) {
     return this.http.post(this.PublicLessonBaseURI + '/planning' + "/search", JSON.stringify(searchText), { headers: this.headers });
   }
+
+  DeletePlannedPublicLesson(id: number) {
+    return this.http.delete(this.PublicLessonBaseURI + '/planning' + `/${id}`, {headers: this.headers});
+  }
 // Configuration
   getCK() {
     return this.http.get<any[]>(this.ConfigurationBaseURI + "/ck", {headers: this.headers});

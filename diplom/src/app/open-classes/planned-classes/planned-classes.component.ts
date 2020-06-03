@@ -12,6 +12,9 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class PlannedClassesComponent implements OnInit {
   lessons: any[] = [];
+  lessonId: number;
+  title: string;
+  update: boolean;
   modalRef: BsModalRef;
   searchText: string = "";
   constructor(
@@ -41,7 +44,16 @@ export class PlannedClassesComponent implements OnInit {
     });
   }
 
-  addClass(template: TemplateRef<any>) {
+  addPlanned(template: TemplateRef<any>) {
+    this.title = 'Добавить запланированное занятие';
+    this.update = false;
+    this.modalRef = this.modalService.show(template);
+  }
+
+  updatePlanned(template: TemplateRef<any>, id) {
+    this.lessonId = id;
+    this.update = true;
+    this.title = 'Редактировать запланированное занятие';
     this.modalRef = this.modalService.show(template);
   }
 
@@ -64,5 +76,9 @@ export class PlannedClassesComponent implements OnInit {
           }
         });
       });
+  }
+
+  deletePlanned(id) {
+    this.endpointService.DeletePlannedPublicLesson(id).subscribe(() => location.reload())
   }
 }

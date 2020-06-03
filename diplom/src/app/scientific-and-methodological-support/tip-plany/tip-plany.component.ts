@@ -49,6 +49,6 @@ export class TipPlanyComponent implements OnInit {
   }
 
   delete(id) {
-    this.endpointService.DeleteTypePlan(id).subscribe(()=> location.reload())
+    this.endpointService.DeleteTypePlan(id).subscribe(() => location.reload())
   }
 }
