@@ -10,23 +10,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./curriculum-filters.component.less']
 })
 export class CurriculumFiltersComponent implements OnInit {
+  @Output() onChanged = new EventEmitter<any[]>();
+
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-
   bsConfig: Partial<BsDatepickerConfig>;
-  @Output() onChanged = new EventEmitter<any[]>();
 
-tp:any;
   form ={
     regNumber: '',
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupIds:[]
-  }
+    groupIds: []
+    };
   plans: any[];
+  tp: any;
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);

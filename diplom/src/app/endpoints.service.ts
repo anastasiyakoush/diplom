@@ -25,7 +25,7 @@ export class EndpointsService {
   });
 
   constructor(private http: HttpClient) { }
-
+// Teachers
   getTeachers() {
     return this.http.get<any[]>(this.teacherBaseURI, {headers: this.headers});
   }
@@ -49,7 +49,7 @@ export class EndpointsService {
   SearchTeacher(searchText: string) {
     return this.http.post(this.teacherBaseURI + "/search", JSON.stringify(searchText), { headers: this.headers });
   }
-
+// Methodological Support
   getPlans() {
     const token = this.getToken();
 
@@ -94,7 +94,31 @@ export class EndpointsService {
   createOrUpdatePlan(data: any) {
     return this.http.post(this.PlanBaseURI, data, {headers: this.headers});
   }
+ 
+  getSubjects() {
+    return this.http.get<any[]>(this.SubjectBaseURI, {headers: this.headers});
+  }
 
+  getSubjectById(id: number) {
+    return this.http.get<disciplina>(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
+  }
+
+  FilterSubject(filter: any) {
+    return this.http.post(this.SubjectBaseURI + '/filter', filter, {headers: this.headers});
+  }
+
+  DeleteSubject(id: number) {
+    return this.http.delete(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
+  }
+
+  CreateorUpdateSubject(data: any) {
+    return this.http.post(this.SubjectBaseURI, data, {headers: this.headers});
+  }
+
+  SearchSubject(searchText: string) {
+    return this.http.post(this.SubjectBaseURI + "/search", JSON.stringify(searchText), { headers: this.headers });
+  }
+// Open Lessons
   createOrUpdateLesson(data: any) {
     return this.http.post(this.PublicLessonBaseURI, data, {headers: this.headers});
   }
@@ -133,31 +157,7 @@ export class EndpointsService {
   SearchPlannedPublicLesson(searchText: string) {
     return this.http.post(this.PublicLessonBaseURI + '/planning' + "/search", JSON.stringify(searchText), { headers: this.headers });
   }
-
-  getSubjects() {
-    return this.http.get<any[]>(this.SubjectBaseURI, {headers: this.headers});
-  }
-
-  getSubjectById(id: number) {
-    return this.http.get<disciplina>(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
-  }
-
-  FilterSubject(filter: any) {
-    return this.http.post(this.SubjectBaseURI + '/filter', filter, {headers: this.headers});
-  }
-
-  DeleteSubject(id: number) {
-    return this.http.delete(this.SubjectBaseURI + `/${id}`, {headers: this.headers});
-  }
-
-  CreateorUpdateSubject(data: any) {
-    return this.http.post(this.SubjectBaseURI, data, {headers: this.headers});
-  }
-
-  SearchSubject(searchText: string) {
-    return this.http.post(this.SubjectBaseURI + "/search", JSON.stringify(searchText), { headers: this.headers });
-  }
-
+// Configuration
   getCK() {
     return this.http.get<any[]>(this.ConfigurationBaseURI + "/ck", {headers: this.headers});
   }
@@ -192,35 +192,6 @@ export class EndpointsService {
 
   deleteposition(id) {
     return this.http.delete(this.ConfigurationBaseURI + `/position/${id}`, {headers: this.headers});
-  }
-
-  getToken() {
-    return sessionStorage.getItem('token');
-  }
-
-  getAllUsers() {
-    return this.http.get<any[]>('https://localhost:44312/api/Account/all', {headers: this.headers});
-  }
-
-  getUserById(id) {
-    return this.http.get<any>(this.AccountBaseURI+`/user/${id}`, {headers: this.headers});
-  }
-
-  searchUser(searchText: string) {
-    return this.http.post(this.AccountBaseURI+'/search', JSON.stringify(searchText), { headers: this.headers });
-  }
-
-  CreateUser(data: User) {
-
-    return this.http.post<User>(this.AccountBaseURI, data, { headers: this.headers });
-  }
-
-  deleteUser(id) {
-    return this.http.delete(this.AccountBaseURI+`/${id}`, {headers: this.headers});
-  }
-
-  signIn(data: any) {
-    return this.http.post<any>(this.AccountBaseURI+"/signin", data);
   }
 
   SearchPosition(searchText: string) {
@@ -290,7 +261,36 @@ export class EndpointsService {
   getSpecById(id) {
     return this.http.get<any>(this.ConfigurationBaseURI + `/specialnost/${id}`, {headers: this.headers});
   }
+// Authorization
+  getToken() {
+    return sessionStorage.getItem('token');
+  }
 
+  getAllUsers() {
+    return this.http.get<any[]>('https://localhost:44312/api/Account/all', {headers: this.headers});
+  }
+
+  getUserById(id) {
+    return this.http.get<any>(this.AccountBaseURI+`/user/${id}`, {headers: this.headers});
+  }
+
+  searchUser(searchText: string) {
+    return this.http.post(this.AccountBaseURI+'/search', JSON.stringify(searchText), { headers: this.headers });
+  }
+
+  CreateUser(data: User) {
+
+    return this.http.post<User>(this.AccountBaseURI, data, { headers: this.headers });
+  }
+
+  deleteUser(id) {
+    return this.http.delete(this.AccountBaseURI+`/${id}`, {headers: this.headers});
+  }
+
+  signIn(data: any) {
+    return this.http.post<any>(this.AccountBaseURI+"/signin", data);
+  }
+// 
   documentDownload(link: string) {
 
     return this.http.post('https://localhost:44312/api/Document/download', JSON.stringify(link), { headers: this.headers, responseType: 'blob' as 'json' }).subscribe(

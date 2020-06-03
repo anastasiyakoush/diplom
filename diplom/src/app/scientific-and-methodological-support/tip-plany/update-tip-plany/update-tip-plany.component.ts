@@ -14,6 +14,7 @@ export class UpdateTipPlanyComponent implements OnInit {
   @Input() title: string;
   @Input() tipPlanId: number;
   @Input() update: boolean;
+  
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -27,8 +28,8 @@ export class UpdateTipPlanyComponent implements OnInit {
     dependencyId:0
    }
   bsConfig: Partial<BsDatepickerConfig>;
-plans: any[];
-plan: any;
+  plans: any[];
+  plan: any;
   constructor( private endpointService: EndpointsService,  private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];

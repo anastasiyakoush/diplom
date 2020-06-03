@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-syllabus',
@@ -11,6 +12,7 @@ export class UpdateSyllabusComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
+  @Input() disciplineId: number;
   @Input() update: boolean;
 
   colorTheme = 'theme-blue';
@@ -29,18 +31,28 @@ export class UpdateSyllabusComponent implements OnInit {
     uchebnyjPlan:{}  }
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
-plans: any[];
-plan: any;
+  plans: any[];
+  plan: any;
   constructor( private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
    }
 
-  ngOnInit() {
+   ngOnInit() {
     this.endpointService.getCK().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
-  }
+  } 
+
+/*   ngOnInit() {
+    if(this.update && this.disciplineId) {
+      this.endpointService.getDisciplineById(this.disciplineId).subscribe((data: any)=>{
+        this.form = data;
+        this.form.date = new Date(data.date)
+      })
+    }
+    this.endpointService.getObrPlans().subscribe((data)=>this.plans = data);
+  } */
 
   cancel() {
     this.cancelClick.emit()
@@ -49,12 +61,14 @@ plan: any;
   onChange(ck) {
     this.form.ciklovayaKomissiya = ck;
   }
+
   onPlanChange(plan) {
     this.form.uchebnyjPlan = plan;
   }
+
   save() {
     this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  {this.saveClick.emit()
-    location.reload()})
+      location.reload()});
   }
 
   selectComponent(num) {

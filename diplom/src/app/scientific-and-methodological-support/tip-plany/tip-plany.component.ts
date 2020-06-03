@@ -13,8 +13,7 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./tip-plany.component.less']
 })
 export class TipPlanyComponent implements OnInit {
-  tipPlans: tipPlan[] = [
-  ];
+  tipPlans: tipPlan[] = [];
   tipPlanId: number;
   title: string;
   update: boolean;

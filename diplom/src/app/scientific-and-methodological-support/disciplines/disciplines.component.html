@@ -25,7 +25,7 @@
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>
           <td *ngIf="this.auth.isAdmin()">
-            <button class="btn btn-outline-info" (click)="addDiscipline(template)">
+            <button class="btn btn-outline-info" (click)="updateDiscipline(template)">
               <svg
                 class="bi bi-pencil"
                 width="1.5em"

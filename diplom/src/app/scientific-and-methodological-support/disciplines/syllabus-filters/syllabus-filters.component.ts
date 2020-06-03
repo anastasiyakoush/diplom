@@ -9,11 +9,11 @@ import { EndpointsService } from "src/app/endpoints.service";
   styleUrls: ["./syllabus-filters.component.less"]
 })
 export class SyllabusFiltersComponent implements OnInit {
+  @Output() onChanged = new EventEmitter<any>();
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-  @Output() onChanged = new EventEmitter<any>();
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
   plans: any[];
@@ -32,8 +32,8 @@ export class SyllabusFiltersComponent implements OnInit {
     uchebnyjPlanId: 0
   };
   disciplines: any[];
-specs: any[];
-spec:any;
+  specs: any[];
+  spec:any;
   sp: any;
   constructor(
     private endpointService: EndpointsService,
@@ -49,8 +49,7 @@ spec:any;
   }
 
   onSpecChange(spec) {
-    debugger
-this.form.specialnostId = spec.id;
+    this.form.specialnostId = spec.id;
   }
 
   ngOnInit() {

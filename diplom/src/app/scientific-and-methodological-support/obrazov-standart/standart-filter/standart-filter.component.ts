@@ -19,14 +19,17 @@ export class StandartFilterComponent implements OnInit {
   @Output() onChanged = new EventEmitter<any[]>();
 
 tp:any;
-  form ={
+  form = {
+    specialnostId: null,
     regNumber: '',
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupIds:[]
+    groupIds: []
   }
   standarts: any[];
+  specs: any[];
+  spec:any;
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -38,7 +41,10 @@ tp:any;
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
-    this.endpointService.getGroup().subscribe(
+    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
+
+
+/*     this.endpointService.getGroup().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
           return {
@@ -46,7 +52,7 @@ tp:any;
             id: item.id,
           };
         }))
-    );
+    ); */
     this.endpointService.getTypePlans().subscribe(data=> this.standarts = data)
     this.dropdownSettings = {
       singleSelection: false,
@@ -58,6 +64,11 @@ tp:any;
       allowSearchFilter: true,
     };
   }
+
+  onSpecChange(spec) {
+    this.form.specialnostId = spec.id;
+  }
+  
   onChange(tp) {
     this.form.tipovoyPlanId = tp.id
   }
