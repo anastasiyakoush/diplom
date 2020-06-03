@@ -24,7 +24,7 @@ tp:any;
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupIds:[]
+    groupsIds:[]
   }
   plans: any[];
 
@@ -62,7 +62,7 @@ tp:any;
     this.form.tipovoyPlanId = tp.id
   }
   onItem1Select(item: any) {
-    this.form.groupIds.push(item.id);
+    this.form.groupsIds.push(item.id);
   }
 
   filter() {
