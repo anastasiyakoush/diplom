@@ -13,13 +13,12 @@
             <div class="dropdown-menu">
              <a routerLink="uchPlan" class="dropdown-item">Учебный план</a>
              <a routerLink="disciplines"  class="dropdown-item">Учебные дисциплины</a>
-
              <a routerLink="tipPlans"  class="dropdown-item">Типовые планы</a>
              <a routerLink="obrazStandart"  class="dropdown-item">Образовательные стандарты</a>
              </div>
          </li>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar navbar-nav navbar-dark bg-dark">
         <li *ngIf="this.auth.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown">Конфигурация</a>
             <div class="dropdown-menu">
