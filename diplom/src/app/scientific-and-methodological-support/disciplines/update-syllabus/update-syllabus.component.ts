@@ -12,6 +12,7 @@ export class UpdateSyllabusComponent implements OnInit {
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
   @Input() update: boolean;
+  @Input() subjectId: number;
 
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
@@ -38,6 +39,11 @@ plan: any;
    }
 
   ngOnInit() {
+    console.log(this.title)
+    if(this.update) {
+      this.endpointService.getSubjectById(this.subjectId)
+      .subscribe(data=> this.form = <any>data)
+    }
     this.endpointService.getCK().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
   }

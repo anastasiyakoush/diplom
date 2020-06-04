@@ -39,6 +39,7 @@ plan: any;
     if(this.update && this.tipPlanId) {
       this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any)=>{
         this.form = data;
+        this.form.planType = 2;
         this.form.date = new Date(data.date)
       })
     }

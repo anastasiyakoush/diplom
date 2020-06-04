@@ -2,7 +2,7 @@
   <div class="col-sm-8 main align-self-start">
     <div class="caption">Учебные дисциплины</div>
     <form class="form-inline controls d-flex flex-row-reverse">
-      <button  *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addDiscipline(template)">Добавить</button>
+      <button  *ngIf="this.auth.isAdmin()" type="submit" class="btn btn-info" (click)="addDisciplina(template)">Добавить</button>
       <div class="input-group search">
         <input type="text" class="form-control" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}" placeholder="Search">
         <div class="input-group-append">
@@ -25,7 +25,7 @@
           <td>{{program.name}}</td>
           <td>{{program.hours}}</td>
           <td *ngIf="this.auth.isAdmin()">
-            <button class="btn btn-outline-info" (click)="addDiscipline(template)">
+            <button class="btn btn-outline-info" (click)="updateDisciplina(template, program.id)">
               <svg
                 class="bi bi-pencil"
                 width="1.5em"
@@ -73,6 +73,6 @@
   <app-syllabus-filters (onChanged)="filter($event)" ></app-syllabus-filters>
 </div>
 <ng-template #template>
-  <app-update-syllabus [title]="title" [update]="update" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
+  <app-update-syllabus [title]="title" [update]="update" [subjectId]="disciplina" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-syllabus>
 </ng-template>
 
