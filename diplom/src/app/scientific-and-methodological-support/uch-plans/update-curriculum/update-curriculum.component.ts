@@ -26,7 +26,8 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   maxDate = new Date();
   bsConfig: Partial<BsDatepickerConfig>;
 
-  form = {
+  form = 
+  {
     id: 0,
     registarcionnyjNomer: '',
     date: new Date(),

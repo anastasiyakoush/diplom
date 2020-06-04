@@ -6,7 +6,6 @@
 <div class="modal-body">
     <div class="form-group">
         <label>Преподаватель</label>
-        <input type="text" class="form-control" [(ngModel)]="form.teacher" (ngModelChange)="onTeacherChange($event)">
         <select class="form-control" [(ngModel)]="form.teacher"  (ngModelChange)="onTeacherChange($event)">
             <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher.name}}</option>
         </select>

@@ -26,7 +26,7 @@ export class CurriculumFiltersComponent implements OnInit {
     groupIds: []
     };
   plans: any[];
-  tp: any;
+  tp: any = null;
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -47,7 +47,7 @@ export class CurriculumFiltersComponent implements OnInit {
           };
         }))
     );
-    this.endpointService.getTypePlans().subscribe(data=> this.plans = data)
+    this.endpointService.getTypePlans().subscribe(data => {this.plans = data});
     this.dropdownSettings = {
       singleSelection: false,
       idField: "id",
@@ -58,20 +58,22 @@ export class CurriculumFiltersComponent implements OnInit {
       allowSearchFilter: true,
     };
   }
+
   onChange(tp) {
-    this.form.tipovoyPlanId = tp.id
+    this.form.tipovoyPlanId = tp.id;
   }
+
   onItem1Select(item: any) {
     this.form.groupIds.push(item.id);
   }
 
   filter() {
-    this.endpointService.filterPlan(this.form).subscribe((data:any[])=>
-     this.onChanged.emit(data))
+    this.endpointService.filterPlan(this.form).subscribe((data: any[]) =>
+     this.onChanged.emit(data));
   }
 
   restore() {
-    this.endpointService.getPlans().subscribe((data:any[])=>
-    this.onChanged.emit(data))
+    this.endpointService.getPlans().subscribe((data: any[]) =>
+    this.onChanged.emit(data));
   }
 }

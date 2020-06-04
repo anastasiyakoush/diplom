@@ -1,23 +1,21 @@
-export enum Component
-{
-    Obscheobrazovatelnyj = 0,
-    Professonalnyj = 1,
+export enum Komponent {
+  'Не выбрано' = 3,
+  'Общеобразовательный компонент' = 0,
+  'Проффесиональный компонент' = 1,
 }
 
-export enum Status
-{
-  'не выбрано' = 3,
-    'работает' = 0,
-    'уволен' = 1,
-    'декрет' = 2,
+export enum Status {
+  'Не выбрано' = 3,
+  'Работает' = 0,
+  'Уволен' = 1,
+  'Декрет' = 2,
 }
 
-export enum Category
-{
-  'не выбрано' = 3,
-    Высшая = 0,
-    Первая = 1,
-    Вторая = 2,
+export enum Category {
+  'Не выбрано' = 3,
+  'Высшая' = 0,
+  'Первая' = 1,
+  'Вторая' = 2,
 }
 
 export enum Role {

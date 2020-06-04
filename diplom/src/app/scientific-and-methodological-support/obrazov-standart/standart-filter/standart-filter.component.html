@@ -20,6 +20,7 @@
           <div class="form-group">
             <label for="tsk">Специальность</label>
             <select class="form-control" [(ngModel)]="spec" (ngModelChange)="onSpecChange($event)">
+              <option [ngValue]="null"[selected]="true">Не выбрано</option>
               <option  *ngFor="let spec of specs" [ngValue]="spec" >{{spec.name}}</option>
               </select>
           </div>

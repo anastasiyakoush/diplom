@@ -24,7 +24,7 @@ export class CurriculumComponent implements OnInit {
               private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  this.endpointService.getPlans().subscribe(data => this.uchPlans = data)
+    this.endpointService.getPlans().subscribe(data => this.uchPlans = data);
   }
 
   addUchPlan(template: TemplateRef<any>) {

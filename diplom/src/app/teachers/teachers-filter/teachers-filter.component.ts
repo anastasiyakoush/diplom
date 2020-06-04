@@ -8,34 +8,33 @@ import { Status, Category } from 'src/app/enums';
   styleUrls: ['./teachers-filter.component.less']
 })
 export class TeachersFilterComponent implements OnInit {
+  @Output() onChanged = new EventEmitter<any>();
   cks: any[];
-  statuses :string[];
+  statuses: string[];
   categories = Category;
   keys = Object.keys;
   ck: any = null;
-  options : string[];
+  options: string[];
   myValue: Category;
   status: Status;
-  Category : typeof Category = Category;
-  Status : typeof Status = Status;
-  @Output() onChanged = new EventEmitter<any>();
-  constructor(private endpointService: EndpointsService) {}
+  Category: typeof Category = Category;
+  Status: typeof Status = Status;
+  teachers: any;
   form = {
     category: null,
     ciklovayaKomissiya: null,
-    status: null  };
-    teachers: any;
+    status: null,
+  };
+
+  constructor(private endpointService: EndpointsService) {}
   ngOnInit() {
     var options = Object.keys(Category);
     this.options = options.slice(options.length / 2);
     var statuses = Object.keys(Status);
     this.statuses = statuses.slice(statuses.length / 2);
-    this.endpointService.getCK().subscribe(data => {
-      this.cks = data;
-      this.cks.push({id: 0, name: 'Не выбрано'})
-    });
-
+    this.endpointService.getCK().subscribe(data => {this.cks = data;});
   }
+
   onChange(ck) {
     this.form.ciklovayaKomissiya = ck.id;
   }

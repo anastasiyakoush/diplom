@@ -18,7 +18,7 @@ export class TipFilterComponent implements OnInit {
   bsConfig: Partial<BsDatepickerConfig>;
   @Output() onChanged = new EventEmitter<any[]>();
 
-tp:any;
+  tp:any;
   form ={
     regNumber: '',
     beginDate: null,
@@ -27,6 +27,9 @@ tp:any;
     groupsIds:[]
   }
   standarts: any[];
+  dropdownSettings: IDropdownSettings;
+  dropdownList = [];
+  selectedItems = [];
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -34,11 +37,9 @@ tp:any;
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
 
-  dropdownSettings: IDropdownSettings;
-  dropdownList = [];
-  selectedItems = [];
   ngOnInit() {
-    this.endpointService.getGroup().subscribe(
+    this.endpointService.getTypePlans().subscribe(data=> this.standarts = data)
+    this.endpointService.getObrPlans().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
           return {
@@ -47,7 +48,6 @@ tp:any;
           };
         }))
     );
-    this.endpointService.getTypePlans().subscribe(data=> this.standarts = data)
     this.dropdownSettings = {
       singleSelection: false,
       idField: "id",
@@ -58,9 +58,11 @@ tp:any;
       allowSearchFilter: true,
     };
   }
+
   onChange(tp) {
     this.form.tipovoyPlanId = tp.id
   }
+
   onItem1Select(item: any) {
     this.form.groupsIds.push(item.id);
   }

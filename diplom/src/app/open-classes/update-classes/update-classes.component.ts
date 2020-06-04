@@ -14,6 +14,7 @@ export class UpdateClassesComponent implements OnInit {
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
   @Input() lessonId: number;
+  @Input() update: boolean;
 
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
@@ -21,9 +22,9 @@ export class UpdateClassesComponent implements OnInit {
   maxDate = new Date();
   bsConfig: Partial<BsDatepickerConfig>;
   disciplines: any[];
+  disciplin: any;
   groups: any;
   group: any;
-  disciplin: any;
   selectedteacher: any;
   teachers: Teacher[] = [];
   form = {
@@ -60,12 +61,12 @@ export class UpdateClassesComponent implements OnInit {
       .getGroup()
       .subscribe((data: any) => (this.groups = data));
 
-    if (this.lessonId) {
+    if (this.update && this.lessonId) {
       this.endpointService.getLessonById(this.lessonId).subscribe((lesson) => {
       this.form.date = new Date(lesson.date);
       this.form.teacher = lesson.teacher;
       this.selectedteacher = lesson.teacher;
-      this.group = lesson.group
+      this.group = lesson.group;
       this.form.group = lesson.group;
       })
     }

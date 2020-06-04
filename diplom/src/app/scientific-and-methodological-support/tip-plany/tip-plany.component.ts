@@ -24,7 +24,7 @@ export class TipPlanyComponent implements OnInit {
      private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  this.endpointService.getTypePlans().subscribe(data=> this.tipPlans = data)
+    this.endpointService.getTypePlans().subscribe(data => this.tipPlans = data);
   }
 
   addTipPlan(template: TemplateRef<any>) {
@@ -49,6 +49,6 @@ export class TipPlanyComponent implements OnInit {
   }
 
   delete(id) {
-    this.endpointService.DeleteTypePlan(id).subscribe(() => location.reload())
+    this.endpointService.DeleteTypePlan(id).subscribe(() => location.reload());
   }
 }

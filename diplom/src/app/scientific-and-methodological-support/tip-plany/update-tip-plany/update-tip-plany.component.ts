@@ -22,10 +22,10 @@ export class UpdateTipPlanyComponent implements OnInit {
   form ={
     id: 0,
     date: new Date(),
-    registarcionnyjNomer: "",
+    registarcionnyjNomer: '',
     planType: 2,
-    link:'',
-    dependencyId:0
+    link: '',
+    dependencyId: 0
    }
   bsConfig: Partial<BsDatepickerConfig>;
   plans: any[];
@@ -37,13 +37,13 @@ export class UpdateTipPlanyComponent implements OnInit {
    }
 
   ngOnInit() {
-    if(this.update && this.tipPlanId) {
-      this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any)=>{
+    if (this.update && this.tipPlanId) {
+        this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any) => {
         this.form = data;
         this.form.date = new Date(data.date)
-      })
+      });
     }
-    this.endpointService.getObrPlans().subscribe((data)=>this.plans = data);
+    this.endpointService.getObrPlans().subscribe((data) => this.plans = data);
   }
 
   cancel() {
@@ -51,12 +51,12 @@ export class UpdateTipPlanyComponent implements OnInit {
   }
 
   onChange(tp) {
-    this.form.dependencyId = tp.id
+    this.form.dependencyId = tp.id;
   }
 
   save() {
-    this.endpointService.createOrUpdatePlan(this.form).subscribe(()=>  {this.saveClick.emit()
-    location.reload()})
+    this.endpointService.createOrUpdatePlan(this.form).subscribe(() =>  {this.saveClick.emit();
+                                                                         location.reload(); });
   }
   addFile = (files: Array<File>) => {
     if (files.length === 0) {

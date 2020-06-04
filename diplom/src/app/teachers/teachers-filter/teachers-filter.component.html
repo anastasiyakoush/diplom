@@ -15,7 +15,7 @@
         </li>
         <li class="list-group-item">
           <div class="form-group">
-            <label for="tsk">Цикловая комиссия</label>
+            <label>Цикловая комиссия</label>
             <select class="form-control" [(ngModel)]="ck" (ngModelChange)="onChange($event)">
               <option [ngValue]="null"[selected]="true">Не выбрано</option>
               <option *ngFor="let ck of cks" [ngValue]="ck">{{ck.name}}</option>
@@ -23,7 +23,7 @@
           </div>
         </li>
         <li class="list-group-item">
-          <label for="status">Статус</label>
+          <label>Статус</label>
           <select class="form-control" (change)="onStatusChange($event.target.value)">
             <option *ngFor="let name of statuses"
                 [value]="name">{{name}}</option>

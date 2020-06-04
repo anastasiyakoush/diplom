@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/auth.service';
 export class DetailedClassesComponent implements OnInit {
 
   lesson: any = [ ];
-
+  update: boolean;
   modalRef: BsModalRef;
   id: number;
   constructor(private router: Router,
@@ -36,6 +36,7 @@ export class DetailedClassesComponent implements OnInit {
   }
 
   updateLesson(template: TemplateRef<any>) {
+    this.update = true;
     this.modalRef = this.modalService.show(template);
   }
 

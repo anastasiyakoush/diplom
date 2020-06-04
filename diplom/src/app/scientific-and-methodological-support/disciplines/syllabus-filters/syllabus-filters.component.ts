@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { HttpClient } from "@angular/common/http";
 import { EndpointsService } from "src/app/endpoints.service";
+import { Komponent } from 'src/app/enums';
 
 @Component({
   selector: "app-syllabus-filters",
@@ -17,7 +18,7 @@ export class SyllabusFiltersComponent implements OnInit {
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
   plans: any[];
-  plan: any;
+  plan: any = null;
   form = {
     specialnostId: null,
     component: 0,
@@ -33,8 +34,11 @@ export class SyllabusFiltersComponent implements OnInit {
   };
   disciplines: any[];
   specs: any[];
-  spec:any;
+  spec: any = null;
   sp: any;
+  Komponent: typeof Komponent = Komponent;
+  components: string[];
+
   constructor(
     private endpointService: EndpointsService,
     private http: HttpClient
@@ -42,6 +46,13 @@ export class SyllabusFiltersComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+  }
+  ngOnInit() {
+    this.endpointService.getPlans().subscribe(data => (this.plans = data));
+    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
+
+    var components = Object.keys(Komponent);
+    this.components = components.slice(components.length / 2);
   }
 
   onPlanChange(plan) {
@@ -52,10 +63,6 @@ export class SyllabusFiltersComponent implements OnInit {
     this.form.specialnostId = spec.id;
   }
 
-  ngOnInit() {
-    this.endpointService.getPlans().subscribe(data => (this.plans = data));
-    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
-  }
   filter() {
     this.endpointService.FilterSubject(this.form).subscribe((data: any[]) => {
       this.disciplines = data;

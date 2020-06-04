@@ -19,7 +19,8 @@
       <li class="list-group-item">
         <div class="form-group">
           <label for="file2">Типовой план</label>
-          <select  [(ngModel)]="tp" class="form-control" (ngModelChange)="onChange($event)">
+          <select class="form-control" [(ngModel)]="tp" (ngModelChange)="onChange($event)">
+            <option [ngValue]="null"[selected]="true">Не выбрано</option>
             <option *ngFor="let plan of plans" [ngValue]="tp">{{plan.registarcionnyjNomer}}</option>
           </select>
         </div>

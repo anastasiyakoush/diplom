@@ -18,7 +18,7 @@ export class StandartFilterComponent implements OnInit {
   bsConfig: Partial<BsDatepickerConfig>;
   @Output() onChanged = new EventEmitter<any[]>();
 
-tp:any;
+  tp: any;
   form = {
     specialnostId: null,
     regNumber: '',
@@ -29,7 +29,7 @@ tp:any;
   }
   standarts: any[];
   specs: any[];
-  spec:any;
+  spec: any = null;
 
   constructor( private endpointService: EndpointsService,private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);

@@ -8,6 +8,7 @@
         <div class="form-group">
           <label for="tsk">Учебный план</label>
           <select class="form-control" [(ngModel)]="plan" (ngModelChange)="onPlanChange($event)">
+            <option [ngValue]="null"[selected]="true">Не выбрано</option>
             <option  *ngFor="let plan of plans" [ngValue]="plan" >{{plan.registarcionnyjNomer}}</option>
             </select>
         </div>
@@ -16,6 +17,7 @@
         <div class="form-group">
           <label for="tsk">Специальность</label>
           <select class="form-control" [(ngModel)]="spec" (ngModelChange)="onSpecChange($event)">
+            <option [ngValue]="null"[selected]="true">Не выбрано</option>
             <option  *ngFor="let spec of specs" [ngValue]="spec" >{{spec.name}}</option>
             </select>
         </div>
@@ -23,10 +25,9 @@
       <li class="list-group-item">
         <div class="form-group">
           <label for="tsk">Компонент</label>
-          <select class="form-control" id="tsk">
-            <option>Не выбрано</option>
-            <option>Общеобразовательный компонент</option>
-            <option>Профессиональный компонент</option>
+          <select class="form-control" (change)="onComponentChange($event.target.value)">
+            <option *ngFor="let name of components"
+            [value]="name">{{name}}</option>
           </select>
         </div>
       </li>
