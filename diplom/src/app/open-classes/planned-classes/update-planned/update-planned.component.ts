@@ -24,12 +24,15 @@ export class UpdatePlannedComponent implements OnInit {
     teachers: Teacher[] = [];
     teacher: any;
     keys = Object.keys;
-    months = Month;
     form = {
       teacher: {},
       status: true,
       month: Month.Декабрь,
     };
+    Month: typeof Month = Month;
+    month = Month;
+    months: any = null;
+
   constructor(private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -43,6 +46,8 @@ export class UpdatePlannedComponent implements OnInit {
             teacher.surname + " " + teacher.name + " " + teacher.fatherName;
         });
       });
+      var months = Object.keys(Month);
+      this.months = months.slice(months.length / 2);
     }
 
   cancel() {
@@ -51,7 +56,12 @@ export class UpdatePlannedComponent implements OnInit {
 
   onTeacherChange(teacher) {
     this.form.teacher = teacher;
-      }
+  }
+
+  onMonthChange(month) {
+    this.form.month = month.id;
+  }
+
   save() {
     this.endpointService.createOrUpdatePlannedLesson(this.form).subscribe(()=>    this.saveClick.emit())
 

@@ -10,15 +10,15 @@ import { Status, Category } from 'src/app/enums';
 export class TeachersFilterComponent implements OnInit {
   @Output() onChanged = new EventEmitter<any>();
   cks: any[];
-  statuses: string[];
-  categories = Category;
   keys = Object.keys;
   ck: any = null;
   options: string[];
   myValue: Category;
-  status: Status;
   Category: typeof Category = Category;
   Status: typeof Status = Status;
+  statuses: string[];
+  status: Status;
+  categories = Category;
   teachers: any;
   form = {
     category: null,
@@ -48,6 +48,7 @@ export class TeachersFilterComponent implements OnInit {
     this.myValue = Category[value];
     this.form.category = this.myValue;
   }
+
   filter() {
     let filterObject = Object.assign({}, this.form);
     filterObject.category = this.form.category === 3? null: this.form.category;

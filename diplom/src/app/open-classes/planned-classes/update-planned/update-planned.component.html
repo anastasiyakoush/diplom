@@ -12,8 +12,8 @@
 </div>
     <div class="form-group">
         <label for="date">Месяц</label>
-        <select class="form-control" [(ngModel)]="form.month" (ngModelChange)="onMonthChange($event)">
-          <option  *ngFor="let month of keys(months)" [ngValue]="months[month]">{{month}}</option>
+        <select class="form-control" (ngModelChange)="onMonthChange($event)">
+          <option *ngFor="let month of months" [value]="month">{{month}}</option>
       </select>
     </div>
 </div>
