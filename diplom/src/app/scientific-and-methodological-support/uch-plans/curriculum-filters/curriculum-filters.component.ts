@@ -38,7 +38,7 @@ export class CurriculumFiltersComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
-    this.endpointService.getPlans().subscribe(data => {this.plans = data});
+    this.endpointService.getTypePlans().subscribe(data => {this.plans = data});
     this.endpointService.getGroup().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
