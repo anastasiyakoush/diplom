@@ -18,7 +18,7 @@ export class CurriculumFiltersComponent implements OnInit {
   maxDate = new Date();
   bsConfig: Partial<BsDatepickerConfig>;
 
-  form ={
+  form = {
     regNumber: '',
     beginDate: null,
     endDate: null,
@@ -38,7 +38,7 @@ export class CurriculumFiltersComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
-    this.endpointService.getTypePlans().subscribe(data => {this.plans = data});
+    this.endpointService.getTypePlans().subscribe(data => {this.plans = data;});
     this.endpointService.getGroup().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
@@ -50,10 +50,10 @@ export class CurriculumFiltersComponent implements OnInit {
     );
     this.dropdownSettings = {
       singleSelection: false,
-      idField: "id",
-      textField: "name",
-      selectAllText: "Выбрать все",
-      unSelectAllText: "Отменить все",
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Выбрать все',
+      unSelectAllText: 'Отменить все',
       itemsShowLimit: 3,
       allowSearchFilter: true,
     };
