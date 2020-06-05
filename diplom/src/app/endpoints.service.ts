@@ -50,19 +50,22 @@ export class EndpointsService {
     return this.http.post(this.teacherBaseURI + "/search", JSON.stringify(searchText), { headers: this.headers });
   }
 // Methodological Support
-  getPlans() {
-    const token = this.getToken();
-
-    return this.http.get<any[]>(this.PlanBaseURI,{headers: this.headers});
-  }
-
   getObrPlans() {
     return this.http.get<any[]>(this.PlanBaseURI +'/obr',{headers: this.headers});
+  }
+
+  getObrPlanById(id: number) {
+    return this.http.get<Plan>(this.PlanBaseURI + `/obr/${id}`, {headers: this.headers});
+  }
+
+  filterObrPlan(filter: any) {
+    return this.http.post(this.PlanBaseURI + 'obr/filter', filter, {headers: this.headers});
   }
 
   getTypePlans() {
     return this.http.get<any[]>(this.PlanBaseURI + '/tip', {headers: this.headers});
   }
+
   filterTypePlan(filter: any) {
     return this.http.post(this.PlanBaseURI + '/tip/filter', filter, {headers: this.headers})
   }
@@ -75,8 +78,9 @@ export class EndpointsService {
     return this.http.get<Plan>(this.PlanBaseURI + `/tip/${id}`, {headers: this.headers});
   }
 
-  getObrPlanById(id: number) {
-    return this.http.get<Plan>(this.PlanBaseURI + `/obr/${id}`, {headers: this.headers});
+  getPlans() {
+    const token = this.getToken();
+    return this.http.get<any[]>(this.PlanBaseURI, {headers: this.headers});
   }
 
   filterPlan(filter: any) {

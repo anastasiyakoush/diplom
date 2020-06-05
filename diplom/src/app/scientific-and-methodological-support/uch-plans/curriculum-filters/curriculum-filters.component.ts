@@ -28,7 +28,7 @@ export class CurriculumFiltersComponent implements OnInit {
   plans: any[];
   tp: any = null;
 
-  constructor( private endpointService: EndpointsService,private http: HttpClient) {
+  constructor( private endpointService: EndpointsService, private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
@@ -38,6 +38,7 @@ export class CurriculumFiltersComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
+    this.endpointService.getPlans().subscribe(data => {this.plans = data});
     this.endpointService.getGroup().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
@@ -47,7 +48,6 @@ export class CurriculumFiltersComponent implements OnInit {
           };
         }))
     );
-    this.endpointService.getTypePlans().subscribe(data => {this.plans = data});
     this.dropdownSettings = {
       singleSelection: false,
       idField: "id",
