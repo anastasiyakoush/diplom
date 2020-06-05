@@ -34,7 +34,7 @@ namespace DiplomApi.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<DocumentDto>> AddAsync(DocumentDto documentDto)
+    public async Task<ActionResult<DocumentDto>> AddOrUpdateAsync(DocumentDto documentDto)
     {
       try
       {

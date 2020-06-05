@@ -67,11 +67,17 @@ namespace BLL.Services
       return _mapper.Map<List<T>>(await entities.ToListAsync());
     }
 
-    public async Task<T> GetAsync(int? id)
+    public async Task<T> GetAsync(int? id, string navProp = null)
     {
       if (!id.HasValue) return null;
 
-      return _mapper.Map<T>(await _context.Set<V>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
+      var ctx = _context.Set<V>().AsNoTracking();
+      if (!string.IsNullOrEmpty(navProp))
+      {
+        ctx = _context.Set<V>().Include(navProp).AsNoTracking();
+      }
+
+      return _mapper.Map<T>(await ctx.FirstOrDefaultAsync(x => x.Id == id.Value));
     }
 
     public async Task<List<T>> SearchAsync(string query)

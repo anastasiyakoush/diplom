@@ -265,7 +265,7 @@ namespace DiplomApi.Controllers
     {
       try
       {
-        var result = await _groupService.GetAsync(id);
+        var result = await _groupService.GetAsync(id, "UchebnyjPlan");
 
         if (result is null)
         {
