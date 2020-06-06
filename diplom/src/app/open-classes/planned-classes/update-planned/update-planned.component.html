@@ -13,7 +13,7 @@
     <div class="form-group">
         <label for="date">Месяц</label>
         <select class="form-control" (ngModelChange)="onMonthChange($event)">
-          <option *ngFor="let month of months" [value]="month">{{month}}</option>
+          <option *ngFor="let month of months" [value]="month" [selected]="month.id === form.teacher.id">{{month}}</option>
       </select>
     </div>
 </div>

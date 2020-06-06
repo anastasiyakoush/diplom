@@ -21,7 +21,7 @@ export class UpdatePlannedComponent implements OnInit {
     bsInlineRangeValue: Date[];
     maxDate = new Date();
     bsConfig: Partial<BsDatepickerConfig>;
-    teachers: Teacher[] = [];
+    teachers = [];
     teacher: any;
     keys = Object.keys;
     form = {
@@ -39,12 +39,8 @@ export class UpdatePlannedComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
     ngOnInit() {
-      this.endpointService.getTeachers().subscribe((data: any[]) => {
+      this.endpointService.getPlannedLessonById(this.lessonId).subscribe((data: any[]) => {
         this.teachers = data;
-        data.forEach((teacher, index) => {
-          this.teachers[index].name =
-            teacher.surname + " " + teacher.name + " " + teacher.fatherName;
-        });
       });
       var months = Object.keys(Month);
       this.months = months.slice(months.length / 2);

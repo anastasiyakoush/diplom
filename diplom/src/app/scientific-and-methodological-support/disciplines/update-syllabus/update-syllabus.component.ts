@@ -12,7 +12,6 @@ export class UpdateSyllabusComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
   @Input() title: string;
-  @Input() disciplineId: number;
   @Input() update: boolean;
   @Input() subjectId: number;
 
@@ -48,16 +47,6 @@ export class UpdateSyllabusComponent implements OnInit {
     this.endpointService.getCK().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
   }
-
-/*   ngOnInit() {
-    if(this.update && this.disciplineId) {
-      this.endpointService.getDisciplineById(this.disciplineId).subscribe((data: any)=>{
-        this.form = data;
-        this.form.date = new Date(data.date)
-      })
-    }
-    this.endpointService.getObrPlans().subscribe((data)=>this.plans = data);
-  } */
 
   cancel() {
     this.cancelClick.emit()
