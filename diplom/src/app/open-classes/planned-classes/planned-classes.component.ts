@@ -12,11 +12,11 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class PlannedClassesComponent implements OnInit {
   lessons: any[] = [];
-  lessonId: number;
-  title: string;
-  update: boolean;
   modalRef: BsModalRef;
   searchText: string = "";
+  title: string;
+  update: boolean;
+  lessonId: number;
   constructor(
     private router: Router,
     private modalService: BsModalService,
@@ -44,17 +44,25 @@ export class PlannedClassesComponent implements OnInit {
     });
   }
 
-  addPlanned(template: TemplateRef<any>) {
+  addClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  addLesson(template: TemplateRef<any>) {
     this.title = 'Добавить запланированное занятие';
     this.update = false;
     this.modalRef = this.modalService.show(template);
   }
 
-  updatePlanned(template: TemplateRef<any>, id) {
+  updateLesson(template: TemplateRef<any>, id) {
     this.lessonId = id;
     this.update = true;
     this.title = 'Редактировать запланированное занятие';
     this.modalRef = this.modalService.show(template);
+  }
+
+ delete(id) {
+    this.endpointService.DeletePlannedPublicLesson(id).subscribe(()=> location.reload() )
   }
 
   search() {
@@ -71,14 +79,10 @@ export class PlannedClassesComponent implements OnInit {
               " " +
               lesson.teacher.fatherName;
             this.lessons[index].status = lesson.status
-              ? "планируутся"
+              ? "планируются"
               : "проведено";
           }
         });
       });
-  }
-
-  deletePlanned(id) {
-    this.endpointService.DeletePlannedPublicLesson(id).subscribe(() => location.reload())
   }
 }

@@ -39,9 +39,18 @@ export class UpdatePlannedComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
     ngOnInit() {
-      this.endpointService.getPlannedLessonById(this.lessonId).subscribe((data: any[]) => {
+      if(this.update) {
+        this.endpointService.getPlannedLessonById(this.lessonId).subscribe((data: any[]) => {
+          this.form = <any>data;
+        });
+      }
+
+      this.endpointService.getTeachers().subscribe(data=> {
         this.teachers = data;
-      });
+        data.forEach((teacher, index)=> {
+          this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
+          })
+      })
       var months = Object.keys(Month);
       this.months = months.slice(months.length / 2);
     }
@@ -50,12 +59,13 @@ export class UpdatePlannedComponent implements OnInit {
     this.cancelClick.emit()
   }
 
-  onTeacherChange(teacher) {
-    this.form.teacher = teacher;
+  onTeacherChange(teacherId) {
+    debugger
+    this.form.teacher = this.teachers.find(t=> t.id === Number(teacherId));
   }
 
-  onMonthChange(month) {
-    this.form.month = month.id;
+  onMonthChange(month: string) {
+    this.form.month = Month[month];
   }
 
   save() {
