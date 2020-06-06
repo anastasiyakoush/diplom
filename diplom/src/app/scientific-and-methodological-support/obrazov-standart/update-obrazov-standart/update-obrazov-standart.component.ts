@@ -47,7 +47,7 @@ constructor( private endpointService: EndpointsService,  private http: HttpClien
         this.form.dependencyId = data.specialnost.id;
       })
     }
-    this.endpointService.getSpecialnost(false).subscribe(data => (this.cks = data));
+    this.endpointService.getSpecialnost().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
   }
 
