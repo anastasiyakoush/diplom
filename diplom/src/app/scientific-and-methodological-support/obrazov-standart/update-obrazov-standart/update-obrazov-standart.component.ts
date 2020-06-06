@@ -43,10 +43,11 @@ constructor( private endpointService: EndpointsService,  private http: HttpClien
     if(this.update && this.obrStId) {
       this.endpointService.getObrPlanById(this.obrStId).subscribe((data: any)=>{
         this.form = data;
-        this.form.date = new Date(data.date)
+        this.form.date = new Date(data.date);
+        this.form.dependencyId = data.specialnost.id;
       })
     }
-    this.endpointService.getSpecialnost().subscribe(data => (this.cks = data));
+    this.endpointService.getSpecialnost(false).subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
   }
 
@@ -55,6 +56,7 @@ constructor( private endpointService: EndpointsService,  private http: HttpClien
   }
 
   save() {
+    this.form.planType = 0;
     this.endpointService.createOrUpdatePlan(this.form).subscribe(()=>  {this.saveClick.emit()
     location.reload()})
   }
@@ -77,8 +79,7 @@ constructor( private endpointService: EndpointsService,  private http: HttpClien
   };
 
   onChange(tp) {
-    debugger
-    this.form.dependencyId = tp.id
+    this.form.dependencyId = Number(tp);
   }
 
 }
