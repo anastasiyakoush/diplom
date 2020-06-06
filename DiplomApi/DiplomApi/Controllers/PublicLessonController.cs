@@ -29,6 +29,40 @@ namespace DiplomApi.Controllers
       _configuration = configuration;
     }
 
+    [HttpDelete("planning/{id}")]
+    public async Task<IActionResult> DeletePlanningAsync(int? id)
+    {
+      try
+      {
+        await _publicLessonService.DeletePlanningAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync(int? id)
+    {
+      try
+      {
+        await _publicLessonService.DeleteAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

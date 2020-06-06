@@ -28,5 +28,9 @@ namespace BLL.Interfaces
     Task<PublicLessonDto> AddOrUpdateAsync(PublicLessonDto publicLessonDto);
 
     Task<PlanningPublicLessonDto> AddOrUpdatePlanningPublicLessonAsync(PlanningPublicLessonDto publicLessonDto);
+
+    Task DeletePlanningAsync(int? id);
+
+    Task DeleteAsync(int? id);
   }
 }

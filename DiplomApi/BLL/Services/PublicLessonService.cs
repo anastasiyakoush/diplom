@@ -199,5 +199,27 @@ namespace BLL.Services
 
       return _mapper.Map<List<PublicLessonDto>>(lessons);
     }
+    public async Task DeleteAsync(int? id)
+    {
+      if (!id.HasValue) throw new ArgumentNullException();
+
+      var entity = await _context.PublicLessons.FindAsync(id.Value);
+
+      if (entity is null) throw new ArgumentNullException();
+
+      _context.Remove(entity);
+      await _context.SaveChangesAsync();
+    }
+    public async Task DeletePlanningAsync(int? id)
+    {
+      if (!id.HasValue) throw new ArgumentNullException();
+
+      var entity = await _context.PlanningPublicLessons.FindAsync(id.Value);
+
+      if (entity is null) throw new ArgumentNullException();
+
+      _context.Remove(entity);
+      await _context.SaveChangesAsync();
+    }
   }
 }
