@@ -10,23 +10,24 @@ import { LessonFilter, Month } from '../../lesson.model';
   styleUrls: ["./planned-classes-filter.component.less"],
 })
 export class PlannedClassesFilterComponent implements OnInit {
+  @Output() onChangedFilter = new EventEmitter<any[]>();
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
+  bsConfig: Partial<BsDatepickerConfig>;
+  bsConfig1: Partial<BsDatepickerConfig>;
   dropdownSettings: IDropdownSettings;
   dropdownList2 = [];
   selectedItems2 = [];
-
   keys = Object.keys;
-  months = Month;
-  form : LessonFilter =  {
+  form: LessonFilter =  {
     teachersIds: [],
     month: Month.Декабрь,
   };
-  bsConfig: Partial<BsDatepickerConfig>;
-  bsConfig1: Partial<BsDatepickerConfig>;
   lessons: any[];
-  @Output() onChangedFilter = new EventEmitter<any[]>();
+  Month: typeof Month = Month;
+  month = Month;
+  months: any = null;
 
   constructor(private endpointService: EndpointsService) {
   }
@@ -40,6 +41,8 @@ export class PlannedClassesFilterComponent implements OnInit {
         };
       });
     });
+    var months = Object.keys(Month);
+    this.months = months.slice(months.length / 2);
     this.dropdownSettings = {
       singleSelection: false,
       idField: "id",
@@ -61,6 +64,9 @@ export class PlannedClassesFilterComponent implements OnInit {
 
   onItem3Select(item: any) {
     this.form.subjectsIds.push(item.id);
+  }
+  onMonthChange(month) {
+  this.form.month = month.id;
   }
 
   filter() {

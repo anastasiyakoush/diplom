@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-syllabus',
@@ -30,8 +31,8 @@ export class UpdateSyllabusComponent implements OnInit {
     uchebnyjPlan:{}  }
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
-plans: any[];
-plan: any;
+  plans: any[];
+  plan: any;
   constructor( private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -39,7 +40,6 @@ plan: any;
    }
 
   ngOnInit() {
-    console.log(this.title)
     if(this.update) {
       this.endpointService.getSubjectById(this.subjectId)
       .subscribe(data=> this.form = <any>data)
@@ -55,12 +55,14 @@ plan: any;
   onChange(ck) {
     this.form.ciklovayaKomissiya = ck;
   }
+
   onPlanChange(plan) {
     this.form.uchebnyjPlan = plan;
   }
+
   save() {
     this.endpointService.CreateorUpdateSubject(this.form).subscribe(()=>  {this.saveClick.emit()
-    location.reload()})
+      location.reload()});
   }
 
   selectComponent(num) {

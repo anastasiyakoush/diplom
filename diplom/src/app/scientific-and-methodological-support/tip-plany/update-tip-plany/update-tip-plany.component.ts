@@ -14,6 +14,7 @@ export class UpdateTipPlanyComponent implements OnInit {
   @Input() title: string;
   @Input() tipPlanId: number;
   @Input() update: boolean;
+  
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -21,14 +22,14 @@ export class UpdateTipPlanyComponent implements OnInit {
   form ={
     id: 0,
     date: new Date(),
-    registarcionnyjNomer: "",
+    registarcionnyjNomer: '',
     planType: 2,
-    link:'',
-    dependencyId:0
+    link: '',
+    dependencyId: 0
    }
   bsConfig: Partial<BsDatepickerConfig>;
-plans: any[];
-plan: any;
+  plans: any[];
+  plan: any;
   constructor( private endpointService: EndpointsService,  private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -36,14 +37,14 @@ plan: any;
    }
 
   ngOnInit() {
-    if(this.update && this.tipPlanId) {
-      this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any)=>{
+    if (this.update && this.tipPlanId) {
+        this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any) => {
         this.form = data;
         this.form.planType = 2;
         this.form.date = new Date(data.date)
-      })
+      });
     }
-    this.endpointService.getObrPlans().subscribe((data)=>this.plans = data);
+    this.endpointService.getObrPlans().subscribe((data) => this.plans = data);
   }
 
   cancel() {
@@ -51,12 +52,12 @@ plan: any;
   }
 
   onChange(tp) {
-    this.form.dependencyId = tp.id
+    this.form.dependencyId = tp.id;
   }
 
   save() {
-    this.endpointService.createOrUpdatePlan(this.form).subscribe(()=>  {this.saveClick.emit()
-    location.reload()})
+    this.endpointService.createOrUpdatePlan(this.form).subscribe(() =>  {this.saveClick.emit();
+                                                                         location.reload(); });
   }
   addFile = (files: Array<File>) => {
     if (files.length === 0) {

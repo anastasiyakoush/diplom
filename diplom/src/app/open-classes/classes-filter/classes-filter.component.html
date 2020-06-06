@@ -4,13 +4,26 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="form-group">
+            <label>Преподаватель</label>
+            <ng-multiselect-dropdown
+              [placeholder]="'Не выбрано'"
+              [data]="dropdownTeachers"
+              [(ngModel)]="selectedTeachers"
+              [settings]="dropdownSettings"
+              (onSelect)="onTeachersSelect($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="form-group">
             <label for="group">Учебная дисциплина</label>
             <ng-multiselect-dropdown
             [placeholder]="'Не выбрано'"
-            [data]="dropdownList3"
-            [(ngModel)]="selectedItems3"
+            [data]="dropdownGroups"
+            [(ngModel)]="selectedGroups"
             [settings]="dropdownSettings"
-            (onSelect)="onItem3Select($event)"
+            (onSelect)="onGroupsSelect($event)"
           >
           </ng-multiselect-dropdown>
           </div>
@@ -20,23 +33,10 @@
             <label>Группа</label>
             <ng-multiselect-dropdown
               [placeholder]="'Не выбрано'"
-              [data]="dropdownList1"
-              [(ngModel)]="selectedItems1"
+              [data]="dropdownSubjects"
+              [(ngModel)]="selectedSubjects"
               [settings]="dropdownSettings"
-              (onSelect)="onItem1Select($event)"
-            >
-            </ng-multiselect-dropdown>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group">
-            <label>Преподаватель</label>
-            <ng-multiselect-dropdown
-              [placeholder]="'Не выбрано'"
-              [data]="dropdownList2"
-              [(ngModel)]="selectedItems2"
-              [settings]="dropdownSettings"
-              (onSelect)="onItem2Select($event)"
+              (onSelect)="onSubjectsSelect($event)"
             >
             </ng-multiselect-dropdown>
           </div>

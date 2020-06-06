@@ -9,40 +9,41 @@ import { Month } from '../../lesson.model';
   templateUrl: './update-planned.component.html',
   styleUrls: ['./update-planned.component.less']
 })
-export class UpdatePlannedComponent
-  implements OnInit {
+export class UpdatePlannedComponent implements OnInit {
+  @Output() cancelClick = new EventEmitter<any>();
+  @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
+  @Input() lessonId: number;
+  @Input() update: boolean;
+
     colorTheme = 'theme-blue';
     bsInlineValue = new Date();
     bsInlineRangeValue: Date[];
     maxDate = new Date();
-
     bsConfig: Partial<BsDatepickerConfig>;
-
-    constructor(private endpointService: EndpointsService) {
-      this.maxDate.setDate(this.maxDate.getDate() + 7);
-      this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-      this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-    }
-    @Output() cancelClick = new EventEmitter<any>();
-    @Output() saveClick = new EventEmitter<any>();
-    @Input() title: string;
-    teachers: Teacher[] = [];
+    teachers = [];
     teacher: any;
     keys = Object.keys;
-    months = Month;
-  form = {
-    teacher: {},
-    status: true,
-    month: Month.Декабрь,
-  };
+    form = {
+      teacher: {},
+      status: true,
+      month: Month.Декабрь,
+    };
+    Month: typeof Month = Month;
+    month = Month;
+    months: any = null;
+
+  constructor(private endpointService: EndpointsService) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+  }
     ngOnInit() {
-      this.endpointService.getTeachers().subscribe((data: any[]) => {
+      this.endpointService.getPlannedLessonById(this.lessonId).subscribe((data: any[]) => {
         this.teachers = data;
-        data.forEach((teacher, index) => {
-          this.teachers[index].name =
-            teacher.surname + " " + teacher.name + " " + teacher.fatherName;
-        });
       });
+      var months = Object.keys(Month);
+      this.months = months.slice(months.length / 2);
     }
 
   cancel() {
@@ -51,7 +52,12 @@ export class UpdatePlannedComponent
 
   onTeacherChange(teacher) {
     this.form.teacher = teacher;
-      }
+  }
+
+  onMonthChange(month) {
+    this.form.month = month.id;
+  }
+
   save() {
     this.endpointService.createOrUpdatePlannedLesson(this.form).subscribe(()=>    this.saveClick.emit())
 

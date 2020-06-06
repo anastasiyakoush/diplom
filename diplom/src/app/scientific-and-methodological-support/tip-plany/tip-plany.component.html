@@ -26,9 +26,10 @@
                 <path fill-rule="evenodd" d="M5 7.5a.5.5 0 01.707 0L8 9.793 10.293 7.5a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L5 8.207A.5.5 0 015 7.5z" clip-rule="evenodd"/>
                 <path fill-rule="evenodd" d="M8 1a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 1z" clip-rule="evenodd"/>
               </svg>
-            </button></td>
-            <td>
-              <button class="btn btn-outline-info" (click)="updateTipPlan(template,plan.id)">
+            </button>
+          </td>
+            <td *ngIf="this.auth.isAdmin()">
+              <button class="btn btn-outline-info" (click)="updateTipPlan(template, plan.id)">
               <svg
                 class="bi bi-pencil"
                 width="1.5em"

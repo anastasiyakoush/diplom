@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { HttpClient } from "@angular/common/http";
 import { EndpointsService } from "src/app/endpoints.service";
+import { Komponent } from 'src/app/enums';
 
 @Component({
   selector: "app-syllabus-filters",
@@ -9,15 +10,15 @@ import { EndpointsService } from "src/app/endpoints.service";
   styleUrls: ["./syllabus-filters.component.less"]
 })
 export class SyllabusFiltersComponent implements OnInit {
+  @Output() onChanged = new EventEmitter<any>();
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-  @Output() onChanged = new EventEmitter<any>();
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
   plans: any[];
-  plan: any;
+  plan: any = null;
   form = {
     specialnostId: null,
     component: 0,
@@ -32,9 +33,12 @@ export class SyllabusFiltersComponent implements OnInit {
     uchebnyjPlanId: 0
   };
   disciplines: any[];
-specs: any[];
-spec:any;
+  specs: any[];
+  spec: any = null;
   sp: any;
+  Komponent: typeof Komponent = Komponent;
+  components: string[];
+
   constructor(
     private endpointService: EndpointsService,
     private http: HttpClient
@@ -43,20 +47,22 @@ spec:any;
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
+  ngOnInit() {
+    this.endpointService.getPlans().subscribe(data => (this.plans = data));
+    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
+
+    var components = Object.keys(Komponent);
+    this.components = components.slice(components.length / 2);
+  }
 
   onPlanChange(plan) {
     this.form.uchebnyjPlanId = plan.id;
   }
 
   onSpecChange(spec) {
-    debugger
-this.form.specialnostId = spec.id;
+    this.form.specialnostId = spec.id;
   }
 
-  ngOnInit() {
-    this.endpointService.getPlans().subscribe(data => (this.plans = data));
-    this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
-  }
   filter() {
     this.endpointService.FilterSubject(this.form).subscribe((data: any[]) => {
       this.disciplines = data;

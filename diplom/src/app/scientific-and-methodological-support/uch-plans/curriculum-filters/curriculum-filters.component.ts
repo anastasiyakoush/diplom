@@ -10,16 +10,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./curriculum-filters.component.less']
 })
 export class CurriculumFiltersComponent implements OnInit {
+  @Output() onChanged = new EventEmitter<any[]>();
+
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-
   bsConfig: Partial<BsDatepickerConfig>;
-  @Output() onChanged = new EventEmitter<any[]>();
 
-tp:any;
-  form ={
+  form = {
     regNumber: '',
     beginDate: null,
     endDate: null,
@@ -27,8 +26,9 @@ tp:any;
     groupsIds:[]
   }
   plans: any[];
+  tp: any = null;
 
-  constructor( private endpointService: EndpointsService,private http: HttpClient) {
+  constructor( private endpointService: EndpointsService, private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
@@ -38,6 +38,7 @@ tp:any;
   dropdownList = [];
   selectedItems = [];
   ngOnInit() {
+    this.endpointService.getTypePlans().subscribe(data => {this.plans = data;});
     this.endpointService.getGroup().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
@@ -47,31 +48,32 @@ tp:any;
           };
         }))
     );
-    this.endpointService.getTypePlans().subscribe(data=> this.plans = data)
     this.dropdownSettings = {
       singleSelection: false,
-      idField: "id",
-      textField: "name",
-      selectAllText: "Выбрать все",
-      unSelectAllText: "Отменить все",
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Выбрать все',
+      unSelectAllText: 'Отменить все',
       itemsShowLimit: 3,
       allowSearchFilter: true,
     };
   }
+
   onChange(tp) {
-    this.form.tipovoyPlanId = tp.id
+    this.form.tipovoyPlanId = tp.id;
   }
+
   onItem1Select(item: any) {
     this.form.groupsIds.push(item.id);
   }
 
   filter() {
-    this.endpointService.filterPlan(this.form).subscribe((data:any[])=>
-     this.onChanged.emit(data))
+    this.endpointService.filterPlan(this.form).subscribe((data: any[]) =>
+     this.onChanged.emit(data));
   }
 
   restore() {
-    this.endpointService.getPlans().subscribe((data:any[])=>
-    this.onChanged.emit(data))
+    this.endpointService.getPlans().subscribe((data: any[]) =>
+    this.onChanged.emit(data));
   }
 }

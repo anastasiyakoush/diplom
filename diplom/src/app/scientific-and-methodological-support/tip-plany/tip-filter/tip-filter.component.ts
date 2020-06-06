@@ -18,8 +18,8 @@ export class TipFilterComponent implements OnInit {
   bsConfig: Partial<BsDatepickerConfig>;
   @Output() onChanged = new EventEmitter<any[]>();
 
-tp:any;
-  form ={
+  tp: any;
+  form = {
     regNumber: '',
     beginDate: null,
     endDate: null,
@@ -27,18 +27,19 @@ tp:any;
     groupsIds:[]
   }
   standarts: any[];
+  dropdownSettings: IDropdownSettings;
+  dropdownList = [];
+  selectedItems = [];
 
-  constructor( private endpointService: EndpointsService,private http: HttpClient) {
+  constructor( private endpointService: EndpointsService, private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
   }
 
-  dropdownSettings: IDropdownSettings;
-  dropdownList = [];
-  selectedItems = [];
   ngOnInit() {
-    this.endpointService.getGroup().subscribe(
+    this.endpointService.getTypePlans().subscribe(data => this.standarts = data);
+    this.endpointService.getObrPlans().subscribe(
       (data) =>
         (this.dropdownList = data.map((item) => {
           return {
@@ -47,31 +48,32 @@ tp:any;
           };
         }))
     );
-    this.endpointService.getTypePlans().subscribe(data=> this.standarts = data)
     this.dropdownSettings = {
       singleSelection: false,
-      idField: "id",
-      textField: "name",
-      selectAllText: "Выбрать все",
-      unSelectAllText: "Отменить все",
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Выбрать все',
+      unSelectAllText: 'Отменить все',
       itemsShowLimit: 3,
       allowSearchFilter: true,
     };
   }
+
   onChange(tp) {
-    this.form.tipovoyPlanId = tp.id
+    this.form.tipovoyPlanId = tp.id;
   }
+
   onItem1Select(item: any) {
     this.form.groupsIds.push(item.id);
   }
 
   filter() {
-    this.endpointService.filterPlan(this.form).subscribe((data:any[])=>
-     this.onChanged.emit(data))
+    this.endpointService.filterTypePlan(this.form).subscribe((data: any[]) =>
+     this.onChanged.emit(data));
   }
 
   restore() {
-    this.endpointService.getPlans().subscribe((data:any[])=>
-    this.onChanged.emit(data))
+    this.endpointService.getTypePlans().subscribe((data: any[]) =>
+    this.onChanged.emit(data));
   }
 }

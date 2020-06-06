@@ -10,30 +10,30 @@ import { LessonFilter } from '../lesson.model';
   styleUrls: ["./classes-filter.component.less"],
 })
 export class ClassesFilterComponent implements OnInit {
+  @Output() onChangedFilter = new EventEmitter<any[]>();
   colorTheme = "theme-blue";
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
+  bsConfig: Partial<BsDatepickerConfig>;
+  bsConfig1: Partial<BsDatepickerConfig>;
   dropdownSettings: IDropdownSettings;
-  dropdownList1 = [];
-  dropdownList2 = [];
-  dropdownList3 = [];
-  selectedItems1 = [];
-  selectedItems2 = [];
-  selectedItems3 = [];
+  dropdownTeachers = [];
+  dropdownGroups = [];
+  dropdownSubjects = [];
+  selectedTeachers = [];
+  selectedGroups = [];
+  selectedSubjects = [];
   maxDate = new Date();
   beginDate: Date;
   endDate: Date;
   form : LessonFilter =  {
-    groupsIds: this.selectedItems1,
     teachersIds: [],
     subjectsIds: [],
+    groupsIds: this.selectedGroups,
     beginDate: null,
     endDate: null
   };
-  bsConfig: Partial<BsDatepickerConfig>;
-  bsConfig1: Partial<BsDatepickerConfig>;
   lessons: any[];
-  @Output() onChangedFilter = new EventEmitter<any[]>();
 
   constructor(private endpointService: EndpointsService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -45,7 +45,7 @@ export class ClassesFilterComponent implements OnInit {
   ngOnInit() {
     this.endpointService.getSubjects().subscribe(
       (data) =>
-        (this.dropdownList3 = data.map((item) => {
+        (this.dropdownSubjects = data.map((item) => {
           return {
             name: item.name,
             id: item.id,
@@ -54,7 +54,7 @@ export class ClassesFilterComponent implements OnInit {
     );
     this.endpointService.getGroup().subscribe(
       (data) =>
-        (this.dropdownList1 = data.map((item) => {
+        (this.dropdownGroups = data.map((item) => {
           return {
             name: item.name,
             id: item.id,
@@ -62,7 +62,7 @@ export class ClassesFilterComponent implements OnInit {
         }))
     );
     this.endpointService.getTeachers().subscribe((data) => {
-      this.dropdownList2 = data.map((item) => {
+      this.dropdownTeachers = data.map((item) => {
         return {
           name: item.surname + " " + item.name + " " + item.fatherName,
           id: item.id,
@@ -80,15 +80,15 @@ export class ClassesFilterComponent implements OnInit {
     };
   }
 
-  onItem1Select(item: any) {
-    this.form.groupsIds.push(item.id);
-  }
-
-  onItem2Select(item: any) {
+  onTeachersSelect(item: any) {
     this.form.teachersIds.push(item.id);
   }
 
-  onItem3Select(item: any) {
+  onGroupsSelect(item: any) {
+    this.form.groupsIds.push(item.id);
+  }
+
+  onSubjectsSelect(item: any) {
     this.form.subjectsIds.push(item.id);
   }
 

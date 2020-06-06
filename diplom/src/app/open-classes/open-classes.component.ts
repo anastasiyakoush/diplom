@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { Lesson } from './lesson.model';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 })
 
 export class OpenClassesComponent implements OnInit {
+  @Input() update: boolean;
   lessons: any[] = [];
   modalRef: BsModalRef;
   searchText: string = "";
@@ -39,6 +40,7 @@ export class OpenClassesComponent implements OnInit {
   }
 
   addClass(template: TemplateRef<any>) {
+    this.update = false;
     this.modalRef = this.modalService.show(template);
   }
 

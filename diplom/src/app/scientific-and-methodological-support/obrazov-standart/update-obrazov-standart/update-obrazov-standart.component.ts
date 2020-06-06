@@ -14,14 +14,14 @@ export class UpdateObrazovStandartComponent implements OnInit {
   @Input() title: string;
   @Input() obrStId: number;
   @Input() update: boolean;
-form ={
+  form ={
     id: 0,
     date: new Date(),
     registarcionnyjNomer: "",
     planType: 0,
     link:'',
     dependencyId:0
-   }
+   };
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -30,8 +30,9 @@ form ={
   bsConfig: Partial<BsDatepickerConfig>;
   cks: any[];
   ck: any;
-plans: any[];
-plan: any;
+  plans: any[];
+  plan: any;
+
 constructor( private endpointService: EndpointsService,  private http: HttpClient) {
   this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -52,16 +53,17 @@ constructor( private endpointService: EndpointsService,  private http: HttpClien
   cancel() {
     this.cancelClick.emit()
   }
+
   save() {
     this.endpointService.createOrUpdatePlan(this.form).subscribe(()=>  {this.saveClick.emit()
     location.reload()})
   }
+
   addFile = (files: Array<File>) => {
     if (files.length === 0) {
       return;
     }
     const formData = new FormData();
-
     for (let file of files) {
       formData.append(file.name, file);
     }

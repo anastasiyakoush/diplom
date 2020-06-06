@@ -19,7 +19,7 @@ export class DisciplinesComponent implements OnInit {
   programs: any[] = [];
   title: string;
   update: boolean;
-searchText:string;
+  searchText: string;
   type: ProgramType;
   modalRef: BsModalRef;
   constructor(
@@ -45,13 +45,13 @@ searchText:string;
     });
   }
 
-  addDisciplina(template: TemplateRef<any>) {
+  addDiscipline(template: TemplateRef<any>) {
     this.title = 'Добавить дисциплилну';
     this.update = false;
     this.modalRef = this.modalService.show(template);
   }
 
-  updateDisciplina(template: TemplateRef<any>, id) {
+  updateDiscipline(template: TemplateRef<any>, id) {
     this.disciplina = id;
     this.update = true;
     this.title = 'Редактировать дисциплилну';
@@ -83,10 +83,6 @@ searchText:string;
         program.kursovoeProectirovanie + '/'+program.all;
       });
     });
-  }
-
-  addDiscipline(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
   }
 
   onClick(id: number) {

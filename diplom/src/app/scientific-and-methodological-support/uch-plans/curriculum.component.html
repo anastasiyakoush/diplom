@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let plan of plans; let i=index">
+        <tr *ngFor="let plan of uchPlans; let i=index">
           <th scope="row">{{i+1}}</th>
           <td>{{plan.registarcionnyjNomer}}</td>
           <td>{{plan.date|  date : 'MM/dd/yyyy'}}</td>
@@ -28,7 +28,7 @@
             </svg>
           </button></td>
           <td *ngIf="this.auth.isAdmin()">
-            <button class="btn btn-outline-info" (click)="updateUchPlan(template)">
+            <button class="btn btn-outline-info" (click)="updateUchPlan(template, plan.id)">
             <svg
               class="bi bi-pencil"
               width="1.5em"

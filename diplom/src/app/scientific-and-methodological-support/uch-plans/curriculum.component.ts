@@ -13,39 +13,42 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./curriculum.component.less']
 })
 export class CurriculumComponent implements OnInit {
-  plans: Plan[] = [
-  ];
-
+  uchPlans: Plan[] = [];
+  uchPlanId: number;
   title: string;
+  update: boolean;
   modalRef: BsModalRef;
   constructor(private router: Router,
-     private modalService: BsModalService,
-     private auth: AuthService,
-     private endpointService: EndpointsService) {}
+              private modalService: BsModalService,
+              private auth: AuthService,
+              private endpointService: EndpointsService) {}
 
   ngOnInit() {
-  this.endpointService.getPlans().subscribe(data=> this.plans = data)
+    this.endpointService.getPlans().subscribe(data => this.uchPlans = data);
   }
 
   addUchPlan(template: TemplateRef<any>) {
     this.title = 'Добавить учебный план';
+    this.update = false;
     this.modalRef = this.modalService.show(template);
   }
 
-  updateUchPlan(template: TemplateRef<any>) {
+  updateUchPlan(template: TemplateRef<any>, id) {
+    this.uchPlanId = id;
     this.title = 'Редактировать учебный план';
+    this.update = true;
     this.modalRef = this.modalService.show(template);
   }
 
   download(link) {
-    this.endpointService.documentDownload(link)
+    this.endpointService.documentDownload(link);
   }
 
   filterChange($event) {
     console.log($event)
-    this.plans = $event;
+    this.uchPlans = $event;
   }
   delete(id) {
-    this.endpointService.DeletePlan(id).subscribe(()=> location.reload())
+    this.endpointService.DeletePlan(id).subscribe(() => location.reload())
   }
 }
