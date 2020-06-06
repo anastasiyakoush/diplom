@@ -14,6 +14,7 @@ export class UpdateSyllabusComponent implements OnInit {
   @Input() title: string;
   @Input() disciplineId: number;
   @Input() update: boolean;
+  @Input() subjectId: number;
 
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
@@ -39,10 +40,14 @@ export class UpdateSyllabusComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
    }
 
-   ngOnInit() {
+  ngOnInit() {
+    if(this.update) {
+      this.endpointService.getSubjectById(this.subjectId)
+      .subscribe(data=> this.form = <any>data)
+    }
     this.endpointService.getCK().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
-  } 
+  }
 
 /*   ngOnInit() {
     if(this.update && this.disciplineId) {

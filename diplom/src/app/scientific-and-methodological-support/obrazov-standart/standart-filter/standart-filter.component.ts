@@ -26,7 +26,7 @@ export class StandartFilterComponent implements OnInit {
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupIds: []
+    groupsIds:[]
   }
   standarts: any[];
   specs: any[];
@@ -60,7 +60,7 @@ export class StandartFilterComponent implements OnInit {
     this.form.tipovoyPlanId = tp.id;
   }
   onItem1Select(item: any) {
-    this.form.groupIds.push(item.id);
+    this.form.groupsIds.push(item.id);
   }
 
   filter() {

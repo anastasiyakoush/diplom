@@ -10,6 +10,7 @@ using Common.Dtos;
 using Common.FilterCriterias;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace DiplomApi.Controllers
 {
@@ -19,11 +20,13 @@ namespace DiplomApi.Controllers
   {
     private readonly IMapper _mapper;
     private readonly IPublicLessonService _publicLessonService;
+    private readonly IConfiguration _configuration;
 
-    public PublicLessonController(IMapper mapper, IPublicLessonService publicLessonService)
+    public PublicLessonController(IMapper mapper, IPublicLessonService publicLessonService, IConfiguration configuration)
     {
       _mapper = mapper;
       _publicLessonService = publicLessonService;
+      _configuration = configuration;
     }
 
     [HttpGet]
@@ -201,7 +204,9 @@ namespace DiplomApi.Controllers
 
         var file = Request.Form.Files.FirstOrDefault();
         var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        var directory = Path.Combine("D:\\DiplomFiles", documentTypeName);
+        var dir = _configuration.GetSection("DocumentsFolder").Value;
+
+        var directory = Path.Combine(dir, documentTypeName);
 
         if (!Directory.Exists(directory))
         {

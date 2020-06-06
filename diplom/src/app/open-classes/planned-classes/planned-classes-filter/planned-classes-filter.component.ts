@@ -55,7 +55,7 @@ export class PlannedClassesFilterComponent implements OnInit {
   }
 
   onItem1Select(item: any) {
-    this.form.groupIds.push(item.id);
+    this.form.groupsIds.push(item.id);
   }
 
   onItem2Select(item: any) {

@@ -219,21 +219,21 @@ namespace BLL.Services
     {
       if (!id.HasValue) return null;
 
-      return _mapper.Map<ObrazovatelnyjStandartDto>(await _context.ObrazovatelnyeStandarty.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
+      return _mapper.Map<ObrazovatelnyjStandartDto>(await _context.ObrazovatelnyeStandarty.Include(x => x.Specialnost).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
     }
 
     public async Task<TipovojUchebnyjPlanDto> GetTipovoyPlanAsync(int? id)
     {
       if (!id.HasValue) return null;
 
-      return _mapper.Map<TipovojUchebnyjPlanDto>(await _context.TipovyeUchebnyePlany.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
+      return _mapper.Map<TipovojUchebnyjPlanDto>(await _context.TipovyeUchebnyePlany.Include(x => x.ObrazovatelnyjStandart).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
     }
 
     public async Task<UchebnyjPlanDto> GetUchebnyiPlanAsync(int? id)
     {
       if (!id.HasValue) return null;
 
-      return _mapper.Map<UchebnyjPlanDto>(await _context.UchebnyePlany.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
+      return _mapper.Map<UchebnyjPlanDto>(await _context.UchebnyePlany.Include(x => x.TipovojUchebnyjPlan).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
     }
   }
 }

@@ -23,8 +23,8 @@ export class CurriculumFiltersComponent implements OnInit {
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupIds: []
-    };
+    groupsIds:[]
+  }
   plans: any[];
   tp: any = null;
 
@@ -64,7 +64,7 @@ export class CurriculumFiltersComponent implements OnInit {
   }
 
   onItem1Select(item: any) {
-    this.form.groupIds.push(item.id);
+    this.form.groupsIds.push(item.id);
   }
 
   filter() {

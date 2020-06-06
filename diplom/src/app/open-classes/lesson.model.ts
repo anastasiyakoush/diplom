@@ -8,7 +8,7 @@ export class Lesson {
 }
 
 export class LessonFilter {
-  groupIds?: number[];
+  groupsIds?: number[];
   teachersIds?: number[];
   subjectsIds?: number[];
   beginDate?: Date;

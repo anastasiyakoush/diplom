@@ -10,7 +10,7 @@ namespace BLL.Interfaces
   {
     Task<List<T>> GetAllAsync(params string[] navigationProperties);
 
-    Task<T> GetAsync(int? id);
+    Task<T> GetAsync(int? id, string navProp = null);
 
     Task<T> AddOrUpdateAsync(T t);
 

@@ -24,7 +24,7 @@ export class TipFilterComponent implements OnInit {
     beginDate: null,
     endDate: null,
     tipovoyPlanId: null,
-    groupsIds: []
+    groupsIds:[]
   }
   standarts: any[];
   dropdownSettings: IDropdownSettings;

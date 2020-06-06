@@ -1,14 +1,12 @@
 using AutoMapper;
 using BLL.Interfaces;
 using Common.Dtos;
-using DiplomApi.PostModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -21,12 +19,14 @@ namespace DiplomApi.Controllers
     private readonly IDocumentService _documentService;
     private readonly ICrudService<DocumentTypeDto> _docTypeService;
     private readonly IMapper _mapper;
+    private readonly IConfiguration _configuration;
 
-    public DocumentController(IDocumentService documentService, IMapper mapper, ICrudService<DocumentTypeDto> docTypeService)
+    public DocumentController(IDocumentService documentService, IMapper mapper, ICrudService<DocumentTypeDto> docTypeService, IConfiguration configuration)
     {
       _documentService = documentService;
       _mapper = mapper;
       _docTypeService = docTypeService;
+      _configuration = configuration;
     }
 
     [HttpPost]
@@ -34,7 +34,7 @@ namespace DiplomApi.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<DocumentDto>> AddAsync(DocumentDto documentDto)
+    public async Task<ActionResult<DocumentDto>> AddOrUpdateAsync(DocumentDto documentDto)
     {
       try
       {
@@ -60,7 +60,8 @@ namespace DiplomApi.Controllers
 
         var file = Request.Form.Files.FirstOrDefault();
         var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        var directory = Path.Combine("D:\\DiplomFiles", documentTypeName);
+        var dir = _configuration.GetSection("DocumentsFolder").Value;
+        var directory = Path.Combine(dir, documentTypeName);
 
         if (!Directory.Exists(directory))
         {

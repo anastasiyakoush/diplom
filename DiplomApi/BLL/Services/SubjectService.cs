@@ -139,7 +139,7 @@ namespace BLL.Services
     {
       if (!id.HasValue) return null;
 
-      var uchebnayaDisciplina = await _context.UchebnyeDiscipliny.FindAsync(id.Value);
+      var uchebnayaDisciplina = await _context.UchebnyeDiscipliny.Include(x => x.CiklovayaKomissiya).Include(x => x.UchebnyjPlan).FirstOrDefaultAsync(x => x.Id == id.Value);
 
       return _mapper.Map<UchebnayaDisciplinaDto>(uchebnayaDisciplina);
     }
