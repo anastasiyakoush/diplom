@@ -1,4 +1,4 @@
 export enum ProgramType {
-  general,
-  professional
+  общеобразовательный,
+  профессиональный
 }

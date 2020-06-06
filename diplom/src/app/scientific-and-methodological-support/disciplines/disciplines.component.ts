@@ -12,15 +12,14 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ["./disciplines.component.less"]
 })
 export class DisciplinesComponent implements OnInit {
-  disciplina: disciplina[] = [
-  ];
+  disciplina:any;
   spec = false;
   course = false;
   programs: any[] = [];
   title: string;
   update: boolean;
   searchText: string;
-  type: ProgramType;
+  component: ProgramType;
   modalRef: BsModalRef;
   constructor(
     private route: ActivatedRoute,
@@ -31,9 +30,6 @@ export class DisciplinesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.type = params["type"];
-    });
     this.endpointService.getSubjects().subscribe(data => {
       this.programs = data;
       data.forEach((program: any, index) => {

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EndpointsService } from 'src/app/endpoints.service';
 import { HttpClient } from '@angular/common/http';
+import { ProgramType } from '../programType.model';
 
 @Component({
   selector: 'app-update-syllabus',
@@ -19,12 +20,15 @@ export class UpdateSyllabusComponent implements OnInit {
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
+  ProgramType: typeof ProgramType = ProgramType;
+  status:ProgramType;
+  statuses : string[];
   form ={
     date: new Date(),
     name: "",
     laboratornye:0,
     practika:0,
-    component: 0,
+    component: ProgramType.общеобразовательный,
     all:0,
     kursovoeProectirovanie:0,
     ciklovayaKomissiya: {},
@@ -40,9 +44,13 @@ export class UpdateSyllabusComponent implements OnInit {
    }
 
   ngOnInit() {
+    var statuses = Object.keys(ProgramType);
+    this.statuses = statuses.slice(statuses.length / 2);
     if(this.update) {
       this.endpointService.getSubjectById(this.subjectId)
-      .subscribe(data=> this.form = <any>data)
+      .subscribe(data=> {
+        this.form = <any>data;
+      })
     }
     this.endpointService.getCK().subscribe(data => (this.cks = data));
     this.endpointService.getPlans().subscribe(data => this.plans = data)
@@ -53,11 +61,16 @@ export class UpdateSyllabusComponent implements OnInit {
   }
 
   onChange(ck) {
-    this.form.ciklovayaKomissiya = ck;
+    this.form.ciklovayaKomissiya = this.cks.find(t=> t.id === Number(ck));
+  }
+
+  onCompchange(status: string) {
+    this.status = ProgramType[status]
+    this.form.component = this.status;
   }
 
   onPlanChange(plan) {
-    this.form.uchebnyjPlan = plan;
+    this.form.uchebnyjPlan = this.plans.find(t=> t.id === Number(plan));
   }
 
   save() {
