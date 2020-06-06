@@ -14,7 +14,7 @@ export class UpdateTipPlanyComponent implements OnInit {
   @Input() title: string;
   @Input() tipPlanId: number;
   @Input() update: boolean;
-  
+
   colorTheme = 'theme-blue';
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -41,6 +41,7 @@ export class UpdateTipPlanyComponent implements OnInit {
         this.endpointService.getTypePlanById(this.tipPlanId).subscribe((data: any) => {
         this.form = data;
         this.form.planType = 2;
+        this.form.dependencyId = data.obrazovatelnyjStandart.id;
         this.form.date = new Date(data.date)
       });
     }
@@ -52,7 +53,7 @@ export class UpdateTipPlanyComponent implements OnInit {
   }
 
   onChange(tp) {
-    this.form.dependencyId = tp.id;
+    this.form.dependencyId = Number(tp);
   }
 
   save() {
