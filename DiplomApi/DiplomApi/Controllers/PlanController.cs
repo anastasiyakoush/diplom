@@ -9,9 +9,8 @@ using BLL.Interfaces;
 using Common.Dtos;
 using Common.FilterCriterias;
 using DiplomApi.PostModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using static Common.Enums;
 
 namespace DiplomApi.Controllers
@@ -22,11 +21,13 @@ namespace DiplomApi.Controllers
   {
     private readonly IMapper _mapper;
     private readonly IPlanService _planService;
+    private readonly IConfiguration _configuration;
 
-    public PlanController(IMapper mapper, IPlanService planService)
+    public PlanController(IMapper mapper, IPlanService planService, IConfiguration configuration)
     {
       _mapper = mapper;
       _planService = planService;
+      _configuration = configuration;
     }
 
     // [Authorize]
@@ -121,7 +122,8 @@ namespace DiplomApi.Controllers
         var planType = (PlanType)plan;
         var file = Request.Form.Files.FirstOrDefault();
         var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        var directory = Path.Combine("D:\\DiplomFiles", planType.ToString());
+        var dir = _configuration.GetSection("DocumentsFolder").Value;
+        var directory = Path.Combine(dir, planType.ToString());
 
         if (!Directory.Exists(directory))
         {
