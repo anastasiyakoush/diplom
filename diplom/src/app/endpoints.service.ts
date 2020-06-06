@@ -83,12 +83,21 @@ export class EndpointsService {
     return this.http.get<any[]>(this.PlanBaseURI, {headers: this.headers});
   }
 
+  getUchPlans() {
+    const token = this.getToken();
+    return this.http.get<any[]>(this.PlanBaseURI + '/uch', {headers: this.headers});
+  }
+
   filterPlan(filter: any) {
     return this.http.post(this.PlanBaseURI + '/uch/filter', filter, {headers: this.headers})
   }
 
   DeletePlan(id: number) {
     return this.http.delete(this.PlanBaseURI + '/uch' + `/${id}`, {headers: this.headers});
+  }
+
+  getUchPlanById(id: number) {
+    return this.http.get<Plan>(this.PlanBaseURI + '/uch' + `/${id}`, {headers: this.headers});
   }
 
   getPlanById(id: number) {
@@ -98,7 +107,7 @@ export class EndpointsService {
   createOrUpdatePlan(data: any) {
     return this.http.post(this.PlanBaseURI, data, {headers: this.headers});
   }
- 
+
   getSubjects() {
     return this.http.get<any[]>(this.SubjectBaseURI, {headers: this.headers});
   }
@@ -298,7 +307,7 @@ export class EndpointsService {
   signIn(data: any) {
     return this.http.post<any>(this.AccountBaseURI+"/signin", data);
   }
-// 
+//
   documentDownload(link: string) {
 
     return this.http.post('https://localhost:44312/api/Document/download', JSON.stringify(link), { headers: this.headers, responseType: 'blob' as 'json' }).subscribe(

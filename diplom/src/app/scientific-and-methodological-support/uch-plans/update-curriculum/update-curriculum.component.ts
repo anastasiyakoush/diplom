@@ -17,7 +17,7 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   @Input() title: string;
   @Input() uchPlanId: number;
   @Input() update: boolean;
-  
+
   bsValue = new Date();
   serializedDate = new FormControl((new Date()).toISOString());
   colorTheme = 'theme-blue';
@@ -26,7 +26,7 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
   maxDate = new Date();
   bsConfig: Partial<BsDatepickerConfig>;
 
-  form = 
+  form =
   {
     id: 0,
     registarcionnyjNomer: '',
@@ -34,7 +34,6 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
     planType: 1,
     link: '',
     dependencyId: 2,
-    tipovoyPlanId: null,
   };
   plans: any[];
   tp: any;
@@ -48,16 +47,18 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if(this.update && this.uchPlanId) {
-      this.endpointService.getPlanById(this.uchPlanId).subscribe((data: any) => {
+      this.endpointService.getUchPlanById(this.uchPlanId).subscribe((data: any) => {
         this.form = data;
         this.form.date = new Date(data.date);
+        this.form.planType = 1;
+        this.form.dependencyId = data.tipovojUchebnyjPlan.id;
       })
     }
     this.endpointService.getTypePlans().subscribe(data => this.plans = data)
   }
 
   onChange(tp) {
-    this.form.tipovoyPlanId = tp.id;
+    this.form.dependencyId = Number(tp);
   }
 
   ngOnDestroy() { }

@@ -24,8 +24,8 @@
   </div>
   <div class="form-group">
     <label for="file2">Типовой план</label>
-    <select  [(ngModel)]="tp" class="form-control" (ngModelChange)="onChange($event)">
-      <option *ngFor="let plan of plans" [ngValue]="tp">{{plan.registarcionnyjNomer}}</option>
+    <select  class="form-control" (change)="onChange($event.target.value)">
+      <option *ngFor="let plan of plans" [value]="plan.id" [selected]="plan.id === form.dependencyId">{{plan.registarcionnyjNomer}}</option>
     </select>
   </div>
   <div class="form-group">

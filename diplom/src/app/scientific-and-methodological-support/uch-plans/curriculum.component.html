@@ -76,5 +76,5 @@
   <app-curriculum-filters (onChanged)="filterChange($event)"></app-curriculum-filters>
 </div>
 <ng-template #template>
-  <app-update-curriculum [title]="title" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
+  <app-update-curriculum [title]="title" [uchPlanId]="uchPlanId" [update]="update" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-curriculum>
 </ng-template>
