@@ -342,6 +342,16 @@ export class EndpointsService {
       + `${id}`, {headers: this.headers});
   }
 
+  getDocById(id) {
+    return this.http.get<any[]>('https://localhost:44312/api/Document/'
+      + `${id}`, {headers: this.headers});
+  }
+
+  deleteDocById(id) {
+    return this.http.delete('https://localhost:44312/api/Document/'
+    + `${id}`, {headers: this.headers});
+  }
+
   CreateDocByDiscId(data) {
     return this.http.post('https://localhost:44312/api/Document', data, {headers: this.headers});
   }

@@ -22,8 +22,8 @@
   </div>
     <div class="form-group">
       <label>Тип документа</label>
-      <select class="form-control" [(ngModel)]="doc"  (ngModelChange)="onDocChange($event)">
-        <option *ngFor="let doc of doctypes" [ngValue]="doc">{{doc.name}}</option>
+      <select class="form-control" (change)="onDocChange($event.target.value)">
+        <option *ngFor="let doc of doctypes" [value]="doc.id" [selected]="doc.id === form.documentType.id" >{{doc.name}}</option>
       </select>
     </div>
   </div>
