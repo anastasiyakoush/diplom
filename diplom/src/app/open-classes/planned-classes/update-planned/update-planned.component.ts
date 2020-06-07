@@ -69,7 +69,7 @@ export class UpdatePlannedComponent implements OnInit {
   }
 
   save() {
-    this.endpointService.createOrUpdatePlannedLesson(this.form).subscribe(()=>    this.saveClick.emit())
-
+    this.endpointService.createOrUpdatePlannedLesson(this.form).subscribe(() => this.saveClick.emit())
+    location.reload();
   }
 }

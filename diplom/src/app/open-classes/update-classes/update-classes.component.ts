@@ -113,5 +113,6 @@ export class UpdateClassesComponent implements OnInit {
     this.endpointService
       .createOrUpdateLesson(this.form)
       .subscribe(() => this.saveClick.emit());
+    location.reload();
   }
 }

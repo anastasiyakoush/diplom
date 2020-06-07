@@ -69,6 +69,7 @@ export class UpdateCurriculumComponent implements OnInit, OnDestroy {
 
   save() {
     this.endpointService.createOrUpdatePlan(this.form).subscribe(data => this.saveClick.emit());
+    location.reload();
   }
 
   addFile = (files: Array<File>) => {

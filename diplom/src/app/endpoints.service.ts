@@ -147,6 +147,10 @@ export class EndpointsService {
     return this.http.get<Lesson>(this.PublicLessonBaseURI + `/${id}`, {headers: this.headers});
   }
 
+  DeleteLesson(id: number) {
+    return this.http.delete(this.PublicLessonBaseURI +  `/${id}`, {headers: this.headers});
+  }
+
   createOrUpdatePlannedLesson(data: any) {
     return this.http.post(this.PublicLessonBaseURI + '/planning', data, {headers: this.headers});
   }

@@ -58,8 +58,9 @@ export class UpdateTipPlanyComponent implements OnInit {
 
   save() {
     this.endpointService.createOrUpdatePlan(this.form).subscribe(() =>  {this.saveClick.emit();
-                                                                         location.reload(); });
+    location.reload(); });
   }
+  
   addFile = (files: Array<File>) => {
     if (files.length === 0) {
       return;
