@@ -104,15 +104,7 @@ export class ClassesFilterComponent implements OnInit {
   restore() {
     this.endpointService.getLessons().subscribe((data:any[])=>{
       this.lessons = data;
-      data.forEach((lesson, index)=> {
-        if(this.lessons[index].teacher ) {
-         this.lessons[index].teachername = this.lessons[index].teacher.surname +" "+ lesson.teacher.name  +" "+  lesson.teacher.fatherName;
-         this.lessons[index].groupname = lesson.group.name;
-         this.lessons[index].uchebnayaDisciplinaname = lesson.uchebnayaDisciplina.name;
-
-        }
-         })
-          this.onChangedFilter.emit(data);
+      this.onChangedFilter.emit(this.lessons);
     })
   }
 }
