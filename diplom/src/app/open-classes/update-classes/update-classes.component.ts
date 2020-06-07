@@ -66,11 +66,11 @@ export class UpdateClassesComponent implements OnInit {
       this.endpointService.getLessonById(this.lessonId).subscribe((lesson) => {
         this.form = <any>lesson;
         this.form.date = new Date(lesson.date);
-      this.form.teacher = lesson.teacher;
-      this.selectedteacher = lesson.teacher;
-      this.group = lesson.group;
-      this.form.group = lesson.group;
-      })
+        this.form.teacher = lesson.teacher;
+        this.selectedteacher = lesson.teacher;
+        this.group = lesson.group;
+        this.form.group = lesson.group;
+      });
     }
   }
 

@@ -19,7 +19,8 @@
     </div>
     <div class="form-group">
         <label for="tema">Тема</label>
-        <input type="text" class="form-control" id="tema" [(ngModel)]="form.topic"  placeholder="Тема открытого занятия">
+        <input type="text" class="form-control"  name="topic" [(ngModel)]="form.topic"  placeholder="Тема открытого занятия" #topic="ngModel" required/>
+        <div [hidden]="topic.valid || topic.untouched" class="alert alert-danger">Не указана тема</div>
     </div>
     <div class="form-group">
         <label for="group">Группа</label>
@@ -53,6 +54,6 @@
 
 <div class="modal-footer">
     <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Отменить" (click)="cancel()">
-    <input type="submit" class="btn btn-info" data-dismiss="modal" value="Сохранить" (click)="save()">
+    <button [disabled]="topic.invalid" class="btn btn-info" data-dismiss="modal" (click)="save()">Сохранить</button>
 </div>
 

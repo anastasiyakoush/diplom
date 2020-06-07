@@ -23,16 +23,23 @@ export class TeachersComponent implements OnInit {
      private auth: AuthService
     ) {}
 
+
+
+
+
+    
   ngOnInit() {
-    this.endpointService.getTeachers().subscribe((data: any)=>{
+    this.endpointService.getTeachers().subscribe((data: any) => {
       this.teachers = data;
-    data.forEach((teacher, index)=> {
-      this.teachers[index].name = teacher.surname +" "+ teacher.name  +" "+  teacher.fatherName;
-      this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
+      data.forEach((teacher, index) => {
       this.teachers[index].status = Status[teacher.status];
       this.teachers[index].category = Category[teacher.category];
+      this.teachers[index].name = teacher.surname + " " + teacher.name + " " + teacher.fatherName;
+      this.teachers[index].ciklovayaKomissiya = teacher.ciklovayaKomissiya.name;
+      this.teachers[index].position = teacher.position.name;
     });
-    })  }
+    });
+  }
 
   onClick(id: number) {
     this.router.navigate(['teachers/' + id]);
@@ -47,8 +54,8 @@ export class TeachersComponent implements OnInit {
       this.teachers = data;
       for(let index=0;index<=this.teachers.length;index++) {
         this.teachers[index].name = this.teachers[index].surname +" "+ this.teachers[index].name  +" "+  this.teachers[index].fatherName;
-        this.teachers[index].ciklovayaKomissiya = this.teachers[index].ciklovayaKomissiya? this.teachers[index].ciklovayaKomissiya.name : '';
         this.teachers[index].status = Status[this.teachers[index].status];
+        this.teachers[index].ciklovayaKomissiya = this.teachers[index].ciklovayaKomissiya? this.teachers[index].ciklovayaKomissiya.name : '';
         this.teachers[index].category = Category[this.teachers[index].category];
       }
       })
