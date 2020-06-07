@@ -85,4 +85,9 @@ documents: any[];
   UpdateTeacher(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+
+  save() {
+    this.modalRef.hide();
+    location.reload();
+  }
 }

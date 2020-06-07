@@ -41,7 +41,7 @@ export class DetailedClassesComponent implements OnInit {
   }
 
   deleteLesson() {
-    this.endpointService.DeleteLesson(this.id).subscribe(() => location.reload());
+    this.endpointService.DeleteLesson(this.id).subscribe(() => this.router.navigate(['openClasses']));
   }
 
 }

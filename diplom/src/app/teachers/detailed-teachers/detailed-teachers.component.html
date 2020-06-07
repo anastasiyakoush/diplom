@@ -138,5 +138,5 @@
 </div>
 
 <ng-template #template>
-  <app-update-teachers [update]="true" [teacherId]="id" title="Редактировать преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="modalRef.hide()"></app-update-teachers>
+  <app-update-teachers [update]="true" [teacherId]="id" title="Редактировать преподавателя" (cancelClick)="modalRef.hide()" (saveClick)="save()"></app-update-teachers>
 </ng-template>
