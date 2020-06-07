@@ -12,6 +12,8 @@ namespace BLL.Interfaces
 
     Task DeleteAsync(int? id);
 
+    Task<DocumentDto> GetAsync(int? id);
+
     Task<List<DocumentDto>> GetAllByDisciplineAsync(int? disciplineId);
 
     Task<List<DocumentDto>> GetAllByAuthorAsync(int? authorId);

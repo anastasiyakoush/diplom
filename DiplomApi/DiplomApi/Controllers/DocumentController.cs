@@ -139,5 +139,44 @@ namespace DiplomApi.Controllers
         return BadRequest(ex.Message);
       }
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync(int? id)
+    {
+      try
+      {
+        await _documentService.DeleteAsync(id);
+        return Ok();
+      }
+      catch (ArgumentNullException)
+      {
+        return NotFound();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
+
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<PublicLessonDto>> GetAsync(int? id)
+    {
+      try
+      {
+        var doc = await _documentService.GetAsync(id);
+
+        if (doc == null)
+        {
+          return NotFound();
+        }
+
+        return Ok(doc);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+    }
   }
 }

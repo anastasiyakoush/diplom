@@ -52,9 +52,16 @@ namespace BLL.Services
       return _mapper.Map<DocumentDto>(toUpdate);
     }
 
-    public Task DeleteAsync(int? id)
+    public async Task DeleteAsync(int? id)
     {
-      throw new NotImplementedException();
+      if (!id.HasValue) throw new ArgumentNullException();
+
+      var entity = await _context.Documents.FindAsync(id.Value);
+
+      if (entity is null) throw new ArgumentNullException();
+
+      _context.Remove(entity);
+      await _context.SaveChangesAsync();
     }
 
     public async Task<List<DocumentDto>> GetAllByAuthorAsync(int? authorId)
@@ -76,6 +83,16 @@ namespace BLL.Services
         .Include(x => x.DocumentAuthors).ThenInclude(x => x.Teacher)
         .ToListAsync();
       return _mapper.Map<List<DocumentDto>>(t);
+    }
+
+    public async Task<DocumentDto> GetAsync(int? id)
+    {
+      if (!id.HasValue) return null;
+
+      return _mapper.Map<DocumentDto>(await _context.Documents.Include(x => x.DocumentType)
+        .Include(x => x.UchebnayaDisciplina)
+        .Include(x => x.DocumentAuthors).ThenInclude(x => x.Teacher)
+        .AsNoTracking().FirstOrDefaultAsync(x => x.Id == id.Value));
     }
   }
 }
