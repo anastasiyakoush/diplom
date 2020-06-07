@@ -40,8 +40,8 @@ export class DetailedClassesComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  deleteLesson(id) {
-    this.endpointService.DeleteLesson(id).subscribe(() => location.reload());
+  deleteLesson() {
+    this.endpointService.DeleteLesson(this.id).subscribe(() => location.reload());
   }
 
 }

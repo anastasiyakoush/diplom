@@ -61,9 +61,11 @@ export class UpdateClassesComponent implements OnInit {
       .getGroup()
       .subscribe((data: any) => (this.groups = data));
 
-    if (this.update && this.lessonId) {
+    if (this.update ) {
+
       this.endpointService.getLessonById(this.lessonId).subscribe((lesson) => {
-      this.form.date = new Date(lesson.date);
+        this.form = <any>lesson;
+        this.form.date = new Date(lesson.date);
       this.form.teacher = lesson.teacher;
       this.selectedteacher = lesson.teacher;
       this.group = lesson.group;
@@ -77,6 +79,7 @@ export class UpdateClassesComponent implements OnInit {
   }
 
   addFile = (files: Array<File>, metodic: boolean) => {
+    debugger
     if (files.length === 0) {
       return;
     }
@@ -98,15 +101,18 @@ export class UpdateClassesComponent implements OnInit {
   };
 
   onDiscChange(disciplina) {
-    this.form.uchebnayaDisciplina = disciplina;
+    debugger
+    this.form.uchebnayaDisciplina = this.disciplines.find(t=> t.id === Number(disciplina));
   }
 
   onTeacherChange(teacher) {
-    this.form.teacher = teacher;
+    debugger
+    this.form.teacher = this.teachers.find(t=> t.id === Number(teacher));
   }
 
   onGroupChange(group) {
-    this.form.group = group;
+    debugger
+    this.form.group = this.groups.find(t=> t.id === Number(group));;
   }
 
   save() {

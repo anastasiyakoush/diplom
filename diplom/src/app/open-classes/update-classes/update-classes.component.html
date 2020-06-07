@@ -6,14 +6,15 @@
 <div class="modal-body">
     <div class="form-group">
         <label>Преподаватель</label>
-        <select class="form-control" [(ngModel)]="form.teacher"  (ngModelChange)="onTeacherChange($event)">
-            <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher.name}}</option>
+        <select class="form-control" (change)="onTeacherChange($event.target.value)">
+            <option *ngFor="let teacher of teachers" [value]="teacher.id" [selected]="teacher.id === form.teacher.id">{{teacher.name}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="tema">Учебная дисциплина</label>
-        <select class="form-control" [(ngModel)]="disciplin" (ngModelChange)="onDiscChange($event)">
-            <option *ngFor="let disciplin of disciplines"  [ngValue]="disciplin">{{disciplin.name}}</option>
+        <select class="form-control"  (change)="onDiscChange($event.target.value)">
+            <option *ngFor="let disciplin of disciplines"  [value]="disciplin.id" [selected]="disciplin.id === form.uchebnayaDisciplina.id"
+            >{{disciplin.name}}</option>
         </select>
     </div>
     <div class="form-group">
@@ -22,8 +23,8 @@
     </div>
     <div class="form-group">
         <label for="group">Группа</label>
-        <select class="form-control" [(ngModel)]="group" (ngModelChange)="onGroupChange($event)">
-            <option *ngFor="let group of groups" [ngValue]="group">{{group.name}}</option>
+        <select class="form-control" (change)="onGroupChange($event.target.value)">
+            <option *ngFor="let group of groups" [value]="group.id" [selected]="group.id === form.group.id">{{group.name}}</option>
         </select>
     </div>
     <div class="form-group">
@@ -37,15 +38,15 @@
     <div class="form-group">
         <label for="file1">Методическая наработка</label>
         <div class="custom-file">
-          <input type="file" #file class="custom-file-input" (change)="addFile(file.files, true)" multiple>
-          <label class="custom-file-label" for="customFile" (click)="file.click()">Выберите файл</label>
+          <input type="file" #file1 class="custom-file-input" (change)="addFile(file1.files, true)" multiple>
+          <label class="custom-file-label" for="customFile" (click)="file1.click()">Выберите файл</label>
       </div>
       </div>
       <div class="form-group">
         <label for="file1">План занятия</label>
         <div class="custom-file">
-          <input type="file" #file class="custom-file-input" (change)="addFile(file.files,false)" multiple>
-          <label class="custom-file-label" for="customFile" (click)="file.click()">Выберите файл</label>
+          <input type="file" #file2 class="custom-file-input" (change)="addFile(file2.files,false)" multiple>
+          <label class="custom-file-label" for="customFile" (click)="file2.click()">Выберите файл</label>
       </div>
       </div>
 </div>
