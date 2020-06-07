@@ -27,7 +27,7 @@
           <label for="tsk">Компонент</label>
           <select class="form-control" (change)="onComponentChange($event.target.value)">
             <option *ngFor="let name of components"
-            [value]="name">{{name}}</option>
+            [value]="name" [selected]="Komponent[name] === form.component">{{name}}</option>
           </select>
         </div>
       </li>
