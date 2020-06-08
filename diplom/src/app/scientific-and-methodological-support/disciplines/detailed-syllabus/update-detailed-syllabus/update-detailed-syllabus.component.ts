@@ -38,7 +38,8 @@ export class UpdateDetailedSyllabusComponent implements OnInit {
     if (this.update) {
       this.endpointService.getDocById(this.docId).subscribe((data) => {
         this.form = <any>data;
-        this.form.registarcionnyjNomer === null ? "": this.form.registarcionnyjNomer;
+        this.form.registarcionnyjNomer ="";
+        this.form.link = <any>data.link;
       });
     }
     this.form.uchebnayaDisciplina.id = this.discId;
