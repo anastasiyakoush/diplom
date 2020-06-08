@@ -53,4 +53,9 @@ export class DetailedSyllabusComponent implements OnInit {
   delete(id) {
     this.endpointService.deleteDocById(id).subscribe(()=> location.reload() )
   }
+
+  save() {
+    this.modalRef.hide();
+    location.reload();
+  }
 }
