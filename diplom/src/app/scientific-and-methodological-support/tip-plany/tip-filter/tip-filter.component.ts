@@ -14,7 +14,7 @@ export class TipFilterComponent implements OnInit {
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
-
+obrstndrts: any[]
   bsConfig: Partial<BsDatepickerConfig>;
   @Output() onChanged = new EventEmitter<any[]>();
 
@@ -23,13 +23,9 @@ export class TipFilterComponent implements OnInit {
     regNumber: '',
     beginDate: null,
     endDate: null,
-    tipovoyPlanId: null,
-    groupsIds:[]
+    obrStandartId: null,
   }
   standarts: any[];
-  dropdownSettings: IDropdownSettings;
-  dropdownList = [];
-  selectedItems = [];
 
   constructor( private endpointService: EndpointsService, private http: HttpClient) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -39,32 +35,15 @@ export class TipFilterComponent implements OnInit {
 
   ngOnInit() {
     this.endpointService.getTypePlans().subscribe(data => this.standarts = data);
-    this.endpointService.getObrPlans().subscribe(
-      (data) =>
-        (this.dropdownList = data.map((item) => {
-          return {
-            name: item.name,
-            id: item.id,
-          };
-        }))
+    this.endpointService.getObrPlans().subscribe(data =>
+      this.obrstndrts = data
     );
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      selectAllText: 'Выбрать все',
-      unSelectAllText: 'Отменить все',
-      itemsShowLimit: 3,
-      allowSearchFilter: true,
-    };
+
   }
 
-  onChange(tp) {
-    this.form.tipovoyPlanId = tp.id;
-  }
-
-  onItem1Select(item: any) {
-    this.form.groupsIds.push(item.id);
+  onChange(ck) {
+    if(ck === null)  this.form.obrStandartId= null;
+    this.form.obrStandartId = Number(ck);
   }
 
   filter() {
