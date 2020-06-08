@@ -59,7 +59,7 @@ export class EndpointsService {
   }
 
   filterObrPlan(filter: any) {
-    return this.http.post(this.PlanBaseURI + 'obr/filter', filter, {headers: this.headers});
+    return this.http.post(this.PlanBaseURI + '/obr/filter', filter, {headers: this.headers});
   }
 
   getTypePlans() {

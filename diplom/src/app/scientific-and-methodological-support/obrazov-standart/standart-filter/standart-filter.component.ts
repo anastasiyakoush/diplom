@@ -16,9 +16,7 @@ export class StandartFilterComponent implements OnInit {
   bsInlineRangeValue: Date[];
   maxDate = new Date();
   bsConfig: Partial<BsDatepickerConfig>;
-  dropdownSettings: IDropdownSettings;
-  dropdownList = [];
-  selectedItems = [];
+
   tp: any;
   form = {
     specialnostId: null,
@@ -41,26 +39,16 @@ export class StandartFilterComponent implements OnInit {
   ngOnInit() {
     this.endpointService.getSpecialnost().subscribe(data => (this.specs = data));
     this.endpointService.getTypePlans().subscribe(data => this.standarts = data);
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      selectAllText: 'Выбрать все',
-      unSelectAllText: 'Отменить все',
-      itemsShowLimit: 3,
-      allowSearchFilter: true,
-    };
+
   }
 
   onSpecChange(spec) {
+    if(spec == null) this.form.specialnostId = null;
     this.form.specialnostId = spec.id;
   }
 
   onChange(tp) {
     this.form.tipovoyPlanId = tp.id;
-  }
-  onItem1Select(item: any) {
-    this.form.groupsIds.push(item.id);
   }
 
   filter() {
