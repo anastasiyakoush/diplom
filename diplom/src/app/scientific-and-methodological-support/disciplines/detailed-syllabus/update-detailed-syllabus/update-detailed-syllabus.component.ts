@@ -10,6 +10,7 @@ import { EndpointsService } from "src/app/endpoints.service";
 export class UpdateDetailedSyllabusComponent implements OnInit {
   @Output() cancelClick = new EventEmitter<any>();
   @Output() saveClick = new EventEmitter<any>();
+  @Input() title: string;
   @Input() discId: number;
   @Input() update: boolean;
   @Input() docId: number;

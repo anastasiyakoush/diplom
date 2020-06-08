@@ -42,7 +42,7 @@ export class DisciplinesComponent implements OnInit {
   }
 
   addDiscipline(template: TemplateRef<any>) {
-    this.title = 'Добавить документ';
+    this.title = 'Добавить учебную дисциплину';
     this.update = false;
     this.modalRef = this.modalService.show(template);
   }
@@ -50,7 +50,7 @@ export class DisciplinesComponent implements OnInit {
   updateDiscipline(template: TemplateRef<any>, id) {
     this.disciplina = id;
     this.update = true;
-    this.title = 'Редактировать документ';
+    this.title = 'Редактировать учебную дисциплину';
     this.modalRef = this.modalService.show(template);
   }
 
