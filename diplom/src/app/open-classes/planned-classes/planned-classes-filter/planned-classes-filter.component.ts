@@ -65,8 +65,8 @@ export class PlannedClassesFilterComponent implements OnInit {
   onItem3Select(item: any) {
     this.form.subjectsIds.push(item.id);
   }
-  onMonthChange(month) {
-  this.form.month = month.id;
+  onMonthChange(month: string) {
+  this.form.month = Month[month];
   }
 
   filter() {

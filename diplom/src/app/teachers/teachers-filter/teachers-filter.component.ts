@@ -36,6 +36,7 @@ export class TeachersFilterComponent implements OnInit {
   }
 
   onChange(ck) {
+    if(ck === null) this.form.ciklovayaKomissiya =null;
     this.form.ciklovayaKomissiya = ck.id;
   }
 
